@@ -784,6 +784,41 @@
 
     .tab-intro { margin: -6px 0 18px; color: var(--muted); }
 
+    .invite-admin-head { display: flex; justify-content: space-between; gap: 18px; align-items: start; }
+    .invite-admin-head .section-title { margin-bottom: 6px; }
+    .invite-admin-head p { max-width: 720px; margin: 0; color: var(--muted); }
+    .invite-form-state {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border: 1px solid #d7bd89;
+      border-radius: 999px;
+      color: #735727;
+      background: var(--gold-soft);
+      font-size: 11px;
+      font-weight: 900;
+    }
+    .invite-form-state.ready { border-color: #b7d0bd; color: var(--green); background: var(--green-soft); }
+    .invite-field-wide { grid-column: span 2; }
+    .invite-help {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 15px 17px;
+      border-radius: 13px;
+      background: var(--blue-soft);
+    }
+    .invite-help p { margin: 0; color: var(--muted); font-size: 12px; }
+    .invite-help strong { color: var(--navy); }
+    .invite-help a { color: var(--blue); font-weight: 900; white-space: nowrap; }
+    .invite-share { display: grid; grid-template-columns: 1fr auto auto; gap: 9px; margin-top: 14px; }
+    .invite-share input { min-width: 0; min-height: 42px; padding: 9px 10px; border: 1px solid #bdc9d1; border-radius: 9px; color: var(--muted); background: #fafafa; font: inherit; }
+    .invite-share button { min-height: 42px; padding: 9px 14px; border: 1px solid var(--blue); border-radius: 9px; color: var(--blue); background: #fff; font-weight: 800; }
+    .invite-share button.primary-button { color: #fff; background: var(--blue); }
+    .invite-share button:disabled { cursor: not-allowed; opacity: .48; }
+    .invite-privacy-note { margin: 11px 0 0; color: var(--muted); font-size: 11px; }
+
     .estimate-sheet-panel {
       overflow: hidden;
       background: #fffaf7;
@@ -997,6 +1032,10 @@
       .estimate-sheet-head { display: grid; }
       .estimate-sheet-live { justify-self: start; }
       .estimate-sheet-spread { zoom: .68; }
+      .invite-admin-head, .invite-help { display: grid; }
+      .invite-form-state { justify-self: start; }
+      .invite-share { grid-template-columns: 1fr 1fr; }
+      .invite-share input { grid-column: 1 / -1; }
     }
 
     @media (max-width: 520px) {
@@ -1032,6 +1071,9 @@
       .countdown-grid { grid-template-columns: repeat(2, 1fr); }
       .countdown-head { display: grid; }
       .settings-grid { grid-template-columns: 1fr; }
+      .invite-field-wide { grid-column: auto; }
+      .invite-share { grid-template-columns: 1fr; }
+      .invite-share input { grid-column: auto; }
       .task-form { grid-template-columns: 1fr; }
       .task-item { grid-template-columns: auto 1fr auto; }
       .task-date { grid-column: 2; }
@@ -1180,6 +1222,31 @@
       </div>
       <label class="field" style="margin-top:12px"><span>式場への確認事項・メモ</span><textarea class="memo-input" id="venueMemo" placeholder="確認したいこと、持参物、担当者からの連絡など"></textarea></label>
       <div class="note-box" style="margin-top:14px"><p><strong>次の確認日</strong></p><p id="nextMeetingStatus">日付を入力すると、確認日までの日数を表示します。</p></div>
+    </section>
+
+    <section class="panel" data-tab-panel="venue" hidden>
+      <div class="invite-admin-head">
+        <div>
+          <h2 class="section-title">Web招待状（下書き）</h2>
+          <p>見積ページとは別の招待客用ページです。まだ会場選びの途中なので、日程・会場が確定するまでは下書きプレビューとして使います。</p>
+        </div>
+        <span class="invite-form-state" id="inviteFormStatus">Googleフォーム未連携</span>
+      </div>
+      <div class="settings-grid" style="margin-top:18px">
+        <label class="field"><span>招待状に表示する名前</span><input id="invitationNames" type="text" placeholder="例：太郎・花子" maxlength="60"></label>
+        <label class="field"><span>出欠回答期限</span><input id="rsvpDeadline" type="date"></label>
+        <label class="field invite-field-wide"><span>公開したGoogleフォームのURL</span><input id="googleFormUrl" type="url" inputmode="url" placeholder="https://forms.gle/... または https://docs.google.com/forms/..."></label>
+      </div>
+      <div class="invite-help">
+        <p><strong>Googleフォームに用意する項目：</strong>出欠、氏名、アレルギー、送迎希望、ふたりへのメッセージ。フォームの回答受付を公開してからURLを貼り付けます。</p>
+        <a href="https://docs.google.com/forms/" target="_blank" rel="noopener">Googleフォームを開く</a>
+      </div>
+      <div class="invite-share">
+        <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
+        <button class="primary-button" id="openInvitation" type="button">下書きを確認</button>
+        <button id="copyInvitationUrl" type="button" disabled>共有URLをコピー</button>
+      </div>
+      <p class="invite-privacy-note">招待状ページには見積金額・確認メモ・招待客の回答内容を表示しません。回答データはGoogleフォーム側で管理します。</p>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
@@ -1447,6 +1514,9 @@
       venuePhone: "",
       venueMemo: "",
       nextMeetingDate: "",
+      invitationNames: "",
+      rsvpDeadline: "",
+      googleFormUrl: "",
       guestCount: 50,
       guestAttending: 0,
       guestDeclined: 0,
@@ -1487,7 +1557,7 @@
     ]);
     const guestLinkedItems = new Set(["婚礼料理", "フリードリンク", "ウエイティングルームドリンク"]);
     const numericSettingIds = ["guestCount", "guestAttending", "guestDeclined", "taxRate", "nonTaxBenefits", "deposit", "giftPerGuest", "budgetTarget", "serviceRate", "guestDeltaCost"];
-    const textSettingIds = ["weddingDate", "weddingTime", "venueName", "visitDate", "coordinator", "venuePhone", "venueMemo", "nextMeetingDate"];
+    const textSettingIds = ["weddingDate", "weddingTime", "venueName", "visitDate", "coordinator", "venuePhone", "venueMemo", "nextMeetingDate", "invitationNames", "rsvpDeadline", "googleFormUrl"];
     const detailsRoot = document.querySelector("#detailSections");
 
     function loadSavedState(key) {
@@ -1641,6 +1711,7 @@
       renderEstimateSheet(t);
       renderScenarios(t.final);
       updateMeetingStatus();
+      updateInvitationPreview();
       document.querySelectorAll("#detailSections details").forEach(box => {
         const key = box.dataset.section;
         const sum = box.querySelector(".section-sum");
@@ -1691,6 +1762,43 @@
       const prefix = days > 0 ? `あと${days}日` : days === 0 ? "今日" : `${Math.abs(days)}日前に経過`;
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
       setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}（${prefix}）${extras ? `　${extras}` : ""}`);
+    }
+
+    function normalizedGoogleFormUrl(value) {
+      try {
+        const url = new URL(String(value || "").trim());
+        const allowedHost = url.hostname === "forms.gle" || url.hostname === "docs.google.com";
+        return url.protocol === "https:" && allowedHost ? url.toString() : "";
+      } catch {
+        return "";
+      }
+    }
+
+    function invitationPageUrl() {
+      const url = new URL("invite/", window.location.href);
+      url.searchParams.set("draft", "1");
+      const values = {
+        from: settings.invitationNames.trim(),
+        date: settings.weddingDate,
+        time: settings.weddingTime,
+        venue: settings.venueName.trim(),
+        deadline: settings.rsvpDeadline,
+        form: normalizedGoogleFormUrl(settings.googleFormUrl)
+      };
+      Object.entries(values).forEach(([key, value]) => {
+        if (value) url.searchParams.set(key, value);
+      });
+      return url.toString();
+    }
+
+    function updateInvitationPreview() {
+      const formUrl = normalizedGoogleFormUrl(settings.googleFormUrl);
+      const rawFormUrl = settings.googleFormUrl.trim();
+      const status = document.querySelector("#inviteFormStatus");
+      status.textContent = formUrl ? "Googleフォーム連携済み" : rawFormUrl ? "フォームURLを確認" : "Googleフォーム未連携";
+      status.classList.toggle("ready", Boolean(formUrl));
+      document.querySelector("#inviteShareUrl").value = invitationPageUrl();
+      document.querySelector("#copyInvitationUrl").disabled = !formUrl;
     }
 
     const sheetNumber = value => {
@@ -2123,6 +2231,19 @@
     document.querySelector("#printPage").addEventListener("click", () => window.print());
     document.querySelector("#exportCsv").addEventListener("click", exportCsv);
     document.querySelector("#saveBackup").addEventListener("click", exportBackup);
+    document.querySelector("#openInvitation").addEventListener("click", () => window.open(invitationPageUrl(), "_blank", "noopener"));
+    document.querySelector("#copyInvitationUrl").addEventListener("click", async event => {
+      if (event.currentTarget.disabled) return;
+      const input = document.querySelector("#inviteShareUrl");
+      try {
+        await navigator.clipboard.writeText(input.value);
+      } catch {
+        input.select();
+        document.execCommand("copy");
+      }
+      event.currentTarget.textContent = "コピーしました";
+      setTimeout(() => { event.currentTarget.textContent = "共有URLをコピー"; }, 1600);
+    });
     document.querySelector("#loadBackup").addEventListener("click", () => document.querySelector("#backupFile").click());
     document.querySelector("#backupFile").addEventListener("change", async event => {
       const file = event.target.files[0];

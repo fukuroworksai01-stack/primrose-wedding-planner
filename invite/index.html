@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Wedding Invitation</title>
+  <style>
+    :root {
+      --ink: #3d3332;
+      --muted: #786d69;
+      --wine: #754852;
+      --wine-dark: #52333a;
+      --gold: #ad8c54;
+      --cream: #fbf6ef;
+      --paper: #fffdfb;
+      --line: #e5d9d5;
+      --shadow: 0 18px 52px rgba(67, 45, 48, .12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f4efeb;
+      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    a { color: inherit; }
+    .draft-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      padding: 10px 16px;
+      color: #fff9ef;
+      background: #755826;
+      font-size: 12px;
+      font-weight: 900;
+      text-align: center;
+      letter-spacing: .04em;
+    }
+    .draft-bar[hidden] { display: none; }
+    .hero {
+      position: relative;
+      min-height: min(760px, 88vh);
+      display: grid;
+      place-items: center;
+      padding: 72px 24px;
+      isolation: isolate;
+      color: #fff;
+      background: url("https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/bg_mv_1.webp") center 42% / cover no-repeat;
+    }
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(180deg, rgba(31,20,22,.45), rgba(31,20,22,.68));
+      content: "";
+    }
+    .hero-content { width: min(760px, 100%); text-align: center; }
+    .eyebrow { margin: 0 0 14px; color: #f0dfd5; font-size: 12px; font-weight: 800; letter-spacing: .28em; }
+    h1, h2, .date-main { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-weight: 500; }
+    h1 { margin: 0; font-size: clamp(42px, 9vw, 86px); line-height: 1.15; letter-spacing: .1em; }
+    .from { margin: 18px 0 0; color: #fff8ef; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 22px; letter-spacing: .08em; }
+    .hero-divider { width: 70px; height: 1px; margin: 30px auto; background: rgba(255,255,255,.6); }
+    .date-main { margin: 0; color: #fff0c9; font-size: clamp(31px, 6vw, 52px); letter-spacing: .08em; }
+    .time { margin: 7px 0 0; font-weight: 800; letter-spacing: .16em; }
+    .venue { margin: 25px 0 0; font-size: 18px; font-weight: 800; letter-spacing: .12em; }
+    .scroll-note { position: absolute; bottom: 24px; left: 50%; margin: 0; transform: translateX(-50%); color: #eee2dc; font-size: 11px; letter-spacing: .16em; }
+
+    main { width: min(920px, calc(100% - 28px)); margin: 0 auto; padding: 70px 0 90px; }
+    .section { margin-top: 24px; padding: clamp(27px, 5vw, 52px); border: 1px solid var(--line); border-radius: 24px; background: var(--paper); box-shadow: var(--shadow); }
+    .section:first-child { margin-top: 0; }
+    .section-kicker { margin: 0 0 9px; color: var(--gold); font-size: 11px; font-weight: 900; letter-spacing: .2em; text-align: center; }
+    h2 { margin: 0 0 24px; color: var(--wine-dark); font-size: clamp(25px, 4vw, 34px); text-align: center; letter-spacing: .08em; }
+    .message { max-width: 650px; margin: 0 auto; text-align: center; }
+    .message p { margin: 0; }
+    .message p + p { margin-top: 16px; }
+    .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .detail-card { padding: 21px 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--cream); text-align: center; }
+    .detail-card small { display: block; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+    .detail-card strong { display: block; margin-top: 6px; color: var(--wine-dark); font-size: 17px; }
+    .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
+    address { font-style: normal; }
+    .access-copy p { margin: 0; }
+    .access-copy p + p { margin-top: 12px; }
+    .link-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 19px; }
+    .outline-link { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 9px 15px; border: 1px solid var(--wine); border-radius: 10px; color: var(--wine); background: #fff; font-weight: 800; text-decoration: none; }
+    .guest-note { padding: 18px; border-radius: 15px; background: var(--cream); }
+    .guest-note strong { color: var(--wine-dark); }
+    .guest-note ul { margin: 10px 0 0; padding-left: 1.25em; }
+    .guest-note li + li { margin-top: 6px; }
+
+    .rsvp { color: #fff; border-color: var(--wine-dark); background: linear-gradient(135deg, var(--wine-dark), var(--wine)); text-align: center; }
+    .rsvp .section-kicker, .rsvp h2 { color: #fff3dc; }
+    .rsvp p { margin: 0; color: #f3e8e4; }
+    .deadline { margin-top: 10px !important; color: #fff5dc !important; font-weight: 800; }
+    .rsvp-button { display: inline-flex; min-width: min(100%, 300px); min-height: 54px; align-items: center; justify-content: center; margin-top: 24px; padding: 12px 22px; border: 1px solid #fff; border-radius: 999px; color: var(--wine-dark); background: #fffaf0; font-size: 16px; font-weight: 900; text-decoration: none; }
+    .rsvp-button[aria-disabled="true"] { cursor: not-allowed; opacity: .56; }
+    .form-note { margin-top: 13px !important; font-size: 11px; }
+    footer { padding: 30px 16px 50px; color: var(--muted); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; text-align: center; letter-spacing: .12em; }
+
+    @media (max-width: 680px) {
+      .hero { min-height: 720px; padding-inline: 18px; }
+      h1 { font-size: 46px; }
+      main { padding-top: 28px; }
+      .section { border-radius: 19px; }
+      .detail-grid, .access-grid { grid-template-columns: 1fr; }
+      .detail-card { text-align: left; }
+      .scroll-note { white-space: nowrap; }
+    }
+  </style>
+</head>
+<body>
+  <div class="draft-bar" id="draftBar">下書きプレビュー｜日程と会場が確定するまで招待客へ送らないでください</div>
+  <header class="hero">
+    <div class="hero-content">
+      <p class="eyebrow">WEDDING INVITATION</p>
+      <h1>Wedding<br>Invitation</h1>
+      <p class="from" id="fromText">私たちより</p>
+      <div class="hero-divider"></div>
+      <p class="date-main" id="dateMain">2027.01.23 SAT</p>
+      <p class="time" id="timeText">CEREMONY 11:00</p>
+      <p class="venue" id="venueText">PRIMROSE</p>
+    </div>
+    <p class="scroll-note">SCROLL TO VIEW</p>
+  </header>
+
+  <main>
+    <section class="section">
+      <p class="section-kicker">MESSAGE</p>
+      <h2>大切な皆さまへ</h2>
+      <div class="message">
+        <p>このたび 私たちは結婚式を挙げることとなりました</p>
+        <p>日頃お世話になっている皆さまと<br>かけがえのない時間を過ごせましたら幸いです</p>
+        <p>ご多用中とは存じますが<br>ぜひご出席くださいますようお願い申し上げます</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-kicker">DATE &amp; VENUE</p>
+      <h2>日時・会場</h2>
+      <div class="detail-grid">
+        <div class="detail-card"><small>DATE</small><strong id="detailDate">2027年1月23日(土)</strong></div>
+        <div class="detail-card"><small>CEREMONY</small><strong id="detailTime">11:00</strong></div>
+        <div class="detail-card"><small>VENUE</small><strong id="detailVenue">PRIMROSE</strong></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <p class="section-kicker">ACCESS</p>
+      <h2>会場へのアクセス</h2>
+      <div class="access-grid">
+        <div class="access-copy">
+          <address><strong>プリムローズ</strong><br>〒701-0151<br>岡山県岡山市北区平野544-1</address>
+          <p>JR岡山駅西口から無料シャトルバスで約20分。運行時間は式場からの案内をご確認ください。</p>
+          <div class="link-row">
+            <a class="outline-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%97%E3%83%AA%E3%83%A0%E3%83%AD%E3%83%BC%E3%82%BA%20%E5%B2%A1%E5%B1%B1%E7%9C%8C%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E544-1" target="_blank" rel="noopener">地図を開く</a>
+            <a class="outline-link" href="https://space.fivestar-wedding.com/primrose-okayama/access/" target="_blank" rel="noopener">公式アクセス案内</a>
+          </div>
+        </div>
+        <div class="guest-note">
+          <strong>ゲスト向け設備</strong>
+          <ul>
+            <li>更衣室・クロークあり</li>
+            <li>留袖・モーニングなどのレンタルと着付けに対応</li>
+            <li>食物アレルギーは出欠回答フォームでお知らせください</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rsvp" id="rsvp">
+      <p class="section-kicker">R.S.V.P.</p>
+      <h2>出欠のご回答</h2>
+      <p>お手数ですが、下のボタンから出欠と必要事項をご回答ください。</p>
+      <p class="deadline" id="deadlineText">回答期限は後日お知らせします</p>
+      <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true">回答フォームは準備中</a>
+      <p class="form-note" id="formNote">Googleフォームが連携されると、ここから回答できます。</p>
+    </section>
+  </main>
+
+  <footer id="footerText">WITH GRATITUDE · 私たちより</footer>
+
+  <script>
+    const params = new URLSearchParams(location.search);
+    const isDraft = params.get("draft") !== "0";
+    const names = params.get("from")?.trim() || "私たち";
+    const dateValue = params.get("date") || "2027-01-23";
+    const timeValue = params.get("time") || "11:00";
+    const venue = params.get("venue")?.trim() || "PRIMROSE";
+    const deadline = params.get("deadline") || "";
+
+    const safeFormUrl = value => {
+      try {
+        const url = new URL(value || "");
+        const allowedHost = url.hostname === "forms.gle" || url.hostname === "docs.google.com";
+        return url.protocol === "https:" && allowedHost ? url.toString() : "";
+      } catch {
+        return "";
+      }
+    };
+
+    const formUrl = safeFormUrl(params.get("form"));
+    const date = new Date(`${dateValue}T00:00:00`);
+    const validDate = !Number.isNaN(date.getTime());
+    const dateJa = validDate
+      ? new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short" }).format(date)
+      : "日程は後日お知らせします";
+    const dateHero = validDate
+      ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")} ${["SUN","MON","TUE","WED","THU","FRI","SAT"][date.getDay()]}`
+      : "DATE TO BE ANNOUNCED";
+
+    document.querySelector("#draftBar").hidden = !isDraft;
+    document.querySelector("#fromText").textContent = `${names}より`;
+    document.querySelector("#dateMain").textContent = dateHero;
+    document.querySelector("#timeText").textContent = `CEREMONY ${timeValue}`;
+    document.querySelector("#venueText").textContent = venue;
+    document.querySelector("#detailDate").textContent = dateJa;
+    document.querySelector("#detailTime").textContent = timeValue;
+    document.querySelector("#detailVenue").textContent = venue;
+    document.querySelector("#footerText").textContent = `WITH GRATITUDE · ${names}より`;
+    document.title = `${names} Wedding Invitation`;
+
+    if (deadline) {
+      const deadlineDate = new Date(`${deadline}T00:00:00`);
+      if (!Number.isNaN(deadlineDate.getTime())) {
+        document.querySelector("#deadlineText").textContent = `${new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric" }).format(deadlineDate)}までにご回答ください`;
+      }
+    }
+
+    const rsvpButton = document.querySelector("#rsvpButton");
+    if (formUrl) {
+      rsvpButton.href = formUrl;
+      rsvpButton.target = "_blank";
+      rsvpButton.rel = "noopener";
+      rsvpButton.removeAttribute("aria-disabled");
+      rsvpButton.textContent = "出欠を回答する";
+      document.querySelector("#formNote").textContent = "回答内容はGoogleフォームへ送信されます。";
+    } else {
+      rsvpButton.addEventListener("click", event => event.preventDefault());
+    }
+  </script>
+</body>
+</html>
