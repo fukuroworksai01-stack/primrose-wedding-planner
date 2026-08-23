@@ -692,6 +692,190 @@
 
     .tab-intro { margin: -6px 0 18px; color: var(--muted); }
 
+    .estimate-sheet-panel {
+      overflow: hidden;
+      background: #fffaf7;
+    }
+
+    .estimate-sheet-head {
+      display: flex;
+      gap: 18px;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 16px;
+    }
+
+    .estimate-sheet-head .section-title { margin-bottom: 4px; }
+    .estimate-sheet-head p { max-width: 620px; margin: 0; color: var(--muted); font-size: 13px; }
+    .estimate-sheet-live {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border: 1px solid #b7c4c9;
+      border-radius: 999px;
+      color: #415863;
+      background: #edf2f2;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .estimate-sheet-scroll {
+      overflow-x: auto;
+      padding: 14px;
+      border: 1px solid #bcc7ca;
+      border-radius: 16px;
+      background: #dfe4e3;
+      box-shadow: inset 0 2px 10px rgba(41, 53, 57, .08);
+      scrollbar-color: #8ca0a7 #eef1f1;
+    }
+
+    .estimate-sheet-spread {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      width: 1500px;
+      min-width: 1500px;
+      color: #20272a;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      font-variant-numeric: tabular-nums;
+      zoom: .74;
+    }
+
+    .estimate-page {
+      min-width: 0;
+      padding: 14px;
+      border: 1px solid #9da9ac;
+      background: #f5f2e9;
+      box-shadow: 0 5px 14px rgba(37, 47, 50, .14);
+    }
+
+    .estimate-page-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin: 0 0 7px;
+      padding-bottom: 6px;
+      border-bottom: 2px solid #516c79;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 16px;
+      letter-spacing: .08em;
+    }
+
+    .estimate-page-title small { font-family: inherit; font-size: 9px; font-weight: 500; letter-spacing: .02em; }
+    .sheet-section + .sheet-section { margin-top: 9px; }
+    .sheet-section-label {
+      margin: 0;
+      padding: 4px 7px;
+      border: 1px solid #42565f;
+      border-bottom: 0;
+      color: #142126;
+      background: #8299a4;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: .04em;
+    }
+
+    .sheet-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      background: rgba(255,255,255,.2);
+      font-size: 8px;
+      line-height: 1.35;
+    }
+
+    .sheet-table col.category { width: 5%; }
+    .sheet-table col.item { width: 22%; }
+    .sheet-table col.unit { width: 9%; }
+    .sheet-table col.qty { width: 6%; }
+    .sheet-table col.amount { width: 10%; }
+    .sheet-table col.discount { width: 10%; }
+    .sheet-table col.note { width: 38%; }
+    .sheet-table th,
+    .sheet-table td {
+      padding: 2px 3px;
+      border: 1px solid #506168;
+      vertical-align: middle;
+      overflow-wrap: anywhere;
+    }
+
+    .sheet-table th {
+      position: static;
+      color: #132126;
+      background: #8299a4;
+      font-size: 8px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .sheet-table td.sheet-category {
+      padding: 3px 2px;
+      background: rgba(126, 149, 160, .18);
+      font-weight: 900;
+      text-align: center;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      letter-spacing: .12em;
+    }
+
+    .sheet-table td.sheet-item { font-weight: 700; text-align: right; }
+    .sheet-table td.sheet-num { text-align: right; white-space: nowrap; }
+    .sheet-table td.sheet-note { color: #293338; font-size: 7px; }
+    .sheet-table tr.sheet-reference td:not(.sheet-category) { color: #5a6265; background: rgba(80, 97, 104, .05); }
+    .sheet-table tr.sheet-added td:not(.sheet-category) { background: #fff8db; }
+    .sheet-table .sheet-discount { color: #a22e39; font-weight: 900; }
+    .sheet-table .sheet-service td { border-top-width: 2px; }
+    .sheet-table .sheet-subtotal-row td { background: rgba(130,153,164,.18); font-weight: 800; }
+    .sheet-table .sheet-total-row td { background: #8299a4; font-weight: 900; }
+
+    .sheet-benefits,
+    .sheet-summary,
+    .sheet-gift-guide { margin-top: 11px; }
+    .sheet-benefits h4,
+    .sheet-gift-guide h4 {
+      margin: 0;
+      padding: 4px 8px;
+      border: 1px solid #42565f;
+      border-bottom: 0;
+      background: #8299a4;
+      font-size: 9px;
+      text-align: center;
+    }
+
+    .sheet-benefits table,
+    .sheet-summary table,
+    .sheet-gift-guide table { width: 100%; border-collapse: collapse; table-layout: fixed; font-size: 9px; }
+    .sheet-benefits td,
+    .sheet-summary td,
+    .sheet-gift-guide th,
+    .sheet-gift-guide td { padding: 4px 6px; border: 1px solid #506168; }
+    .sheet-benefits td:nth-child(2),
+    .sheet-summary td:last-child,
+    .sheet-gift-guide td { text-align: right; font-variant-numeric: tabular-nums; }
+    .sheet-benefits td:nth-child(2) { color: #a22e39; font-weight: 900; }
+    .sheet-benefit-card {
+      margin-top: 11px;
+      padding: 12px 14px;
+      border: 2px solid #7f6d50;
+      background: rgba(255,255,255,.18);
+      text-align: center;
+    }
+    .sheet-benefit-card strong {
+      display: block;
+      font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: 17px;
+      letter-spacing: .06em;
+    }
+    .sheet-benefit-card p { margin: 5px 0 0; font-size: 8px; line-height: 1.6; }
+    .sheet-benefit-card b { color: #8a2634; }
+    .sheet-summary td:first-child { width: 55%; background: rgba(130,153,164,.28); font-size: 11px; font-weight: 800; text-align: center; }
+    .sheet-summary td:last-child { font-size: 13px; font-weight: 900; }
+    .sheet-summary tr:nth-child(2) td:last-child { color: #a22e39; }
+    .sheet-summary tr:last-child td { border-top-width: 2px; background: #8299a4; font-size: 14px; }
+    .sheet-note-block { margin: 8px 2px 0; font-size: 7px; line-height: 1.55; }
+    .sheet-gift-guide th { color: #132126; background: #8299a4; font-size: 8px; }
+    .sheet-gift-guide tr.current td { background: #e7dd83; font-weight: 900; }
+    .estimate-sheet-caption { margin: 10px 2px 0; color: var(--muted); font-size: 11px; }
+
     @media (max-width: 820px) {
       .page { width: min(100% - 20px, 1180px); margin-top: 10px; }
       .hero-main { grid-template-columns: 1fr; padding: 26px 22px; }
@@ -714,6 +898,9 @@
       .home-grid { grid-template-columns: repeat(2, 1fr); }
       .venue-gallery { grid-template-columns: 1fr 1fr; }
       .venue-photo:first-child { grid-column: 1 / -1; }
+      .estimate-sheet-head { display: grid; }
+      .estimate-sheet-live { justify-self: start; }
+      .estimate-sheet-spread { zoom: .68; }
     }
 
     @media (max-width: 520px) {
@@ -753,6 +940,7 @@
       .task-date { grid-column: 2; }
       .timeline-item { grid-template-columns: 30px 92px 1fr; }
       .timeline-status { grid-column: 3; }
+      .estimate-sheet-scroll { margin-inline: -7px; padding: 8px; border-radius: 12px; }
     }
 
     @media print {
@@ -772,6 +960,9 @@
       .reference.hidden { display: table-row !important; }
       .app-tabs { display: none; }
       [data-tab-panel][hidden] { display: block !important; }
+      .estimate-sheet-scroll { overflow: visible; padding: 0; border: 0; background: transparent; box-shadow: none; }
+      .estimate-sheet-spread { width: auto; min-width: 0; gap: 8mm; zoom: 1; }
+      .estimate-page { padding: 5mm; box-shadow: none; break-inside: avoid; }
     }
   </style>
 </head>
@@ -924,6 +1115,20 @@
       <h2 class="section-title">結婚式までの準備スケジュール</h2>
       <div class="next-action" id="nextAction">次に行う準備を計算しています。</div>
       <div class="timeline" id="weddingTimeline"></div>
+    </section>
+
+    <section class="panel estimate-sheet-panel" data-tab-panel="budget" hidden>
+      <div class="estimate-sheet-head">
+        <div>
+          <h2 class="section-title">原本と同じ形式の見積表</h2>
+          <p>添付画像の2ページ構成と項目順を再現しました。上のプラン設定や下の明細を変更すると、この帳票にも自動で反映されます。</p>
+        </div>
+        <span class="estimate-sheet-live">自動計算に連動</span>
+      </div>
+      <div class="estimate-sheet-scroll" role="region" aria-label="原本形式の見積表。横にスクロールできます" tabindex="0">
+        <div class="estimate-sheet-spread" id="estimateSheet"></div>
+      </div>
+      <p class="estimate-sheet-caption">画面幅が狭い場合は表を左右にスワイプして確認できます。灰色の参考価格は合計に含まれません。</p>
     </section>
 
     <section class="panel" data-tab-panel="budget" hidden>
@@ -1309,6 +1514,7 @@
         document.querySelector(`#bar${index + 1}`).style.width = `${t.gross ? Math.max(2, t.section[key] / t.gross * 100) : 0}%`;
       });
 
+      renderEstimateSheet(t);
       renderScenarios(t.final);
       updateMeetingStatus();
       renderTimeline();
@@ -1415,6 +1621,205 @@
         row.append(dot, date, title, status);
         root.append(row);
       });
+    }
+
+    const sheetNumber = value => {
+      if (value === null || value === undefined || value === "") return "";
+      if (typeof value === "string" && value.includes("%")) return value;
+      return new Intl.NumberFormat("ja-JP").format(Math.round(numberFrom(value)));
+    };
+
+    const sheetDiscount = value => {
+      const amount = numberFrom(value);
+      return amount ? `${amount < 0 ? "−" : "+"}${sheetNumber(Math.abs(amount))}` : "";
+    };
+
+    function sheetCell(text, className = "", colSpan = 1) {
+      const td = document.createElement("td");
+      td.className = className;
+      td.colSpan = colSpan;
+      td.textContent = text;
+      return td;
+    }
+
+    function renderSheetSection(section, sectionTotals) {
+      const sectionRows = rows.filter(row => row[0] === section);
+      const sectionName = sectionRows[0]?.[1] || "";
+      const wrap = document.createElement("section");
+      wrap.className = "sheet-section";
+      wrap.dataset.section = section;
+
+      const label = document.createElement("h3");
+      label.className = "sheet-section-label";
+      label.textContent = `${section} ${sectionName}`;
+
+      const table = document.createElement("table");
+      table.className = "sheet-table";
+      table.setAttribute("aria-label", `${sectionName}の見積明細`);
+      table.innerHTML = `
+        <colgroup>
+          <col class="category"><col class="item"><col class="unit"><col class="qty">
+          <col class="amount"><col class="discount"><col class="note">
+        </colgroup>
+        <thead><tr><th aria-label="分類"></th><th>品名</th><th>単価</th><th>数量</th><th>金額</th><th>割引</th><th>備考</th></tr></thead>`;
+
+      const tbody = document.createElement("tbody");
+      const groups = [];
+      sectionRows.forEach(row => {
+        const current = groups.at(-1);
+        if (!current || current.category !== row[2]) groups.push({ category: row[2], list: [row] });
+        else current.list.push(row);
+      });
+
+      groups.forEach(group => {
+        group.list.forEach((row, rowIndex) => {
+          const tr = document.createElement("tr");
+          const isReference = row[4] === "参考価格";
+          const isService = row[4] === "自動計算";
+          if (isReference) tr.classList.add("sheet-reference");
+          if (isReference && row[11]) tr.classList.add("sheet-added");
+          if (isService) tr.classList.add("sheet-service");
+
+          if (rowIndex === 0) {
+            const category = sheetCell(group.category, "sheet-category");
+            category.rowSpan = group.list.length;
+            tr.append(category);
+          }
+
+          const markedName = `${row[3]}${serviceTargetItems.has(row[3]) ? " ＊" : ""}`;
+          tr.append(
+            sheetCell(markedName, "sheet-item"),
+            sheetCell(sheetNumber(row[5]), "sheet-num"),
+            sheetCell(sheetNumber(row[6]), "sheet-num"),
+            sheetCell(sheetNumber(row[7]), "sheet-num"),
+            sheetCell(sheetDiscount(row[8]), "sheet-num sheet-discount"),
+            sheetCell(row[10] || "", "sheet-note")
+          );
+          tbody.append(tr);
+        });
+      });
+
+      const activeRows = sectionRows.filter(row => row[11]);
+      const nonServiceRows = activeRows.filter(row => row[4] !== "自動計算");
+      const baseGross = nonServiceRows.reduce((sum, row) => sum + numberFrom(row[7]), 0);
+      const baseDiscount = nonServiceRows.reduce((sum, row) => sum + numberFrom(row[8]), 0);
+      const sectionDiscount = activeRows.reduce((sum, row) => sum + numberFrom(row[8]), 0);
+
+      const subtotal = document.createElement("tr");
+      subtotal.className = "sheet-subtotal-row";
+      subtotal.append(
+        sheetCell("小計（サービス料を除く）", "", 4),
+        sheetCell(sheetNumber(baseGross), "sheet-num"),
+        sheetCell(sheetDiscount(baseDiscount), "sheet-num sheet-discount"),
+        sheetCell("", "")
+      );
+      tbody.append(subtotal);
+
+      const total = document.createElement("tr");
+      total.className = "sheet-total-row";
+      total.append(
+        sheetCell(`${sectionName}小計 ${section}`, "", 4),
+        sheetCell(sheetNumber(sectionTotals[section]), "sheet-num"),
+        sheetCell(sheetDiscount(sectionDiscount), "sheet-num sheet-discount"),
+        sheetCell("", "")
+      );
+      tbody.append(total);
+
+      table.append(tbody);
+      wrap.append(label, table);
+      return wrap;
+    }
+
+    function estimatePage(title, pageNumber) {
+      const page = document.createElement("article");
+      page.className = "estimate-page";
+      page.setAttribute("aria-label", `見積書 ${pageNumber}ページ目`);
+      const heading = document.createElement("h3");
+      heading.className = "estimate-page-title";
+      const name = document.createElement("span");
+      name.textContent = title;
+      const pageLabel = document.createElement("small");
+      pageLabel.textContent = `${pageNumber} / 2`;
+      heading.append(name, pageLabel);
+      page.append(heading);
+      return page;
+    }
+
+    function renderEstimateSheet(t) {
+      const root = document.querySelector("#estimateSheet");
+      if (!root) return;
+      root.textContent = "";
+
+      const leftPage = estimatePage("御 見 積 書", 1);
+      leftPage.append(
+        renderSheetSection("①", t.section),
+        renderSheetSection("②", t.section),
+        renderSheetSection("③", t.section)
+      );
+
+      const rightPage = estimatePage("PRIMROSE WEDDING ESTIMATE", 2);
+      rightPage.append(renderSheetSection("④", t.section));
+
+      const benefits = document.createElement("section");
+      benefits.className = "sheet-benefits";
+      benefits.innerHTML = `
+        <h4>非課税特典項目</h4>
+        <table aria-label="非課税特典項目"><tbody>
+          <tr><td>1件目来館特典</td><td>−100,000</td><td></td></tr>
+          <tr><td>8月ご来館特典</td><td>−300,000</td><td></td></tr>
+          <tr><td>冬結婚式応援特典</td><td>−100,000</td><td>2027年3月中までの結婚式限定</td></tr>
+          <tr><td>当日ご成約特典</td><td>−300,000</td><td></td></tr>
+        </tbody></table>`;
+
+      const benefitCard = document.createElement("section");
+      benefitCard.className = "sheet-benefit-card";
+      benefitCard.innerHTML = `
+        <strong>PRIMROSE記念特別特典</strong>
+        <p>親御様レンタル衣裳 <b>20%OFF</b>　／　打合せ時スイーツ　／　岡山駅〜式場シャトルバス往復無料<br>平日衣裳合わせ特典（最大3回）</p>`;
+
+      const allBenefits = Math.abs(t.discount) + settings.nonTaxBenefits;
+      const summary = document.createElement("section");
+      summary.className = "sheet-summary";
+      summary.innerHTML = `
+        <table aria-label="見積合計"><tbody>
+          <tr><td>総合小計（①＋②＋③＋④）</td><td>${sheetNumber(t.gross)}</td></tr>
+          <tr><td>特典合計（プラン＋非課税特典）</td><td>−${sheetNumber(allBenefits)}</td></tr>
+          <tr><td>ご予約金（内金）</td><td>▲${sheetNumber(settings.deposit)}</td></tr>
+          <tr><td>総合計（税込）</td><td>${sheetNumber(t.final)}</td></tr>
+        </tbody></table>`;
+
+      const notes = document.createElement("div");
+      notes.className = "sheet-note-block";
+      notes.innerHTML = `※日程・時間変更により特典内容が変わる場合があります。<br>※プラン割引は10,000円以上の料理を注文される方が30名以上の場合に適用されます。<br>※＊印の商品はサービス料${sheetNumber(settings.serviceRate)}%の対象です。`;
+
+      const base = Math.max(0, Math.round(settings.guestCount));
+      const scenarios = [...new Set([Math.max(0, base - 10), base, base + 10])];
+      const giftGuide = document.createElement("section");
+      giftGuide.className = "sheet-gift-guide";
+      const giftHeading = document.createElement("h4");
+      giftHeading.textContent = "ご祝儀の目安と自己負担額";
+      const giftTable = document.createElement("table");
+      giftTable.setAttribute("aria-label", "人数別のご祝儀と自己負担額");
+      giftTable.innerHTML = "<thead><tr><th>人数</th><th>ご祝儀総額</th><th>結婚式費用</th><th>自己負担額</th></tr></thead>";
+      const giftBody = document.createElement("tbody");
+      scenarios.forEach(count => {
+        const cost = t.final + (count - base) * settings.guestDeltaCost;
+        const gifts = count * settings.giftPerGuest;
+        const tr = document.createElement("tr");
+        if (count === base) tr.className = "current";
+        tr.append(
+          sheetCell(String(count)),
+          sheetCell(sheetNumber(gifts)),
+          sheetCell(sheetNumber(cost)),
+          sheetCell(sheetNumber(cost - gifts))
+        );
+        giftBody.append(tr);
+      });
+      giftTable.append(giftBody);
+      giftGuide.append(giftHeading, giftTable);
+
+      rightPage.append(benefits, benefitCard, summary, notes, giftGuide);
+      root.append(leftPage, rightPage);
     }
 
     function badge(status, included) {
