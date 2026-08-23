@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PRIMROSE 結婚式見積まとめ</title>
+  <title>PRIMROSE 初回見積メモ</title>
   <style>
     :root {
       --ink: #24313b;
@@ -609,8 +609,20 @@
     .hero .eyebrow { color: #f1ddd8; letter-spacing: .24em; }
     .hero-copy { max-width: 560px; color: #fff8f4; font-size: 16px; }
     .hero-location { margin: 16px 0 0; color: #f4e6d0; font-size: 12px; letter-spacing: .08em; }
+    .hero-statuses { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 18px; }
+    .hero-statuses span {
+      padding: 5px 10px;
+      border: 1px solid rgba(255,255,255,.42);
+      border-radius: 999px;
+      color: #fffaf5;
+      background: rgba(45,28,31,.42);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
     .final-label { color: #f4e9df; }
     .final-price { color: #fff1c9; font-weight: 600; }
+    .final-note { max-width: 300px; margin: 9px 0 0 auto; color: #eadfd9; font-size: 11px; text-align: right; }
     .hero-meta { background: rgba(36, 23, 25, .6); backdrop-filter: blur(8px); }
     .hero-meta small { color: #eadfda; }
 
@@ -675,6 +687,86 @@
     .home-card small { color: var(--muted); font-weight: 700; }
     .home-card strong { display: block; margin-top: 8px; color: var(--navy); font-size: 18px; line-height: 1.45; }
     .home-card button { align-self: flex-start; padding: 7px 0 0; border: 0; color: var(--blue); background: transparent; font-weight: 800; }
+
+    .estimate-stage-panel {
+      overflow: hidden;
+      border-color: #dfc994;
+      background: linear-gradient(135deg, #fffaf0 0%, #fbf2df 100%);
+    }
+
+    .stage-head { display: flex; justify-content: space-between; gap: 24px; align-items: start; }
+    .stage-head h2 { margin: 2px 0 7px; color: var(--navy); font-size: clamp(22px, 3vw, 31px); }
+    .stage-head p { max-width: 720px; margin: 0; color: var(--muted); }
+    .stage-state {
+      flex: 0 0 auto;
+      padding: 7px 12px;
+      border: 1px solid #d7bd89;
+      border-radius: 999px;
+      color: #735727;
+      background: #fffaf0;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .decision-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .decision-step {
+      display: grid;
+      grid-template-columns: 32px 1fr;
+      gap: 10px;
+      align-items: center;
+      padding: 13px 14px;
+      border: 1px solid #e5d8bd;
+      border-radius: 14px;
+      color: var(--muted);
+      background: rgba(255,255,255,.55);
+      font-weight: 800;
+    }
+
+    .decision-step b {
+      display: grid;
+      width: 32px;
+      height: 32px;
+      place-items: center;
+      border-radius: 50%;
+      color: #80652f;
+      background: #f2e5c5;
+    }
+
+    .decision-step.current { color: #fff; border-color: var(--blue); background: var(--blue); }
+    .decision-step.current b { color: var(--blue); background: #fff; }
+    .stage-note { margin: 14px 0 0; color: #6d5934; font-size: 12px; }
+
+    .home-callout {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--gold);
+      border-radius: 11px;
+      color: #5e4b2e;
+      background: var(--gold-soft);
+      font-size: 13px;
+    }
+
+    .question-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+    .question-card {
+      min-height: 170px;
+      padding: 18px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fffaf7;
+    }
+    .question-number { color: var(--gold); font-size: 11px; font-weight: 900; letter-spacing: .12em; }
+    .question-card strong { display: block; margin-top: 8px; color: var(--navy); font-size: 16px; line-height: 1.5; }
+    .question-card p { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    .panel-action { margin-top: 16px; }
+    .panel-action button { min-height: 42px; padding: 9px 15px; border: 1px solid var(--blue); border-radius: 10px; color: var(--blue); background: #fff; font-weight: 800; }
 
     .venue-gallery {
       display: grid;
@@ -896,6 +988,10 @@
       .progress-wrap { min-width: 100%; }
       .info-grid { grid-template-columns: 1fr; }
       .home-grid { grid-template-columns: repeat(2, 1fr); }
+      .question-grid { grid-template-columns: repeat(2, 1fr); }
+      .decision-steps { grid-template-columns: 1fr; }
+      .stage-head { display: grid; }
+      .stage-state { justify-self: start; }
       .venue-gallery { grid-template-columns: 1fr 1fr; }
       .venue-photo:first-child { grid-column: 1 / -1; }
       .estimate-sheet-head { display: grid; }
@@ -910,6 +1006,7 @@
       .hero-main { padding: 48px 22px 28px; }
       .hero h1 { font-size: 35px; }
       .hero-main > div:last-child { margin-top: 18px; }
+      .final-note { margin-left: 0; text-align: left; }
       .hero-meta { grid-template-columns: repeat(3, 1fr); }
       .hero-meta > div { padding: 12px 6px; }
       .hero-meta > div + div { border-top: 0; border-left: 1px solid rgba(255,255,255,.16); }
@@ -926,7 +1023,7 @@
         border-radius: 17px;
       }
       .tab-button { min-height: 50px; padding: 5px 2px; font-size: 11px; }
-      .home-grid, .venue-gallery { grid-template-columns: 1fr; }
+      .home-grid, .venue-gallery, .question-grid { grid-template-columns: 1fr; }
       .venue-photo:first-child { grid-column: auto; }
       .venue-photo img, .venue-photo:first-child img { height: 240px; }
       .cards { grid-template-columns: 1fr; }
@@ -971,81 +1068,98 @@
     <header class="hero">
       <div class="hero-main">
         <div>
-          <p class="eyebrow">WEDDING ESTIMATE SUMMARY</p>
-          <h1 id="venueTitle">PRIMROSE 結婚式見積</h1>
-          <p class="hero-copy" id="venueCopy">2027年1月23日の結婚式に向けた準備・費用管理ページです。</p>
-          <p class="hero-location">ST. PAUL'S CATHEDRAL · OKAYAMA</p>
+          <p class="eyebrow">FIRST VISIT ESTIMATE</p>
+          <h1 id="venueTitle">PRIMROSE 初回見積メモ</h1>
+          <p class="hero-copy" id="venueCopy">初回来館でもらった見積を、ふたりで整理・確認するためのページです。</p>
+          <div class="hero-statuses" aria-label="見積の状態"><span>1会場目</span><span>初回見積</span><span>契約前</span></div>
+          <p class="hero-location" id="heroCandidateDate">見積の候補日：2027年1月23日</p>
         </div>
         <div>
-          <p class="final-label">最終お支払額（税込・予約金控除後）</p>
+          <p class="final-label">見積書に記載の合計（税込）</p>
           <p class="final-price" id="finalPrice">2,350,670円</p>
+          <p class="final-note">予約金50,000円を差し引いた試算です。正式な確定額ではありません。</p>
         </div>
       </div>
       <div class="hero-meta">
-        <div><small>現在の見積人数</small><strong id="heroGuests">50名</strong></div>
-        <div><small>特典合計</small><strong id="heroBenefits">1,475,250円</strong></div>
-        <div><small>値引率</small><strong id="heroDiscountRate">41.2%</strong></div>
+        <div><small>見積の想定人数</small><strong id="heroGuests">50名</strong></div>
+        <div><small>割引・特典合計</small><strong id="heroBenefits">1,475,250円</strong></div>
+        <div><small>見積上の値引率</small><strong id="heroDiscountRate">41.2%</strong></div>
       </div>
     </header>
 
-    <nav class="app-tabs" aria-label="結婚式準備メニュー" role="tablist">
-      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home">ホーム</button>
+    <nav class="app-tabs" aria-label="初回見積の確認メニュー" role="tablist">
+      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home">まとめ</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget">見積</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests">ゲスト</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="planning">準備</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue">式場情報</button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests">人数試算</button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="planning">確認メモ</button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue">会場メモ</button>
     </nav>
 
-    <section class="panel countdown-panel" data-tab-panel="home">
-      <div class="countdown-head">
+    <section class="panel estimate-stage-panel" data-tab-panel="home">
+      <div class="stage-head">
         <div>
-          <p class="eyebrow">COUNTDOWN</p>
-          <h2>結婚式まであと</h2>
+          <p class="eyebrow">FIRST STEP</p>
+          <h2>いまは、会場選びの最初の1件目</h2>
+          <p>PRIMROSEの初回見積を把握して、不明点を確認し、次の会場も同じ人数・条件で比べられる状態にします。</p>
         </div>
-        <p class="wedding-date-label" id="weddingDateLabel">日付を設定してください</p>
+        <span class="stage-state">未契約・比較中</span>
       </div>
-      <div class="countdown-grid" aria-live="polite">
-        <div class="count-unit"><strong id="countDays">--</strong><small>日</small></div>
-        <div class="count-unit"><strong id="countHours">--</strong><small>時間</small></div>
-        <div class="count-unit"><strong id="countMinutes">--</strong><small>分</small></div>
-        <div class="count-unit"><strong id="countSeconds">--</strong><small>秒</small></div>
-      </div>
+      <ol class="decision-steps" aria-label="会場選びの進め方">
+        <li class="decision-step current"><b>1</b><span>初回見積を把握</span></li>
+        <li class="decision-step"><b>2</b><span>条件・上がり幅を確認</span></li>
+        <li class="decision-step"><b>3</b><span>ほかの会場と比較</span></li>
+      </ol>
+      <p class="stage-note">見積に記載の候補日：<strong id="candidateDateStatus">2027年1月23日</strong></p>
     </section>
 
     <section class="panel" data-tab-panel="home">
-      <h2 class="section-title">ふたりの準備状況</h2>
-      <p class="tab-intro">今確認したい情報をまとめています。カードから各ページへ移動できます。</p>
+      <h2 class="section-title">初回見積の要点</h2>
+      <p class="tab-intro">まずは「いくらか」と「何が条件付きか」だけ押さえれば大丈夫です。</p>
       <div class="home-grid">
-        <article class="home-card"><div><small>招待状</small><strong id="homeInviteStatus">未回答 50名</strong></div><button type="button" data-tab-target="guests">回答状況を見る</button></article>
-        <article class="home-card"><div><small>残りのお支払い</small><strong id="homePaymentStatus">2,350,670円</strong></div><button type="button" data-tab-target="budget">見積を確認する</button></article>
-        <article class="home-card"><div><small>次回打ち合わせ</small><strong id="homeMeetingStatus">未設定</strong></div><button type="button" data-tab-target="venue">式場情報を入力</button></article>
-        <article class="home-card"><div><small>次の準備</small><strong id="homeNextAction">準備予定を計算中</strong></div><button type="button" data-tab-target="planning">準備を進める</button></article>
+        <article class="home-card"><div><small>見積書の合計</small><strong id="homeEstimateTotal">2,350,670円</strong></div><button type="button" data-tab-target="budget">計算内訳を見る</button></article>
+        <article class="home-card"><div><small>予約金を含む総費用</small><strong id="homeEstimateWithDeposit">2,400,670円</strong></div><button type="button" data-tab-target="budget">予約金の扱いを見る</button></article>
+        <article class="home-card"><div><small>自己負担の目安</small><strong id="homeSelfFunding">700,670円</strong></div><button type="button" data-tab-target="guests">人数を変えて試す</button></article>
+        <article class="home-card"><div><small>条件付き特典</small><strong id="homeConditionalBenefits">800,000円</strong></div><button type="button" data-tab-target="venue">適用条件を見る</button></article>
       </div>
+      <p class="home-callout"><strong>注意：</strong>この見積には「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が含まれています。特典が外れた場合の金額も確認してください。</p>
+    </section>
+
+    <section class="panel" data-tab-panel="home">
+      <h2 class="section-title">次に式場へ聞く4つ</h2>
+      <p class="tab-intro">初回は、細かい項目を全部決めるより、あとから上がる可能性を確認するのが先です。</p>
+      <div class="question-grid">
+        <article class="question-card"><span class="question-number">QUESTION 01</span><strong>当日成約特典がなくても、同じ内容なら総額はいくら？</strong><p>その場で契約しない場合の差額を確認します。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 02</span><strong>料理・衣裳・装花は、平均でどれくらい上がる？</strong><p>最低価格ではなく、実際に選ばれる価格帯を聞きます。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 03</span><strong>この見積に入っていない、必要になりやすい費用は？</strong><p>持込料、写真、映像、送迎などの漏れを確認します。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 04</span><strong>特典の期限と、キャンセル・日程変更の条件は？</strong><p>契約前に必ず書面で確認しておきます。</p></article>
+      </div>
+      <div class="panel-action"><button type="button" data-tab-target="planning">確認メモを開く</button></div>
     </section>
 
     <section class="panel" data-tab-panel="budget" hidden>
-      <h2 class="section-title">プラン設定</h2>
+      <h2 class="section-title">試算条件</h2>
+      <p class="tab-intro">ここで変えるのは契約内容ではなく、初回見積を比較するための仮の条件です。</p>
       <div class="settings-grid">
-        <label class="field"><span>結婚式の日付</span><input id="weddingDate" type="date" value="2027-01-23"></label>
-        <label class="field"><span>開始時刻</span><input id="weddingTime" type="time" value="11:00"></label>
-        <label class="field"><span>招待人数</span><input id="guestCount" type="number" min="0" max="200" step="1" value="50"></label>
+        <label class="field"><span>見積に記載の候補日</span><input id="weddingDate" type="date" value="2027-01-23"></label>
+        <label class="field"><span>候補時刻</span><input id="weddingTime" type="time" value="11:00"></label>
+        <label class="field"><span>想定人数</span><input id="guestCount" type="number" min="0" max="200" step="1" value="50"></label>
         <label class="field"><span>消費税率（%）</span><input id="taxRate" type="number" min="0" max="100" step="0.1" value="10"></label>
-        <label class="field"><span>非課税特典合計</span><input id="nonTaxBenefits" type="number" min="0" step="1000" value="800000"></label>
-        <label class="field"><span>予約金（支払済み）</span><input id="deposit" type="number" min="0" step="1000" value="50000"></label>
+        <label class="field"><span>条件付き特典合計</span><input id="nonTaxBenefits" type="number" min="0" step="1000" value="800000"></label>
+        <label class="field"><span>予約金（契約時の内金）</span><input id="deposit" type="number" min="0" step="1000" value="50000"></label>
         <label class="field"><span>ご祝儀見込／人</span><input id="giftPerGuest" type="number" min="0" step="1000" value="33000"></label>
         <label class="field"><span>予算上限</span><input id="budgetTarget" type="number" min="0" step="10000" value="2500000"></label>
         <label class="field"><span>サービス料率（%）</span><input id="serviceRate" type="number" min="0" max="100" step="0.1" value="15"></label>
         <label class="field"><span>人数増減費／人（税込）</span><input id="guestDeltaCost" type="number" min="0" step="1000" value="22000"></label>
       </div>
-      <label class="switch-row"><input id="syncGuests" type="checkbox" checked> 招待人数を「婚礼料理・フリードリンク・ウエイティングルームドリンク」の数量に連動する</label>
+      <label class="switch-row"><input id="syncGuests" type="checkbox" checked> 想定人数を料理・ドリンクの数量に反映する</label>
       <div class="planning-results">
         <div class="result-card"><small>ご祝儀総額見込</small><strong id="giftTotal">1,650,000円</strong></div>
         <div class="result-card"><small>自己負担見込</small><strong id="selfFunding">700,670円</strong></div>
         <div class="result-card" id="budgetCard"><small id="budgetLabel">予算残り</small><strong id="budgetDifference">149,330円</strong></div>
       </div>
       <div class="action-bar">
-        <button class="primary-button" type="button" id="saveBackup">設定を書き出す</button>
-        <button type="button" id="loadBackup">設定を読み込む</button>
+        <button class="primary-button" type="button" id="saveBackup">バックアップを書き出す</button>
+        <button type="button" id="loadBackup">バックアップを読み込む</button>
         <input class="hidden" id="backupFile" type="file" accept="application/json,.json">
         <button type="button" id="exportCsv">明細をCSV出力</button>
         <button type="button" id="printPage">印刷</button>
@@ -1055,20 +1169,22 @@
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
-      <h2 class="section-title">式場・打ち合わせ情報</h2>
+      <h2 class="section-title">初回来館の記録</h2>
+      <p class="tab-intro">まだ比較中なので、担当者との約束と気になったことだけ残します。</p>
       <div class="settings-grid">
         <label class="field"><span>式場名</span><input id="venueName" type="text" value="PRIMROSE" maxlength="60"></label>
+        <label class="field"><span>見学日</span><input id="visitDate" type="date"></label>
         <label class="field"><span>担当者</span><input id="coordinator" type="text" placeholder="担当者名" maxlength="40"></label>
         <label class="field"><span>式場の連絡先</span><input id="venuePhone" type="tel" placeholder="電話番号" maxlength="30"></label>
-        <label class="field"><span>次回打ち合わせ日</span><input id="nextMeetingDate" type="date"></label>
+        <label class="field"><span>次に連絡・確認する日</span><input id="nextMeetingDate" type="date"></label>
       </div>
       <label class="field" style="margin-top:12px"><span>式場への確認事項・メモ</span><textarea class="memo-input" id="venueMemo" placeholder="確認したいこと、持参物、担当者からの連絡など"></textarea></label>
-      <div class="note-box" style="margin-top:14px"><p><strong>次回打ち合わせ</strong></p><p id="nextMeetingStatus">日付を入力すると、残り日数を表示します。</p></div>
+      <div class="note-box" style="margin-top:14px"><p><strong>次の確認日</strong></p><p id="nextMeetingStatus">日付を入力すると、確認日までの日数を表示します。</p></div>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
       <h2 class="section-title">プリムローズの景色</h2>
-      <p class="tab-intro">大聖堂、ヨーロピアンな披露宴会場、記憶に残る料理。準備の合間に当日のイメージを思い出せるフォトギャラリーです。</p>
+      <p class="tab-intro">初回見学で気になった景色や雰囲気を、あとでほかの会場と比べるための記録です。</p>
       <div class="venue-gallery">
         <figure class="venue-photo">
           <img src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/img_ceremony_main.webp" alt="プリムローズ岡山のセント・ポール大聖堂" loading="eager">
@@ -1088,40 +1204,46 @@
 
     <section class="panel two-col" data-tab-panel="guests" hidden>
       <div>
-        <h2 class="section-title">招待状の回答状況</h2>
+        <h2 class="section-title">人数の仮置き</h2>
+        <p class="tab-intro">招待状を出す前の段階なので、今わかる範囲で人数を置いて試算します。</p>
         <div class="settings-grid" style="grid-template-columns:repeat(2,1fr)">
-          <label class="field"><span>出席</span><input id="guestAttending" type="number" min="0" step="1" value="0"></label>
-          <label class="field"><span>欠席</span><input id="guestDeclined" type="number" min="0" step="1" value="0"></label>
+          <label class="field"><span>参加が決まりそうな人数</span><input id="guestAttending" type="number" min="0" step="1" value="0"></label>
+          <label class="field"><span>参加しない見込み人数</span><input id="guestDeclined" type="number" min="0" step="1" value="0"></label>
         </div>
         <div class="info-grid" style="margin-top:14px">
-          <div class="info-card"><small>招待予定</small><strong id="invitedCount">50名</strong></div>
-          <div class="info-card attend"><small>出席</small><strong id="attendingCount">0名</strong></div>
-          <div class="info-card waiting"><small>未回答</small><strong id="unansweredCount">50名</strong></div>
+          <div class="info-card"><small>見積の想定</small><strong id="invitedCount">50名</strong></div>
+          <div class="info-card attend"><small>参加見込み</small><strong id="attendingCount">0名</strong></div>
+          <div class="info-card waiting"><small>まだ未整理</small><strong id="unansweredCount">50名</strong></div>
         </div>
         <p id="guestResponseWarning" class="minus" style="margin:10px 0 0;font-size:12px"></p>
       </div>
       <div>
-        <h2 class="section-title">支払状況</h2>
-        <label class="field"><span>予約金以外の支払済み額</span><input id="additionalPaid" type="number" min="0" step="1000" value="0"></label>
+        <h2 class="section-title">自己負担の目安</h2>
+        <p class="tab-intro">ご祝儀は仮の金額です。契約判断では、余裕を持った資金計画も確認してください。</p>
         <div class="info-grid" style="margin-top:14px">
-          <div class="info-card"><small>契約総額</small><strong id="contractTotal">2,400,670円</strong></div>
-          <div class="info-card attend"><small>支払済み</small><strong id="paidTotal">50,000円</strong></div>
-          <div class="info-card waiting"><small>残額</small><strong id="paymentRemaining">2,350,670円</strong></div>
+          <div class="info-card"><small>見積書の合計</small><strong id="contractTotal">2,350,670円</strong></div>
+          <div class="info-card attend"><small>ご祝儀見込</small><strong id="paidTotal">1,650,000円</strong></div>
+          <div class="info-card waiting"><small>自己負担目安</small><strong id="paymentRemaining">700,670円</strong></div>
         </div>
       </div>
     </section>
 
     <section class="panel" data-tab-panel="planning" hidden>
-      <h2 class="section-title">結婚式までの準備スケジュール</h2>
-      <div class="next-action" id="nextAction">次に行う準備を計算しています。</div>
-      <div class="timeline" id="weddingTimeline"></div>
+      <h2 class="section-title">初回見積の確認ポイント</h2>
+      <p class="tab-intro">契約後の準備ではなく、いまは見積の前提と上がり幅を確認する段階です。</p>
+      <div class="question-grid">
+        <article class="question-card"><span class="question-number">PRICE</span><strong>特典が外れたときの金額</strong><p>当日成約、来館月、日程限定の特典を分けて確認。</p></article>
+        <article class="question-card"><span class="question-number">UPGRADE</span><strong>選ぶ人が多いランクとの差額</strong><p>料理、衣裳、装花、写真、映像の平均的な追加額。</p></article>
+        <article class="question-card"><span class="question-number">MISSING</span><strong>見積に入っていない必須費用</strong><p>持込料、送料、延長料、ゲスト交通費など。</p></article>
+        <article class="question-card"><span class="question-number">RULE</span><strong>契約後の変更・キャンセル条件</strong><p>申込金、支払期限、日程変更、キャンセル料を書面で確認。</p></article>
+      </div>
     </section>
 
     <section class="panel estimate-sheet-panel" data-tab-panel="budget" hidden>
       <div class="estimate-sheet-head">
         <div>
-          <h2 class="section-title">原本と同じ形式の見積表</h2>
-          <p>添付画像の2ページ構成と項目順を再現しました。上のプラン設定や下の明細を変更すると、この帳票にも自動で反映されます。</p>
+          <h2 class="section-title">式場でもらった初回見積</h2>
+          <p>初回来館でもらった2ページの見積を見やすく再現しました。上の試算条件や下の明細を変更すると、この帳票にも自動で反映されます。</p>
         </div>
         <span class="estimate-sheet-live">自動計算に連動</span>
       </div>
@@ -1132,14 +1254,14 @@
     </section>
 
     <section class="panel" data-tab-panel="budget" hidden>
-      <h2 class="section-title">金額の全体像</h2>
+      <h2 class="section-title">見積の計算内訳</h2>
       <div class="cards">
         <div class="card"><small>総合小計（税別・割引前）</small><strong id="grossTotal">3,584,950円</strong></div>
         <div class="card discount"><small>プラン・明細割引</small><strong id="lineDiscount">−675,250円</strong></div>
         <div class="card"><small>消費税</small><strong id="taxAmount">290,970円</strong></div>
         <div class="card discount"><small>非課税特典</small><strong id="benefitAmount">−800,000円</strong></div>
         <div class="card discount"><small>予約金（内金）</small><strong id="depositAmount">−50,000円</strong></div>
-        <div class="card total"><small>最終合計</small><strong id="cardFinalPrice">2,350,670円</strong></div>
+        <div class="card total"><small>見積書の合計</small><strong id="cardFinalPrice">2,350,670円</strong></div>
       </div>
       <div class="calc-flow" aria-label="計算順">
         <span id="flowGross">小計 3,584,950円</span>
@@ -1161,14 +1283,14 @@
         </div>
       </div>
       <div class="note-box">
-        <p><strong>割引の計算順に注意</strong></p>
-        <p>明細割引は税計算前、非課税特典は税計算後に差し引く設定です。</p>
+        <p><strong>割引の適用条件に注意</strong></p>
+        <p>明細割引は税計算前、条件付き特典は税計算後に差し引く設定です。当日契約しない場合の金額も式場へ確認してください。</p>
         <p>初期状態では、原本の最終額との照合差額は<strong>0円</strong>です。</p>
       </div>
     </section>
 
     <section class="panel" data-tab-panel="budget" hidden>
-      <h2 class="section-title">ご祝儀・自己負担の目安</h2>
+      <h2 class="section-title">人数を変えたときの試算</h2>
       <div class="table-wrap">
         <table>
           <thead><tr><th>人数</th><th class="num">ご祝儀総額見込</th><th class="num">結婚式費用</th><th class="num">自己負担額</th></tr></thead>
@@ -1179,8 +1301,8 @@
     </section>
 
     <section class="panel" id="details" data-tab-panel="budget" hidden>
-      <h2 class="section-title">見積明細</h2>
-      <p class="edit-note">「計上」を切り替えたり、単価・数量・割引を直接変更すると、合計・税・自己負担額が自動で再計算されます。</p>
+      <h2 class="section-title">項目を変えて試算</h2>
+      <p class="edit-note">契約内容を変更する操作ではありません。「計上」や単価・数量・割引を変えて、金額がどの程度動くか試せます。</p>
       <div class="tools">
         <input class="search" id="search" type="search" placeholder="品名・分類・備考を検索" aria-label="明細を検索">
         <label class="toggle"><input id="showReference" type="checkbox" checked> 参考価格も表示</label>
@@ -1192,14 +1314,14 @@
 
     <section class="panel" data-tab-panel="planning" hidden>
       <div class="task-head">
-        <h2 class="section-title" style="margin-bottom:0">準備チェックリスト</h2>
+        <h2 class="section-title" style="margin-bottom:0">比較・確認チェックリスト</h2>
         <div class="progress-wrap">
-          <div class="progress-label"><span>準備の進捗</span><strong id="taskProgressText">0%</strong></div>
+          <div class="progress-label"><span>確認の進捗</span><strong id="taskProgressText">0%</strong></div>
           <div class="progress-bar"><span id="taskProgressBar"></span></div>
         </div>
       </div>
       <form class="task-form" id="taskForm">
-        <input id="newTaskText" type="text" maxlength="80" placeholder="追加する準備項目" required>
+        <input id="newTaskText" type="text" maxlength="80" placeholder="追加で確認したいこと" required>
         <input id="newTaskDate" type="date" aria-label="期限">
         <button class="primary-button" type="submit">追加</button>
       </form>
@@ -1207,7 +1329,7 @@
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
-      <h2 class="section-title">原本の非課税特典内訳</h2>
+      <h2 class="section-title">条件付き特典の内訳</h2>
       <div class="table-wrap">
         <table>
           <thead><tr><th>特典名</th><th class="num">金額</th><th>備考</th></tr></thead>
@@ -1220,7 +1342,7 @@
           </tbody>
         </table>
       </div>
-      <p style="margin:12px 0 0;color:var(--muted);font-size:12px">この内訳は原本の記録です。試算上の合計額は「プラン設定」で変更できます。</p>
+      <p class="home-callout">この初回見積は、すべての特典が適用される前提です。特に「当日ご成約特典」を外した金額と、各特典の有効期限を確認してください。</p>
     </section>
 
     <section class="panel two-col" data-tab-panel="venue" hidden>
@@ -1320,6 +1442,7 @@
       weddingDate: "2027-01-23",
       weddingTime: "11:00",
       venueName: "PRIMROSE",
+      visitDate: "",
       coordinator: "",
       venuePhone: "",
       venueMemo: "",
@@ -1334,21 +1457,26 @@
       budgetTarget: 2500000,
       serviceRate: 15,
       guestDeltaCost: 22000,
-      additionalPaid: 0,
       syncGuests: true
     };
     const baseTasks = [
-      { id: 1, text: "PRIMROSE・2027年1月23日で日程を確定", due: "", done: true },
-      { id: 2, text: "招待客リストを確定する", due: "", done: false },
-      { id: 3, text: "招待状を準備・発送する", due: "", done: false },
-      { id: 4, text: "衣裳と小物を最終決定する", due: "", done: false },
-      { id: 5, text: "料理・ドリンクを確定する", due: "", done: false },
-      { id: 6, text: "席次表・席札を確定する", due: "", done: false },
-      { id: 7, text: "引出物を確定する", due: "", done: false },
-      { id: 8, text: "写真・映像・演出を最終確認する", due: "", done: false },
-      { id: 9, text: "当日の進行と持ち物を確認する", due: "", done: false },
-      { id: 10, text: "残金の支払予定を確認する", due: "", done: false }
+      { id: 1, text: "当日成約特典を外した金額を確認する", due: "", done: false },
+      { id: 2, text: "料理・ドリンクの標準ランクと差額を確認する", due: "", done: false },
+      { id: 3, text: "衣裳・小物の平均的な追加額を確認する", due: "", done: false },
+      { id: 4, text: "装花・写真・映像の上がり幅を確認する", due: "", done: false },
+      { id: 5, text: "見積に入っていない必須費用を確認する", due: "", done: false },
+      { id: 6, text: "持ち込みできる物と持込料を確認する", due: "", done: false },
+      { id: 7, text: "特典の有効期限を確認する", due: "", done: false },
+      { id: 8, text: "キャンセル・日程変更の条件を確認する", due: "", done: false },
+      { id: 9, text: "ゲストのアクセスと送迎条件を確認する", due: "", done: false },
+      { id: 10, text: "2会場目も同じ人数・条件で見積をもらう", due: "", done: false }
     ];
+    const legacyDefaultTaskTexts = [
+      "PRIMROSE・2027年1月23日で日程を確定", "招待客リストを確定する", "招待状を準備・発送する",
+      "衣裳と小物を最終決定する", "料理・ドリンクを確定する", "席次表・席札を確定する",
+      "引出物を確定する", "写真・映像・演出を最終確認する", "当日の進行と持ち物を確認する", "残金の支払予定を確認する"
+    ];
+    const UX_VERSION = 4;
     const initialRows = defaultRows.map(row => [...row, row[4] !== "参考価格"]);
     const serviceTargetItems = new Set([
       "婚礼料理", "お子様料理 3,000円", "お子様料理 4,000円", "お子様料理 6,000円",
@@ -1358,10 +1486,9 @@
       "エンディングムービー", "生い立ちムービー", "オープニングムービー", "シャボン玉演出"
     ]);
     const guestLinkedItems = new Set(["婚礼料理", "フリードリンク", "ウエイティングルームドリンク"]);
-    const numericSettingIds = ["guestCount", "guestAttending", "guestDeclined", "taxRate", "nonTaxBenefits", "deposit", "giftPerGuest", "budgetTarget", "serviceRate", "guestDeltaCost", "additionalPaid"];
-    const textSettingIds = ["weddingDate", "weddingTime", "venueName", "coordinator", "venuePhone", "venueMemo", "nextMeetingDate"];
+    const numericSettingIds = ["guestCount", "guestAttending", "guestDeclined", "taxRate", "nonTaxBenefits", "deposit", "giftPerGuest", "budgetTarget", "serviceRate", "guestDeltaCost"];
+    const textSettingIds = ["weddingDate", "weddingTime", "venueName", "visitDate", "coordinator", "venuePhone", "venueMemo", "nextMeetingDate"];
     const detailsRoot = document.querySelector("#detailSections");
-    let countdownTimer;
 
     function loadSavedState(key) {
       try {
@@ -1378,11 +1505,8 @@
     let settings = { ...baseSettings, ...(saved?.settings || {}) };
     let rows = saved ? saved.rows : structuredClone(initialRows);
     let tasks = Array.isArray(saved?.tasks) ? saved.tasks : structuredClone(baseTasks);
-    if (!savedV3) {
-      settings.weddingDate = "2027-01-23";
-      settings.venueName = "PRIMROSE";
-      tasks = tasks.map(task => task.id === 1 ? { ...task, text: "PRIMROSE・2027年1月23日で日程を確定", done: true } : task);
-    }
+    const hasOnlyLegacyDefaultTasks = tasks.length === legacyDefaultTaskTexts.length && tasks.every((task, index) => task.text === legacyDefaultTaskTexts[index]);
+    if (Number(saved?.uxVersion || 0) < UX_VERSION && hasOnlyLegacyDefaultTasks) tasks = structuredClone(baseTasks);
 
     const yen = value => value == null ? "—" : `${new Intl.NumberFormat("ja-JP").format(Math.round(value))}円`;
     const signedYen = value => `${value < 0 ? "−" : value > 0 ? "+" : ""}${yen(Math.abs(value))}`;
@@ -1391,7 +1515,7 @@
     function saveState() {
       const label = document.querySelector("#saveState");
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ settings, rows, tasks }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, tasks }));
         localStorage.removeItem(LEGACY_STORAGE_KEY);
         label.textContent = `保存済み ${new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}`;
       } catch {
@@ -1463,6 +1587,7 @@
       const giftTotal = settings.guestCount * settings.giftPerGuest;
       const selfFunding = t.final - giftTotal;
       const budgetDiff = settings.budgetTarget - t.final;
+      const estimateWithDeposit = t.final + settings.deposit;
 
       setText("finalPrice", yen(t.final));
       setText("cardFinalPrice", yen(t.final));
@@ -1481,6 +1606,10 @@
       setText("flowDeposit", `予約金 −${yen(settings.deposit)}`);
       setText("giftTotal", yen(giftTotal));
       setText("selfFunding", yen(selfFunding));
+      setText("homeEstimateTotal", yen(t.final));
+      setText("homeEstimateWithDeposit", yen(estimateWithDeposit));
+      setText("homeSelfFunding", yen(selfFunding));
+      setText("homeConditionalBenefits", yen(settings.nonTaxBenefits));
 
       const attending = Math.max(0, Math.round(settings.guestAttending));
       const declined = Math.max(0, Math.round(settings.guestDeclined));
@@ -1489,19 +1618,14 @@
       setText("attendingCount", `${attending}名`);
       setText("unansweredCount", `${Math.max(0, unanswered)}名`);
       setText("guestResponseWarning", unanswered < 0 ? `出席と欠席の合計が招待予定人数を${Math.abs(unanswered)}名超えています。` : "");
-      setText("homeInviteStatus", unanswered < 0 ? "人数を再確認してください" : `未回答 ${Math.max(0, unanswered)}名`);
-
-      const contractTotal = t.final + settings.deposit;
-      const paidTotal = settings.deposit + settings.additionalPaid;
-      const paymentRemaining = contractTotal - paidTotal;
-      setText("contractTotal", yen(contractTotal));
-      setText("paidTotal", yen(paidTotal));
-      setText("paymentRemaining", paymentRemaining >= 0 ? yen(paymentRemaining) : `過払い ${yen(Math.abs(paymentRemaining))}`);
-      setText("homePaymentStatus", paymentRemaining >= 0 ? yen(paymentRemaining) : `支払完了（過払い ${yen(Math.abs(paymentRemaining))}）`);
+      setText("contractTotal", yen(t.final));
+      setText("paidTotal", yen(giftTotal));
+      setText("paymentRemaining", yen(selfFunding));
 
       const venue = settings.venueName.trim() || "PRIMROSE";
-      setText("venueTitle", `${venue} 結婚式見積`);
-      setText("venueCopy", `${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "日付未設定"}の結婚式に向けた準備・費用管理ページです。`);
+      setText("venueTitle", `${venue} 初回見積メモ`);
+      setText("venueCopy", "初回来館でもらった見積を、ふたりで整理・確認するためのページです。まだ契約前の試算です。");
+      setText("heroCandidateDate", `見積の候補日：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}`);
 
       const budgetCard = document.querySelector("#budgetCard");
       budgetCard.classList.toggle("over", budgetDiff < 0);
@@ -1517,7 +1641,6 @@
       renderEstimateSheet(t);
       renderScenarios(t.final);
       updateMeetingStatus();
-      renderTimeline();
       document.querySelectorAll("#detailSections details").forEach(box => {
         const key = box.dataset.section;
         const sum = box.querySelector(".section-sum");
@@ -1561,66 +1684,13 @@
     function updateMeetingStatus() {
       const meeting = parseLocalDate(settings.nextMeetingDate);
       if (!meeting || Number.isNaN(meeting.getTime())) {
-        setText("nextMeetingStatus", "日付を入力すると、残り日数を表示します。");
-        setText("homeMeetingStatus", "未設定");
+        setText("nextMeetingStatus", "日付を入力すると、確認日までの日数を表示します。");
         return;
       }
       const days = daysFromToday(meeting);
       const prefix = days > 0 ? `あと${days}日` : days === 0 ? "今日" : `${Math.abs(days)}日前に経過`;
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
       setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}（${prefix}）${extras ? `　${extras}` : ""}`);
-      setText("homeMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}・${prefix}`);
-    }
-
-    function renderTimeline() {
-      const root = document.querySelector("#weddingTimeline");
-      root.textContent = "";
-      const wedding = parseLocalDate(settings.weddingDate);
-      if (!wedding || Number.isNaN(wedding.getTime())) {
-        setText("nextAction", "結婚式の日付を入力すると、準備期限を自動計算します。");
-        setText("homeNextAction", "結婚式の日付を入力してください");
-        return;
-      }
-      const definitions = [
-        [-180, "招待客候補と予算を整理"],
-        [-150, "衣裳選び・前撮りの検討"],
-        [-120, "招待状のデザインと送付先を確定"],
-        [-90, "招待状を発送"],
-        [-60, "料理・引出物・演出を確定"],
-        [-45, "席次表・席札の作成"],
-        [-30, "最終人数と当日の進行を確定"],
-        [-14, "美容・衣裳・持ち物を最終確認"],
-        [-7, "支払いと緊急連絡先を確認"],
-        [-1, "持ち物・移動・体調を確認"],
-        [0, "結婚式当日"]
-      ];
-      const schedule = definitions.map(([offset, title]) => {
-        const date = new Date(wedding);
-        date.setDate(date.getDate() + offset);
-        return { date, title, days: daysFromToday(date) };
-      });
-      const nextIndex = schedule.findIndex(item => item.days >= 0);
-      const next = nextIndex >= 0 ? schedule[nextIndex] : null;
-      const nextActionText = next ? `${next.title}（${next.days === 0 ? "今日" : `あと${next.days}日`}）` : "結婚式の日程を迎えました。お疲れさまでした。";
-      setText("nextAction", next ? `次の目安：${nextActionText}` : nextActionText);
-      setText("homeNextAction", nextActionText);
-      schedule.forEach((item, index) => {
-        const row = document.createElement("div");
-        row.className = `timeline-item ${item.days < 0 ? "past" : ""} ${index === nextIndex ? "next" : ""}`;
-        const dot = document.createElement("span");
-        dot.className = "timeline-dot";
-        const date = document.createElement("span");
-        date.className = "timeline-date";
-        date.textContent = new Intl.DateTimeFormat("ja-JP", { month: "short", day: "numeric", weekday: "short" }).format(item.date);
-        const title = document.createElement("span");
-        title.className = "timeline-title";
-        title.textContent = item.title;
-        const status = document.createElement("span");
-        status.className = "timeline-status";
-        status.textContent = item.days < 0 ? "予定日経過" : item.days === 0 ? "今日" : `あと${item.days}日`;
-        row.append(dot, date, title, status);
-        root.append(row);
-      });
     }
 
     const sheetNumber = value => {
@@ -1962,34 +2032,7 @@
     }
 
     function updateCountdown() {
-      clearInterval(countdownTimer);
-      const date = settings.weddingDate;
-      const time = settings.weddingTime || "00:00";
-      if (!date) {
-        setText("weddingDateLabel", "日付を設定してください");
-        ["countDays", "countHours", "countMinutes", "countSeconds"].forEach(id => setText(id, "--"));
-        return;
-      }
-
-      const target = new Date(`${date}T${time}:00`);
-      const formatDate = new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short", hour: "2-digit", minute: "2-digit" });
-      setText("weddingDateLabel", formatDate.format(target));
-
-      const tick = () => {
-        const diff = target.getTime() - Date.now();
-        if (diff <= 0) {
-          setText("countDays", "0"); setText("countHours", "0"); setText("countMinutes", "0"); setText("countSeconds", "0");
-          setText("weddingDateLabel", `${formatDate.format(target)}　結婚式当日を迎えました`);
-          clearInterval(countdownTimer);
-          return;
-        }
-        setText("countDays", String(Math.floor(diff / 86400000)));
-        setText("countHours", String(Math.floor(diff % 86400000 / 3600000)).padStart(2, "0"));
-        setText("countMinutes", String(Math.floor(diff % 3600000 / 60000)).padStart(2, "0"));
-        setText("countSeconds", String(Math.floor(diff % 60000 / 1000)).padStart(2, "0"));
-      };
-      tick();
-      countdownTimer = setInterval(tick, 1000);
+      setText("candidateDateStatus", settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定（見積タブで入力できます）");
     }
 
     function renderTasks() {
@@ -2040,7 +2083,7 @@
 
     function exportBackup() {
       const date = new Date().toISOString().slice(0, 10);
-      downloadFile(`PRIMROSE_結婚式プラン_${date}.json`, JSON.stringify({ settings, rows, tasks }, null, 2), "application/json");
+      downloadFile(`PRIMROSE_初回見積メモ_${date}.json`, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, tasks }, null, 2), "application/json");
     }
 
     function exportCsv() {
@@ -2048,7 +2091,7 @@
       const csvRows = rows.map(row => [row[0], row[1], row[2], row[3], row[4], row[11] ? "計上" : "対象外", row[5], row[6] ?? "", row[7] ?? "", row[8] ?? 0, row[9] ?? "", row[10]]);
       const escape = value => `"${String(value ?? "").replaceAll('"', '""')}"`;
       const csv = "\ufeff" + [header, ...csvRows].map(row => row.map(escape).join(",")).join("\r\n");
-      downloadFile("PRIMROSE_結婚式見積明細.csv", csv, "text/csv;charset=utf-8");
+      downloadFile("PRIMROSE_初回見積明細.csv", csv, "text/csv;charset=utf-8");
     }
 
     function switchTab(tabName, shouldScroll = true) {
@@ -2104,7 +2147,7 @@
       event.target.value = "";
     });
     document.querySelector("#resetAll").addEventListener("click", () => {
-      if (!confirm("入力した日付・金額・明細・チェックリストを初期状態に戻しますか？")) return;
+      if (!confirm("入力した試算条件・明細・確認メモを初期状態に戻しますか？")) return;
       settings = structuredClone(baseSettings);
       rows = structuredClone(initialRows);
       tasks = structuredClone(baseTasks);
