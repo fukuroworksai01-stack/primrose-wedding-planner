@@ -32,13 +32,6 @@
     img { display: block; max-width: 100%; }
     a { color: inherit; }
     .site-shell { width: min(100%, 430px); min-height: 100vh; margin: 0 auto; overflow: hidden; background: var(--paper); }
-    .draft-bar {
-      position: sticky; top: 0; z-index: 20; min-height: 31px; padding: 6px 14px;
-      color: #8f4a28; border-bottom: 1px solid #eed3c4; background: #faeee6;
-      font-size: 10px; font-weight: 500; text-align: center; letter-spacing: .05em;
-    }
-    .draft-bar[hidden] { display: none; }
-
     .hero { position: relative; height: 655px; isolation: isolate; overflow: hidden; color: #fff; background: #9b8b7e; }
     .hero-image { position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; transform: scale(1.07); }
     .hero-intro {
@@ -186,8 +179,6 @@
 </head>
 <body>
   <div class="site-shell">
-    <div class="draft-bar" id="draftBar">下書きプレビュー｜日程と会場はまだ検討中です</div>
-
     <header class="hero">
       <img class="hero-image" src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/bg_mv_3.webp" alt="プリムローズでバルーンリリースを楽しむ新郎新婦とゲスト">
       <p class="hero-intro">親愛なるみなさまへ　私たち結婚します</p>
@@ -318,7 +309,6 @@
 
   <script>
     const params = new URLSearchParams(location.search);
-    const isDraft = params.get("draft") !== "0";
     const names = params.get("from")?.trim() || "私たち";
     const dateValue = params.get("date") || "2027-01-23";
     const timeValue = params.get("time") || "11:00";
@@ -348,7 +338,6 @@
     const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
     const receptionValue = addMinutes(timeValue, 60);
 
-    document.querySelector("#draftBar").hidden = !isDraft;
     document.querySelector("#heroName").textContent = names === "私たち" ? "With love" : names;
     document.querySelector("#detailTime").textContent = timeValue;
     document.querySelector("#scheduleCeremony").textContent = timeValue;

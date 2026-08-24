@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
-  <title>Wedding Invitation · Botanical Pattern</title>
+  <title>Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=GFS+Didot&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Noto+Serif+JP:wght@200;400;500&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet">
@@ -17,8 +17,6 @@
     button,input,textarea{font:inherit}
     a{color:inherit}
     .page{width:min(100%,750px);min-height:100vh;margin:auto;overflow:hidden;background:#fff}
-    .draft{position:sticky;top:0;z-index:30;padding:6px 12px;border-bottom:1px solid #ddc7c2;background:#f5e7e4;color:#765951;font-family:"Noto Sans JP",sans-serif;font-size:9px;font-weight:700;text-align:center;letter-spacing:.08em}
-    .draft[hidden]{display:none}
     .section-title{height:auto;margin:0 auto}
     .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
     .reveal.in{opacity:1;transform:none}
@@ -164,8 +162,6 @@
 </head>
 <body>
   <div class="page">
-    <div class="draft" id="draftBar">比較用・第3案｜日程と会場はまだ検討中です</div>
-
     <header class="hero">
       <p class="hero-script" aria-label="Wedding Celebration">Wedding<br><span>Celebration</span></p>
       <div class="hero-frame"><img src="../../assets/invite3/hero.webp" alt="プリムローズのガーデンを歩く新郎新婦"></div>
@@ -234,7 +230,6 @@
 
   <script>
     const params=new URLSearchParams(location.search);
-    const isDraft=params.get("draft")!=="0";
     const names=params.get("from")?.trim()||"私たち";
     const dateValue=params.get("date")||"2027-01-23";
     const timeValue=params.get("time")||"11:00";
@@ -247,12 +242,11 @@
     const validDate=!Number.isNaN(date.getTime());
     const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const partyTime=addMinutes(timeValue,60);
-    document.querySelector("#draftBar").hidden=!isDraft;
     document.querySelector("#heroNames").textContent=names==="私たち"?"WITH LOVE":names;
     document.querySelector("#venueName").textContent=venue;
     document.querySelector("#ceremonyTime").textContent=timeValue;
     document.querySelector("#partyTime").textContent=partyTime;
-    document.title=names+" Wedding Invitation · Pattern 3";
+    document.title=names+" Wedding Invitation";
     if(validDate){const y=String(date.getFullYear()),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");document.querySelector("#goalDate").textContent=y+"."+m+"."+d;document.querySelector("#infoYear").textContent=y+".";document.querySelector("#infoDate").textContent=m+"."+d;document.querySelector("#infoWeekday").textContent=weekdays[date.getDay()]}
     if(deadline){const deadlineDate=new Date(deadline+"T00:00:00");if(!Number.isNaN(deadlineDate.getTime()))document.querySelector("#deadlineText").textContent=new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric"}).format(deadlineDate)+"までにご回答ください"}
     const updateCountdown=()=>{if(!validDate)return;const diff=Math.max(0,date.getTime()-Date.now());document.querySelector("#countDays").textContent=String(Math.floor(diff/86400000));document.querySelector("#countHours").textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,"0");document.querySelector("#countMinutes").textContent=String(Math.floor(diff%3600000/60000)).padStart(2,"0");document.querySelector("#countSeconds").textContent=String(Math.floor(diff%60000/1000)).padStart(2,"0")};updateCountdown();window.setInterval(updateCountdown,1000);

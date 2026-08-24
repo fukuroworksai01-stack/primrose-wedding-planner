@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PRIMROSE 初回見積メモ</title>
+  <title>PRIMROSE お見積り</title>
   <style>
     :root {
       --ink: #24313b;
@@ -1111,8 +1111,8 @@
       <div class="hero-main">
         <div>
           <p class="eyebrow">FIRST VISIT ESTIMATE</p>
-          <h1 id="venueTitle">PRIMROSE 初回見積メモ</h1>
-          <p class="hero-copy" id="venueCopy">初回来館でもらった見積を、ふたりで整理・確認するためのページです。</p>
+          <h1 id="venueTitle">PRIMROSE お見積り</h1>
+          <p class="hero-copy" id="venueCopy">初回来館でもらった見積の金額や内容を、ふたりで見やすく整理しています。</p>
           <div class="hero-statuses" aria-label="見積の状態"><span>1会場目</span><span>初回見積</span><span>契約前</span></div>
           <p class="hero-location" id="heroCandidateDate">見積の候補日：2027年1月23日</p>
         </div>
@@ -1133,7 +1133,6 @@
       <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home">まとめ</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget">見積</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests">人数試算</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="planning">確認メモ</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue">会場メモ</button>
     </nav>
 
@@ -1175,7 +1174,6 @@
         <article class="question-card"><span class="question-number">QUESTION 03</span><strong>この見積に入っていない、必要になりやすい費用は？</strong><p>持込料、写真、映像、送迎などの漏れを確認します。</p></article>
         <article class="question-card"><span class="question-number">QUESTION 04</span><strong>特典の期限と、キャンセル・日程変更の条件は？</strong><p>契約前に必ず書面で確認しておきます。</p></article>
       </div>
-      <div class="panel-action"><button type="button" data-tab-target="planning">確認メモを開く</button></div>
     </section>
 
     <section class="panel" data-tab-panel="budget" hidden>
@@ -1227,8 +1225,8 @@
     <section class="panel" data-tab-panel="venue" hidden>
       <div class="invite-admin-head">
         <div>
-          <h2 class="section-title">Web招待状（下書き）</h2>
-          <p>見積ページとは別の招待客用ページです。まだ会場選びの途中なので、日程・会場が確定するまでは下書きプレビューとして使います。</p>
+          <h2 class="section-title">Web招待状</h2>
+          <p>招待状に表示する名前・日程・会場と、出欠回答フォームを設定できます。</p>
         </div>
         <span class="invite-form-state" id="inviteFormStatus">Googleフォーム未連携</span>
       </div>
@@ -1243,10 +1241,10 @@
       </div>
       <div class="invite-share">
         <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
-        <button class="primary-button" id="openInvitation" type="button">下書きを確認</button>
+        <button class="primary-button" id="openInvitation" type="button">招待状を確認</button>
         <button id="copyInvitationUrl" type="button" disabled>共有URLをコピー</button>
       </div>
-      <p class="invite-privacy-note">招待状ページには見積金額・確認メモ・招待客の回答内容を表示しません。回答データはGoogleフォーム側で管理します。</p>
+      <p class="invite-privacy-note">招待状ページには見積金額や招待客の回答内容を表示しません。回答データはGoogleフォーム側で管理します。</p>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
@@ -1292,17 +1290,6 @@
           <div class="info-card attend"><small>ご祝儀見込</small><strong id="paidTotal">1,650,000円</strong></div>
           <div class="info-card waiting"><small>自己負担目安</small><strong id="paymentRemaining">700,670円</strong></div>
         </div>
-      </div>
-    </section>
-
-    <section class="panel" data-tab-panel="planning" hidden>
-      <h2 class="section-title">初回見積の確認ポイント</h2>
-      <p class="tab-intro">契約後の準備ではなく、いまは見積の前提と上がり幅を確認する段階です。</p>
-      <div class="question-grid">
-        <article class="question-card"><span class="question-number">PRICE</span><strong>特典が外れたときの金額</strong><p>当日成約、来館月、日程限定の特典を分けて確認。</p></article>
-        <article class="question-card"><span class="question-number">UPGRADE</span><strong>選ぶ人が多いランクとの差額</strong><p>料理、衣裳、装花、写真、映像の平均的な追加額。</p></article>
-        <article class="question-card"><span class="question-number">MISSING</span><strong>見積に入っていない必須費用</strong><p>持込料、送料、延長料、ゲスト交通費など。</p></article>
-        <article class="question-card"><span class="question-number">RULE</span><strong>契約後の変更・キャンセル条件</strong><p>申込金、支払期限、日程変更、キャンセル料を書面で確認。</p></article>
       </div>
     </section>
 
@@ -1377,22 +1364,6 @@
         <button type="button" id="closeAll">すべて閉じる</button>
       </div>
       <div id="detailSections"></div>
-    </section>
-
-    <section class="panel" data-tab-panel="planning" hidden>
-      <div class="task-head">
-        <h2 class="section-title" style="margin-bottom:0">比較・確認チェックリスト</h2>
-        <div class="progress-wrap">
-          <div class="progress-label"><span>確認の進捗</span><strong id="taskProgressText">0%</strong></div>
-          <div class="progress-bar"><span id="taskProgressBar"></span></div>
-        </div>
-      </div>
-      <form class="task-form" id="taskForm">
-        <input id="newTaskText" type="text" maxlength="80" placeholder="追加で確認したいこと" required>
-        <input id="newTaskDate" type="date" aria-label="期限">
-        <button class="primary-button" type="submit">追加</button>
-      </form>
-      <div class="task-list" id="taskList"></div>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
@@ -1529,24 +1500,7 @@
       guestDeltaCost: 22000,
       syncGuests: true
     };
-    const baseTasks = [
-      { id: 1, text: "当日成約特典を外した金額を確認する", due: "", done: false },
-      { id: 2, text: "料理・ドリンクの標準ランクと差額を確認する", due: "", done: false },
-      { id: 3, text: "衣裳・小物の平均的な追加額を確認する", due: "", done: false },
-      { id: 4, text: "装花・写真・映像の上がり幅を確認する", due: "", done: false },
-      { id: 5, text: "見積に入っていない必須費用を確認する", due: "", done: false },
-      { id: 6, text: "持ち込みできる物と持込料を確認する", due: "", done: false },
-      { id: 7, text: "特典の有効期限を確認する", due: "", done: false },
-      { id: 8, text: "キャンセル・日程変更の条件を確認する", due: "", done: false },
-      { id: 9, text: "ゲストのアクセスと送迎条件を確認する", due: "", done: false },
-      { id: 10, text: "2会場目も同じ人数・条件で見積をもらう", due: "", done: false }
-    ];
-    const legacyDefaultTaskTexts = [
-      "PRIMROSE・2027年1月23日で日程を確定", "招待客リストを確定する", "招待状を準備・発送する",
-      "衣裳と小物を最終決定する", "料理・ドリンクを確定する", "席次表・席札を確定する",
-      "引出物を確定する", "写真・映像・演出を最終確認する", "当日の進行と持ち物を確認する", "残金の支払予定を確認する"
-    ];
-    const UX_VERSION = 4;
+    const UX_VERSION = 5;
     const initialRows = defaultRows.map(row => [...row, row[4] !== "参考価格"]);
     const serviceTargetItems = new Set([
       "婚礼料理", "お子様料理 3,000円", "お子様料理 4,000円", "お子様料理 6,000円",
@@ -1574,9 +1528,6 @@
     const saved = savedV3 || loadSavedState(LEGACY_STORAGE_KEY);
     let settings = { ...baseSettings, ...(saved?.settings || {}) };
     let rows = saved ? saved.rows : structuredClone(initialRows);
-    let tasks = Array.isArray(saved?.tasks) ? saved.tasks : structuredClone(baseTasks);
-    const hasOnlyLegacyDefaultTasks = tasks.length === legacyDefaultTaskTexts.length && tasks.every((task, index) => task.text === legacyDefaultTaskTexts[index]);
-    if (Number(saved?.uxVersion || 0) < UX_VERSION && hasOnlyLegacyDefaultTasks) tasks = structuredClone(baseTasks);
 
     const yen = value => value == null ? "—" : `${new Intl.NumberFormat("ja-JP").format(Math.round(value))}円`;
     const signedYen = value => `${value < 0 ? "−" : value > 0 ? "+" : ""}${yen(Math.abs(value))}`;
@@ -1585,7 +1536,7 @@
     function saveState() {
       const label = document.querySelector("#saveState");
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, tasks }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows }));
         localStorage.removeItem(LEGACY_STORAGE_KEY);
         label.textContent = `保存済み ${new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}`;
       } catch {
@@ -1693,8 +1644,8 @@
       setText("paymentRemaining", yen(selfFunding));
 
       const venue = settings.venueName.trim() || "PRIMROSE";
-      setText("venueTitle", `${venue} 初回見積メモ`);
-      setText("venueCopy", "初回来館でもらった見積を、ふたりで整理・確認するためのページです。まだ契約前の試算です。");
+      setText("venueTitle", `${venue} お見積り`);
+      setText("venueCopy", "初回来館でもらった見積の金額や内容を、ふたりで見やすく整理しています。");
       setText("heroCandidateDate", `見積の候補日：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}`);
 
       const budgetCard = document.querySelector("#budgetCard");
@@ -1776,7 +1727,6 @@
 
     function invitationPageUrl() {
       const url = new URL("invite/", window.location.href);
-      url.searchParams.set("draft", "1");
       const values = {
         from: settings.invitationNames.trim(),
         date: settings.weddingDate,
@@ -2143,44 +2093,6 @@
       setText("candidateDateStatus", settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定（見積タブで入力できます）");
     }
 
-    function renderTasks() {
-      const root = document.querySelector("#taskList");
-      root.textContent = "";
-      const today = new Date();
-      today.setHours(0, 0, 0, 0);
-      tasks.forEach(task => {
-        const item = document.createElement("div");
-        item.className = `task-item ${task.done ? "done" : ""}`;
-        const check = document.createElement("input");
-        check.type = "checkbox";
-        check.checked = task.done;
-        check.addEventListener("change", () => { task.done = check.checked; renderTasks(); saveState(); });
-        const text = document.createElement("span");
-        text.className = "task-text";
-        text.textContent = task.text;
-        const due = document.createElement("span");
-        due.className = "task-date";
-        if (task.due) {
-          const dueDate = new Date(`${task.due}T00:00:00`);
-          due.textContent = `期限 ${new Intl.DateTimeFormat("ja-JP", { month: "short", day: "numeric" }).format(dueDate)}`;
-          if (!task.done && dueDate < today) due.classList.add("overdue");
-        } else {
-          due.textContent = "期限なし";
-        }
-        const remove = document.createElement("button");
-        remove.type = "button";
-        remove.className = "icon-button";
-        remove.textContent = "削除";
-        remove.addEventListener("click", () => { tasks = tasks.filter(entry => entry.id !== task.id); renderTasks(); saveState(); });
-        item.append(check, text, due, remove);
-        root.append(item);
-      });
-      const completed = tasks.filter(task => task.done).length;
-      const progress = tasks.length ? Math.round(completed / tasks.length * 100) : 0;
-      setText("taskProgressText", `${progress}%（${completed}/${tasks.length}）`);
-      document.querySelector("#taskProgressBar").style.width = `${progress}%`;
-    }
-
     function downloadFile(name, content, type) {
       const link = document.createElement("a");
       link.href = URL.createObjectURL(new Blob([content], { type }));
@@ -2191,7 +2103,7 @@
 
     function exportBackup() {
       const date = new Date().toISOString().slice(0, 10);
-      downloadFile(`PRIMROSE_初回見積メモ_${date}.json`, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, tasks }, null, 2), "application/json");
+      downloadFile(`PRIMROSE_お見積り_${date}.json`, JSON.stringify({ uxVersion: UX_VERSION, settings, rows }, null, 2), "application/json");
     }
 
     function exportCsv() {
@@ -2250,15 +2162,13 @@
       if (!file) return;
       try {
         const imported = JSON.parse(await file.text());
-        if (!imported.settings || !Array.isArray(imported.rows) || !Array.isArray(imported.tasks) || imported.rows.length !== initialRows.length) throw new Error("形式が一致しません");
+        if (!imported.settings || !Array.isArray(imported.rows) || imported.rows.length !== initialRows.length) throw new Error("形式が一致しません");
         settings = { ...baseSettings, ...imported.settings };
         rows = imported.rows;
-        tasks = imported.tasks;
         hydrateSettings();
         recomputeRows();
         renderDetails();
         updateSummary();
-        renderTasks();
         updateCountdown();
         saveState();
         alert("設定を読み込みました。");
@@ -2268,26 +2178,15 @@
       event.target.value = "";
     });
     document.querySelector("#resetAll").addEventListener("click", () => {
-      if (!confirm("入力した試算条件・明細・確認メモを初期状態に戻しますか？")) return;
+      if (!confirm("入力した試算条件と明細を初期状態に戻しますか？")) return;
       settings = structuredClone(baseSettings);
       rows = structuredClone(initialRows);
-      tasks = structuredClone(baseTasks);
       localStorage.removeItem(STORAGE_KEY);
       hydrateSettings();
       recomputeRows();
       renderDetails();
       updateSummary();
-      renderTasks();
       updateCountdown();
-      saveState();
-    });
-    document.querySelector("#taskForm").addEventListener("submit", event => {
-      event.preventDefault();
-      const text = document.querySelector("#newTaskText").value.trim();
-      if (!text) return;
-      tasks.push({ id: Date.now(), text, due: document.querySelector("#newTaskDate").value, done: false });
-      event.target.reset();
-      renderTasks();
       saveState();
     });
 
@@ -2295,7 +2194,6 @@
     recomputeRows();
     renderDetails();
     updateSummary();
-    renderTasks();
     updateCountdown();
     saveState();
     let initialTab = "home";
