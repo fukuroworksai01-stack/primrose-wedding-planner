@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Wedding Invitation · Botanical Pattern</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=GFS+Didot&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;family=Noto+Serif+JP:wght@200;400;500&amp;family=Poppins:wght@400;500&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--rose:#d6bbb6;--rose-soft:#d9cecc;--brown:#604f40;--ink:#35312f;--muted:#857b77;--paper:#fff;--line:#bdb4b1;--pink:#db7189}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#eee9e7;color:var(--ink);font-family:"Noto Serif JP",serif;font-size:12px;font-weight:200;line-height:2;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    button,input,textarea{font:inherit}
+    a{color:inherit}
+    .page{width:min(100%,750px);min-height:100vh;margin:auto;overflow:hidden;background:#fff}
+    .draft{position:sticky;top:0;z-index:30;padding:6px 12px;border-bottom:1px solid #ddc7c2;background:#f5e7e4;color:#765951;font-family:"Noto Sans JP",sans-serif;font-size:9px;font-weight:700;text-align:center;letter-spacing:.08em}
+    .draft[hidden]{display:none}
+    .section-title{height:auto;margin:0 auto}
+    .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    .hero{position:relative;min-height:730px;padding:42px 0 90px;background:var(--rose)}
+    .hero-script{position:absolute;z-index:3;top:27px;left:50%;width:100%;margin:0;color:#fff;font:58px/.68 "Allura",cursive;text-align:center;transform:translateX(-50%)}
+    .hero-script span{margin-left:70px}
+    .hero-frame{position:relative;z-index:1;width:78%;height:505px;margin:73px auto 0;overflow:hidden;background:#fff}
+    .hero-frame img{width:100%;height:100%;object-fit:cover;object-position:57% 48%}
+    .vertical{position:absolute;z-index:2;top:188px;color:#fff;font-family:"Poppins",sans-serif;font-size:10px;letter-spacing:.48em;white-space:nowrap;writing-mode:vertical-rl}
+    .vertical.left{left:14px;transform:rotate(180deg)}
+    .vertical.right{right:14px}
+    .hero-lockup{position:relative;z-index:2;margin-top:23px;color:#fff;text-align:center}
+    .hero-lockup strong{display:block;font-family:"GFS Didot",serif;font-size:13px;font-weight:400;letter-spacing:.42em}
+    .hero-lockup span{display:block;margin-top:12px;font-family:"Poppins",sans-serif;font-size:8px;letter-spacing:.3em}
+
+    .reception{padding:79px 24px 88px;background:#fff url("../../assets/invite3/slice-back.png") top center/100% auto no-repeat;text-align:center}
+    .reception .section-title{width:110px}
+    .reception-photo{width:100%;aspect-ratio:4/3;margin:20px auto 35px;border:5px solid #fff;object-fit:cover;box-shadow:0 2px 9px rgba(0,0,0,.3)}
+    .formal{margin:auto;color:#746b67;font-size:11px;letter-spacing:.12em;line-height:2.15}
+    .formal p{margin:0}
+    .formal p+p{margin-top:23px}
+
+    .host{padding:73px 0 65px;background:#f8f8f8;color:#716763}
+    .host .section-title{width:76px}
+    .section-caption{margin:3px 0 32px;color:var(--brown);font-family:"Poppins",sans-serif;font-size:8px;text-align:center;letter-spacing:.08em}
+    .host-card+.host-card{margin-top:65px}
+    .host-photo{position:relative;width:87%;aspect-ratio:10/7;overflow:visible}
+    .host-card.groom .host-photo{margin-left:0}
+    .host-card.bride .host-photo{margin-left:13%}
+    .host-photo>img:first-child{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+    .host-card.groom .host-photo>img:first-child{object-position:39% 42%}
+    .host-deco{position:absolute;z-index:2;top:-28px;width:48px;height:auto}
+    .groom .host-deco{right:-25px}
+    .bride .host-deco{left:-25px}
+    .host-copy{padding:13px 20px 0}
+    .host-role{margin:0;font-family:"GFS Didot",serif;font-size:16px;letter-spacing:.03em}
+    .host-name{margin:1px 0 6px;font-size:23px;font-weight:200;letter-spacing:.08em}
+    .host-text{margin:0;font-size:11px;line-height:1.9;letter-spacing:.05em}
+
+    .countdown{position:relative;padding:47px 12px 54px;overflow:hidden;color:#fff;background:var(--brown)}
+    .countdown-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% 67%;opacity:.55}
+    .countdown-inner{position:relative;z-index:1;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+    .countdown .section-title{width:208px;filter:brightness(0) invert(1)}
+    .countdown-caption{margin:0 0 22px;font-family:"Poppins",sans-serif;font-size:8px;letter-spacing:.05em}
+    .goal{margin:0 0 12px;font-family:"GFS Didot",serif;font-size:22px;letter-spacing:.07em}
+    .goal strong{font-size:39px;font-weight:400}
+    .timer{display:grid;grid-template-columns:repeat(4,1fr);max-width:390px;margin:auto}
+    .timer div+div{border-left:1px solid rgba(255,255,255,.32)}
+    .timer strong{display:block;font-family:"GFS Didot",serif;font-size:43px;font-weight:400;line-height:1}
+    .timer span{display:block;margin-top:6px;font-family:"Poppins",sans-serif;font-size:8px;letter-spacing:.08em}
+
+    .information{padding:66px 23px 75px;background:#fff;text-align:center}
+    .information .section-title{width:195px}
+    .info-kicker{margin:2px 0 44px;color:#716763;font-family:"Poppins",sans-serif;font-size:8px;letter-spacing:.04em}
+    .info-sub{margin:0 0 34px;font-weight:200;letter-spacing:.08em}
+    .info-sub span{display:block;font-size:16px}
+    .info-sub small{display:block;font-size:12px}
+    .date-line{margin:0 0 22px;font-family:"GFS Didot",serif;font-size:26px;line-height:1;letter-spacing:.04em}
+    .date-line strong{font-size:47px;font-weight:400}
+    .date-line small{font-size:21px}
+    .ceremony-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:340px;margin:auto}
+    .ceremony-card{display:grid;place-content:center;aspect-ratio:161/246;padding:23px 12px;color:#fff;background:url("../../assets/invite3/info-detail-bg.png") center/100% 100% no-repeat;text-shadow:0 1px 2px rgba(0,0,0,.08)}
+    .ceremony-card span{font-size:18px}
+    .ceremony-card strong{font-family:"GFS Didot",serif;font-size:35px;font-weight:400;line-height:1.2}
+    .ceremony-card small{margin-top:8px;font-size:11px;line-height:1.8}
+    .divider{height:1px;margin:48px 0 34px;background:#332e2c}
+    .venue-name{margin:0;font-size:13px;line-height:2;letter-spacing:.03em}
+    .venue-name strong{display:block;font-size:14px;font-weight:400}
+    .map{width:100%;height:210px;margin-top:18px;border:0;background:#eee}
+    .access-link{display:flex;min-height:49px;align-items:center;justify-content:center;margin-top:12px;border:1px solid var(--rose);color:#765e58;font-family:"Noto Sans JP",sans-serif;font-weight:700;text-decoration:none}
+
+    .message{padding:68px 0 58px;background:#fff;text-align:center}
+    .message .section-title{width:139px}
+    .message-kicker{margin:1px 0 30px;font-family:"Poppins",sans-serif;font-size:7px;letter-spacing:.15em}
+    .message-copy{padding:0 28px;font-size:11px;line-height:2.1;letter-spacing:.06em}
+    .timeline{margin:44px 23px 32px;padding:25px 13px;border:1px solid #e2d8d5;background:#fbf9f8}
+    .timeline-title{margin:0 0 21px;color:#675951;font-family:"GFS Didot",serif;font-size:20px;letter-spacing:.04em}
+    .timeline-row{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;position:relative}
+    .timeline-row:before{position:absolute;top:22px;left:8%;right:8%;height:1px;background:#bfaea8;content:""}
+    .timeline-item{position:relative;z-index:1}
+    .timeline-item strong{display:block;color:#6e5e57;font-family:"Poppins",sans-serif;font-size:9px;font-weight:500}
+    .timeline-item i{display:block;width:7px;height:7px;margin:10px auto;border-radius:50%;background:var(--rose)}
+    .timeline-item span{display:block;font-size:8px;line-height:1.45}
+    .gallery-wrap{margin-top:36px}
+    .gallery{display:flex;width:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+    .gallery::-webkit-scrollbar{display:none}
+    .gallery figure{flex:0 0 100%;margin:0;scroll-snap-align:start}
+    .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover}
+    .gallery-dots{display:flex;gap:8px;justify-content:center;margin-top:23px}
+    .gallery-dots button{width:7px;height:7px;padding:0;overflow:hidden;border:0;border-radius:50%;background:#ccc;text-indent:-999px;cursor:pointer}
+    .gallery-dots button.active{background:#333}
+
+    .rsvp{padding:65px 12px 48px;background:var(--rose)}
+    .rsvp .section-title{width:315px;filter:brightness(0) invert(1)}
+    .rsvp-intro{margin:27px auto 33px;color:#fff;font-size:12px;font-weight:400;line-height:2.15;text-align:center;letter-spacing:.04em}
+    .rsvp-intro strong{font-size:14px;font-weight:400}
+    .rsvp-form{font-family:"Noto Sans JP",sans-serif}
+    .form-panel{padding:19px 12px;background:var(--rose-soft);color:#7d7471}
+    .field{margin:0;padding:16px 4px;border:0;border-bottom:1px solid var(--line)}
+    .field:first-child{padding-top:5px}
+    .field-label,.field legend{display:block;margin:0 0 8px;font-size:12px;font-weight:700;line-height:1.55}
+    .required{display:inline-block;margin-left:5px;padding:1px 5px;color:#fff;background:#d97d91;font-size:9px;vertical-align:middle}
+    .text-input,.text-area{width:100%;border:0;border-radius:4px;background:#f4f4f4;color:#4e4846;font-size:12px}
+    .text-input{min-height:45px;padding:9px 11px}
+    .text-area{min-height:140px;padding:11px;resize:vertical}
+    .text-input:focus,.text-area:focus{outline:3px solid #8c6371;outline-offset:2px}
+    .field-help{display:block;margin-top:6px;color:#a14f60;font-size:9px;line-height:1.8}
+    .choice-list{display:grid;gap:7px}
+    .choice{display:flex;align-items:center;gap:8px;min-height:42px;padding:7px 10px;border:1px solid #c8bdba;background:rgba(255,255,255,.2)}
+    .choice input{width:17px;height:17px;margin:0;accent-color:#816e67}
+    .attendance{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:25px}
+    .attendance label{position:relative;display:block}
+    .attendance input{position:absolute;width:1px;height:1px;opacity:0}
+    .attendance span{display:grid;place-content:center;aspect-ratio:1/1;padding:8px;color:#817775;background:#ded1ce;border-radius:50%;text-align:center}
+    .attendance span strong{display:block;font-family:"Noto Serif JP",serif;font-size:16px;font-weight:400}
+    .attendance span small{display:block;font-family:"GFS Didot",serif;font-size:11px}
+    .attendance input:checked+span{color:#fff;background:url("../../assets/invite3/btn-back.png") center/100% 100% no-repeat}
+    .attendance input:focus-visible+span{outline:3px solid #764959;outline-offset:3px}
+    .form-action{display:flex;width:100%;min-height:66px;align-items:center;justify-content:center;margin-top:28px;border:1px solid var(--pink);background:rgba(255,255,255,.08);color:var(--pink);font-weight:700;letter-spacing:.05em;cursor:pointer}
+    .form-action.primary{background:#fff}
+    .form-action:focus-visible,.form-fallback:focus-visible{outline:3px solid #764959;outline-offset:3px}
+    .form-action[disabled]{opacity:.55;cursor:wait}
+    .form-review[hidden],.form-success[hidden]{display:none}
+    .review-title,.success-title{margin:0;color:#5f5652;font-size:15px;font-weight:900;text-align:center}
+    .review-list{margin:18px 0 0;border-top:1px solid #bbb0ac}
+    .review-list div{display:grid;grid-template-columns:78px 1fr;gap:8px;padding:12px 0;border-bottom:1px solid #bbb0ac}
+    .review-list dt{font-size:9px;font-weight:700}
+    .review-list dd{margin:0;color:#4c4542;font-size:11px;font-weight:700;line-height:1.7;overflow-wrap:anywhere}
+    .review-actions{display:grid;grid-template-columns:1fr 1.5fr;gap:8px}
+    .success-copy{margin:15px 0 0;color:#685d59;font-size:11px;line-height:1.9;text-align:center}
+    .form-fallback{display:block;width:max-content;max-width:100%;margin:18px auto 0;color:#fff;font-size:9px;text-align:center;text-underline-offset:3px}
+    .form-note{margin:10px 0 0;color:#fff;font-size:8px;text-align:center}
+    .form-sink{position:absolute;width:1px;height:1px;border:0;opacity:0;pointer-events:none}
+
+    footer{padding:44px 20px 63px;color:#fff;background:var(--rose);text-align:center}
+    footer img{width:159px;margin:auto;filter:brightness(0) invert(1)}
+    footer small{display:block;margin-top:19px;font-family:"Poppins",sans-serif;font-size:7px;letter-spacing:.14em}
+    @media(max-width:350px){.hero{min-height:690px}.hero-frame{height:475px}.hero-script{font-size:52px}.vertical{font-size:8px}.timer strong{font-size:36px}.ceremony-card strong{font-size:30px}.rsvp{padding-inline:8px}}
+    @media(min-width:751px){body{padding:22px 0}.page{box-shadow:0 0 45px rgba(78,58,55,.14)}.hero{min-height:1200px}.hero-frame{height:920px}.hero-script{top:45px;font-size:108px}.vertical{top:330px;font-size:16px}.vertical.left{left:25px}.vertical.right{right:25px}.hero-lockup strong{font-size:22px}.reception,.information{padding-inline:48px}.formal,.host-text,.message-copy{font-size:14px}.host-photo{max-width:660px}.host-copy{padding-inline:42px}.rsvp{padding-inline:24px}.rsvp-form{max-width:700px;margin-inline:auto}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="draft" id="draftBar">比較用・第3案｜日程と会場はまだ検討中です</div>
+
+    <header class="hero">
+      <p class="hero-script" aria-label="Wedding Celebration">Wedding<br><span>Celebration</span></p>
+      <div class="hero-frame"><img src="../../assets/invite3/hero.webp" alt="プリムローズのガーデンを歩く新郎新婦"></div>
+      <span class="vertical left">WEDDING INVITATION</span><span class="vertical right">WEDDING INVITATION</span>
+      <div class="hero-lockup"><strong id="heroNames">WITH LOVE</strong><span>PLEASE JOIN US TO CELEBRATE</span></div>
+    </header>
+
+    <main>
+      <section class="reception">
+        <img class="section-title reveal" src="../../assets/invite3/title-reception.png" alt="Reception">
+        <img class="reception-photo reveal" src="../../assets/invite3/reception.webp" alt="プリムローズの大聖堂から退場する新郎新婦" loading="lazy">
+        <div class="formal reveal"><p>謹啓</p><p>皆様におかれましては<br>ますますご清祥のことと<br>お慶び申し上げます</p><p>このたび私たちは<br>結婚式を挙げることになりました<br>日頃の感謝を込めて<br>ささやかな披露宴を催したく存じます</p><p>ご多用中誠に恐縮ではございますが<br>ぜひご出席をいただきたく<br>ご案内申し上げます</p><p>謹白</p></div>
+      </section>
+
+      <section class="host">
+        <img class="section-title reveal" src="../../assets/invite3/title-host.png" alt="Host"><p class="section-caption reveal">Thank you for always supporting us...</p>
+        <article class="host-card groom reveal"><div class="host-photo"><img src="../../assets/invite3/groom.webp" alt="新郎のイメージ写真" loading="lazy"><img class="host-deco" src="../../assets/invite3/host-deco-01.png" alt="" aria-hidden="true"></div><div class="host-copy"><p class="host-role">Groom</p><h3 class="host-name">新郎より</h3><p class="host-text">このたび結婚することとなりました。皆さまと同じ時間を過ごせることを、今から心待ちにしています。</p></div></article>
+        <article class="host-card bride reveal"><div class="host-photo"><img src="../../assets/invite3/bride.webp" alt="新婦のイメージ写真" loading="lazy"><img class="host-deco" src="../../assets/invite3/host-deco-02.png" alt="" aria-hidden="true"></div><div class="host-copy"><p class="host-role">Bride</p><h3 class="host-name">新婦より</h3><p class="host-text">支えてくださった皆さまへ、感謝をお伝えできる一日にしたいと思っています。</p></div></article>
+      </section>
+
+      <section class="countdown">
+        <img class="countdown-bg" src="../../assets/invite3/countdown.webp" alt="夜空を彩るランタンと新郎新婦" loading="lazy">
+        <div class="countdown-inner reveal"><img class="section-title" src="../../assets/invite3/title-countdown.png" alt="Count Down"><p class="countdown-caption">Look forward to the day...</p><p class="goal">to<strong id="goalDate">2027.01.23</strong></p><div class="timer"><div><strong id="countDays">---</strong><span>DAYS</span></div><div><strong id="countHours">--</strong><span>HOURS</span></div><div><strong id="countMinutes">--</strong><span>MINUTES</span></div><div><strong id="countSeconds">--</strong><span>SECONDS</span></div></div></div>
+      </section>
+
+      <section class="information">
+        <img class="section-title reveal" src="../../assets/invite3/title-information.png" alt="Information"><p class="info-kicker reveal">Details of our special day</p>
+        <h2 class="info-sub reveal"><span>WEDDING CEREMONY</span><small>挙式・披露宴</small></h2>
+        <p class="date-line reveal"><span id="infoYear">2027.</span><strong id="infoDate">01.23</strong><small id="infoWeekday">Sat</small></p>
+        <div class="ceremony-cards reveal"><article class="ceremony-card"><span>挙式</span><strong id="ceremonyTime">11:00</strong><small>受付 / 10:30<br>終了 / 12:00</small></article><article class="ceremony-card"><span>披露宴</span><strong id="partyTime">12:00</strong><small>受付 / 11:30<br>お披楽喜 / 14:30</small></article></div>
+        <div class="divider"></div>
+        <h2 class="info-sub reveal"><span>VENUE ACCESS</span><small>アクセス</small></h2>
+        <p class="venue-name reveal"><strong id="venueName">PRIMROSE</strong>〒701-0151<br>岡山県岡山市北区平野544-1</p>
+        <iframe class="map reveal" title="プリムローズ周辺地図" loading="lazy" src="https://www.google.com/maps?q=%E3%83%97%E3%83%AA%E3%83%A0%E3%83%AD%E3%83%BC%E3%82%BA%20%E5%B2%A1%E5%B1%B1%E7%9C%8C%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E544-1&amp;output=embed"></iframe>
+        <a class="access-link reveal" href="https://space.fivestar-wedding.com/primrose-okayama/access/" target="_blank" rel="noopener">詳しいアクセスを見る</a>
+      </section>
+
+      <section class="message">
+        <img class="section-title reveal" src="../../assets/invite3/title-message.png" alt="Message"><p class="message-kicker reveal">TO OUR ESTEEMED FRIENDS</p>
+        <p class="message-copy reveal">当日は更衣室とクロークをご利用いただけます<br>お荷物を先にお預けいただき<br>身軽にお過ごしください<br><br>シャトルバスの利用希望と<br>食物アレルギーについては<br>出欠フォームでお知らせください</p>
+        <div class="timeline reveal"><p class="timeline-title">Wedding Time Line</p><div class="timeline-row"><div class="timeline-item"><strong>10:30</strong><i></i><span>受付</span></div><div class="timeline-item"><strong>11:00</strong><i></i><span>挙式</span></div><div class="timeline-item"><strong>11:30</strong><i></i><span>集合写真</span></div><div class="timeline-item"><strong>12:00</strong><i></i><span>披露宴</span></div><div class="timeline-item"><strong>14:30</strong><i></i><span>おひらき</span></div></div></div>
+        <div class="gallery-wrap reveal"><div class="gallery" id="gallery"><figure><img src="../../assets/invite3/gallery-ceremony.webp" alt="プリムローズの大聖堂" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-party.webp" alt="プリムローズの披露宴会場" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-cuisine.webp" alt="プリムローズの婚礼料理" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-garden.webp" alt="プリムローズのガーデン" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-dress.webp" alt="花嫁のドレス" loading="lazy"></figure></div><div class="gallery-dots" id="galleryDots" aria-label="ギャラリーを選ぶ"><button class="active" type="button" aria-label="写真1を表示">1</button><button type="button" aria-label="写真2を表示">2</button><button type="button" aria-label="写真3を表示">3</button><button type="button" aria-label="写真4を表示">4</button><button type="button" aria-label="写真5を表示">5</button></div></div>
+      </section>
+
+      <section class="rsvp" id="rsvp" aria-labelledby="rsvpTitle">
+        <h2 id="rsvpTitle"><img class="section-title reveal" src="../../assets/invite3/title-poa.png" alt="Presence or Absence"></h2>
+        <p class="rsvp-intro reveal">お手数ですが　下記より<br>出欠情報のご連絡をお願い申し上げます<br><strong id="deadlineText">回答期限は後日お知らせします</strong></p>
+        <form class="rsvp-form reveal" id="guestForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfMmYBCDFUUHWC0RjOXKgT9rHcCuR8KveNR62yhDbJk3IdIjA/formResponse" method="post" target="formSink">
+          <div class="form-panel" id="formFields">
+            <div class="field"><label class="field-label" for="guestName">お名前 Name<span class="required">必須</span></label><input class="text-input" id="guestName" name="entry.1082329911" type="text" autocomplete="name" placeholder="例）山田 花子" required></div>
+            <div class="field"><label class="field-label" for="allergy">アレルギー Allergy<span class="required">必須</span></label><textarea class="text-area" id="allergy" name="entry.970491917" placeholder="ない場合は「なし」とご入力ください" required></textarea><small class="field-help">食物アレルギー・食事制限をご記入ください</small></div>
+            <fieldset class="field"><legend>シャトルバス Shuttle Bus<span class="required">必須</span></legend><div class="choice-list"><label class="choice"><input type="radio" name="entry.740219987" value="利用する予定" required><span>利用する予定</span></label><label class="choice"><input type="radio" name="entry.740219987" value="利用しない予定" required><span>利用しない予定</span></label><label class="choice"><input type="radio" name="entry.740219987" value="未定" required><span>未定</span></label></div></fieldset>
+            <div class="field"><label class="field-label" for="guestMessage">メッセージ Message</label><textarea class="text-area" id="guestMessage" name="entry.940094029" maxlength="250" placeholder="ふたりへのメッセージ（任意）"></textarea></div>
+            <fieldset class="field"><legend>ご出欠 Attendance<span class="required">必須</span></legend><div class="attendance"><label><input type="radio" name="entry.719709755" value="出席します" required><span><strong>ご出席</strong><small>attend</small></span></label><label><input type="radio" name="entry.719709755" value="欠席します" required><span><strong>ご欠席</strong><small>decline</small></span></label></div></fieldset>
+            <button class="form-action primary" id="reviewButton" type="button">確認する　Confirm the following</button>
+          </div>
+          <div class="form-panel form-review" id="formReview" hidden><p class="review-title">回答内容の確認</p><dl class="review-list"><div><dt>お名前</dt><dd data-review="entry.1082329911"></dd></div><div><dt>アレルギー</dt><dd data-review="entry.970491917"></dd></div><div><dt>シャトル</dt><dd data-review="entry.740219987"></dd></div><div><dt>メッセージ</dt><dd data-review="entry.940094029"></dd></div><div><dt>ご出欠</dt><dd data-review="entry.719709755"></dd></div></dl><div class="review-actions"><button class="form-action" id="editButton" type="button">修正する</button><button class="form-action primary" id="sendButton" type="submit">この内容で送信</button></div></div>
+          <input type="hidden" name="fvv" value="1"><input type="hidden" name="pageHistory" value="0">
+        </form>
+        <div class="form-panel form-success" id="formSuccess" role="status" aria-live="polite" hidden><p class="success-title">ご回答ありがとうございました</p><p class="success-copy">回答を受け付けました。<br>変更がある場合は、もう一度ご回答ください。</p><button class="form-action primary" id="answerAgain" type="button">もう一度回答する</button></div>
+        <a class="form-fallback" id="formFallback" href="https://forms.gle/fnEFTiymL2n5E5Gc8" target="_blank" rel="noopener">送信できない場合はGoogleフォームを開く</a><p class="form-note">回答内容はGoogleフォームへ送信されます</p><iframe class="form-sink" id="formSink" name="formSink" title="回答の送信先" aria-hidden="true"></iframe>
+      </section>
+    </main>
+    <footer><img src="../../assets/invite3/footer-thanks.png" alt="Thank you"><small>HOPE WE CAN SHARE OUR HAPPINESS.</small></footer>
+  </div>
+
+  <script>
+    const params=new URLSearchParams(location.search);
+    const isDraft=params.get("draft")!=="0";
+    const names=params.get("from")?.trim()||"私たち";
+    const dateValue=params.get("date")||"2027-01-23";
+    const timeValue=params.get("time")||"11:00";
+    const venue=params.get("venue")?.trim()||"PRIMROSE";
+    const deadline=params.get("deadline")||"";
+    const safeFormUrl=value=>{try{const url=new URL(value||"");return url.protocol==="https:"&&(url.hostname==="forms.gle"||url.hostname==="docs.google.com")?url.toString():""}catch{return""}};
+    const addMinutes=(value,minutes)=>{const match=/^(\d{1,2}):(\d{2})$/.exec(value);if(!match)return"12:00";const total=(Number(match[1])*60+Number(match[2])+minutes)%1440;return String(Math.floor(total/60)).padStart(2,"0")+":"+String(total%60).padStart(2,"0")};
+    const formUrl=safeFormUrl(params.get("form"));
+    const date=new Date(dateValue+"T00:00:00");
+    const validDate=!Number.isNaN(date.getTime());
+    const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const partyTime=addMinutes(timeValue,60);
+    document.querySelector("#draftBar").hidden=!isDraft;
+    document.querySelector("#heroNames").textContent=names==="私たち"?"WITH LOVE":names;
+    document.querySelector("#venueName").textContent=venue;
+    document.querySelector("#ceremonyTime").textContent=timeValue;
+    document.querySelector("#partyTime").textContent=partyTime;
+    document.title=names+" Wedding Invitation · Pattern 3";
+    if(validDate){const y=String(date.getFullYear()),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");document.querySelector("#goalDate").textContent=y+"."+m+"."+d;document.querySelector("#infoYear").textContent=y+".";document.querySelector("#infoDate").textContent=m+"."+d;document.querySelector("#infoWeekday").textContent=weekdays[date.getDay()]}
+    if(deadline){const deadlineDate=new Date(deadline+"T00:00:00");if(!Number.isNaN(deadlineDate.getTime()))document.querySelector("#deadlineText").textContent=new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric"}).format(deadlineDate)+"までにご回答ください"}
+    const updateCountdown=()=>{if(!validDate)return;const diff=Math.max(0,date.getTime()-Date.now());document.querySelector("#countDays").textContent=String(Math.floor(diff/86400000));document.querySelector("#countHours").textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,"0");document.querySelector("#countMinutes").textContent=String(Math.floor(diff%3600000/60000)).padStart(2,"0");document.querySelector("#countSeconds").textContent=String(Math.floor(diff%60000/1000)).padStart(2,"0")};updateCountdown();window.setInterval(updateCountdown,1000);
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target)}}),{threshold:.08});document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));
+    const gallery=document.querySelector("#gallery"),galleryDots=[...document.querySelectorAll("#galleryDots button")];galleryDots.forEach((button,index)=>button.addEventListener("click",()=>gallery.scrollTo({left:index*gallery.clientWidth,behavior:"smooth"})));let galleryTimer;gallery.addEventListener("scroll",()=>{clearTimeout(galleryTimer);galleryTimer=setTimeout(()=>{const active=Math.round(gallery.scrollLeft/gallery.clientWidth);galleryDots.forEach((button,index)=>button.classList.toggle("active",index===active))},80)});
+    const guestForm=document.querySelector("#guestForm"),formFields=document.querySelector("#formFields"),formReview=document.querySelector("#formReview"),formSuccess=document.querySelector("#formSuccess"),reviewButton=document.querySelector("#reviewButton"),editButton=document.querySelector("#editButton"),sendButton=document.querySelector("#sendButton"),answerAgain=document.querySelector("#answerAgain"),formFallback=document.querySelector("#formFallback");let reviewReady=false,submitting=false;formFallback.href=formUrl||"https://forms.gle/fnEFTiymL2n5E5Gc8";
+    const showReview=()=>{if(!guestForm.reportValidity())return;const data=new FormData(guestForm);document.querySelectorAll("[data-review]").forEach(item=>item.textContent=(data.get(item.dataset.review)||"未入力").toString());formFields.hidden=true;formReview.hidden=false;reviewReady=true;formReview.scrollIntoView({behavior:"smooth",block:"center"})};
+    reviewButton.addEventListener("click",showReview);editButton.addEventListener("click",()=>{formReview.hidden=true;formFields.hidden=false;reviewReady=false;formFields.scrollIntoView({behavior:"smooth",block:"start"})});
+    guestForm.addEventListener("submit",event=>{if(!reviewReady){event.preventDefault();showReview();return}submitting=true;sendButton.disabled=true;sendButton.textContent="送信しています…";window.setTimeout(()=>{guestForm.hidden=true;formSuccess.hidden=false;formSuccess.scrollIntoView({behavior:"smooth",block:"center"});submitting=false},1100)});
+    document.querySelector("#formSink").addEventListener("load",()=>{if(submitting){guestForm.hidden=true;formSuccess.hidden=false;submitting=false}});
+    answerAgain.addEventListener("click",()=>{guestForm.reset();formSuccess.hidden=true;guestForm.hidden=false;formReview.hidden=true;formFields.hidden=false;reviewReady=false;sendButton.disabled=false;sendButton.textContent="この内容で送信";formFields.scrollIntoView({behavior:"smooth",block:"start"})});
+  </script>
+</body>
+</html>
