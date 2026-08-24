@@ -95,21 +95,53 @@
     .gallery-row img { width:100%; aspect-ratio:3/4; object-fit:cover; }
     .gallery-row figcaption { margin-top:7px; color:#78645a; font-size:8px; text-align:center; letter-spacing:.08em; }
 
-    .rsvp-outer { padding:0 21px 84px; background:#fff; }
-    .rsvp { padding:53px 23px 49px; border-radius:43px; background:var(--peach); text-align:center; }
-    .rsvp p { margin:21px auto 0; max-width:280px; font-size:11px; line-height:2; }
+    .rsvp-outer { padding:0 12px 84px; background:#fff; }
+    .rsvp { padding:53px 16px 49px; border-radius:43px; background:var(--peach); text-align:center; }
+    .rsvp-intro { margin:21px auto 0; max-width:280px; font-size:11px; line-height:2; }
     .deadline { color:var(--deep); font-weight:800; }
-    .rsvp-button { display:flex; min-height:58px; align-items:center; justify-content:space-between; margin-top:29px; padding:11px 18px; border:1px solid var(--orange); background:#fff; color:var(--deep); font-size:12px; font-weight:700; text-decoration:none; }
-    .rsvp-button:after { content:"→"; font-size:20px; font-weight:400; }
-    .rsvp-button[aria-disabled="true"] { opacity:.55; cursor:not-allowed; }
-    .form-note { margin-top:11px!important; color:#7c6960; font-size:9px!important; }
+    .guest-form { margin-top:31px; text-align:left; }
+    .form-sheet { padding:27px 17px 20px; border-radius:24px; background:#fff; box-shadow:0 10px 30px rgba(116,72,46,.08); }
+    .field { margin:0; padding:0; border:0; }
+    .field+.field { margin-top:25px; }
+    .field-title,.field>label { display:block; margin:0 0 10px; color:#26201d; font-size:12px; font-weight:800; line-height:1.6; letter-spacing:.02em; }
+    .required { margin-left:4px; color:var(--orange); font-size:9px; vertical-align:top; }
+    .choice-row { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+    .choice-row.three { grid-template-columns:1fr; gap:7px; }
+    .choice { position:relative; display:block; min-width:0; }
+    .choice input { position:absolute; width:1px; height:1px; opacity:0; }
+    .choice span { display:flex; min-height:50px; align-items:center; justify-content:center; padding:8px 7px; border:1px solid #ddcfc7; border-radius:999px; background:#fff; color:#554741; font-size:11px; font-weight:700; text-align:center; transition:border-color .18s,background .18s,color .18s,box-shadow .18s; }
+    .choice input:checked+span { border-color:var(--orange); background:#faeee7; color:var(--deep); box-shadow:inset 0 0 0 1px var(--orange); }
+    .choice input:focus-visible+span { outline:3px solid #2769ad; outline-offset:2px; }
+    .text-input,.text-area { display:block; width:100%; border:0; border-bottom:1px solid #bfaea4; border-radius:0; background:#fff; color:#1d1917; font:500 13px/1.7 "Noto Sans JP",sans-serif; }
+    .text-input { min-height:47px; padding:7px 2px; }
+    .text-area { min-height:90px; padding:9px 2px; resize:vertical; }
+    .text-input::placeholder,.text-area::placeholder { color:#aa9a92; font-weight:400; }
+    .text-input:focus,.text-area:focus { border-color:var(--orange); outline:0; box-shadow:0 1px 0 var(--orange); }
+    .field-hint { display:block; margin-top:6px; color:#8a7770; font-size:9px; line-height:1.7; }
+    .form-action { display:flex; width:100%; min-height:58px; align-items:center; justify-content:center; margin-top:28px; border:1px solid var(--orange); border-radius:0; background:#fff; color:var(--deep); font:700 12px "Noto Sans JP",sans-serif; letter-spacing:.04em; cursor:pointer; }
+    .form-action.primary { background:var(--orange); color:#fff; }
+    .form-action:focus-visible,.form-link:focus-visible { outline:3px solid #2769ad; outline-offset:3px; }
+    .form-action[disabled] { opacity:.55; cursor:wait; }
+    .form-review[hidden],.form-success[hidden] { display:none; }
+    .review-title,.success-title { margin:0; color:#241e1b; font-size:15px; font-weight:800; text-align:center; }
+    .review-list { margin:21px 0 0; border-top:1px solid #eadfd9; }
+    .review-list div { display:grid; grid-template-columns:82px 1fr; gap:8px; padding:13px 0; border-bottom:1px solid #eadfd9; }
+    .review-list dt { color:#8a7770; font-size:9px; font-weight:700; }
+    .review-list dd { margin:0; color:#28211e; font-size:11px; font-weight:700; line-height:1.7; overflow-wrap:anywhere; }
+    .review-actions { display:grid; grid-template-columns:1fr 1.45fr; gap:8px; }
+    .review-actions .form-action { padding-inline:4px; }
+    .success-mark { width:54px; height:54px; margin:0 auto 17px; border:1px solid var(--orange); border-radius:50%; color:var(--orange); font:400 25px/52px "Fugaz One",sans-serif; text-align:center; }
+    .success-copy { margin:14px 0 0; color:#604f47; font-size:11px; line-height:1.9; text-align:center; }
+    .form-link { display:block; width:max-content; max-width:100%; margin:18px auto 0; color:#745e54; font-size:9px; text-align:center; text-underline-offset:3px; }
+    .form-note { margin:13px auto 0; color:#7c6960; font-size:9px; line-height:1.8; text-align:center; }
+    .form-sink { position:absolute; width:1px; height:1px; border:0; opacity:0; pointer-events:none; }
 
     footer { padding:47px 20px 64px; color:var(--orange); background:#fff; text-align:center; }
     footer:before { display:block; width:68px; height:1px; margin:0 auto 33px; background:var(--line); content:""; }
     footer strong { display:block; font:400 28px "Fugaz One",sans-serif; }
     footer small { display:block; margin-top:17px; font-size:7px; font-weight:700; letter-spacing:.13em; }
     a:focus-visible { outline:3px solid #2769ad; outline-offset:3px; }
-    @media(max-width:350px){ .hero h1{font-size:57px}.host-area,.information,.rsvp-outer{padding-inline:15px}.map-links{grid-template-columns:1fr} }
+    @media(max-width:350px){ .hero h1{font-size:57px}.host-area,.information{padding-inline:15px}.rsvp-outer{padding-inline:8px}.rsvp{padding-inline:12px}.map-links{grid-template-columns:1fr} }
     @media(min-width:391px){ body{padding:22px 0}.page{box-shadow:0 0 44px rgba(77,58,48,.12)} }
     @media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
   </style>
@@ -193,10 +225,76 @@
 
       <div class="rsvp-outer"><section class="rsvp" id="rsvp" aria-labelledby="rsvpTitle">
         <h2 class="title" id="rsvpTitle">Presence or Absence</h2>
-        <p>お手数ですが、下のボタンから<br>出欠と必要事項をご回答ください</p>
-        <p class="deadline" id="deadlineText">回答期限は後日お知らせします</p>
-        <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true"><span>回答フォームは準備中</span></a>
-        <p class="form-note" id="formNote">Googleフォームが連携されると、ここから回答できます。</p>
+        <p class="rsvp-intro">こちらのページで<br>出欠と必要事項をご回答いただけます</p>
+        <p class="rsvp-intro deadline" id="deadlineText">回答期限は後日お知らせします</p>
+
+        <form class="guest-form" id="guestForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfMmYBCDFUUHWC0RjOXKgT9rHcCuR8KveNR62yhDbJk3IdIjA/formResponse" method="post" target="formSink">
+          <div class="form-sheet form-fields" id="formFields">
+            <fieldset class="field">
+              <legend class="field-title">ご出欠<span class="required">必須</span></legend>
+              <div class="choice-row">
+                <label class="choice"><input type="radio" name="entry.719709755" value="出席します" required><span>出席します</span></label>
+                <label class="choice"><input type="radio" name="entry.719709755" value="欠席します" required><span>欠席します</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="guestName">お名前<span class="required">必須</span></label>
+              <input class="text-input" id="guestName" name="entry.1082329911" type="text" autocomplete="name" placeholder="例）山田 花子" required>
+            </div>
+
+            <div class="field">
+              <label for="allergy">食物アレルギー・食事制限<span class="required">必須</span></label>
+              <textarea class="text-area" id="allergy" name="entry.970491917" placeholder="ない場合は「なし」とご入力ください" required></textarea>
+            </div>
+
+            <fieldset class="field">
+              <legend class="field-title">岡山駅からの無料シャトルバス<span class="required">必須</span></legend>
+              <div class="choice-row three">
+                <label class="choice"><input type="radio" name="entry.740219987" value="利用する予定" required><span>利用する予定</span></label>
+                <label class="choice"><input type="radio" name="entry.740219987" value="利用しない予定" required><span>利用しない予定</span></label>
+                <label class="choice"><input type="radio" name="entry.740219987" value="未定" required><span>未定</span></label>
+              </div>
+            </fieldset>
+
+            <div class="field">
+              <label for="guestMessage">ふたりへのメッセージ</label>
+              <textarea class="text-area" id="guestMessage" name="entry.940094029" placeholder="任意でご入力ください"></textarea>
+              <small class="field-hint">この項目は任意です</small>
+            </div>
+
+            <button class="form-action" id="reviewButton" type="button">回答内容を確認する</button>
+          </div>
+
+          <div class="form-sheet form-review" id="formReview" hidden>
+            <p class="review-title">回答内容の確認</p>
+            <dl class="review-list">
+              <div><dt>ご出欠</dt><dd data-review="entry.719709755"></dd></div>
+              <div><dt>お名前</dt><dd data-review="entry.1082329911"></dd></div>
+              <div><dt>アレルギー</dt><dd data-review="entry.970491917"></dd></div>
+              <div><dt>シャトル</dt><dd data-review="entry.740219987"></dd></div>
+              <div><dt>メッセージ</dt><dd data-review="entry.940094029"></dd></div>
+            </dl>
+            <div class="review-actions">
+              <button class="form-action" id="editButton" type="button">修正する</button>
+              <button class="form-action primary" id="sendButton" type="submit">この内容で送信</button>
+            </div>
+          </div>
+
+          <input type="hidden" name="fvv" value="1">
+          <input type="hidden" name="pageHistory" value="0">
+        </form>
+
+        <div class="form-sheet form-success" id="formSuccess" role="status" aria-live="polite" hidden>
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <p class="success-title">ご回答ありがとうございました</p>
+          <p class="success-copy">回答を受け付けました。<br>変更がある場合は、もう一度ご回答ください。</p>
+          <button class="form-action" id="answerAgain" type="button">もう一度回答する</button>
+        </div>
+
+        <a class="form-link" id="formFallback" href="https://forms.gle/fnEFTiymL2n5E5Gc8" target="_blank" rel="noopener">送信できない場合はGoogleフォームを開く</a>
+        <p class="form-note">回答内容はGoogleフォームへ安全に送信されます</p>
+        <iframe class="form-sink" id="formSink" name="formSink" title="回答の送信先" aria-hidden="true"></iframe>
       </section></div>
     </main>
 
@@ -227,8 +325,35 @@
     document.title=names+" Wedding Invitation · Pattern 2";
     if(validDate){const y=String(date.getFullYear()),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");document.querySelector("#dateYear").textContent=y;document.querySelector("#dateDay").textContent=d;document.querySelector("#dateMonthName").textContent=months[date.getMonth()];document.querySelector("#infoYear").textContent=y;document.querySelector("#infoDate").textContent=m+"."+d;document.querySelector("#infoWeekday").textContent=weekdays[date.getDay()];document.querySelector("#countdownDate").textContent=y+"."+m+"."+d;const today=new Date();today.setHours(0,0,0,0);document.querySelector("#countdownDays").textContent=String(Math.max(0,Math.ceil((date-today)/86400000)))}else{document.querySelector(".hero-date").hidden=true}
     if(deadline){const deadlineDate=new Date(deadline+"T00:00:00");if(!Number.isNaN(deadlineDate.getTime()))document.querySelector("#deadlineText").textContent=new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric"}).format(deadlineDate)+"までにご回答ください"}
-    const button=document.querySelector("#rsvpButton");
-    if(formUrl){button.href=formUrl;button.target="_blank";button.rel="noopener";button.removeAttribute("aria-disabled");button.querySelector("span").textContent="出欠を回答する";document.querySelector("#formNote").textContent="回答内容はGoogleフォームへ送信されます。"}else{button.addEventListener("click",event=>event.preventDefault())}
+    const guestForm=document.querySelector("#guestForm");
+    const formFields=document.querySelector("#formFields");
+    const formReview=document.querySelector("#formReview");
+    const formSuccess=document.querySelector("#formSuccess");
+    const reviewButton=document.querySelector("#reviewButton");
+    const editButton=document.querySelector("#editButton");
+    const sendButton=document.querySelector("#sendButton");
+    const answerAgain=document.querySelector("#answerAgain");
+    const formFallback=document.querySelector("#formFallback");
+    let reviewReady=false;
+    let submitting=false;
+    formFallback.href=formUrl||"https://forms.gle/fnEFTiymL2n5E5Gc8";
+    const showReview=()=>{
+      if(!guestForm.reportValidity())return;
+      const data=new FormData(guestForm);
+      document.querySelectorAll("[data-review]").forEach(item=>item.textContent=(data.get(item.dataset.review)||"未入力").toString());
+      formFields.hidden=true;formReview.hidden=false;reviewReady=true;
+      formReview.scrollIntoView({behavior:"smooth",block:"center"});
+    };
+    const showFields=()=>{formReview.hidden=true;formFields.hidden=false;reviewReady=false;formFields.scrollIntoView({behavior:"smooth",block:"start"})};
+    reviewButton.addEventListener("click",showReview);
+    editButton.addEventListener("click",showFields);
+    guestForm.addEventListener("submit",event=>{
+      if(!reviewReady){event.preventDefault();showReview();return}
+      submitting=true;sendButton.disabled=true;sendButton.textContent="送信しています…";
+      window.setTimeout(()=>{guestForm.hidden=true;formSuccess.hidden=false;formSuccess.scrollIntoView({behavior:"smooth",block:"center"});submitting=false},1100);
+    });
+    document.querySelector("#formSink").addEventListener("load",()=>{if(submitting){guestForm.hidden=true;formSuccess.hidden=false;submitting=false}});
+    answerAgain.addEventListener("click",()=>{guestForm.reset();formSuccess.hidden=true;guestForm.hidden=false;formReview.hidden=true;formFields.hidden=false;reviewReady=false;sendButton.disabled=false;sendButton.textContent="この内容で送信";formFields.scrollIntoView({behavior:"smooth",block:"start"})});
   </script>
 </body>
 </html>
