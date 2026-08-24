@@ -5,17 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Wedding Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&amp;family=Noto+Serif+JP:wght@400;500;600&amp;family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet">
   <style>
     :root {
-      --ink: #3d3332;
-      --muted: #786d69;
-      --wine: #754852;
-      --wine-dark: #52333a;
-      --gold: #ad8c54;
-      --cream: #fbf6ef;
-      --paper: #fffdfb;
-      --line: #e5d9d5;
-      --shadow: 0 18px 52px rgba(67, 45, 48, .12);
+      --peach: #f18a4c;
+      --peach-dark: #c65f2d;
+      --peach-soft: #f8dfcf;
+      --paper: #fff8f1;
+      --cream: #fceee3;
+      --wine: #6f3f48;
+      --ink: #5a2f25;
+      --muted: #80645b;
+      --line: #e6b89d;
+      --white: #fffdf9;
+      --shadow: 0 18px 42px rgba(105, 63, 43, .12);
     }
 
     * { box-sizing: border-box; }
@@ -23,166 +28,605 @@
     body {
       margin: 0;
       color: var(--ink);
-      background: #f4efeb;
-      font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      background: #ead8ca;
+      font-family: "Noto Serif JP", "Yu Mincho", serif;
       font-size: 15px;
-      line-height: 1.8;
+      line-height: 1.9;
     }
     a { color: inherit; }
+    img { max-width: 100%; }
+    .material-symbols-rounded {
+      font-family: "Material Symbols Rounded";
+      font-weight: normal;
+      font-style: normal;
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-feature-settings: "liga";
+      -webkit-font-smoothing: antialiased;
+      font-feature-settings: "liga";
+    }
+
+    .site-shell {
+      width: min(100%, 560px);
+      min-height: 100vh;
+      margin: 0 auto;
+      overflow: hidden;
+      background: var(--paper);
+      box-shadow: 0 0 70px rgba(86, 53, 39, .14);
+    }
     .draft-bar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      padding: 10px 16px;
-      color: #fff9ef;
-      background: #755826;
-      font-size: 12px;
-      font-weight: 900;
+      z-index: 30;
+      padding: 9px 15px;
+      color: #743615;
+      background: #ffe3d1;
+      border-bottom: 1px solid rgba(198, 95, 45, .2);
+      font-size: 11px;
+      font-weight: 600;
       text-align: center;
-      letter-spacing: .04em;
+      letter-spacing: .03em;
     }
     .draft-bar[hidden] { display: none; }
+
     .hero {
       position: relative;
-      min-height: min(760px, 88vh);
+      min-height: 510px;
       display: grid;
-      place-items: center;
-      padding: 72px 24px;
+      align-items: start;
       isolation: isolate;
+      overflow: hidden;
       color: #fff;
-      background: url("https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/bg_mv_1.webp") center 42% / cover no-repeat;
+      background: #684438;
+      border-radius: 0 0 48% 48% / 0 0 4% 4%;
     }
-    .hero::before {
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 44%;
+    }
+    .hero-tint {
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: linear-gradient(180deg, rgba(31,20,22,.45), rgba(31,20,22,.68));
+      background: rgba(61, 39, 35, .38);
+    }
+    .hero-content {
+      position: relative;
+      width: 100%;
+      min-height: 510px;
+      padding: 36px 24px 24px;
+      text-align: center;
+    }
+    .hero-kicker {
+      margin: 0;
+      font-family: "Fredoka", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .22em;
+    }
+    .hero-title {
+      display: grid;
+      justify-items: center;
+      margin: 11px 0 4px;
+      color: var(--peach);
+      font-family: "Fredoka", sans-serif;
+      font-size: clamp(61px, 18vw, 88px);
+      font-weight: 700;
+      line-height: .83;
+      letter-spacing: -.045em;
+      text-shadow: 0 4px 0 rgba(111, 63, 72, .12);
+    }
+    .hero-title span:last-child { margin-left: 18px; }
+    .hero-from {
+      margin: 15px 0 0;
+      color: #fffaf2;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: .12em;
+    }
+    .date-lockup {
+      position: absolute;
+      top: 211px;
+      right: 22px;
+      display: grid;
+      width: 84px;
+      justify-items: center;
+      color: #fff;
+      font-family: "Fredoka", sans-serif;
+      font-weight: 600;
+      line-height: 1;
+      text-shadow: 0 2px 12px rgba(45, 27, 25, .3);
+    }
+    .date-year { font-size: 16px; letter-spacing: .16em; }
+    .date-month, .date-day { font-size: 58px; letter-spacing: -.05em; }
+    .date-divider { width: 1px; height: 34px; margin: 7px 0; background: rgba(255,255,255,.82); }
+    .date-weekday { margin-top: 8px; font-size: 16px; letter-spacing: .12em; }
+    .hero-facts {
+      position: absolute;
+      left: 50%;
+      bottom: 41px;
+      display: grid;
+      gap: 10px;
+      transform: translateX(-50%);
+      text-align: center;
+      text-shadow: 0 2px 12px rgba(45, 27, 25, .35);
+    }
+    .hero-facts p { margin: 0; }
+    .hero-facts small {
+      display: block;
+      font-family: "Fredoka", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .15em;
+    }
+    .hero-facts strong {
+      display: block;
+      margin-top: 1px;
+      color: #fffaf2;
+      font-size: 16px;
+      letter-spacing: .08em;
+      white-space: nowrap;
+    }
+    .scroll-link {
+      position: absolute;
+      left: 50%;
+      bottom: 7px;
+      display: grid;
+      justify-items: center;
+      gap: 2px;
+      transform: translateX(-50%);
+      color: #fffaf2;
+      font-family: "Fredoka", sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-decoration: none;
+    }
+    .scroll-link .material-symbols-rounded { font-size: 24px; }
+
+    main { padding-bottom: 36px; }
+    .intro {
+      position: relative;
+      padding: 32px 24px 26px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .section-label {
+      margin: 0 0 8px;
+      color: var(--peach);
+      font-family: "Fredoka", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .03em;
+    }
+    .section-label::after {
+      display: block;
+      width: 32px;
+      height: 1px;
+      margin: 7px auto 0;
+      background: var(--peach-dark);
       content: "";
     }
-    .hero-content { width: min(760px, 100%); text-align: center; }
-    .eyebrow { margin: 0 0 14px; color: #f0dfd5; font-size: 12px; font-weight: 800; letter-spacing: .28em; }
-    h1, h2, .date-main { font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-weight: 500; }
-    h1 { margin: 0; font-size: clamp(42px, 9vw, 86px); line-height: 1.15; letter-spacing: .1em; }
-    .from { margin: 18px 0 0; color: #fff8ef; font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; font-size: 22px; letter-spacing: .08em; }
-    .hero-divider { width: 70px; height: 1px; margin: 30px auto; background: rgba(255,255,255,.6); }
-    .date-main { margin: 0; color: #fff0c9; font-size: clamp(31px, 6vw, 52px); letter-spacing: .08em; }
-    .time { margin: 7px 0 0; font-weight: 800; letter-spacing: .16em; }
-    .venue { margin: 25px 0 0; font-size: 18px; font-weight: 800; letter-spacing: .12em; }
-    .scroll-note { position: absolute; bottom: 24px; left: 50%; margin: 0; transform: translateX(-50%); color: #eee2dc; font-size: 11px; letter-spacing: .16em; }
+    .intro h2, .section-heading {
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(21px, 5.8vw, 27px);
+      font-weight: 500;
+      line-height: 1.55;
+      letter-spacing: .08em;
+    }
+    .message-copy {
+      max-width: 29em;
+      margin: 10px auto 0;
+      color: #6f4c42;
+      font-size: 10px;
+      line-height: 1.75;
+    }
+    .message-copy p { margin: 0; }
+    .message-copy p + p { margin-top: 5px; }
+    .floral-mark {
+      display: inline-grid;
+      place-items: center;
+      width: auto;
+      height: auto;
+      margin-top: 8px;
+      color: var(--peach);
+      border: 0;
+      border-radius: 0;
+      font-size: 22px;
+    }
 
-    main { width: min(920px, calc(100% - 28px)); margin: 0 auto; padding: 70px 0 90px; }
-    .section { margin-top: 24px; padding: clamp(27px, 5vw, 52px); border: 1px solid var(--line); border-radius: 24px; background: var(--paper); box-shadow: var(--shadow); }
-    .section:first-child { margin-top: 0; }
-    .section-kicker { margin: 0 0 9px; color: var(--gold); font-size: 11px; font-weight: 900; letter-spacing: .2em; text-align: center; }
-    h2 { margin: 0 0 24px; color: var(--wine-dark); font-size: clamp(25px, 4vw, 34px); text-align: center; letter-spacing: .08em; }
-    .message { max-width: 650px; margin: 0 auto; text-align: center; }
-    .message p { margin: 0; }
-    .message p + p { margin-top: 16px; }
-    .detail-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .detail-card { padding: 21px 18px; border: 1px solid var(--line); border-radius: 15px; background: var(--cream); text-align: center; }
-    .detail-card small { display: block; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
-    .detail-card strong { display: block; margin-top: 6px; color: var(--wine-dark); font-size: 17px; }
-    .access-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start; }
-    address { font-style: normal; }
-    .access-copy p { margin: 0; }
-    .access-copy p + p { margin-top: 12px; }
-    .link-row { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 19px; }
-    .outline-link { display: inline-flex; min-height: 44px; align-items: center; justify-content: center; padding: 9px 15px; border: 1px solid var(--wine); border-radius: 10px; color: var(--wine); background: #fff; font-weight: 800; text-decoration: none; }
-    .guest-note { padding: 18px; border-radius: 15px; background: var(--cream); }
-    .guest-note strong { color: var(--wine-dark); }
-    .guest-note ul { margin: 10px 0 0; padding-left: 1.25em; }
-    .guest-note li + li { margin-top: 6px; }
+    .event-facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      margin-top: 8px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .fact {
+      min-width: 0;
+      padding: 12px 5px 11px;
+      text-align: center;
+    }
+    .fact + .fact { border-left: 1px solid var(--line); }
+    .fact .material-symbols-rounded { color: var(--peach-dark); font-size: 21px; }
+    .fact small {
+      display: block;
+      margin-top: 5px;
+      color: var(--peach-dark);
+      font-family: "Fredoka", sans-serif;
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: .12em;
+    }
+    .fact strong {
+      display: block;
+      margin-top: 4px;
+      color: var(--ink);
+      font-size: 10px;
+      line-height: 1.55;
+    }
 
-    .rsvp { color: #fff; border-color: var(--wine-dark); background: linear-gradient(135deg, var(--wine-dark), var(--wine)); text-align: center; }
-    .rsvp .section-kicker, .rsvp h2 { color: #fff3dc; }
-    .rsvp p { margin: 0; color: #f3e8e4; }
-    .deadline { margin-top: 10px !important; color: #fff5dc !important; font-weight: 800; }
-    .rsvp-button { display: inline-flex; min-width: min(100%, 300px); min-height: 54px; align-items: center; justify-content: center; margin-top: 24px; padding: 12px 22px; border: 1px solid #fff; border-radius: 999px; color: var(--wine-dark); background: #fffaf0; font-size: 16px; font-weight: 900; text-decoration: none; }
-    .rsvp-button[aria-disabled="true"] { cursor: not-allowed; opacity: .56; }
-    .form-note { margin-top: 13px !important; font-size: 11px; }
-    footer { padding: 30px 16px 50px; color: var(--muted); font-family: "Yu Mincho", "Hiragino Mincho ProN", serif; text-align: center; letter-spacing: .12em; }
+    .story {
+      padding: 58px 22px 52px;
+      background: var(--white);
+    }
+    .story-head { text-align: center; }
+    .story-head p:last-child {
+      margin: 13px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .story-photo {
+      margin: 28px 0 0;
+      overflow: hidden;
+      border-radius: 28px;
+      background: var(--peach-soft);
+    }
+    .story-photo img {
+      display: block;
+      width: 100%;
+      height: 370px;
+      object-fit: cover;
+      object-position: center;
+    }
+    .story-caption {
+      padding: 20px 22px 23px;
+      background: var(--cream);
+    }
+    .story-caption small {
+      color: var(--peach-dark);
+      font-family: "Fredoka", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .14em;
+    }
+    .story-caption h3 {
+      margin: 5px 0 0;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+    .story-caption p { margin: 10px 0 0; color: var(--muted); font-size: 12px; }
 
-    @media (max-width: 680px) {
-      .hero { min-height: 720px; padding-inline: 18px; }
-      h1 { font-size: 46px; }
-      main { padding-top: 28px; }
-      .section { border-radius: 19px; }
-      .detail-grid, .access-grid { grid-template-columns: 1fr; }
-      .detail-card { text-align: left; }
-      .scroll-note { white-space: nowrap; }
+    .gallery {
+      padding: 52px 0 58px;
+      background: var(--paper);
+    }
+    .gallery .story-head { padding: 0 22px; }
+    .gallery-track {
+      display: grid;
+      grid-auto-columns: 74%;
+      grid-auto-flow: column;
+      gap: 12px;
+      overflow-x: auto;
+      margin-top: 26px;
+      padding: 0 22px 10px;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--line) transparent;
+    }
+    .gallery-card {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #eadccf;
+      scroll-snap-align: center;
+    }
+    .gallery-card img {
+      display: block;
+      width: 100%;
+      height: 285px;
+      object-fit: cover;
+    }
+    .gallery-card figcaption {
+      padding: 13px 16px 15px;
+      color: var(--ink);
+      background: #fffaf5;
+      font-size: 11px;
+      letter-spacing: .05em;
+    }
+
+    .access {
+      margin: 0 18px;
+      padding: 42px 24px;
+      border-radius: 34px;
+      background: var(--cream);
+      text-align: center;
+    }
+    .access address { margin-top: 20px; font-style: normal; }
+    .access address strong { display: block; font-size: 18px; letter-spacing: .08em; }
+    .access address span { display: block; margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .access-note {
+      margin: 17px 0 0;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: left;
+    }
+    .guest-list {
+      display: grid;
+      gap: 8px;
+      margin: 20px 0 0;
+      padding: 0;
+      list-style: none;
+      text-align: left;
+    }
+    .guest-list li {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 9px;
+      align-items: start;
+      font-size: 12px;
+    }
+    .guest-list .material-symbols-rounded { color: var(--peach-dark); font-size: 20px; }
+    .link-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 9px;
+      margin-top: 24px;
+    }
+    .outline-link {
+      display: inline-flex;
+      min-height: 45px;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 11px;
+      color: var(--peach-dark);
+      border: 1px solid var(--peach-dark);
+      border-radius: 999px;
+      background: #fffaf6;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .rsvp {
+      margin: 48px 18px 0;
+      padding: 46px 24px 42px;
+      color: #fff8f2;
+      border-radius: 34px;
+      background: var(--wine);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .rsvp .section-label { color: #ffc29b; }
+    .rsvp .section-label::after { background: #ffc29b; }
+    .rsvp .section-heading { color: #fffaf5; }
+    .rsvp p { margin: 15px auto 0; max-width: 29em; color: #f4e5df; font-size: 12px; }
+    .deadline { color: #ffe2c9 !important; font-weight: 600; }
+    .rsvp-button {
+      display: inline-flex;
+      width: min(100%, 310px);
+      min-height: 56px;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      margin-top: 25px;
+      padding: 12px 20px;
+      color: #783e2b;
+      border: 0;
+      border-radius: 999px;
+      background: #fff2e8;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .rsvp-button[aria-disabled="true"] { cursor: not-allowed; opacity: .55; }
+    .form-note { margin-top: 12px !important; color: #e6d0c9 !important; font-size: 10px !important; }
+
+    footer {
+      padding: 58px 24px 52px;
+      color: var(--peach-dark);
+      background: var(--paper);
+      text-align: center;
+    }
+    .footer-mark {
+      display: inline-grid;
+      place-items: center;
+      width: 54px;
+      height: 54px;
+      color: var(--peach);
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+    footer strong {
+      display: block;
+      margin-top: 14px;
+      font-family: "Fredoka", sans-serif;
+      font-size: 20px;
+      letter-spacing: .04em;
+    }
+    footer small { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+
+    @media (max-width: 390px) {
+      .hero, .hero-content { min-height: 475px; }
+      .hero-content { padding-inline: 18px; }
+      .hero-title { font-size: 72px; }
+      .date-lockup { top: 190px; right: 15px; }
+      .intro { padding-inline: 22px; }
+      .event-facts { margin-inline: -4px; }
+      .fact { padding-inline: 4px; }
+      .fact strong { font-size: 11px; }
+    }
+
+    @media (min-width: 561px) {
+      body { padding: 24px 0; }
+      .site-shell { border-radius: 30px; }
+      .draft-bar { border-radius: 30px 30px 0 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
 <body>
-  <div class="draft-bar" id="draftBar">下書きプレビュー｜日程と会場が確定するまで招待客へ送らないでください</div>
-  <header class="hero">
-    <div class="hero-content">
-      <p class="eyebrow">WEDDING INVITATION</p>
-      <h1>Wedding<br>Invitation</h1>
-      <p class="from" id="fromText">私たちより</p>
-      <div class="hero-divider"></div>
-      <p class="date-main" id="dateMain">2027.01.23 SAT</p>
-      <p class="time" id="timeText">CEREMONY 11:00</p>
-      <p class="venue" id="venueText">PRIMROSE</p>
-    </div>
-    <p class="scroll-note">SCROLL TO VIEW</p>
-  </header>
+  <div class="site-shell">
+    <div class="draft-bar" id="draftBar">下書きプレビュー｜日程と会場はまだ検討中です</div>
 
-  <main>
-    <section class="section">
-      <p class="section-kicker">MESSAGE</p>
-      <h2>大切な皆さまへ</h2>
-      <div class="message">
-        <p>このたび 私たちは結婚式を挙げることとなりました</p>
-        <p>日頃お世話になっている皆さまと<br>かけがえのない時間を過ごせましたら幸いです</p>
-        <p>ご多用中とは存じますが<br>ぜひご出席くださいますようお願い申し上げます</p>
+    <header class="hero">
+      <img class="hero-image" src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/bg_mv_1.webp" alt="プリムローズの大聖堂で祝福を受ける新郎新婦">
+      <div class="hero-tint" aria-hidden="true"></div>
+      <div class="hero-content">
+        <p class="hero-kicker">WEDDING INVITATION</p>
+        <h1 class="hero-title"><span>YOU’RE</span><span>INVITED</span></h1>
+        <p class="hero-from" id="fromText">私たちより</p>
+
+        <div class="date-lockup" aria-label="挙式日">
+          <span class="date-year" id="dateYear">2027</span>
+          <span class="date-month" id="dateMonth">01</span>
+          <span class="date-divider" aria-hidden="true"></span>
+          <span class="date-day" id="dateDay">23</span>
+          <span class="date-weekday" id="dateWeekday">SAT</span>
+        </div>
+
+        <div class="hero-facts">
+          <p><small>CEREMONY</small><strong id="heroTime">11:00</strong></p>
+          <p><small>VENUE</small><strong id="heroVenue">PRIMROSE</strong></p>
+        </div>
+
+        <a class="scroll-link" href="#message">
+          <span>SCROLL</span>
+          <span class="material-symbols-rounded" aria-hidden="true">keyboard_arrow_down</span>
+        </a>
       </div>
-    </section>
+    </header>
 
-    <section class="section">
-      <p class="section-kicker">DATE &amp; VENUE</p>
-      <h2>日時・会場</h2>
-      <div class="detail-grid">
-        <div class="detail-card"><small>DATE</small><strong id="detailDate">2027年1月23日(土)</strong></div>
-        <div class="detail-card"><small>CEREMONY</small><strong id="detailTime">11:00</strong></div>
-        <div class="detail-card"><small>VENUE</small><strong id="detailVenue">PRIMROSE</strong></div>
-      </div>
-    </section>
+    <main>
+      <section class="intro" id="message">
+        <p class="section-label">Reception</p>
+        <h2>はじまりの一日を、<br>大切な皆さまと。</h2>
+        <div class="message-copy">
+          <p>お集まりいただいた皆さまと一緒に<br>笑顔あふれるひとときを過ごしたいと願っています</p>
+          <p>ささやかではありますが<br>心を込めておもてなしいたします</p>
+        </div>
+        <span class="floral-mark material-symbols-rounded" aria-hidden="true">local_florist</span>
 
-    <section class="section">
-      <p class="section-kicker">ACCESS</p>
-      <h2>会場へのアクセス</h2>
-      <div class="access-grid">
-        <div class="access-copy">
-          <address><strong>プリムローズ</strong><br>〒701-0151<br>岡山県岡山市北区平野544-1</address>
-          <p>JR岡山駅西口から無料シャトルバスで約20分。運行時間は式場からの案内をご確認ください。</p>
-          <div class="link-row">
-            <a class="outline-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%97%E3%83%AA%E3%83%A0%E3%83%AD%E3%83%BC%E3%82%BA%20%E5%B2%A1%E5%B1%B1%E7%9C%8C%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E544-1" target="_blank" rel="noopener">地図を開く</a>
-            <a class="outline-link" href="https://space.fivestar-wedding.com/primrose-okayama/access/" target="_blank" rel="noopener">公式アクセス案内</a>
+        <div class="event-facts" aria-label="日時と会場">
+          <div class="fact">
+            <span class="material-symbols-rounded" aria-hidden="true">calendar_month</span>
+            <small>DATE</small>
+            <strong id="detailDate">2027年1月23日(土)</strong>
+          </div>
+          <div class="fact">
+            <span class="material-symbols-rounded" aria-hidden="true">schedule</span>
+            <small>CEREMONY</small>
+            <strong id="detailTime">11:00</strong>
+          </div>
+          <div class="fact">
+            <span class="material-symbols-rounded" aria-hidden="true">church</span>
+            <small>VENUE</small>
+            <strong id="detailVenue">PRIMROSE</strong>
           </div>
         </div>
-        <div class="guest-note">
-          <strong>ゲスト向け設備</strong>
-          <ul>
-            <li>更衣室・クロークあり</li>
-            <li>留袖・モーニングなどのレンタルと着付けに対応</li>
-            <li>食物アレルギーは出欠回答フォームでお知らせください</li>
-          </ul>
+      </section>
+
+      <section class="story">
+        <div class="story-head">
+          <p class="section-label">Our Place</p>
+          <h2 class="section-heading">祝福に包まれる場所</h2>
+          <p>ステンドグラスが輝く大聖堂で<br>皆さまをお迎えします</p>
         </div>
-      </div>
-    </section>
+        <figure class="story-photo">
+          <img src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/img_ceremony_main.webp" alt="プリムローズのセント・ポール大聖堂" loading="lazy">
+          <figcaption class="story-caption">
+            <small>ST. PAUL CATHEDRAL</small>
+            <h3>PRIMROSE</h3>
+            <p>ヨーロッパの街並みを思わせる空間と、歴史あるステンドグラスが迎える大聖堂です。</p>
+          </figcaption>
+        </figure>
+      </section>
 
-    <section class="section rsvp" id="rsvp">
-      <p class="section-kicker">R.S.V.P.</p>
-      <h2>出欠のご回答</h2>
-      <p>お手数ですが、下のボタンから出欠と必要事項をご回答ください。</p>
-      <p class="deadline" id="deadlineText">回答期限は後日お知らせします</p>
-      <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true">回答フォームは準備中</a>
-      <p class="form-note" id="formNote">Googleフォームが連携されると、ここから回答できます。</p>
-    </section>
-  </main>
+      <section class="gallery" aria-labelledby="galleryTitle">
+        <div class="story-head">
+          <p class="section-label">Gallery</p>
+          <h2 class="section-heading" id="galleryTitle">おもてなしの景色</h2>
+        </div>
+        <div class="gallery-track">
+          <figure class="gallery-card">
+            <img src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/img_ceremony_main.webp" alt="大聖堂の様子" loading="lazy">
+            <figcaption>光あふれる大聖堂</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/img_party_main.webp" alt="披露宴会場の様子" loading="lazy">
+            <figcaption>ゆったり過ごすパーティ会場</figcaption>
+          </figure>
+          <figure class="gallery-card">
+            <img src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/img_cuisine_main.webp" alt="婚礼料理" loading="lazy">
+            <figcaption>皆さまへ贈る婚礼料理</figcaption>
+          </figure>
+        </div>
+      </section>
 
-  <footer id="footerText">WITH GRATITUDE · 私たちより</footer>
+      <section class="access" aria-labelledby="accessTitle">
+        <p class="section-label">Information</p>
+        <h2 class="section-heading" id="accessTitle">会場へのアクセス</h2>
+        <address>
+          <strong>プリムローズ</strong>
+          <span>〒701-0151　岡山県岡山市北区平野544-1</span>
+        </address>
+        <p class="access-note">JR岡山駅西口から無料シャトルバスで約20分です。運行時間は式場からのご案内をご確認ください。</p>
+        <ul class="guest-list">
+          <li><span class="material-symbols-rounded" aria-hidden="true">checkroom</span><span>更衣室・クロークをご利用いただけます</span></li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">directions_bus</span><span>シャトルバスの利用希望は出欠フォームで伺います</span></li>
+          <li><span class="material-symbols-rounded" aria-hidden="true">restaurant</span><span>食物アレルギーも出欠フォームでお知らせください</span></li>
+        </ul>
+        <div class="link-row">
+          <a class="outline-link" href="https://www.google.com/maps/search/?api=1&amp;query=%E3%83%97%E3%83%AA%E3%83%A0%E3%83%AD%E3%83%BC%E3%82%BA%20%E5%B2%A1%E5%B1%B1%E7%9C%8C%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E544-1" target="_blank" rel="noopener">地図を開く</a>
+          <a class="outline-link" href="https://space.fivestar-wedding.com/primrose-okayama/access/" target="_blank" rel="noopener">公式アクセス案内</a>
+        </div>
+      </section>
+
+      <section class="rsvp" id="rsvp">
+        <p class="section-label">R.S.V.P.</p>
+        <h2 class="section-heading">出欠のご回答</h2>
+        <p>お手数ですが、下のボタンから出欠と必要事項をご回答ください。</p>
+        <p class="deadline" id="deadlineText">回答期限は後日お知らせします</p>
+        <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true">
+          <span>回答フォームは準備中</span>
+          <span class="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
+        </a>
+        <p class="form-note" id="formNote">Googleフォームが連携されると、ここから回答できます。</p>
+      </section>
+    </main>
+
+    <footer>
+      <span class="footer-mark material-symbols-rounded" aria-hidden="true">favorite</span>
+      <strong>Thank you</strong>
+      <small id="footerText">WITH GRATITUDE · 私たちより</small>
+    </footer>
+  </div>
 
   <script>
     const params = new URLSearchParams(location.search);
@@ -204,30 +648,37 @@
     };
 
     const formUrl = safeFormUrl(params.get("form"));
-    const date = new Date(`${dateValue}T00:00:00`);
+    const date = new Date(dateValue + "T00:00:00");
     const validDate = !Number.isNaN(date.getTime());
+    const weekdays = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
     const dateJa = validDate
       ? new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short" }).format(date)
       : "日程は後日お知らせします";
-    const dateHero = validDate
-      ? `${date.getFullYear()}.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")} ${["SUN","MON","TUE","WED","THU","FRI","SAT"][date.getDay()]}`
-      : "DATE TO BE ANNOUNCED";
 
     document.querySelector("#draftBar").hidden = !isDraft;
-    document.querySelector("#fromText").textContent = `${names}より`;
-    document.querySelector("#dateMain").textContent = dateHero;
-    document.querySelector("#timeText").textContent = `CEREMONY ${timeValue}`;
-    document.querySelector("#venueText").textContent = venue;
+    document.querySelector("#fromText").textContent = names + "より";
+    document.querySelector("#heroTime").textContent = timeValue;
+    document.querySelector("#heroVenue").textContent = venue;
     document.querySelector("#detailDate").textContent = dateJa;
     document.querySelector("#detailTime").textContent = timeValue;
     document.querySelector("#detailVenue").textContent = venue;
-    document.querySelector("#footerText").textContent = `WITH GRATITUDE · ${names}より`;
-    document.title = `${names} Wedding Invitation`;
+    document.querySelector("#footerText").textContent = "WITH GRATITUDE · " + names + "より";
+    document.title = names + " Wedding Invitation";
+
+    if (validDate) {
+      document.querySelector("#dateYear").textContent = String(date.getFullYear());
+      document.querySelector("#dateMonth").textContent = String(date.getMonth() + 1).padStart(2, "0");
+      document.querySelector("#dateDay").textContent = String(date.getDate()).padStart(2, "0");
+      document.querySelector("#dateWeekday").textContent = weekdays[date.getDay()];
+    } else {
+      document.querySelector(".date-lockup").hidden = true;
+    }
 
     if (deadline) {
-      const deadlineDate = new Date(`${deadline}T00:00:00`);
+      const deadlineDate = new Date(deadline + "T00:00:00");
       if (!Number.isNaN(deadlineDate.getTime())) {
-        document.querySelector("#deadlineText").textContent = `${new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric" }).format(deadlineDate)}までにご回答ください`;
+        const formattedDeadline = new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric" }).format(deadlineDate);
+        document.querySelector("#deadlineText").textContent = formattedDeadline + "までにご回答ください";
       }
     }
 
@@ -237,7 +688,7 @@
       rsvpButton.target = "_blank";
       rsvpButton.rel = "noopener";
       rsvpButton.removeAttribute("aria-disabled");
-      rsvpButton.textContent = "出欠を回答する";
+      rsvpButton.querySelector("span:first-child").textContent = "出欠を回答する";
       document.querySelector("#formNote").textContent = "回答内容はGoogleフォームへ送信されます。";
     } else {
       rsvpButton.addEventListener("click", event => event.preventDefault());
