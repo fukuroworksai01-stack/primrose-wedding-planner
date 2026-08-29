@@ -247,6 +247,14 @@
     }
 
     button:hover { background: var(--blue-soft); }
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid rgba(123,77,85,.28);
+      outline-offset: 2px;
+    }
     .toggle { display: inline-flex; gap: 8px; align-items: center; color: var(--muted); font-size: 13px; }
 
     details {
@@ -754,6 +762,188 @@
       font-size: 13px;
     }
 
+    .home-prep-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 360px) auto;
+      gap: 20px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 18px 20px;
+      border: 1px solid #d9c9c7;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fffaf7 0%, #f7eff0 100%);
+    }
+
+    .home-prep-card small { color: var(--gold); font-size: 10px; font-weight: 900; letter-spacing: .12em; }
+    .home-prep-card strong { display: block; margin-top: 4px; color: var(--navy); font-size: 17px; }
+    .home-prep-card p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+    .home-prep-card button { min-height: 44px; color: #fff; border-color: var(--blue); background: var(--blue); white-space: nowrap; }
+    .home-prep-card button:hover { color: #fff; background: #694149; }
+    .home-prep-progress .progress-label { margin-bottom: 6px; }
+
+    .prep-overview {
+      overflow: hidden;
+      border-color: #d9c9c7;
+      background: linear-gradient(135deg, #fffdfb 0%, #f8eff1 100%);
+    }
+
+    .prep-overview-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .prep-overview-head .section-title { margin-bottom: 7px; word-break: keep-all; }
+    .prep-overview-head p { max-width: 720px; margin: 0; color: var(--muted); }
+    .prep-days-badge {
+      flex: 0 0 auto;
+      padding: 8px 13px;
+      border: 1px solid #d6bd88;
+      border-radius: 999px;
+      color: #725727;
+      background: var(--gold-soft);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    .prep-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .prep-summary-card {
+      min-height: 112px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(255,255,255,.72);
+    }
+
+    .prep-summary-card small { display: block; color: var(--muted); font-size: 11px; font-weight: 800; }
+    .prep-summary-card strong { display: block; margin-top: 5px; color: var(--navy); font-size: 20px; line-height: 1.45; }
+    .prep-summary-card p { margin: 5px 0 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
+    .prep-overall-progress { margin-top: 16px; }
+
+    .prep-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .prep-filter-buttons { display: flex; flex-wrap: wrap; gap: 7px; }
+    .prep-filter-button {
+      min-height: 40px;
+      padding: 8px 13px;
+      border-color: #d6c7c5;
+      color: var(--muted);
+      background: #fff;
+    }
+    .prep-filter-button[aria-pressed="true"] { color: #fff; border-color: var(--blue); background: var(--blue); }
+    .prep-owner-filter { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: 12px; font-weight: 800; }
+    .prep-owner-filter select,
+    .prep-field select,
+    .prep-field input {
+      min-height: 40px;
+      padding: 8px 10px;
+      border: 1px solid #bdc9d1;
+      border-radius: 9px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+    }
+
+    .prep-phase-list { display: grid; gap: 15px; }
+    .prep-phase {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #fffaf7;
+    }
+
+    .prep-phase-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 15px 17px;
+      border-bottom: 1px solid var(--line);
+      background: #f8f1ef;
+    }
+
+    .prep-phase-kicker { display: block; color: var(--gold); font-size: 10px; font-weight: 900; letter-spacing: .1em; }
+    .prep-phase-head h3 { margin: 2px 0 0; color: var(--navy); font-size: 17px; }
+    .prep-phase-count { color: var(--muted); font-size: 12px; font-weight: 800; white-space: nowrap; }
+    .prep-task-list { display: grid; }
+    .prep-task {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 13px;
+      align-items: start;
+      padding: 15px 17px;
+      background: #fffdfb;
+    }
+    .prep-task + .prep-task { border-top: 1px solid var(--line); }
+    .prep-task.done { background: #f8f5f2; }
+    .prep-task-check { width: 20px; height: 20px; margin-top: 3px; accent-color: var(--green); cursor: pointer; }
+    .prep-task-category {
+      display: inline-block;
+      margin-bottom: 5px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      color: #73565b;
+      background: var(--blue-soft);
+      font-size: 10px;
+      font-weight: 900;
+    }
+    .prep-task-title { margin: 0; color: var(--ink); font-weight: 800; line-height: 1.55; }
+    .prep-task.done .prep-task-title { color: var(--muted); text-decoration: line-through; }
+    .prep-task-meta { display: grid; grid-template-columns: repeat(2, minmax(125px, 170px)); gap: 9px; margin-top: 10px; }
+    .prep-field { display: grid; gap: 3px; }
+    .prep-field span { color: var(--muted); font-size: 10px; font-weight: 800; }
+    .prep-field select, .prep-field input { width: 100%; min-width: 0; font-size: 12px; }
+    .prep-field select:focus, .prep-field input:focus, .prep-owner-filter select:focus {
+      border-color: var(--blue);
+      outline: 3px solid rgba(123,77,85,.14);
+    }
+    .prep-task-side { min-width: 92px; display: grid; gap: 8px; justify-items: end; }
+    .prep-task-status {
+      padding: 4px 8px;
+      border-radius: 999px;
+      color: var(--muted);
+      background: #f0ece9;
+      font-size: 10px;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+    .prep-task-status.soon { color: #765100; background: #fff0c8; }
+    .prep-task-status.overdue { color: var(--red); background: var(--red-soft); }
+    .prep-task-status.complete { color: var(--green); background: var(--green-soft); }
+    .prep-delete { padding: 5px 8px; border-color: #e1c5c3; color: var(--red); background: transparent; font-size: 11px; }
+    .prep-empty { margin: 0; padding: 30px 16px; color: var(--muted); text-align: center; }
+
+    .prep-add {
+      margin-top: 18px;
+      border-style: dashed;
+      background: #fffdfb;
+    }
+    .prep-add summary { background: #fffaf7; }
+    .prep-add-form {
+      display: grid;
+      grid-template-columns: minmax(220px, 1.5fr) repeat(3, minmax(130px, .7fr)) auto;
+      gap: 10px;
+      align-items: end;
+      padding: 16px;
+    }
+    .prep-add-form button { min-height: 40px; color: #fff; border-color: var(--blue); background: var(--blue); }
+    .prep-add-note { margin: 0; padding: 0 16px 16px; color: var(--muted); font-size: 11px; }
+
     .question-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
     .question-card {
       min-height: 170px;
@@ -1023,6 +1213,12 @@
       .progress-wrap { min-width: 100%; }
       .info-grid { grid-template-columns: 1fr; }
       .home-grid { grid-template-columns: repeat(2, 1fr); }
+      .home-prep-card { grid-template-columns: 1fr; }
+      .home-prep-card button { justify-self: start; }
+      .prep-summary-grid { grid-template-columns: 1fr; }
+      .prep-add-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .prep-add-form .prep-field:first-child { grid-column: 1 / -1; }
+      .prep-add-form button { justify-self: start; }
       .question-grid { grid-template-columns: repeat(2, 1fr); }
       .decision-steps { grid-template-columns: 1fr; }
       .stage-head { display: grid; }
@@ -1074,12 +1270,34 @@
       .invite-field-wide { grid-column: auto; }
       .invite-share { grid-template-columns: 1fr; }
       .invite-share input { grid-column: auto; }
+      .prep-overview-head { display: grid; }
+      .prep-days-badge { justify-self: start; }
+      .prep-toolbar { align-items: stretch; }
+      .prep-owner-filter { width: 100%; justify-content: space-between; }
+      .prep-owner-filter select { flex: 1; }
+      .prep-phase-head { align-items: start; }
+      .prep-task { grid-template-columns: auto minmax(0, 1fr); padding: 14px 13px; }
+      .prep-task-side { grid-column: 2; min-width: 0; display: flex; justify-content: space-between; justify-items: stretch; align-items: center; }
+      .prep-task-meta { grid-template-columns: 1fr 1fr; }
+      .prep-add-form { grid-template-columns: 1fr; }
+      .prep-add-form .prep-field:first-child { grid-column: auto; }
       .task-form { grid-template-columns: 1fr; }
       .task-item { grid-template-columns: auto 1fr auto; }
       .task-date { grid-column: 2; }
       .timeline-item { grid-template-columns: 30px 92px 1fr; }
       .timeline-status { grid-column: 3; }
       .estimate-sheet-scroll { margin-inline: -7px; padding: 8px; border-radius: 12px; }
+    }
+
+    @media (max-width: 360px) {
+      .prep-task-meta { grid-template-columns: 1fr; }
+      .prep-filter-buttons { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      [data-tab-panel] { animation: none; }
+      .progress-bar span { transition: none; }
     }
 
     @media print {
@@ -1089,7 +1307,7 @@
       .hero, .panel { box-shadow: none; break-inside: avoid; }
       .panel { margin-top: 12px; padding: 14px; }
       .tools { display: none; }
-      .action-bar, .task-form, .edit-note { display: none; }
+      .action-bar, .task-form, .edit-note, .prep-toolbar, .prep-add, .prep-delete { display: none; }
       .cell-input { border: 0; padding: 0; min-height: 0; }
       details { break-inside: auto; }
       details:not([open]) > :not(summary) { display: block; }
@@ -1129,10 +1347,11 @@
       </div>
     </header>
 
-    <nav class="app-tabs" aria-label="初回見積の確認メニュー" role="tablist">
+    <nav class="app-tabs" aria-label="結婚式準備メニュー" role="tablist">
       <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home">まとめ</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget">見積</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests">人数試算</button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="prep">準備</button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue">会場メモ</button>
     </nav>
 
@@ -1163,6 +1382,18 @@
         <article class="home-card"><div><small>条件付き特典</small><strong id="homeConditionalBenefits">800,000円</strong></div><button type="button" data-tab-target="venue">適用条件を見る</button></article>
       </div>
       <p class="home-callout"><strong>注意：</strong>この見積には「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が含まれています。特典が外れた場合の金額も確認してください。</p>
+      <div class="home-prep-card">
+        <div>
+          <small>PREPARATION</small>
+          <strong id="homePrepTitle">準備 0 / 25件完了</strong>
+          <p id="homePrepNext">次に進める予定を表示します。</p>
+        </div>
+        <div class="home-prep-progress">
+          <div class="progress-label"><span>準備の進み具合</span><span id="homePrepPercent">0%</span></div>
+          <div class="progress-bar" id="homePrepProgress" role="progressbar" aria-label="準備の進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="homePrepBar"></span></div>
+        </div>
+        <button type="button" data-tab-target="prep">準備を進める</button>
+      </div>
     </section>
 
     <section class="panel" data-tab-panel="home">
@@ -1174,6 +1405,85 @@
         <article class="question-card"><span class="question-number">QUESTION 03</span><strong>この見積に入っていない、必要になりやすい費用は？</strong><p>持込料、写真、映像、送迎などの漏れを確認します。</p></article>
         <article class="question-card"><span class="question-number">QUESTION 04</span><strong>特典の期限と、キャンセル・日程変更の条件は？</strong><p>契約前に必ず書面で確認しておきます。</p></article>
       </div>
+    </section>
+
+    <section class="panel prep-overview" data-tab-panel="prep" hidden>
+      <div class="prep-overview-head">
+        <div>
+          <h2 class="section-title">挙式日から逆算した<wbr>準備スケジュール</h2>
+          <p>今は会場選びの段階です。まず必要なことから順番に、担当と期限をふたりで調整できます。</p>
+        </div>
+        <span class="prep-days-badge" id="prepDaysBadge">挙式までの日数を計算中</span>
+      </div>
+      <div class="prep-summary-grid">
+        <article class="prep-summary-card">
+          <small>完了した準備</small>
+          <strong id="prepCompleteSummary">0 / 25件</strong>
+          <p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p>
+        </article>
+        <article class="prep-summary-card">
+          <small>次に進めること</small>
+          <strong id="prepNextTitle">準備内容を読み込み中</strong>
+          <p id="prepNextDate">期限の目安を表示します。</p>
+        </article>
+        <article class="prep-summary-card">
+          <small>先に着手する予定</small>
+          <strong id="prepPriorityCount">0件</strong>
+          <p id="prepPriorityNote">期限が近い予定をまとめます。</p>
+        </article>
+      </div>
+      <div class="prep-overall-progress">
+        <div class="progress-label" aria-live="polite"><span>全体の進捗</span><span id="prepProgressText">0%</span></div>
+        <div class="progress-bar" id="prepOverallProgress" role="progressbar" aria-label="準備全体の進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="prepProgressBar"></span></div>
+      </div>
+    </section>
+
+    <section class="panel" data-tab-panel="prep" hidden>
+      <h2 class="section-title">時期別のやること</h2>
+      <p class="tab-intro">期限は候補日から逆算した目安です。式場の案内に合わせて日付と担当を変更してください。</p>
+      <div class="prep-toolbar">
+        <div class="prep-filter-buttons" role="group" aria-label="準備の表示">
+          <button class="prep-filter-button" type="button" data-prep-filter="all" aria-pressed="true">すべて</button>
+          <button class="prep-filter-button" type="button" data-prep-filter="open" aria-pressed="false">未完了</button>
+          <button class="prep-filter-button" type="button" data-prep-filter="done" aria-pressed="false">完了</button>
+        </div>
+        <label class="prep-owner-filter"><span>担当で絞る</span>
+          <select id="prepOwnerFilter">
+            <option value="all">全員</option>
+            <option value="ふたり">ふたり</option>
+            <option value="新郎">新郎</option>
+            <option value="新婦">新婦</option>
+          </select>
+        </label>
+      </div>
+      <div class="prep-phase-list" id="prepPhaseList"></div>
+      <p class="prep-empty hidden" id="prepEmpty">条件に合う予定はありません。</p>
+
+      <details class="prep-add">
+        <summary>ふたりの予定を追加</summary>
+        <form class="prep-add-form" id="prepAddForm">
+          <label class="prep-field"><span>やること</span><input id="prepNewText" type="text" maxlength="120" placeholder="例：両親の衣裳を予約" required></label>
+          <label class="prep-field"><span>時期</span>
+            <select id="prepNewPhase">
+              <option value="foundation">まず決める</option>
+              <option value="direction">招待の土台</option>
+              <option value="details">内容を固める</option>
+              <option value="finalize">人数・当日準備</option>
+              <option value="last">最終仕上げ</option>
+            </select>
+          </label>
+          <label class="prep-field"><span>担当</span>
+            <select id="prepNewOwner">
+              <option value="ふたり">ふたり</option>
+              <option value="新郎">新郎</option>
+              <option value="新婦">新婦</option>
+            </select>
+          </label>
+          <label class="prep-field"><span>期限</span><input id="prepNewDate" type="date"></label>
+          <button type="submit">追加する</button>
+        </form>
+        <p class="prep-add-note">追加した予定はこの端末に自動保存され、あとから削除できます。</p>
+      </details>
     </section>
 
     <section class="panel" data-tab-panel="budget" hidden>
@@ -1500,8 +1810,48 @@
       guestDeltaCost: 22000,
       syncGuests: true
     };
-    const UX_VERSION = 5;
+    const UX_VERSION = 6;
     const initialRows = defaultRows.map(row => [...row, row[4] !== "参考価格"]);
+    const prepPhases = [
+      { id: "foundation", kicker: "STEP 01 / NOW", title: "まず決める", period: "会場見学・契約" },
+      { id: "direction", kicker: "STEP 02", title: "招待の土台", period: "衣裳・ゲスト・招待状" },
+      { id: "details", kicker: "STEP 03", title: "内容を固める", period: "約3〜1.5か月前" },
+      { id: "finalize", kicker: "STEP 04", title: "人数・当日準備", period: "約6〜2週間前" },
+      { id: "last", kicker: "STEP 05", title: "最終仕上げ", period: "約2週間前〜前日" }
+    ];
+    const prepTaskTemplates = [
+      { id: "set-priorities", phase: "foundation", category: "会場・予算", text: "ふたりの希望条件・予算上限・ゲスト概数を整理する", owner: "ふたり", daysBefore: 147 },
+      { id: "compare-venues", phase: "foundation", category: "会場・予算", text: "同じ人数と条件で候補会場を見学し、見積を比較する", owner: "ふたり", daysBefore: 140 },
+      { id: "check-estimate", phase: "foundation", category: "会場・予算", text: "追加料金・持込料・特典が外れた場合の金額を確認する", owner: "ふたり", daysBefore: 133 },
+      { id: "check-contract", phase: "foundation", category: "会場・予算", text: "契約条件・キャンセル規定・支払時期を確認する", owner: "ふたり", daysBefore: 126 },
+      { id: "choose-venue", phase: "foundation", category: "会場・予算", text: "会場と日程を決め、両家へ共有する", owner: "ふたり", daysBefore: 119 },
+
+      { id: "guest-list", phase: "direction", category: "ゲスト", text: "両家の招待候補・住所・連絡先をまとめる", owner: "ふたり", daysBefore: 112 },
+      { id: "choose-dress", phase: "direction", category: "衣裳・美容", text: "ドレスの試着を始め、衣裳プランを決める", owner: "新婦", daysBefore: 108 },
+      { id: "choose-tuxedo", phase: "direction", category: "衣裳・美容", text: "タキシードと新郎小物の候補を決める", owner: "新郎", daysBefore: 104 },
+      { id: "order-rings", phase: "direction", category: "指輪", text: "結婚指輪を決め、仕上がり日を確認して注文する", owner: "ふたり", daysBefore: 98 },
+      { id: "prepare-invitation", phase: "direction", category: "招待状", text: "Web招待状の文面・写真・出欠フォームを整える", owner: "ふたり", daysBefore: 91 },
+
+      { id: "send-invitation", phase: "details", category: "招待状", text: "招待状を送り、出欠回答の期限を案内する", owner: "ふたり", daysBefore: 84 },
+      { id: "food-drink", phase: "details", category: "料理", text: "料理・飲物・ケーキとアレルギー対応を決める", owner: "ふたり", daysBefore: 77 },
+      { id: "flowers", phase: "details", category: "装花", text: "会場装花・ブーケ・テーブルの色合いを決める", owner: "ふたり", daysBefore: 70 },
+      { id: "program-music", phase: "details", category: "進行・演出", text: "当日の進行・BGM・スピーチ・余興を決める", owner: "ふたり", daysBefore: 63 },
+      { id: "photo-video", phase: "details", category: "写真・映像", text: "写真・映像・前撮りの内容と必要な素材を確定する", owner: "新郎", daysBefore: 56 },
+      { id: "legal-travel", phase: "details", category: "手続き・旅行", text: "婚姻届の必要書類、休暇、旅行の予定を確認する", owner: "ふたり", daysBefore: 49 },
+
+      { id: "final-responses", phase: "finalize", category: "ゲスト", text: "出欠・アレルギー・送迎・宿泊希望を確定する", owner: "ふたり", daysBefore: 42 },
+      { id: "seating", phase: "finalize", category: "ゲスト", text: "席次と肩書きを両家で確認する", owner: "ふたり", daysBefore: 35 },
+      { id: "beauty-fitting", phase: "finalize", category: "衣裳・美容", text: "ヘアメイクリハーサルと最終フィッティングを行う", owner: "新婦", daysBefore: 28 },
+      { id: "gifts-paper", phase: "finalize", category: "ギフト・印刷", text: "引出物・プチギフト・席札などの内容と数量を確定する", owner: "ふたり", daysBefore: 24 },
+      { id: "assign-roles", phase: "finalize", category: "当日運営", text: "受付・スピーチなどの依頼と関係者の連絡先を整理する", owner: "新郎", daysBefore: 18 },
+
+      { id: "final-count-payment", phase: "last", category: "会場・予算", text: "最終人数・最終見積・支払額と変更期限を確認する", owner: "ふたり", daysBefore: 14 },
+      { id: "deliver-items", phase: "last", category: "持ち物", text: "衣裳・指輪・手紙・ギフト・持込物をまとめて搬入する", owner: "ふたり", daysBefore: 7 },
+      { id: "share-schedule", phase: "last", category: "当日運営", text: "当日の時間割・緊急連絡先・お車代や謝礼を共有する", owner: "新郎", daysBefore: 3 },
+      { id: "rest-before", phase: "last", category: "体調", text: "持ち物を最終確認し、リハーサル後は早めに休む", owner: "新婦", daysBefore: 1 }
+    ].map(task => ({ ...task, dueDate: "", done: false, custom: false }));
+    const prepPhaseIds = new Set(prepPhases.map(phase => phase.id));
+    const prepOwners = new Set(["ふたり", "新郎", "新婦"]);
     const serviceTargetItems = new Set([
       "婚礼料理", "お子様料理 3,000円", "お子様料理 4,000円", "お子様料理 6,000円",
       "フリードリンク", "フリーソフトドリンク", "施設使用料", "ボヌール", "司会者",
@@ -1528,15 +1878,31 @@
     const saved = savedV3 || loadSavedState(LEGACY_STORAGE_KEY);
     let settings = { ...baseSettings, ...(saved?.settings || {}) };
     let rows = saved ? saved.rows : structuredClone(initialRows);
+    let prepTasks = normalizePrepTasks(saved?.prepTasks);
 
     const yen = value => value == null ? "—" : `${new Intl.NumberFormat("ja-JP").format(Math.round(value))}円`;
     const signedYen = value => `${value < 0 ? "−" : value > 0 ? "+" : ""}${yen(Math.abs(value))}`;
     const numberFrom = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 
+    function normalizePrepTasks(value) {
+      const source = Array.isArray(value) ? value : prepTaskTemplates;
+      return source.slice(0, 100).map((task, index) => ({
+        id: String(task.id || "prep-" + index).slice(0, 80),
+        phase: prepPhaseIds.has(task.phase) ? task.phase : "foundation",
+        category: String(task.category || "ふたりの予定").slice(0, 40),
+        text: String(task.text || "").trim().slice(0, 120),
+        owner: prepOwners.has(task.owner) ? task.owner : "ふたり",
+        daysBefore: Number.isFinite(Number(task.daysBefore)) ? Number(task.daysBefore) : null,
+        dueDate: /^\d{4}-\d{2}-\d{2}$/.test(String(task.dueDate || "")) ? String(task.dueDate) : "",
+        done: Boolean(task.done),
+        custom: Boolean(task.custom)
+      })).filter(task => task.text);
+    }
+
     function saveState() {
       const label = document.querySelector("#saveState");
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, prepTasks }));
         localStorage.removeItem(LEGACY_STORAGE_KEY);
         label.textContent = `保存済み ${new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}`;
       } catch {
@@ -1701,6 +2067,228 @@
       const today = new Date();
       today.setHours(0, 0, 0, 0);
       return Math.ceil((target.getTime() - today.getTime()) / 86400000);
+    }
+
+    function addDays(date, amount) {
+      const result = new Date(date.getTime());
+      result.setDate(result.getDate() + amount);
+      return result;
+    }
+
+    function dateInputValue(date) {
+      if (!date || Number.isNaN(date.getTime())) return "";
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0");
+      const day = String(date.getDate()).padStart(2, "0");
+      return year + "-" + month + "-" + day;
+    }
+
+    function prepDueValue(task) {
+      if (task.dueDate) return task.dueDate;
+      const wedding = parseLocalDate(settings.weddingDate);
+      if (!wedding || Number.isNaN(wedding.getTime()) || task.daysBefore === null) return "";
+      return dateInputValue(addDays(wedding, -task.daysBefore));
+    }
+
+    function prepDueDate(task) {
+      return parseLocalDate(prepDueValue(task));
+    }
+
+    function prepShortDate(value) {
+      const date = parseLocalDate(value);
+      return date && !Number.isNaN(date.getTime())
+        ? new Intl.DateTimeFormat("ja-JP", { month: "numeric", day: "numeric", weekday: "short" }).format(date)
+        : "期限未設定";
+    }
+
+    function prepStatus(task) {
+      if (task.done) return { label: "完了", className: "complete", days: null };
+      const due = prepDueDate(task);
+      if (!due || Number.isNaN(due.getTime())) return { label: "期限未設定", className: "", days: null };
+      const days = daysFromToday(due);
+      if (days < 0) return { label: "先に着手", className: "overdue", days };
+      if (days === 0) return { label: "今日まで", className: "soon", days };
+      if (days <= 14) return { label: "あと" + days + "日", className: "soon", days };
+      return { label: "あと" + days + "日", className: "", days };
+    }
+
+    function prepStats() {
+      const total = prepTasks.length;
+      const done = prepTasks.filter(task => task.done).length;
+      const open = prepTasks.filter(task => !task.done).sort((a, b) => {
+        const aDate = prepDueDate(a);
+        const bDate = prepDueDate(b);
+        const aTime = aDate && !Number.isNaN(aDate.getTime()) ? aDate.getTime() : Number.POSITIVE_INFINITY;
+        const bTime = bDate && !Number.isNaN(bDate.getTime()) ? bDate.getTime() : Number.POSITIVE_INFINITY;
+        return aTime - bTime;
+      });
+      const priority = open.filter(task => {
+        const status = prepStatus(task);
+        return status.days !== null && status.days <= 14;
+      });
+      const overdue = priority.filter(task => prepStatus(task).days < 0);
+      return { total, done, percent: total ? Math.round(done / total * 100) : 0, open, priority, overdue };
+    }
+
+    function updatePrepHome() {
+      const stats = prepStats();
+      const next = stats.open[0] || null;
+      const wedding = parseLocalDate(settings.weddingDate);
+      const weddingDays = wedding && !Number.isNaN(wedding.getTime()) ? daysFromToday(wedding) : null;
+
+      setText("homePrepTitle", "準備 " + stats.done + " / " + stats.total + "件完了");
+      setText("homePrepPercent", stats.percent + "%");
+      document.querySelector("#homePrepBar").style.width = stats.percent + "%";
+      document.querySelector("#homePrepProgress").setAttribute("aria-valuenow", String(stats.percent));
+      setText("homePrepNext", next ? "次は「" + next.text + "」" : "準備はすべて完了しています。");
+
+      setText("prepCompleteSummary", stats.done + " / " + stats.total + "件");
+      setText("prepCompleteNote", stats.total === 0 ? "予定を追加できます。" : stats.done === stats.total ? "当日までの準備が整いました。" : "未完了はあと" + (stats.total - stats.done) + "件です。");
+      setText("prepNextTitle", next ? next.text : "すべて完了");
+      setText("prepNextDate", next ? prepShortDate(prepDueValue(next)) + "までの目安" : "おつかれさまでした。");
+      setText("prepPriorityCount", stats.priority.length + "件");
+      setText("prepPriorityNote", stats.overdue.length ? stats.overdue.length + "件は目安日を過ぎています。" : stats.priority.length ? "2週間以内の予定です。" : "いま急ぐ予定はありません。");
+      setText("prepProgressText", stats.percent + "%");
+      document.querySelector("#prepProgressBar").style.width = stats.percent + "%";
+      document.querySelector("#prepOverallProgress").setAttribute("aria-valuenow", String(stats.percent));
+
+      if (weddingDays === null) setText("prepDaysBadge", "候補日を設定してください");
+      else if (weddingDays > 0) setText("prepDaysBadge", "挙式まであと" + weddingDays + "日");
+      else if (weddingDays === 0) setText("prepDaysBadge", "挙式当日");
+      else setText("prepDaysBadge", "候補日から" + Math.abs(weddingDays) + "日経過");
+    }
+
+    function prepField(labelText, control) {
+      const label = document.createElement("label");
+      label.className = "prep-field";
+      const caption = document.createElement("span");
+      caption.textContent = labelText;
+      label.append(caption, control);
+      return label;
+    }
+
+    function renderPrepTask(task) {
+      const item = document.createElement("article");
+      item.className = "prep-task" + (task.done ? " done" : "");
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.className = "prep-task-check";
+      checkbox.checked = task.done;
+      checkbox.setAttribute("aria-label", "完了にする：" + task.text);
+      checkbox.addEventListener("change", () => {
+        task.done = checkbox.checked;
+        saveState();
+        renderPrep();
+      });
+
+      const body = document.createElement("div");
+      const category = document.createElement("span");
+      category.className = "prep-task-category";
+      category.textContent = task.category;
+      const title = document.createElement("p");
+      title.className = "prep-task-title";
+      title.textContent = task.text;
+
+      const meta = document.createElement("div");
+      meta.className = "prep-task-meta";
+
+      const owner = document.createElement("select");
+      owner.setAttribute("aria-label", "担当：" + task.text);
+      prepOwners.forEach(ownerName => {
+        const option = document.createElement("option");
+        option.value = ownerName;
+        option.textContent = ownerName;
+        option.selected = task.owner === ownerName;
+        owner.append(option);
+      });
+      owner.addEventListener("change", () => {
+        task.owner = owner.value;
+        saveState();
+        renderPrep();
+      });
+
+      const due = document.createElement("input");
+      due.type = "date";
+      due.value = prepDueValue(task);
+      due.setAttribute("aria-label", "期限：" + task.text);
+      due.addEventListener("change", () => {
+        task.dueDate = due.value;
+        saveState();
+        renderPrep();
+      });
+
+      meta.append(prepField("担当", owner), prepField("期限", due));
+      body.append(category, title, meta);
+
+      const side = document.createElement("div");
+      side.className = "prep-task-side";
+      const statusValue = prepStatus(task);
+      const status = document.createElement("span");
+      status.className = "prep-task-status" + (statusValue.className ? " " + statusValue.className : "");
+      status.textContent = statusValue.label;
+      side.append(status);
+
+      if (task.custom) {
+        const remove = document.createElement("button");
+        remove.type = "button";
+        remove.className = "prep-delete";
+        remove.textContent = "削除";
+        remove.addEventListener("click", () => {
+          if (!confirm("この予定を削除しますか？")) return;
+          prepTasks = prepTasks.filter(itemTask => itemTask.id !== task.id);
+          saveState();
+          renderPrep();
+        });
+        side.append(remove);
+      }
+
+      item.append(checkbox, body, side);
+      return item;
+    }
+
+    function renderPrep() {
+      const root = document.querySelector("#prepPhaseList");
+      const activeFilter = document.querySelector(".prep-filter-button[aria-pressed=\"true\"]")?.dataset.prepFilter || "all";
+      const ownerFilter = document.querySelector("#prepOwnerFilter").value;
+      root.textContent = "";
+      let visibleCount = 0;
+
+      prepPhases.forEach(phase => {
+        const allPhaseTasks = prepTasks.filter(task => task.phase === phase.id);
+        const phaseTasks = allPhaseTasks.filter(task => {
+          const matchesStatus = activeFilter === "all" || (activeFilter === "done" ? task.done : !task.done);
+          const matchesOwner = ownerFilter === "all" || task.owner === ownerFilter;
+          return matchesStatus && matchesOwner;
+        });
+        if (!phaseTasks.length) return;
+
+        visibleCount += phaseTasks.length;
+        const section = document.createElement("section");
+        section.className = "prep-phase";
+        const head = document.createElement("header");
+        head.className = "prep-phase-head";
+        const heading = document.createElement("div");
+        const kicker = document.createElement("span");
+        kicker.className = "prep-phase-kicker";
+        kicker.textContent = phase.kicker + " · " + phase.period;
+        const title = document.createElement("h3");
+        title.textContent = phase.title;
+        heading.append(kicker, title);
+        const count = document.createElement("span");
+        count.className = "prep-phase-count";
+        count.textContent = allPhaseTasks.filter(task => task.done).length + " / " + allPhaseTasks.length + "件完了";
+        head.append(heading, count);
+
+        const list = document.createElement("div");
+        list.className = "prep-task-list";
+        phaseTasks.forEach(task => list.append(renderPrepTask(task)));
+        section.append(head, list);
+        root.append(section);
+      });
+
+      document.querySelector("#prepEmpty").classList.toggle("hidden", visibleCount > 0);
+      updatePrepHome();
     }
 
     function updateMeetingStatus() {
@@ -2103,7 +2691,7 @@
 
     function exportBackup() {
       const date = new Date().toISOString().slice(0, 10);
-      downloadFile(`PRIMROSE_お見積り_${date}.json`, JSON.stringify({ uxVersion: UX_VERSION, settings, rows }, null, 2), "application/json");
+      downloadFile(`PRIMROSE_お見積り_${date}.json`, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, prepTasks }, null, 2), "application/json");
     }
 
     function exportCsv() {
@@ -2115,17 +2703,46 @@
     }
 
     function switchTab(tabName, shouldScroll = true) {
-      const availableTabs = new Set([...document.querySelectorAll(".tab-button")].map(button => button.dataset.tabTarget));
+      const availableTabs = new Set(tabButtons.map(button => button.dataset.tabTarget));
       const tab = availableTabs.has(tabName) ? tabName : "home";
       document.querySelectorAll("[data-tab-panel]").forEach(panel => {
         panel.hidden = panel.dataset.tabPanel !== tab;
       });
-      document.querySelectorAll(".tab-button").forEach(button => {
-        button.setAttribute("aria-selected", String(button.dataset.tabTarget === tab));
+      tabButtons.forEach(button => {
+        const selected = button.dataset.tabTarget === tab;
+        button.setAttribute("aria-selected", String(selected));
+        button.tabIndex = selected ? 0 : -1;
       });
       try { localStorage.setItem(TAB_STORAGE_KEY, tab); } catch {}
       if (shouldScroll) document.querySelector(`[data-tab-panel="${tab}"]`).scrollIntoView({ behavior: "smooth", block: "start" });
     }
+
+    const tabButtons = [...document.querySelectorAll(".tab-button")];
+    tabButtons.forEach(button => {
+      const tabName = button.dataset.tabTarget;
+      button.id = "tab-" + tabName;
+      const panels = [...document.querySelectorAll('[data-tab-panel="' + tabName + '"]')];
+      panels.forEach((panel, index) => {
+        panel.id = "panel-" + tabName + "-" + (index + 1);
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", button.id);
+      });
+      button.setAttribute("aria-controls", panels.map(panel => panel.id).join(" "));
+    });
+    document.querySelector(".app-tabs").addEventListener("keydown", event => {
+      const currentIndex = tabButtons.indexOf(document.activeElement);
+      if (currentIndex < 0) return;
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowRight" || event.key === "ArrowDown") nextIndex = (currentIndex + 1) % tabButtons.length;
+      else if (event.key === "ArrowLeft" || event.key === "ArrowUp") nextIndex = (currentIndex - 1 + tabButtons.length) % tabButtons.length;
+      else if (event.key === "Home") nextIndex = 0;
+      else if (event.key === "End") nextIndex = tabButtons.length - 1;
+      else return;
+      event.preventDefault();
+      const nextButton = tabButtons[nextIndex];
+      switchTab(nextButton.dataset.tabTarget, false);
+      nextButton.focus();
+    });
 
     document.querySelectorAll("[data-tab-target]").forEach(button => {
       button.addEventListener("click", () => switchTab(button.dataset.tabTarget));
@@ -2133,7 +2750,45 @@
 
     [...textSettingIds, ...numericSettingIds].forEach(id => {
       const input = document.querySelector(`#${id}`);
-      if (input) input.addEventListener("input", () => refresh(["guestCount", "serviceRate"].includes(id)));
+      if (input) input.addEventListener("input", () => {
+        refresh(["guestCount", "serviceRate"].includes(id));
+        if (id === "weddingDate") renderPrep();
+      });
+    });
+    document.querySelectorAll(".prep-filter-button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".prep-filter-button").forEach(filterButton => {
+          filterButton.setAttribute("aria-pressed", String(filterButton === button));
+        });
+        renderPrep();
+      });
+    });
+    document.querySelector("#prepOwnerFilter").addEventListener("change", renderPrep);
+    document.querySelector("#prepAddForm").addEventListener("submit", event => {
+      event.preventDefault();
+      const textInput = document.querySelector("#prepNewText");
+      const taskText = textInput.value.trim();
+      if (!taskText) {
+        textInput.reportValidity();
+        return;
+      }
+      const generatedId = globalThis.crypto?.randomUUID
+        ? globalThis.crypto.randomUUID()
+        : "custom-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+      prepTasks.push({
+        id: generatedId,
+        phase: document.querySelector("#prepNewPhase").value,
+        category: "ふたりの予定",
+        text: taskText.slice(0, 120),
+        owner: document.querySelector("#prepNewOwner").value,
+        daysBefore: null,
+        dueDate: document.querySelector("#prepNewDate").value,
+        done: false,
+        custom: true
+      });
+      event.currentTarget.reset();
+      saveState();
+      renderPrep();
     });
     document.querySelector("#syncGuests").addEventListener("change", () => refresh(true));
     document.querySelector("#search").addEventListener("input", applyFilters);
@@ -2165,9 +2820,11 @@
         if (!imported.settings || !Array.isArray(imported.rows) || imported.rows.length !== initialRows.length) throw new Error("形式が一致しません");
         settings = { ...baseSettings, ...imported.settings };
         rows = imported.rows;
+        prepTasks = normalizePrepTasks(imported.prepTasks);
         hydrateSettings();
         recomputeRows();
         renderDetails();
+        renderPrep();
         updateSummary();
         updateCountdown();
         saveState();
@@ -2178,13 +2835,15 @@
       event.target.value = "";
     });
     document.querySelector("#resetAll").addEventListener("click", () => {
-      if (!confirm("入力した試算条件と明細を初期状態に戻しますか？")) return;
+      if (!confirm("入力した試算条件・明細・準備の進捗を初期状態に戻しますか？")) return;
       settings = structuredClone(baseSettings);
       rows = structuredClone(initialRows);
+      prepTasks = structuredClone(prepTaskTemplates);
       localStorage.removeItem(STORAGE_KEY);
       hydrateSettings();
       recomputeRows();
       renderDetails();
+      renderPrep();
       updateSummary();
       updateCountdown();
       saveState();
@@ -2193,6 +2852,7 @@
     hydrateSettings();
     recomputeRows();
     renderDetails();
+    renderPrep();
     updateSummary();
     updateCountdown();
     saveState();
