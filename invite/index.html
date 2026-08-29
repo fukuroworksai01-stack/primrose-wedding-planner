@@ -187,8 +187,8 @@
       <p class="hero-name" id="heroName">With love</p>
       <div class="hero-date" aria-label="挙式日">
         <span class="hero-year" id="dateYear">2027</span>
-        <span class="hero-day" id="dateDay">23</span>
-        <span class="hero-month" id="dateMonthName">JANUARY</span>
+        <span class="hero-day" id="dateDay">07</span>
+        <span class="hero-month" id="dateMonthName">MARCH</span>
       </div>
     </header>
 
@@ -224,7 +224,7 @@
             <div class="countdown-content">
               <p class="countdown-label">Count Down</p>
               <p class="countdown-number"><span id="countdownDays">---</span><small>DAYS</small></p>
-              <p class="countdown-date" id="countdownDate">2027.01.23</p>
+              <p class="countdown-date" id="countdownDate">2027.03.07</p>
             </div>
           </div>
         </div>
@@ -236,8 +236,8 @@
         <p class="information-kicker">挙式・披露宴</p>
         <div class="info-block date-row" aria-label="開催日">
           <span id="infoYear">2027</span>
-          <strong id="infoDate">01.23</strong>
-          <span id="infoWeekday">Sat</span>
+          <strong id="infoDate">03.07</strong>
+          <span id="infoWeekday">Sun</span>
         </div>
         <div class="info-block">
           <p class="time-main">挙式 <strong id="detailTime">11:00</strong></p>
@@ -295,8 +295,8 @@
           <h2 class="section-title" id="rsvpTitle">Presence or Absence</h2>
           <p>お手数ですが、下のボタンから<br>出欠と必要事項をご回答ください</p>
           <p class="deadline" id="deadlineText">回答期限は後日お知らせします</p>
-          <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true"><span>回答フォームは準備中</span></a>
-          <p class="form-note" id="formNote">Googleフォームが連携されると、ここから回答できます。</p>
+          <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true"><span>出欠回答は後日ご案内します</span></a>
+          <p class="form-note" id="formNote">回答方法が決まりましたら、あらためてお知らせします。</p>
         </section>
       </div>
     </main>
@@ -310,7 +310,7 @@
   <script>
     const params = new URLSearchParams(location.search);
     const names = params.get("from")?.trim() || "私たち";
-    const dateValue = params.get("date") || "2027-01-23";
+    const dateValue = params.get("date") || "2027-03-07";
     const timeValue = params.get("time") || "11:00";
     const venue = params.get("venue")?.trim() || "PRIMROSE";
     const deadline = params.get("deadline") || "";

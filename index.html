@@ -386,6 +386,7 @@
     .field { display: grid; gap: 5px; }
     .field > span { color: var(--muted); font-size: 12px; font-weight: 700; }
     .field input,
+    .field select,
     .task-form input,
     .cell-input {
       width: 100%;
@@ -400,7 +401,7 @@
 
     .cell-input { min-width: 92px; min-height: 34px; padding: 5px 7px; text-align: right; font-size: 13px; }
     .cell-input.qty { min-width: 62px; }
-    .field input:focus, .task-form input:focus, .cell-input:focus, .search:focus {
+    .field input:focus, .field select:focus, .task-form input:focus, .cell-input:focus, .search:focus {
       border-color: var(--blue);
       outline: 3px solid rgba(62,107,137,.15);
     }
@@ -750,6 +751,8 @@
 
     .decision-step.current { color: #fff; border-color: var(--blue); background: var(--blue); }
     .decision-step.current b { color: var(--blue); background: #fff; }
+    .decision-step.done { color: var(--green); border-color: #bfd2c3; background: var(--green-soft); }
+    .decision-step.done b { color: #fff; background: var(--green); }
     .stage-note { margin: 14px 0 0; color: #6d5934; font-size: 12px; }
 
     .home-callout {
@@ -1328,11 +1331,11 @@
     <header class="hero">
       <div class="hero-main">
         <div>
-          <p class="eyebrow">FIRST VISIT ESTIMATE</p>
+          <p class="eyebrow">WEDDING PLAN 2027</p>
           <h1 id="venueTitle">PRIMROSE お見積り</h1>
-          <p class="hero-copy" id="venueCopy">初回来館でもらった見積の金額や内容を、ふたりで見やすく整理しています。</p>
-          <div class="hero-statuses" aria-label="見積の状態"><span>1会場目</span><span>初回見積</span><span>契約前</span></div>
-          <p class="hero-location" id="heroCandidateDate">見積の候補日：2027年1月23日</p>
+          <p class="hero-copy" id="venueCopy">初回見積をもとに、3月7日までの費用と準備をふたりで整理しています。</p>
+          <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>準備開始</span></div>
+          <p class="hero-location" id="heroCandidateDate">挙式日：2027年3月7日</p>
         </div>
         <div>
           <p class="final-label">見積書に記載の合計（税込）</p>
@@ -1358,18 +1361,18 @@
     <section class="panel estimate-stage-panel" data-tab-panel="home">
       <div class="stage-head">
         <div>
-          <p class="eyebrow">FIRST STEP</p>
-          <h2>いまは、会場選びの最初の1件目</h2>
-          <p>PRIMROSEの初回見積を把握して、不明点を確認し、次の会場も同じ人数・条件で比べられる状態にします。</p>
+          <p class="eyebrow">NEXT MEETING</p>
+          <h2>2027年3月7日に決まりました</h2>
+          <p>次は9月6日9:30の初回打ち合わせです。費用の上がり幅、これからの準備、ONE-Wの利用可否を確認します。</p>
         </div>
-        <span class="stage-state">未契約・比較中</span>
+        <span class="stage-state">日程確定・準備開始</span>
       </div>
-      <ol class="decision-steps" aria-label="会場選びの進め方">
-        <li class="decision-step current"><b>1</b><span>初回見積を把握</span></li>
-        <li class="decision-step"><b>2</b><span>条件・上がり幅を確認</span></li>
-        <li class="decision-step"><b>3</b><span>ほかの会場と比較</span></li>
+      <ol class="decision-steps" aria-label="これからの進め方">
+        <li class="decision-step done"><b>1</b><span>挙式日を確定</span></li>
+        <li class="decision-step current"><b>2</b><span>9/6 初回打ち合わせ</span></li>
+        <li class="decision-step"><b>3</b><span>招待・当日準備</span></li>
       </ol>
-      <p class="stage-note">見積に記載の候補日：<strong id="candidateDateStatus">2027年1月23日</strong></p>
+      <p class="stage-note">挙式日：<strong id="candidateDateStatus">2027年3月7日</strong></p>
     </section>
 
     <section class="panel" data-tab-panel="home">
@@ -1397,13 +1400,13 @@
     </section>
 
     <section class="panel" data-tab-panel="home">
-      <h2 class="section-title">次に式場へ聞く4つ</h2>
-      <p class="tab-intro">初回は、細かい項目を全部決めるより、あとから上がる可能性を確認するのが先です。</p>
+      <h2 class="section-title">初回打ち合わせで聞く4つ</h2>
+      <p class="tab-intro">9月6日は、今後の流れと費用、招待状の選択肢を先に確認します。</p>
       <div class="question-grid">
-        <article class="question-card"><span class="question-number">QUESTION 01</span><strong>当日成約特典がなくても、同じ内容なら総額はいくら？</strong><p>その場で契約しない場合の差額を確認します。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 02</span><strong>料理・衣裳・装花は、平均でどれくらい上がる？</strong><p>最低価格ではなく、実際に選ばれる価格帯を聞きます。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 03</span><strong>この見積に入っていない、必要になりやすい費用は？</strong><p>持込料、写真、映像、送迎などの漏れを確認します。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 04</span><strong>特典の期限と、キャンセル・日程変更の条件は？</strong><p>契約前に必ず書面で確認しておきます。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 01</span><strong>この見積から上がりやすい項目と、平均の追加額は？</strong><p>料理・衣裳・装花・写真映像の実例を聞きます。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 02</span><strong>打ち合わせの回数・期限・次回までの宿題は？</strong><p>いつ何を決めるか、全体の流れを確認します。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 03</span><strong>ONE-Wを利用できる？料金や回答管理の範囲は？</strong><p>URLの発行時期、出欠・アレルギー・送迎管理を確認します。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 04</span><strong>持込料・支払期限・キャンセルや日程変更の条件は？</strong><p>追加費用と変更条件を、書面でも確認します。</p></article>
       </div>
     </section>
 
@@ -1411,7 +1414,7 @@
       <div class="prep-overview-head">
         <div>
           <h2 class="section-title">挙式日から逆算した<wbr>準備スケジュール</h2>
-          <p>今は会場選びの段階です。まず必要なことから順番に、担当と期限をふたりで調整できます。</p>
+          <p>日程が決まり、準備が始まりました。まずは9月6日の初回打ち合わせまでに必要なことを整理します。</p>
         </div>
         <span class="prep-days-badge" id="prepDaysBadge">挙式までの日数を計算中</span>
       </div>
@@ -1440,7 +1443,7 @@
 
     <section class="panel" data-tab-panel="prep" hidden>
       <h2 class="section-title">時期別のやること</h2>
-      <p class="tab-intro">期限は候補日から逆算した目安です。式場の案内に合わせて日付と担当を変更してください。</p>
+      <p class="tab-intro">期限は3月7日から逆算した目安です。式場の案内に合わせて日付と担当を変更してください。</p>
       <div class="prep-toolbar">
         <div class="prep-filter-buttons" role="group" aria-label="準備の表示">
           <button class="prep-filter-button" type="button" data-prep-filter="all" aria-pressed="true">すべて</button>
@@ -1488,10 +1491,10 @@
 
     <section class="panel" data-tab-panel="budget" hidden>
       <h2 class="section-title">試算条件</h2>
-      <p class="tab-intro">ここで変えるのは契約内容ではなく、初回見積を比較するための仮の条件です。</p>
+      <p class="tab-intro">ここで変えるのは契約内容ではなく、初回見積を調整・試算するための仮の条件です。</p>
       <div class="settings-grid">
-        <label class="field"><span>見積に記載の候補日</span><input id="weddingDate" type="date" value="2027-01-23"></label>
-        <label class="field"><span>候補時刻</span><input id="weddingTime" type="time" value="11:00"></label>
+        <label class="field"><span>確定した挙式日</span><input id="weddingDate" type="date" value="2027-03-07"></label>
+        <label class="field"><span>見積に記載の時刻</span><input id="weddingTime" type="time" value="11:00"></label>
         <label class="field"><span>想定人数</span><input id="guestCount" type="number" min="0" max="200" step="1" value="50"></label>
         <label class="field"><span>消費税率（%）</span><input id="taxRate" type="number" min="0" max="100" step="0.1" value="10"></label>
         <label class="field"><span>条件付き特典合計</span><input id="nonTaxBenefits" type="number" min="0" step="1000" value="800000"></label>
@@ -1520,46 +1523,48 @@
 
     <section class="panel" data-tab-panel="venue" hidden>
       <h2 class="section-title">初回来館の記録</h2>
-      <p class="tab-intro">まだ比較中なので、担当者との約束と気になったことだけ残します。</p>
+      <p class="tab-intro">日程が決まったので、初回打ち合わせの予定と式場への質問をまとめます。</p>
       <div class="settings-grid">
         <label class="field"><span>式場名</span><input id="venueName" type="text" value="PRIMROSE" maxlength="60"></label>
         <label class="field"><span>見学日</span><input id="visitDate" type="date"></label>
         <label class="field"><span>担当者</span><input id="coordinator" type="text" placeholder="担当者名" maxlength="40"></label>
         <label class="field"><span>式場の連絡先</span><input id="venuePhone" type="tel" placeholder="電話番号" maxlength="30"></label>
-        <label class="field"><span>次に連絡・確認する日</span><input id="nextMeetingDate" type="date"></label>
+        <label class="field"><span>初回打ち合わせ日</span><input id="nextMeetingDate" type="date" value="2026-09-06"></label>
+        <label class="field"><span>開始時刻</span><input id="nextMeetingTime" type="time" value="09:30"></label>
       </div>
       <label class="field" style="margin-top:12px"><span>式場への確認事項・メモ</span><textarea class="memo-input" id="venueMemo" placeholder="確認したいこと、持参物、担当者からの連絡など"></textarea></label>
-      <div class="note-box" style="margin-top:14px"><p><strong>次の確認日</strong></p><p id="nextMeetingStatus">日付を入力すると、確認日までの日数を表示します。</p></div>
+      <div class="note-box" style="margin-top:14px"><p><strong>初回打ち合わせ</strong></p><p id="nextMeetingStatus">2026年9月6日(日) 9:30開始</p></div>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
       <div class="invite-admin-head">
         <div>
           <h2 class="section-title">Web招待状</h2>
-          <p>招待状に表示する名前・日程・会場と、出欠回答フォームを設定できます。</p>
+          <p>ONE-Wの利用可否を確認しつつ、このサイトの招待状も予備として残せます。</p>
         </div>
-        <span class="invite-form-state" id="inviteFormStatus">Googleフォーム未連携</span>
+        <span class="invite-form-state" id="inviteFormStatus">ONE-W 利用可否を確認中</span>
       </div>
       <div class="settings-grid" style="margin-top:18px">
         <label class="field"><span>招待状に表示する名前</span><input id="invitationNames" type="text" placeholder="例：太郎・花子" maxlength="60"></label>
         <label class="field"><span>出欠回答期限</span><input id="rsvpDeadline" type="date"></label>
+        <label class="field"><span>招待状サービス</span><select id="invitationService"><option value="one-w-pending">ONE-W（利用可否を確認中）</option><option value="site">このサイト＋Googleフォーム</option><option value="undecided">未定</option></select></label>
         <label class="field invite-field-wide"><span>公開したGoogleフォームのURL</span><input id="googleFormUrl" type="url" inputmode="url" placeholder="https://forms.gle/... または https://docs.google.com/forms/..."></label>
       </div>
       <div class="invite-help">
-        <p><strong>Googleフォームに用意する項目：</strong>出欠、氏名、アレルギー、送迎希望、ふたりへのメッセージ。フォームの回答受付を公開してからURLを貼り付けます。</p>
-        <a href="https://docs.google.com/forms/" target="_blank" rel="noopener">Googleフォームを開く</a>
+        <p id="invitationHelpText"><strong>9月6日に確認：</strong>ONE-Wの料金、URL発行時期、出欠・アレルギー・送迎希望をどこまで管理できるか。</p>
+        <a id="invitationHelpLink" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Googleフォーム（予備案）</a>
       </div>
       <div class="invite-share">
         <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
         <button class="primary-button" id="openInvitation" type="button">招待状を確認</button>
         <button id="copyInvitationUrl" type="button" disabled>共有URLをコピー</button>
       </div>
-      <p class="invite-privacy-note">招待状ページには見積金額や招待客の回答内容を表示しません。回答データはGoogleフォーム側で管理します。</p>
+      <p class="invite-privacy-note" id="invitePrivacyNote">ONE-Wの利用可否は未確定です。回答先は初回打ち合わせ後に決めます。</p>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
       <h2 class="section-title">プリムローズの景色</h2>
-      <p class="tab-intro">初回見学で気になった景色や雰囲気を、あとでほかの会場と比べるための記録です。</p>
+      <p class="tab-intro">初回見学で気になった景色や雰囲気を、これからの打ち合わせでイメージを伝えるための記録です。</p>
       <div class="venue-gallery">
         <figure class="venue-photo">
           <img src="https://space.fivestar-wedding.com/primrose-okayama/cms/wp-content/themes/japan-ceremony-a/public/assets/images/top/img_ceremony_main.webp" alt="プリムローズ岡山のセント・ポール大聖堂" loading="eager">
@@ -1787,16 +1792,18 @@
     const LEGACY_STORAGE_KEY = "primrose-wedding-dashboard-v2";
     const TAB_STORAGE_KEY = "primrose-wedding-active-tab";
     const baseSettings = {
-      weddingDate: "2027-01-23",
+      weddingDate: "2027-03-07",
       weddingTime: "11:00",
       venueName: "PRIMROSE",
       visitDate: "",
       coordinator: "",
       venuePhone: "",
       venueMemo: "",
-      nextMeetingDate: "",
+      nextMeetingDate: "2026-09-06",
+      nextMeetingTime: "09:30",
       invitationNames: "",
       rsvpDeadline: "",
+      invitationService: "one-w-pending",
       googleFormUrl: "",
       guestCount: 50,
       guestAttending: 0,
@@ -1810,40 +1817,40 @@
       guestDeltaCost: 22000,
       syncGuests: true
     };
-    const UX_VERSION = 6;
+    const UX_VERSION = 7;
     const initialRows = defaultRows.map(row => [...row, row[4] !== "参考価格"]);
     const prepPhases = [
-      { id: "foundation", kicker: "STEP 01 / NOW", title: "まず決める", period: "会場見学・契約" },
-      { id: "direction", kicker: "STEP 02", title: "招待の土台", period: "衣裳・ゲスト・招待状" },
-      { id: "details", kicker: "STEP 03", title: "内容を固める", period: "約3〜1.5か月前" },
-      { id: "finalize", kicker: "STEP 04", title: "人数・当日準備", period: "約6〜2週間前" },
+      { id: "foundation", kicker: "STEP 01 / NOW", title: "初回打ち合わせ", period: "9月6日 9:30まで" },
+      { id: "direction", kicker: "STEP 02", title: "招待の土台", period: "打ち合わせ後〜約5か月前" },
+      { id: "details", kicker: "STEP 03", title: "内容を固める", period: "約3.5〜2.5か月前" },
+      { id: "finalize", kicker: "STEP 04", title: "人数・当日準備", period: "約2か月〜3週間前" },
       { id: "last", kicker: "STEP 05", title: "最終仕上げ", period: "約2週間前〜前日" }
     ];
     const prepTaskTemplates = [
-      { id: "set-priorities", phase: "foundation", category: "会場・予算", text: "ふたりの希望条件・予算上限・ゲスト概数を整理する", owner: "ふたり", daysBefore: 147 },
-      { id: "compare-venues", phase: "foundation", category: "会場・予算", text: "同じ人数と条件で候補会場を見学し、見積を比較する", owner: "ふたり", daysBefore: 140 },
-      { id: "check-estimate", phase: "foundation", category: "会場・予算", text: "追加料金・持込料・特典が外れた場合の金額を確認する", owner: "ふたり", daysBefore: 133 },
-      { id: "check-contract", phase: "foundation", category: "会場・予算", text: "契約条件・キャンセル規定・支払時期を確認する", owner: "ふたり", daysBefore: 126 },
-      { id: "choose-venue", phase: "foundation", category: "会場・予算", text: "会場と日程を決め、両家へ共有する", owner: "ふたり", daysBefore: 119 },
+      { id: "set-priorities", phase: "foundation", category: "ふたりで相談", text: "希望する雰囲気・予算上限・ゲスト概数を整理する", owner: "ふたり", daysBefore: 187 },
+      { id: "compare-venues", phase: "foundation", category: "打ち合わせ", text: "初回打ち合わせで聞きたいことを書き出す", owner: "ふたり", daysBefore: 186 },
+      { id: "check-estimate", phase: "foundation", category: "見積", text: "追加料金・持込料・今後上がりやすい項目を整理する", owner: "ふたり", daysBefore: 185 },
+      { id: "check-contract", phase: "foundation", category: "招待状", text: "ONE-Wの料金・URL発行時期・回答管理について質問をまとめる", owner: "ふたり", daysBefore: 184 },
+      { id: "choose-venue", phase: "foundation", category: "打ち合わせ", text: "9月6日 9:30の初回打ち合わせに参加し、決まったことを記録する", owner: "ふたり", daysBefore: 182 },
 
-      { id: "guest-list", phase: "direction", category: "ゲスト", text: "両家の招待候補・住所・連絡先をまとめる", owner: "ふたり", daysBefore: 112 },
-      { id: "choose-dress", phase: "direction", category: "衣裳・美容", text: "ドレスの試着を始め、衣裳プランを決める", owner: "新婦", daysBefore: 108 },
-      { id: "choose-tuxedo", phase: "direction", category: "衣裳・美容", text: "タキシードと新郎小物の候補を決める", owner: "新郎", daysBefore: 104 },
-      { id: "order-rings", phase: "direction", category: "指輪", text: "結婚指輪を決め、仕上がり日を確認して注文する", owner: "ふたり", daysBefore: 98 },
-      { id: "prepare-invitation", phase: "direction", category: "招待状", text: "Web招待状の文面・写真・出欠フォームを整える", owner: "ふたり", daysBefore: 91 },
+      { id: "guest-list", phase: "direction", category: "ゲスト", text: "両家の招待候補・住所・連絡先をまとめる", owner: "ふたり", daysBefore: 175 },
+      { id: "choose-dress", phase: "direction", category: "衣裳・美容", text: "ドレスの試着を始め、衣裳プランを決める", owner: "新婦", daysBefore: 170 },
+      { id: "choose-tuxedo", phase: "direction", category: "衣裳・美容", text: "タキシードと新郎小物の候補を決める", owner: "新郎", daysBefore: 164 },
+      { id: "order-rings", phase: "direction", category: "指輪", text: "結婚指輪を決め、仕上がり日を確認して注文する", owner: "ふたり", daysBefore: 154 },
+      { id: "prepare-invitation", phase: "direction", category: "招待状", text: "利用する招待状サービスと必要な写真・文章を決める", owner: "ふたり", daysBefore: 147 },
 
-      { id: "send-invitation", phase: "details", category: "招待状", text: "招待状を送り、出欠回答の期限を案内する", owner: "ふたり", daysBefore: 84 },
-      { id: "food-drink", phase: "details", category: "料理", text: "料理・飲物・ケーキとアレルギー対応を決める", owner: "ふたり", daysBefore: 77 },
-      { id: "flowers", phase: "details", category: "装花", text: "会場装花・ブーケ・テーブルの色合いを決める", owner: "ふたり", daysBefore: 70 },
-      { id: "program-music", phase: "details", category: "進行・演出", text: "当日の進行・BGM・スピーチ・余興を決める", owner: "ふたり", daysBefore: 63 },
-      { id: "photo-video", phase: "details", category: "写真・映像", text: "写真・映像・前撮りの内容と必要な素材を確定する", owner: "新郎", daysBefore: 56 },
-      { id: "legal-travel", phase: "details", category: "手続き・旅行", text: "婚姻届の必要書類、休暇、旅行の予定を確認する", owner: "ふたり", daysBefore: 49 },
+      { id: "send-invitation", phase: "details", category: "招待状", text: "招待状を送り、出欠回答の期限を案内する", owner: "ふたり", daysBefore: 105 },
+      { id: "food-drink", phase: "details", category: "料理", text: "料理・飲物・ケーキとアレルギー対応を決める", owner: "ふたり", daysBefore: 98 },
+      { id: "flowers", phase: "details", category: "装花", text: "会場装花・ブーケ・テーブルの色合いを決める", owner: "ふたり", daysBefore: 91 },
+      { id: "program-music", phase: "details", category: "進行・演出", text: "当日の進行・BGM・スピーチ・余興を決める", owner: "ふたり", daysBefore: 84 },
+      { id: "photo-video", phase: "details", category: "写真・映像", text: "写真・映像・前撮りの内容と必要な素材を確定する", owner: "新郎", daysBefore: 77 },
+      { id: "legal-travel", phase: "details", category: "手続き・旅行", text: "婚姻届の必要書類、休暇、旅行の予定を確認する", owner: "ふたり", daysBefore: 70 },
 
-      { id: "final-responses", phase: "finalize", category: "ゲスト", text: "出欠・アレルギー・送迎・宿泊希望を確定する", owner: "ふたり", daysBefore: 42 },
-      { id: "seating", phase: "finalize", category: "ゲスト", text: "席次と肩書きを両家で確認する", owner: "ふたり", daysBefore: 35 },
-      { id: "beauty-fitting", phase: "finalize", category: "衣裳・美容", text: "ヘアメイクリハーサルと最終フィッティングを行う", owner: "新婦", daysBefore: 28 },
-      { id: "gifts-paper", phase: "finalize", category: "ギフト・印刷", text: "引出物・プチギフト・席札などの内容と数量を確定する", owner: "ふたり", daysBefore: 24 },
-      { id: "assign-roles", phase: "finalize", category: "当日運営", text: "受付・スピーチなどの依頼と関係者の連絡先を整理する", owner: "新郎", daysBefore: 18 },
+      { id: "final-responses", phase: "finalize", category: "ゲスト", text: "出欠・アレルギー・送迎・宿泊希望を確定する", owner: "ふたり", daysBefore: 56 },
+      { id: "seating", phase: "finalize", category: "ゲスト", text: "席次と肩書きを両家で確認する", owner: "ふたり", daysBefore: 42 },
+      { id: "beauty-fitting", phase: "finalize", category: "衣裳・美容", text: "ヘアメイクリハーサルと最終フィッティングを行う", owner: "新婦", daysBefore: 35 },
+      { id: "gifts-paper", phase: "finalize", category: "ギフト・印刷", text: "引出物・プチギフト・席札などの内容と数量を確定する", owner: "ふたり", daysBefore: 28 },
+      { id: "assign-roles", phase: "finalize", category: "当日運営", text: "受付・スピーチなどの依頼と関係者の連絡先を整理する", owner: "新郎", daysBefore: 21 },
 
       { id: "final-count-payment", phase: "last", category: "会場・予算", text: "最終人数・最終見積・支払額と変更期限を確認する", owner: "ふたり", daysBefore: 14 },
       { id: "deliver-items", phase: "last", category: "持ち物", text: "衣裳・指輪・手紙・ギフト・持込物をまとめて搬入する", owner: "ふたり", daysBefore: 7 },
@@ -1861,7 +1868,7 @@
     ]);
     const guestLinkedItems = new Set(["婚礼料理", "フリードリンク", "ウエイティングルームドリンク"]);
     const numericSettingIds = ["guestCount", "guestAttending", "guestDeclined", "taxRate", "nonTaxBenefits", "deposit", "giftPerGuest", "budgetTarget", "serviceRate", "guestDeltaCost"];
-    const textSettingIds = ["weddingDate", "weddingTime", "venueName", "visitDate", "coordinator", "venuePhone", "venueMemo", "nextMeetingDate", "invitationNames", "rsvpDeadline", "googleFormUrl"];
+    const textSettingIds = ["weddingDate", "weddingTime", "venueName", "visitDate", "coordinator", "venuePhone", "venueMemo", "nextMeetingDate", "nextMeetingTime", "invitationNames", "rsvpDeadline", "invitationService", "googleFormUrl"];
     const detailsRoot = document.querySelector("#detailSections");
 
     function loadSavedState(key) {
@@ -1876,13 +1883,44 @@
 
     const savedV3 = loadSavedState(STORAGE_KEY);
     const saved = savedV3 || loadSavedState(LEGACY_STORAGE_KEY);
-    let settings = { ...baseSettings, ...(saved?.settings || {}) };
+    let settings = migrateSettings(saved?.settings, saved?.uxVersion);
     let rows = saved ? saved.rows : structuredClone(initialRows);
-    let prepTasks = normalizePrepTasks(saved?.prepTasks);
+    let prepTasks = migratePrepTasks(saved?.prepTasks, saved?.uxVersion);
 
     const yen = value => value == null ? "—" : `${new Intl.NumberFormat("ja-JP").format(Math.round(value))}円`;
     const signedYen = value => `${value < 0 ? "−" : value > 0 ? "+" : ""}${yen(Math.abs(value))}`;
     const numberFrom = value => Number.isFinite(Number(value)) ? Number(value) : 0;
+
+    function migrateSettings(value, version) {
+      const source = value && typeof value === "object" ? value : {};
+      const migrated = { ...baseSettings, ...source };
+      const versionNumber = Number.isFinite(Number(version)) ? Number(version) : 0;
+      if (versionNumber < 7) {
+        if (!source.weddingDate || source.weddingDate === "2027-01-23") migrated.weddingDate = baseSettings.weddingDate;
+        if (!source.nextMeetingDate) migrated.nextMeetingDate = baseSettings.nextMeetingDate;
+        if (!source.nextMeetingTime) migrated.nextMeetingTime = baseSettings.nextMeetingTime;
+        if (!source.invitationService) migrated.invitationService = baseSettings.invitationService;
+      }
+      return migrated;
+    }
+
+    function migratePrepTasks(value, version) {
+      const normalized = normalizePrepTasks(value);
+      const versionNumber = Number.isFinite(Number(version)) ? Number(version) : 0;
+      if (versionNumber >= 7) return normalized;
+      const currentTemplates = new Map(prepTaskTemplates.map(task => [task.id, task]));
+      return normalized.map(task => {
+        const template = currentTemplates.get(task.id);
+        if (!template || task.custom) return task;
+        return {
+          ...task,
+          phase: template.phase,
+          category: template.category,
+          text: template.text,
+          daysBefore: template.daysBefore
+        };
+      });
+    }
 
     function normalizePrepTasks(value) {
       const source = Array.isArray(value) ? value : prepTaskTemplates;
@@ -2011,8 +2049,8 @@
 
       const venue = settings.venueName.trim() || "PRIMROSE";
       setText("venueTitle", `${venue} お見積り`);
-      setText("venueCopy", "初回来館でもらった見積の金額や内容を、ふたりで見やすく整理しています。");
-      setText("heroCandidateDate", `見積の候補日：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}`);
+      setText("venueCopy", "初回来館でもらった見積をもとに、確定した日程とこれからの準備を整理しています。");
+      setText("heroCandidateDate", `挙式日：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}`);
 
       const budgetCard = document.querySelector("#budgetCard");
       budgetCard.classList.toggle("over", budgetDiff < 0);
@@ -2152,10 +2190,10 @@
       document.querySelector("#prepProgressBar").style.width = stats.percent + "%";
       document.querySelector("#prepOverallProgress").setAttribute("aria-valuenow", String(stats.percent));
 
-      if (weddingDays === null) setText("prepDaysBadge", "候補日を設定してください");
+      if (weddingDays === null) setText("prepDaysBadge", "挙式日を設定してください");
       else if (weddingDays > 0) setText("prepDaysBadge", "挙式まであと" + weddingDays + "日");
       else if (weddingDays === 0) setText("prepDaysBadge", "挙式当日");
-      else setText("prepDaysBadge", "候補日から" + Math.abs(weddingDays) + "日経過");
+      else setText("prepDaysBadge", "挙式日から" + Math.abs(weddingDays) + "日経過");
     }
 
     function prepField(labelText, control) {
@@ -2294,13 +2332,14 @@
     function updateMeetingStatus() {
       const meeting = parseLocalDate(settings.nextMeetingDate);
       if (!meeting || Number.isNaN(meeting.getTime())) {
-        setText("nextMeetingStatus", "日付を入力すると、確認日までの日数を表示します。");
+        setText("nextMeetingStatus", "日付と開始時刻を入力すると、打ち合わせまでの日数を表示します。");
         return;
       }
       const days = daysFromToday(meeting);
       const prefix = days > 0 ? `あと${days}日` : days === 0 ? "今日" : `${Math.abs(days)}日前に経過`;
+      const startTime = settings.nextMeetingTime ? ` ${settings.nextMeetingTime}開始` : "";
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
-      setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}（${prefix}）${extras ? `　${extras}` : ""}`);
+      setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}${startTime}（${prefix}）${extras ? `　${extras}` : ""}`);
     }
 
     function normalizedGoogleFormUrl(value) {
@@ -2332,8 +2371,31 @@
     function updateInvitationPreview() {
       const formUrl = normalizedGoogleFormUrl(settings.googleFormUrl);
       const rawFormUrl = settings.googleFormUrl.trim();
+      const service = settings.invitationService;
       const status = document.querySelector("#inviteFormStatus");
-      status.textContent = formUrl ? "Googleフォーム連携済み" : rawFormUrl ? "フォームURLを確認" : "Googleフォーム未連携";
+      const help = document.querySelector("#invitationHelpText");
+      const privacy = document.querySelector("#invitePrivacyNote");
+      if (formUrl) {
+        status.textContent = "Googleフォーム連携済み";
+        help.textContent = "このサイトの招待状から、出欠・アレルギーなどの回答フォームへ進めます。";
+        privacy.textContent = "回答内容はリンク先のGoogleフォームに保存されます。共有前にフォームの公開設定と回答項目を確認してください。";
+      } else if (rawFormUrl) {
+        status.textContent = "フォームURLを確認";
+        help.textContent = "GoogleフォームのURLは、forms.gle または docs.google.com/forms で始まる公開URLを入力してください。";
+        privacy.textContent = "現在のURLでは回答を受け付けられません。修正するまで共有URLのコピーは無効です。";
+      } else if (service === "one-w-pending") {
+        status.textContent = "ONE-W 利用可否を確認中";
+        help.textContent = "9月6日に確認：ONE-Wの料金、URL発行時期、出欠・アレルギー・送迎希望をどこまで管理できるか。";
+        privacy.textContent = "ONE-Wの利用可否は未確定です。回答先は初回打ち合わせ後に決めます。";
+      } else if (service === "site") {
+        status.textContent = "Googleフォーム未連携";
+        help.textContent = "このサイトで出欠回答まで完結させるには、公開したGoogleフォームのURLを入力してください。";
+        privacy.textContent = "回答フォームを連携するまで、この招待状は確認用です。ゲストへの共有はまだ行わないでください。";
+      } else {
+        status.textContent = "招待状サービス未定";
+        help.textContent = "初回打ち合わせ後に、ONE-Wかこのサイトの招待状を選べます。";
+        privacy.textContent = "回答先が決まるまでは確認用ページとして利用できます。";
+      }
       status.classList.toggle("ready", Boolean(formUrl));
       document.querySelector("#inviteShareUrl").value = invitationPageUrl();
       document.querySelector("#copyInvitationUrl").disabled = !formUrl;
@@ -2750,7 +2812,7 @@
 
     [...textSettingIds, ...numericSettingIds].forEach(id => {
       const input = document.querySelector(`#${id}`);
-      if (input) input.addEventListener("input", () => {
+      if (input) input.addEventListener(input.matches("select") ? "change" : "input", () => {
         refresh(["guestCount", "serviceRate"].includes(id));
         if (id === "weddingDate") renderPrep();
       });
@@ -2818,9 +2880,9 @@
       try {
         const imported = JSON.parse(await file.text());
         if (!imported.settings || !Array.isArray(imported.rows) || imported.rows.length !== initialRows.length) throw new Error("形式が一致しません");
-        settings = { ...baseSettings, ...imported.settings };
+        settings = migrateSettings(imported.settings, imported.uxVersion);
         rows = imported.rows;
-        prepTasks = normalizePrepTasks(imported.prepTasks);
+        prepTasks = migratePrepTasks(imported.prepTasks, imported.uxVersion);
         hydrateSettings();
         recomputeRows();
         renderDetails();
