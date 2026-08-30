@@ -1566,15 +1566,20 @@
       place-items: center;
       flex: 0 0 96px;
       padding: 10px;
-      border: 10px solid #f0edef;
-      border-top-color: var(--ios-accent);
+      border: 10px solid transparent;
       border-radius: 50%;
+      background:
+        linear-gradient(var(--ios-surface-solid), var(--ios-surface-solid)) padding-box,
+        conic-gradient(from -8deg, var(--ios-accent) 0 var(--prep-ring-progress, 2%), #f0edef var(--prep-ring-progress, 2%) 100%) border-box;
       text-align: center;
     }
     .ui-ios-option1 .prep-progress-ring strong { margin: 0; font-size: 16px; line-height: 1.2; letter-spacing: -.03em; white-space: pre-line; }
-    .ui-ios-option1 .prep-next-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+    .ui-ios-option1 .prep-progress-ring strong::first-line { font-size: 30px; font-weight: 500; }
+    .ui-ios-option1 .ios-next-heading { display: none; }
+    .ui-ios-option1 .prep-next-card { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
     .ui-ios-option1 .prep-next-card .ios-date-icon { width: 50px; height: 50px; }
     .ui-ios-option1 .prep-next-card .ios-date-icon i { font-size: 25px; }
+    .ui-ios-option1 .ios-next-chevron { position: absolute; top: 30px; right: 16px; color: #a5a1a2; font-size: 22px; }
     .ui-ios-option1 .ios-primary-button { grid-column: 1 / -1; min-height: 44px; padding: 10px 16px; color: #fff; border: 0; border-radius: 13px; background: var(--ios-accent); font-weight: 750; cursor: pointer; }
     .ui-ios-option1 .ios-primary-button:hover { background: var(--ios-accent-dark); }
     .ui-ios-option1 .prep-overall-progress { margin-top: 18px; }
@@ -1633,17 +1638,17 @@
       body.ui-ios-option1 { padding-bottom: calc(94px + env(safe-area-inset-bottom)); }
       .ui-ios-option1 .page { width: 100%; margin: 0 0 18px; padding: 0 10px; }
       .ui-ios-option1 .hero { min-height: 0; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
-      .ui-ios-option1 .hero-main { display: block; padding: 54px 12px 8px; }
+      .ui-ios-option1 .hero-main { display: block; padding: 50px 10px 8px; }
       .ui-ios-option1 .hero-main > div:last-child,
       .ui-ios-option1 .hero-meta,
       .ui-ios-option1 .hero .eyebrow,
       .ui-ios-option1 .hero-statuses,
       .ui-ios-option1 .hero-location { display: none; }
-      .ui-ios-option1 .hero h1 { font-size: 42px; line-height: 1.08; letter-spacing: -.045em; }
-      .ui-ios-option1 .hero-copy { margin-top: 8px; font-size: 16px; line-height: 1.45; }
-      .ui-ios-option1 .ios-today { margin-top: 18px; font-size: 15px; }
-      .ui-ios-option1 .ios-today i { font-size: 21px; }
-      .ui-ios-option1 .ios-botanical { top: -27px; right: -68px; width: 245px; opacity: .44; }
+      .ui-ios-option1 .hero h1 { font-size: 38px; line-height: 1.08; letter-spacing: -.045em; }
+      .ui-ios-option1 .hero-copy { margin-top: 7px; font-size: 14px; line-height: 1.45; }
+      .ui-ios-option1 .ios-today { margin-top: 20px; font-size: 14px; }
+      .ui-ios-option1 .ios-today i { font-size: 17px; }
+      .ui-ios-option1 .ios-botanical { top: -12px; right: -34px; width: 245px; opacity: .48; }
 
       .ui-ios-option1 .app-tabs {
         position: fixed;
@@ -1654,39 +1659,50 @@
         z-index: 100;
         gap: 0;
         margin: 0;
-        padding: 5px 4px calc(5px + env(safe-area-inset-bottom));
+        padding: 4px 4px calc(4px + env(safe-area-inset-bottom));
         border-radius: 22px 22px 0 0;
         background: rgba(255, 255, 255, .82);
         box-shadow: 0 8px 28px rgba(60, 60, 67, .13);
       }
-      .ui-ios-option1 .tab-button { min-width: 0; min-height: 59px; flex-direction: column; gap: 2px; padding: 4px 1px; border-radius: 13px; font-size: 10px; line-height: 1.1; }
-      .ui-ios-option1 .tab-button i { font-size: 23px; }
+      .ui-ios-option1 .tab-button { min-width: 0; min-height: 57px; flex-direction: column; gap: 2px; padding: 3px 1px; border-radius: 13px; font-size: 10px; line-height: 1.1; }
+      .ui-ios-option1 .tab-button i { font-size: 24px; }
       .ui-ios-option1 .tab-button[aria-selected="true"] { background: transparent; }
       .ui-ios-option1 .tab-button:focus-visible { outline: 0; }
 
       .ui-ios-option1 .panel { margin-top: 13px; padding: 18px 16px; border-radius: 20px; }
-      .ui-ios-option1 .prep-overview { margin-top: 0; padding: 0 2px; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+      .ui-ios-option1 .prep-overview { margin-top: 4px; padding: 0 10px; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
       .ui-ios-option1 .prep-overview-head { display: none; }
-      .ui-ios-option1 .ios-key-dates { gap: 0; margin-top: 0; border-radius: 19px; background: var(--ios-surface-solid); }
-      .ui-ios-option1 .ios-key-date { min-height: 84px; padding: 12px 16px; }
-      .ui-ios-option1 .ios-key-date + .ios-key-date { border-top: 1px solid var(--ios-divider); }
+      .ui-ios-option1 .ios-key-dates { gap: 0; margin-top: 0; border-radius: 14px; background: var(--ios-surface-solid); }
+      .ui-ios-option1 .ios-key-date { position: relative; min-height: 88px; padding: 12px 16px; }
+      .ui-ios-option1 .ios-key-date + .ios-key-date::before { position: absolute; top: 0; right: 16px; left: 16px; height: 1px; background: var(--ios-divider); content: ""; }
       .ui-ios-option1 .ios-date-icon { width: 50px; height: 50px; }
       .ui-ios-option1 .ios-date-icon i { font-size: 25px; }
-      .ui-ios-option1 .ios-date-copy small { font-size: 13px; }
-      .ui-ios-option1 .ios-date-copy strong { font-size: 19px; }
-      .ui-ios-option1 .ios-section-heading { margin: 18px 3px 8px; font-size: 18px; }
-      .ui-ios-option1 .prep-summary-grid { grid-template-columns: 1fr; gap: 10px; }
-      .ui-ios-option1 .prep-summary-card { min-height: 0; padding: 15px; }
-      .ui-ios-option1 .prep-completion-card { min-height: 126px; gap: 18px; }
+      .ui-ios-option1 .ios-date-copy small { font-size: 12px; }
+      .ui-ios-option1 .ios-date-copy strong { font-size: 18px; font-weight: 450; }
+      .ui-ios-option1 .ios-section-heading { margin: 23px 3px 6px; font-size: 16px; line-height: 1.4; }
+      .ui-ios-option1 .prep-summary-grid { grid-template-columns: 1fr; gap: 0; }
+      .ui-ios-option1 .prep-summary-card { min-height: 0; padding: 15px; border-radius: 13px; }
+      .ui-ios-option1 .prep-completion-card { min-height: 132px; gap: 18px; }
       .ui-ios-option1 .prep-progress-ring { width: 96px; height: 96px; flex-basis: 96px; border-width: 9px; }
-      .ui-ios-option1 .prep-progress-ring strong { font-size: 17px; }
-      .ui-ios-option1 .prep-next-card { min-height: 150px; gap: 10px; }
+      .ui-ios-option1 .prep-progress-ring strong { font-size: 16px; }
+      .ui-ios-option1 .prep-completion-card small { font-size: 13px; }
+      .ui-ios-option1 .prep-completion-card p { font-size: 12px; }
+      .ui-ios-option1 .ios-next-heading { display: block; margin: 23px 3px 3px; }
+      .ui-ios-option1 .prep-next-card { min-height: 139px; grid-template-columns: auto minmax(0, 1fr); gap: 8px 12px; padding: 13px 10px 12px; background: #fff9f9; }
       .ui-ios-option1 .prep-next-card .ios-date-icon { width: 44px; height: 44px; }
+      .ui-ios-option1 .prep-next-card .ios-date-icon { margin-left: 6px; }
       .ui-ios-option1 .prep-next-card .ios-date-icon i { font-size: 22px; }
-      .ui-ios-option1 .ios-primary-button { min-height: 42px; padding-block: 8px; }
-      .ui-ios-option1 .prep-summary-card:nth-child(3) { display: none; }
-      .ui-ios-option1 .prep-overall-progress { margin: 8px 4px 0; padding-bottom: 4px; }
+      .ui-ios-option1 .prep-next-card small { display: none; }
+      .ui-ios-option1 .prep-next-card strong { margin-top: 0; padding-right: 12px; font-size: 15px; line-height: 1.45; }
+      .ui-ios-option1 .prep-next-card p { margin-top: 3px; font-size: 11px; }
+      .ui-ios-option1 .ios-next-chevron { top: 26px; right: 13px; }
+      .ui-ios-option1 .ios-primary-button { min-height: 32px; padding: 4px 12px; border-radius: 10px; font-size: 14px; }
+      .ui-ios-option1 .prep-priority-card { display: none; }
+      .ui-ios-option1 .prep-overall-progress { margin: 17px 4px 0; padding-bottom: 0; }
       .ui-ios-option1 .progress-label { font-size: 14px; }
+      .ui-ios-option1 .progress-label > span:first-child { display: inline-flex; gap: 7px; align-items: center; }
+      .ui-ios-option1 .progress-label i { font-size: 18px; }
+      .ui-ios-option1 .prep-overall-progress .progress-bar { height: 6px; margin-top: 4px; }
       .ui-ios-option1 .home-grid { grid-template-columns: 1fr; }
       .ui-ios-option1 .home-card + .home-card { border-top: 1px solid var(--ios-divider); border-left: 0; }
       .ui-ios-option1 .home-card { min-height: 128px; }
@@ -1739,14 +1755,14 @@
     }
   </style>
 </head>
-<body class="ui-ios-option1" data-active-tab="home">
+<body class="ui-ios-option1" data-active-tab="prep">
   <main class="page">
     <header class="hero">
       <img class="ios-botanical" src="assets/ui/botanical-corner.png" alt="" aria-hidden="true">
       <div class="hero-main">
         <div>
           <p class="eyebrow" id="venueTitle">PRIMROSE</p>
-          <h1 id="screenTitle">まとめ</h1>
+          <h1 id="screenTitle">準備</h1>
           <p class="hero-copy" id="venueCopy">おふたりで、素敵な一日をつくりましょう。</p>
           <p class="ios-today"><i class="iconoir-calendar" aria-hidden="true"></i><span id="iosToday">今日</span> 時点</p>
           <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>準備開始</span></div>
@@ -1766,14 +1782,14 @@
     </header>
 
     <nav class="app-tabs" aria-label="結婚式準備メニュー" role="tablist">
-      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home"><i class="iconoir-dashboard" aria-hidden="true"></i><span>まとめ</span></button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget"><i class="iconoir-coins" aria-hidden="true"></i><span>見積</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="home"><i class="iconoir-view-grid" aria-hidden="true"></i><span>まとめ</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget"><i class="iconoir-yen-square" aria-hidden="true"></i><span>見積</span></button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests"><i class="iconoir-group" aria-hidden="true"></i><span>人数試算</span></button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="prep"><i class="iconoir-clipboard-check" aria-hidden="true"></i><span>準備</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="prep"><i class="iconoir-clipboard-check" aria-hidden="true"></i><span>準備</span></button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue"><i class="iconoir-notes" aria-hidden="true"></i><span>会場メモ</span></button>
     </nav>
 
-    <section class="panel estimate-stage-panel" data-tab-panel="home">
+    <section class="panel estimate-stage-panel" data-tab-panel="home" hidden>
       <div class="stage-head">
         <div>
           <p class="eyebrow">NEXT MEETING</p>
@@ -1790,7 +1806,7 @@
       <p class="stage-note">挙式日：<strong id="candidateDateStatus">2027年3月7日</strong></p>
     </section>
 
-    <section class="panel" data-tab-panel="home">
+    <section class="panel" data-tab-panel="home" hidden>
       <h2 class="section-title">初回見積の要点</h2>
       <p class="tab-intro">まずは「いくらか」と「何が条件付きか」だけ押さえれば大丈夫です。</p>
       <div class="home-grid">
@@ -1814,7 +1830,7 @@
       </div>
     </section>
 
-    <section class="panel" data-tab-panel="home">
+    <section class="panel" data-tab-panel="home" hidden>
       <h2 class="section-title">初回打ち合わせで聞く4つ</h2>
       <p class="tab-intro">9月6日は、今後の流れと費用、招待状の選択肢を先に確認します。</p>
       <div class="question-grid">
@@ -1825,7 +1841,7 @@
       </div>
     </section>
 
-    <section class="panel prep-overview" data-tab-panel="prep" hidden>
+    <section class="panel prep-overview" data-tab-panel="prep">
       <div class="prep-overview-head">
         <div>
           <h2 class="section-title">挙式日から逆算した<wbr>準備スケジュール</h2>
@@ -1851,24 +1867,26 @@
           <div class="prep-progress-ring"><strong id="prepCompleteSummary">0 / 25件</strong></div>
           <div><small>完了した準備</small><p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p></div>
         </article>
+        <h3 class="ios-section-heading ios-next-heading">次に進めること</h3>
         <article class="prep-summary-card prep-next-card">
-          <span class="ios-date-icon"><i class="iconoir-task-list" aria-hidden="true"></i></span>
+          <span class="ios-date-icon"><i class="iconoir-clipboard-check" aria-hidden="true"></i></span>
           <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">期限の目安を表示します。</p></div>
+          <i class="iconoir-nav-arrow-right ios-next-chevron" aria-hidden="true"></i>
           <button class="ios-primary-button" id="prepOpenTasks" type="button">タスクを開く</button>
         </article>
-        <article class="prep-summary-card">
+        <article class="prep-summary-card prep-priority-card">
           <small>先に着手する予定</small>
           <strong id="prepPriorityCount">0件</strong>
           <p id="prepPriorityNote">期限が近い予定をまとめます。</p>
         </article>
       </div>
       <div class="prep-overall-progress">
-        <div class="progress-label" aria-live="polite"><span>全体の進捗</span><span id="prepProgressText">0%</span></div>
+        <div class="progress-label" aria-live="polite"><span><i class="iconoir-check-circle" aria-hidden="true"></i>全体の進捗</span><span id="prepProgressText">0%</span></div>
         <div class="progress-bar" id="prepOverallProgress" role="progressbar" aria-label="準備全体の進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="prepProgressBar"></span></div>
       </div>
     </section>
 
-    <section class="panel" data-tab-panel="prep" hidden>
+    <section class="panel" data-tab-panel="prep">
       <h2 class="section-title">時期別のやること</h2>
       <p class="tab-intro">期限は3月7日から逆算した目安です。式場の案内に合わせて日付と担当を変更してください。</p>
       <div class="prep-toolbar">
@@ -2217,7 +2235,7 @@
 
     const STORAGE_KEY = "primrose-wedding-dashboard-v3";
     const LEGACY_STORAGE_KEY = "primrose-wedding-dashboard-v2";
-    const TAB_STORAGE_KEY = "primrose-wedding-active-tab";
+    const TAB_STORAGE_KEY = "primrose-wedding-active-tab-v2";
     const ONE_W_PORTAL_URL = "https://fivestar.one-w.net/bg";
     const baseSettings = {
       weddingDate: "2027-03-07",
@@ -2478,8 +2496,8 @@
       const venue = settings.venueName.trim() || "PRIMROSE";
       setText("venueTitle", venue);
       setText("venueCopy", "おふたりで、素敵な一日をつくりましょう。");
-      setText("iosToday", new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short" }).format(new Date()));
-      setText("iosWeddingDate", settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定");
+      setText("iosToday", formatIosDate(new Date()));
+      setText("iosWeddingDate", settings.weddingDate ? formatIosDate(parseLocalDate(settings.weddingDate)) : "未設定");
       setText("heroCandidateDate", `挙式日：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}`);
 
       const budgetCard = document.querySelector("#budgetCard");
@@ -2529,6 +2547,13 @@
       return date && !Number.isNaN(date.getTime())
         ? new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short" }).format(date)
         : "日付未設定";
+    }
+
+    function formatIosDate(date, includeYear = true) {
+      if (!date || Number.isNaN(date.getTime())) return "日付未設定";
+      const weekday = "日月火水木金土"[date.getDay()];
+      const year = includeYear ? date.getFullYear() + "年" : "";
+      return year + (date.getMonth() + 1) + "月" + date.getDate() + "日（" + weekday + "）";
     }
 
     function daysFromToday(target) {
@@ -2619,6 +2644,7 @@
       setText("prepProgressText", stats.percent + "%");
       document.querySelector("#prepProgressBar").style.width = stats.percent + "%";
       document.querySelector("#prepOverallProgress").setAttribute("aria-valuenow", String(stats.percent));
+      document.querySelector(".prep-progress-ring").style.setProperty("--prep-ring-progress", Math.max(stats.percent, 2) + "%");
 
       if (weddingDays === null) setText("prepDaysBadge", "挙式日を設定してください");
       else if (weddingDays > 0) setText("prepDaysBadge", "挙式まであと" + weddingDays + "日");
@@ -2772,7 +2798,7 @@
       const compactTime = settings.nextMeetingTime ? ` ${settings.nextMeetingTime.replace(/^0/, "")}` : "";
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
       setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}${startTime}（${prefix}）${extras ? `　${extras}` : ""}`);
-      setText("iosMeetingDate", `${new Intl.DateTimeFormat("ja-JP", { month: "numeric", day: "numeric", weekday: "short" }).format(meeting)}${compactTime}`);
+      setText("iosMeetingDate", `${formatIosDate(meeting, false)}${compactTime}`);
     }
 
     function normalizedGoogleFormUrl(value) {
@@ -3213,7 +3239,7 @@
 
     function switchTab(tabName, shouldScroll = true) {
       const availableTabs = new Set(tabButtons.map(button => button.dataset.tabTarget));
-      const tab = availableTabs.has(tabName) ? tabName : "home";
+      const tab = availableTabs.has(tabName) ? tabName : "prep";
       const tabTitles = { home: "まとめ", budget: "見積", guests: "人数試算", prep: "準備", venue: "会場メモ" };
       document.querySelectorAll("[data-tab-panel]").forEach(panel => {
         panel.hidden = panel.dataset.tabPanel !== tab;
@@ -3377,8 +3403,11 @@
     updateSummary();
     updateCountdown();
     saveState();
-    let initialTab = "home";
-    try { initialTab = localStorage.getItem(TAB_STORAGE_KEY) || "home"; } catch {}
+    const pageParams = new URLSearchParams(window.location.search);
+    let initialTab = pageParams.get("tab") || "prep";
+    try {
+      if (!pageParams.has("tab")) initialTab = localStorage.getItem(TAB_STORAGE_KEY) || "prep";
+    } catch {}
     switchTab(initialTab, false);
   </script>
 </body>
