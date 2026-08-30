@@ -1979,7 +1979,7 @@
       </div>
       <div class="invite-help">
         <p id="invitationHelpText"><strong>9月6日に確認：</strong>ONE-Wの料金、URL発行時期、出欠・アレルギー・送迎希望をどこまで管理できるか。</p>
-        <a id="invitationHelpLink" href="https://docs.google.com/forms/" target="_blank" rel="noopener">Googleフォーム（予備案）</a>
+        <a id="invitationHelpLink" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener">ONE-W 新郎新婦専用サイト</a>
       </div>
       <div class="invite-share">
         <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
@@ -2218,6 +2218,7 @@
     const STORAGE_KEY = "primrose-wedding-dashboard-v3";
     const LEGACY_STORAGE_KEY = "primrose-wedding-dashboard-v2";
     const TAB_STORAGE_KEY = "primrose-wedding-active-tab";
+    const ONE_W_PORTAL_URL = "https://fivestar.one-w.net/bg";
     const baseSettings = {
       weddingDate: "2027-03-07",
       weddingTime: "11:00",
@@ -2806,28 +2807,39 @@
       const service = settings.invitationService;
       const status = document.querySelector("#inviteFormStatus");
       const help = document.querySelector("#invitationHelpText");
+      const helpLink = document.querySelector("#invitationHelpLink");
       const privacy = document.querySelector("#invitePrivacyNote");
       if (service === "one-w-pending") {
         status.textContent = "ONE-W 利用可否を確認中";
         help.textContent = "9月6日に確認：ONE-Wの料金、URL発行時期、出欠・アレルギー・送迎希望をどこまで管理できるか。";
+        helpLink.href = ONE_W_PORTAL_URL;
+        helpLink.textContent = "ONE-W 新郎新婦専用サイト";
         privacy.textContent = formUrl
           ? "GoogleフォームのURLは予備として保存されています。ONE-Wの利用可否が決まるまでゲスト共有は無効です。"
           : "ONE-Wの利用可否は未確定です。回答先は初回打ち合わせ後に決めます。";
       } else if (service === "undecided") {
         status.textContent = "招待状サービス未定";
         help.textContent = "初回打ち合わせ後に、ONE-Wかこのサイトの招待状を選べます。";
+        helpLink.href = ONE_W_PORTAL_URL;
+        helpLink.textContent = "ONE-W 新郎新婦専用サイト";
         privacy.textContent = "回答先が決まるまでは確認用ページとして利用できます。";
       } else if (formUrl) {
         status.textContent = "Googleフォーム連携済み";
         help.textContent = "このサイトの招待状から、出欠・アレルギーなどの回答フォームへ進めます。";
+        helpLink.href = "https://docs.google.com/forms/";
+        helpLink.textContent = "Googleフォームを開く";
         privacy.textContent = "回答内容はリンク先のGoogleフォームに保存されます。共有前にフォームの公開設定と回答項目を確認してください。";
       } else if (rawFormUrl) {
         status.textContent = "フォームURLを確認";
         help.textContent = "GoogleフォームのURLは、forms.gle または docs.google.com/forms で始まる公開URLを入力してください。";
+        helpLink.href = "https://docs.google.com/forms/";
+        helpLink.textContent = "Googleフォームを開く";
         privacy.textContent = "現在のURLでは回答を受け付けられません。修正するまで共有URLのコピーは無効です。";
       } else {
         status.textContent = "Googleフォーム未連携";
         help.textContent = "このサイトで出欠回答まで完結させるには、公開したGoogleフォームのURLを入力してください。";
+        helpLink.href = "https://docs.google.com/forms/";
+        helpLink.textContent = "Googleフォームを開く";
         privacy.textContent = "回答フォームを連携するまで、この招待状は確認用です。ゲストへの共有はまだ行わないでください。";
       }
       const shareReady = service === "site" && Boolean(formUrl);
