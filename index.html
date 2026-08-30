@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PRIMROSE お見積り</title>
+  <title>ふたりの結婚式プランナー | PRIMROSE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconoir@7.12.1/css/iconoir.css">
   <style>
     :root {
       --ink: #24313b;
@@ -1303,6 +1304,412 @@
       .progress-bar span { transition: none; }
     }
 
+    /* iOS 2026 interface · selected direction 01 */
+    body.ui-ios-option1 {
+      --ios-bg: #f8f5f4;
+      --ios-surface: rgba(255, 255, 255, .9);
+      --ios-surface-solid: #fffdfd;
+      --ios-ink: #373234;
+      --ios-muted: #777173;
+      --ios-accent: #d27d86;
+      --ios-accent-dark: #b96570;
+      --ios-accent-soft: #fbefef;
+      --ios-divider: rgba(60, 60, 67, .12);
+      --ios-shadow: 0 10px 32px rgba(69, 55, 59, .07);
+      color: var(--ios-ink);
+      background: var(--ios-bg);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Hiragino Sans", "Yu Gothic UI", "Noto Sans JP", sans-serif;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    .ui-ios-option1 button,
+    .ui-ios-option1 input,
+    .ui-ios-option1 select,
+    .ui-ios-option1 textarea { font: inherit; }
+
+    .ui-ios-option1 button { -webkit-tap-highlight-color: transparent; }
+    .ui-ios-option1 .page { width: min(1160px, calc(100% - 32px)); margin: 24px auto 64px; }
+
+    .ui-ios-option1 .hero {
+      position: relative;
+      min-height: 0;
+      display: block;
+      overflow: hidden;
+      isolation: isolate;
+      color: var(--ios-ink);
+      border: 1px solid rgba(60, 60, 67, .09);
+      border-radius: 26px;
+      background: rgba(255, 255, 255, .68);
+      box-shadow: var(--ios-shadow);
+      -webkit-backdrop-filter: saturate(160%) blur(22px);
+      backdrop-filter: saturate(160%) blur(22px);
+    }
+
+    .ui-ios-option1 .hero::before { display: none; }
+    .ui-ios-option1 .hero-main {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 36px;
+      align-items: end;
+      padding: 34px 38px 30px;
+    }
+
+    .ui-ios-option1 .hero-main > div:first-child { max-width: 720px; }
+    .ui-ios-option1 .ios-botanical {
+      position: absolute;
+      z-index: 0;
+      top: -105px;
+      right: -50px;
+      width: min(410px, 38vw);
+      max-width: none;
+      opacity: .34;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .ui-ios-option1 .hero .eyebrow {
+      margin: 0 0 5px;
+      color: var(--ios-accent-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .14em;
+    }
+
+    .ui-ios-option1 .hero h1,
+    .ui-ios-option1 h2,
+    .ui-ios-option1 .final-price,
+    .ui-ios-option1 .count-unit strong {
+      color: var(--ios-ink);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+    }
+
+    .ui-ios-option1 .hero h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 750; line-height: 1.12; letter-spacing: -.035em; }
+    .ui-ios-option1 .hero-copy { max-width: 600px; margin: 11px 0 0; color: var(--ios-muted); font-size: 16px; }
+    .ui-ios-option1 .ios-today {
+      display: flex;
+      gap: 9px;
+      align-items: center;
+      margin: 20px 0 0;
+      color: var(--ios-muted);
+      font-size: 13px;
+      font-variant-numeric: tabular-nums;
+    }
+    .ui-ios-option1 .ios-today i { color: var(--ios-accent); font-size: 19px; }
+    .ui-ios-option1 .hero-statuses { gap: 7px; margin-top: 18px; }
+    .ui-ios-option1 .hero-statuses span {
+      color: var(--ios-accent-dark);
+      border: 1px solid rgba(210, 125, 134, .22);
+      background: rgba(255, 255, 255, .68);
+    }
+    .ui-ios-option1 .hero-location { margin-top: 14px; color: var(--ios-muted); letter-spacing: .02em; }
+    .ui-ios-option1 .final-label { color: var(--ios-muted); }
+    .ui-ios-option1 .final-price { color: var(--ios-accent-dark); font-weight: 750; }
+    .ui-ios-option1 .final-note { color: var(--ios-muted); }
+    .ui-ios-option1 .hero-meta {
+      position: relative;
+      z-index: 1;
+      color: var(--ios-ink);
+      border-top: 1px solid var(--ios-divider);
+      background: rgba(255, 255, 255, .56);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+    }
+    .ui-ios-option1 .hero-meta > div + div { border-left-color: var(--ios-divider); }
+    .ui-ios-option1 .hero-meta small { color: var(--ios-muted); }
+
+    .ui-ios-option1 .app-tabs {
+      top: 10px;
+      z-index: 80;
+      gap: 4px;
+      margin-top: 14px;
+      padding: 7px;
+      border: 1px solid rgba(60, 60, 67, .1);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, .78);
+      box-shadow: 0 7px 24px rgba(60, 60, 67, .08);
+      -webkit-backdrop-filter: saturate(180%) blur(22px);
+      backdrop-filter: saturate(180%) blur(22px);
+    }
+
+    .ui-ios-option1 .tab-button {
+      min-height: 54px;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 9px;
+      color: #737174;
+      border: 0;
+      border-radius: 14px;
+      background: transparent;
+      font-size: 12px;
+      font-weight: 650;
+      letter-spacing: 0;
+    }
+    .ui-ios-option1 .tab-button i { font-size: 21px; }
+    .ui-ios-option1 .tab-button:hover { color: var(--ios-accent-dark); background: rgba(251, 239, 239, .7); }
+    .ui-ios-option1 .tab-button[aria-selected="true"] { color: var(--ios-accent-dark); background: var(--ios-accent-soft); box-shadow: none; }
+    .ui-ios-option1 .tab-button:focus-visible,
+    .ui-ios-option1 button:focus-visible,
+    .ui-ios-option1 input:focus-visible,
+    .ui-ios-option1 select:focus-visible,
+    .ui-ios-option1 textarea:focus-visible { outline: 3px solid rgba(210, 125, 134, .27); outline-offset: 2px; }
+
+    .ui-ios-option1 .panel {
+      margin-top: 18px;
+      padding: 25px;
+      color: var(--ios-ink);
+      border: 1px solid rgba(60, 60, 67, .09);
+      border-radius: 22px;
+      background: var(--ios-surface);
+      box-shadow: var(--ios-shadow);
+      -webkit-backdrop-filter: saturate(140%) blur(18px);
+      backdrop-filter: saturate(140%) blur(18px);
+    }
+    .ui-ios-option1 .section-title { margin-bottom: 14px; color: var(--ios-ink); font-weight: 720; letter-spacing: -.02em; }
+    .ui-ios-option1 .section-title::before { display: none; }
+    .ui-ios-option1 .tab-intro { color: var(--ios-muted); }
+
+    .ui-ios-option1 .estimate-stage-panel { border-color: rgba(210, 125, 134, .16); background: #fffafa; }
+    .ui-ios-option1 .stage-head h2 { color: var(--ios-ink); }
+    .ui-ios-option1 .stage-head p { color: var(--ios-muted); }
+    .ui-ios-option1 .stage-state { color: var(--ios-accent-dark); border-color: rgba(210, 125, 134, .3); background: var(--ios-accent-soft); }
+    .ui-ios-option1 .decision-step { color: var(--ios-muted); border-color: var(--ios-divider); background: rgba(255, 255, 255, .7); }
+    .ui-ios-option1 .decision-step b { color: var(--ios-accent-dark); background: var(--ios-accent-soft); }
+    .ui-ios-option1 .decision-step.current { color: #fff; border-color: var(--ios-accent); background: var(--ios-accent); }
+    .ui-ios-option1 .decision-step.current b { color: var(--ios-accent-dark); background: #fff; }
+    .ui-ios-option1 .stage-note { color: var(--ios-muted); }
+
+    .ui-ios-option1 .home-grid {
+      overflow: hidden;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--ios-divider);
+      border-radius: 18px;
+      background: var(--ios-surface-solid);
+    }
+    .ui-ios-option1 .home-card { min-height: 148px; padding: 19px; border: 0; border-radius: 0; background: transparent; }
+    .ui-ios-option1 .home-card + .home-card { border-left: 1px solid var(--ios-divider); }
+    .ui-ios-option1 .home-card small { color: var(--ios-muted); }
+    .ui-ios-option1 .home-card strong { color: var(--ios-ink); }
+    .ui-ios-option1 .home-card button { min-height: 44px; color: var(--ios-accent-dark); }
+    .ui-ios-option1 .home-callout { color: #765157; border-left-color: var(--ios-accent); background: var(--ios-accent-soft); }
+    .ui-ios-option1 .home-prep-card { border-color: var(--ios-divider); background: #fffafa; }
+    .ui-ios-option1 .home-prep-card small,
+    .ui-ios-option1 .home-prep-card strong { color: var(--ios-accent-dark); }
+    .ui-ios-option1 .home-prep-card button,
+    .ui-ios-option1 .primary-button { min-height: 44px; color: #fff; border-color: var(--ios-accent); border-radius: 13px; background: var(--ios-accent); }
+    .ui-ios-option1 .home-prep-card button:hover,
+    .ui-ios-option1 .primary-button:hover { color: #fff; background: var(--ios-accent-dark); }
+
+    .ui-ios-option1 .ios-key-dates {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      margin-top: 22px;
+      border: 1px solid var(--ios-divider);
+      border-radius: 20px;
+      background: var(--ios-divider);
+      box-shadow: 0 8px 28px rgba(60, 60, 67, .055);
+    }
+    .ui-ios-option1 .ios-key-date {
+      min-width: 0;
+      min-height: 104px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 15px;
+      align-items: center;
+      padding: 18px 20px;
+      color: var(--ios-ink);
+      border: 0;
+      border-radius: 0;
+      background: var(--ios-surface-solid);
+      text-align: left;
+      cursor: pointer;
+    }
+    .ui-ios-option1 .ios-key-date:hover { background: #fff8f8; }
+    .ui-ios-option1 .ios-date-icon {
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 auto;
+      color: var(--ios-accent);
+      border-radius: 50%;
+      background: var(--ios-accent-soft);
+    }
+    .ui-ios-option1 .ios-date-icon i { font-size: 29px; }
+    .ui-ios-option1 .ios-date-copy { min-width: 0; }
+    .ui-ios-option1 .ios-date-copy small { display: block; color: var(--ios-muted); font-size: 12px; }
+    .ui-ios-option1 .ios-date-copy strong { display: block; margin-top: 3px; color: var(--ios-ink); font-size: 19px; line-height: 1.35; font-variant-numeric: tabular-nums; }
+    .ui-ios-option1 .ios-date-chevron { color: #a5a1a2; font-size: 24px; }
+    .ui-ios-option1 .ios-section-heading { margin: 25px 2px 11px; color: var(--ios-ink); font-size: 18px; font-weight: 600; }
+
+    .ui-ios-option1 .prep-overview { border-color: rgba(60, 60, 67, .09); background: rgba(255, 255, 255, .74); }
+    .ui-ios-option1 .prep-overview-head p { color: var(--ios-muted); }
+    .ui-ios-option1 .prep-days-badge { color: var(--ios-accent-dark); border-color: rgba(210, 125, 134, .26); background: var(--ios-accent-soft); }
+    .ui-ios-option1 .prep-summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-top: 0; }
+    .ui-ios-option1 .prep-summary-card { min-height: 132px; padding: 18px; border-color: var(--ios-divider); border-radius: 18px; background: var(--ios-surface-solid); box-shadow: 0 8px 26px rgba(60, 60, 67, .045); }
+    .ui-ios-option1 .prep-summary-card small { color: var(--ios-muted); }
+    .ui-ios-option1 .prep-summary-card strong { color: var(--ios-ink); font-family: inherit; }
+    .ui-ios-option1 .prep-summary-card p { color: var(--ios-muted); }
+    .ui-ios-option1 .prep-completion-card { display: flex; gap: 18px; align-items: center; }
+    .ui-ios-option1 .prep-progress-ring {
+      width: 96px;
+      height: 96px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 96px;
+      padding: 10px;
+      border: 10px solid #f0edef;
+      border-top-color: var(--ios-accent);
+      border-radius: 50%;
+      text-align: center;
+    }
+    .ui-ios-option1 .prep-progress-ring strong { margin: 0; font-size: 16px; line-height: 1.2; letter-spacing: -.03em; white-space: pre-line; }
+    .ui-ios-option1 .prep-next-card { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+    .ui-ios-option1 .prep-next-card .ios-date-icon { width: 50px; height: 50px; }
+    .ui-ios-option1 .prep-next-card .ios-date-icon i { font-size: 25px; }
+    .ui-ios-option1 .ios-primary-button { grid-column: 1 / -1; min-height: 44px; padding: 10px 16px; color: #fff; border: 0; border-radius: 13px; background: var(--ios-accent); font-weight: 750; cursor: pointer; }
+    .ui-ios-option1 .ios-primary-button:hover { background: var(--ios-accent-dark); }
+    .ui-ios-option1 .prep-overall-progress { margin-top: 18px; }
+    .ui-ios-option1 .progress-bar { overflow: hidden; height: 8px; border-radius: 999px; background: #ecebee; }
+    .ui-ios-option1 .progress-bar span,
+    .ui-ios-option1 .bar > span { background: var(--ios-accent); }
+
+    .ui-ios-option1 .prep-filter-button { min-height: 44px; color: var(--ios-muted); border-color: var(--ios-divider); border-radius: 12px; background: #fff; }
+    .ui-ios-option1 .prep-filter-button[aria-pressed="true"] { color: var(--ios-accent-dark); border-color: rgba(210, 125, 134, .26); background: var(--ios-accent-soft); }
+    .ui-ios-option1 .prep-owner-filter select,
+    .ui-ios-option1 .prep-field select,
+    .ui-ios-option1 .prep-field input,
+    .ui-ios-option1 .field input,
+    .ui-ios-option1 .field select,
+    .ui-ios-option1 textarea,
+    .ui-ios-option1 .search {
+      min-height: 44px;
+      color: var(--ios-ink);
+      border-color: var(--ios-divider);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, .9);
+    }
+    .ui-ios-option1 .prep-phase { border-color: var(--ios-divider); border-radius: 18px; background: var(--ios-surface-solid); }
+    .ui-ios-option1 .prep-phase-head { border-bottom-color: var(--ios-divider); background: #faf8f8; }
+    .ui-ios-option1 .prep-phase-kicker { color: var(--ios-accent-dark); }
+    .ui-ios-option1 .prep-phase-head h3,
+    .ui-ios-option1 .prep-task-title { color: var(--ios-ink); }
+    .ui-ios-option1 .prep-task { background: var(--ios-surface-solid); }
+    .ui-ios-option1 .prep-task + .prep-task { border-top-color: var(--ios-divider); }
+    .ui-ios-option1 .prep-task.done { background: #f7f6f6; }
+    .ui-ios-option1 .prep-task-check { accent-color: var(--ios-accent); }
+    .ui-ios-option1 .prep-task-category { color: var(--ios-accent-dark); background: var(--ios-accent-soft); }
+    .ui-ios-option1 .prep-add { border-color: var(--ios-divider); border-radius: 18px; background: #fffafa; }
+
+    .ui-ios-option1 .card,
+    .ui-ios-option1 .result-card,
+    .ui-ios-option1 .info-card,
+    .ui-ios-option1 .task-item,
+    .ui-ios-option1 .question-card,
+    .ui-ios-option1 .benefit-card { border-color: var(--ios-divider); border-radius: 16px; background: var(--ios-surface-solid); }
+    .ui-ios-option1 th { background: #6f6567; }
+
+    @media (max-width: 820px) {
+      .ui-ios-option1 .page { width: min(100% - 20px, 1160px); margin-top: 10px; }
+      .ui-ios-option1 .hero-main { grid-template-columns: 1fr; padding: 28px 24px; }
+      .ui-ios-option1 .hero-meta { grid-template-columns: repeat(3, 1fr); }
+      .ui-ios-option1 .hero-meta > div + div { border-top: 0; border-left: 1px solid var(--ios-divider); }
+      .ui-ios-option1 .home-grid { grid-template-columns: repeat(2, 1fr); }
+      .ui-ios-option1 .home-card:nth-child(3) { border-left: 0; border-top: 1px solid var(--ios-divider); }
+      .ui-ios-option1 .home-card:nth-child(4) { border-top: 1px solid var(--ios-divider); }
+      .ui-ios-option1 .ios-key-dates { grid-template-columns: 1fr; }
+      .ui-ios-option1 .prep-summary-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 520px) {
+      body.ui-ios-option1 { padding-bottom: calc(94px + env(safe-area-inset-bottom)); }
+      .ui-ios-option1 .page { width: 100%; margin: 0 0 18px; padding: 0 10px; }
+      .ui-ios-option1 .hero { min-height: 0; overflow: hidden; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+      .ui-ios-option1 .hero-main { display: block; padding: 54px 12px 8px; }
+      .ui-ios-option1 .hero-main > div:last-child,
+      .ui-ios-option1 .hero-meta,
+      .ui-ios-option1 .hero .eyebrow,
+      .ui-ios-option1 .hero-statuses,
+      .ui-ios-option1 .hero-location { display: none; }
+      .ui-ios-option1 .hero h1 { font-size: 42px; line-height: 1.08; letter-spacing: -.045em; }
+      .ui-ios-option1 .hero-copy { margin-top: 8px; font-size: 16px; line-height: 1.45; }
+      .ui-ios-option1 .ios-today { margin-top: 18px; font-size: 15px; }
+      .ui-ios-option1 .ios-today i { font-size: 21px; }
+      .ui-ios-option1 .ios-botanical { top: -27px; right: -68px; width: 245px; opacity: .44; }
+
+      .ui-ios-option1 .app-tabs {
+        position: fixed;
+        top: auto;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        gap: 0;
+        margin: 0;
+        padding: 5px 4px calc(5px + env(safe-area-inset-bottom));
+        border-radius: 22px 22px 0 0;
+        background: rgba(255, 255, 255, .82);
+        box-shadow: 0 8px 28px rgba(60, 60, 67, .13);
+      }
+      .ui-ios-option1 .tab-button { min-width: 0; min-height: 59px; flex-direction: column; gap: 2px; padding: 4px 1px; border-radius: 13px; font-size: 10px; line-height: 1.1; }
+      .ui-ios-option1 .tab-button i { font-size: 23px; }
+      .ui-ios-option1 .tab-button[aria-selected="true"] { background: transparent; }
+      .ui-ios-option1 .tab-button:focus-visible { outline: 0; }
+
+      .ui-ios-option1 .panel { margin-top: 13px; padding: 18px 16px; border-radius: 20px; }
+      .ui-ios-option1 .prep-overview { margin-top: 0; padding: 0 2px; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
+      .ui-ios-option1 .prep-overview-head { display: none; }
+      .ui-ios-option1 .ios-key-dates { gap: 0; margin-top: 0; border-radius: 19px; background: var(--ios-surface-solid); }
+      .ui-ios-option1 .ios-key-date { min-height: 84px; padding: 12px 16px; }
+      .ui-ios-option1 .ios-key-date + .ios-key-date { border-top: 1px solid var(--ios-divider); }
+      .ui-ios-option1 .ios-date-icon { width: 50px; height: 50px; }
+      .ui-ios-option1 .ios-date-icon i { font-size: 25px; }
+      .ui-ios-option1 .ios-date-copy small { font-size: 13px; }
+      .ui-ios-option1 .ios-date-copy strong { font-size: 19px; }
+      .ui-ios-option1 .ios-section-heading { margin: 18px 3px 8px; font-size: 18px; }
+      .ui-ios-option1 .prep-summary-grid { grid-template-columns: 1fr; gap: 10px; }
+      .ui-ios-option1 .prep-summary-card { min-height: 0; padding: 15px; }
+      .ui-ios-option1 .prep-completion-card { min-height: 126px; gap: 18px; }
+      .ui-ios-option1 .prep-progress-ring { width: 96px; height: 96px; flex-basis: 96px; border-width: 9px; }
+      .ui-ios-option1 .prep-progress-ring strong { font-size: 17px; }
+      .ui-ios-option1 .prep-next-card { min-height: 150px; gap: 10px; }
+      .ui-ios-option1 .prep-next-card .ios-date-icon { width: 44px; height: 44px; }
+      .ui-ios-option1 .prep-next-card .ios-date-icon i { font-size: 22px; }
+      .ui-ios-option1 .ios-primary-button { min-height: 42px; padding-block: 8px; }
+      .ui-ios-option1 .prep-summary-card:nth-child(3) { display: none; }
+      .ui-ios-option1 .prep-overall-progress { margin: 8px 4px 0; padding-bottom: 4px; }
+      .ui-ios-option1 .progress-label { font-size: 14px; }
+      .ui-ios-option1 .home-grid { grid-template-columns: 1fr; }
+      .ui-ios-option1 .home-card + .home-card { border-top: 1px solid var(--ios-divider); border-left: 0; }
+      .ui-ios-option1 .home-card { min-height: 128px; }
+      .ui-ios-option1 .home-prep-card { background: #fffafa; }
+      .ui-ios-option1 .estimate-stage-panel { background: #fffafa; }
+      .ui-ios-option1 .prep-toolbar { gap: 10px; }
+      .ui-ios-option1 .prep-filter-buttons { width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); }
+      .ui-ios-option1 .prep-filter-button { padding-inline: 7px; }
+      .ui-ios-option1 .prep-owner-filter { width: 100%; }
+      .ui-ios-option1 .prep-task { padding: 15px 13px; }
+      .ui-ios-option1 .prep-task-side { gap: 8px; }
+    }
+
+    @media (max-width: 360px) {
+      .ui-ios-option1 .hero h1 { font-size: 38px; }
+      .ui-ios-option1 .hero-copy { font-size: 15px; }
+      .ui-ios-option1 .ios-key-date { grid-template-columns: auto minmax(0, 1fr); gap: 12px; }
+      .ui-ios-option1 .ios-date-chevron { display: none; }
+      .ui-ios-option1 .ios-date-copy strong { font-size: 17px; }
+      .ui-ios-option1 .prep-completion-card { gap: 14px; }
+      .ui-ios-option1 .prep-progress-ring { width: 90px; height: 90px; flex-basis: 90px; }
+    }
+
     @media print {
       @page { size: A4 landscape; margin: 10mm; }
       body { color: #000; background: #fff; font-size: 10px; }
@@ -1323,17 +1730,25 @@
       .estimate-sheet-scroll { overflow: visible; padding: 0; border: 0; background: transparent; box-shadow: none; }
       .estimate-sheet-spread { width: auto; min-width: 0; gap: 8mm; zoom: 1; }
       .estimate-page { padding: 5mm; box-shadow: none; break-inside: avoid; }
+      body.ui-ios-option1 { padding: 0; color: #000; background: #fff; }
+      .ui-ios-option1 .page { width: 100%; margin: 0; padding: 0; }
+      .ui-ios-option1 .app-tabs { display: none; }
+      .ui-ios-option1 .hero,
+      .ui-ios-option1 .panel { background: #fff; box-shadow: none; backdrop-filter: none; }
+      .ui-ios-option1 .ios-botanical { display: none; }
     }
   </style>
 </head>
-<body>
+<body class="ui-ios-option1" data-active-tab="home">
   <main class="page">
     <header class="hero">
+      <img class="ios-botanical" src="assets/ui/botanical-corner.png" alt="" aria-hidden="true">
       <div class="hero-main">
         <div>
-          <p class="eyebrow">WEDDING PLAN 2027</p>
-          <h1 id="venueTitle">PRIMROSE お見積り</h1>
-          <p class="hero-copy" id="venueCopy">初回見積をもとに、3月7日までの費用と準備をふたりで整理しています。</p>
+          <p class="eyebrow" id="venueTitle">PRIMROSE</p>
+          <h1 id="screenTitle">まとめ</h1>
+          <p class="hero-copy" id="venueCopy">おふたりで、素敵な一日をつくりましょう。</p>
+          <p class="ios-today"><i class="iconoir-calendar" aria-hidden="true"></i><span id="iosToday">今日</span> 時点</p>
           <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>準備開始</span></div>
           <p class="hero-location" id="heroCandidateDate">挙式日：2027年3月7日</p>
         </div>
@@ -1351,11 +1766,11 @@
     </header>
 
     <nav class="app-tabs" aria-label="結婚式準備メニュー" role="tablist">
-      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home">まとめ</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget">見積</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests">人数試算</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="prep">準備</button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue">会場メモ</button>
+      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home"><i class="iconoir-dashboard" aria-hidden="true"></i><span>まとめ</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget"><i class="iconoir-coins" aria-hidden="true"></i><span>見積</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests"><i class="iconoir-group" aria-hidden="true"></i><span>人数試算</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="prep"><i class="iconoir-clipboard-check" aria-hidden="true"></i><span>準備</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue"><i class="iconoir-notes" aria-hidden="true"></i><span>会場メモ</span></button>
     </nav>
 
     <section class="panel estimate-stage-panel" data-tab-panel="home">
@@ -1418,16 +1833,28 @@
         </div>
         <span class="prep-days-badge" id="prepDaysBadge">挙式までの日数を計算中</span>
       </div>
+      <div class="ios-key-dates" aria-label="大切な日程">
+        <button class="ios-key-date" type="button" data-tab-target="budget">
+          <span class="ios-date-icon"><i class="iconoir-rings" aria-hidden="true"></i></span>
+          <span class="ios-date-copy"><small>挙式日</small><strong id="iosWeddingDate">2027年3月7日(日)</strong></span>
+          <i class="iconoir-nav-arrow-right ios-date-chevron" aria-hidden="true"></i>
+        </button>
+        <button class="ios-key-date" type="button" data-tab-target="venue">
+          <span class="ios-date-icon"><i class="iconoir-calendar" aria-hidden="true"></i></span>
+          <span class="ios-date-copy"><small>次回打ち合わせ</small><strong id="iosMeetingDate">9月6日(日) 9:30</strong></span>
+          <i class="iconoir-nav-arrow-right ios-date-chevron" aria-hidden="true"></i>
+        </button>
+      </div>
+      <h3 class="ios-section-heading">準備の進捗</h3>
       <div class="prep-summary-grid">
-        <article class="prep-summary-card">
-          <small>完了した準備</small>
-          <strong id="prepCompleteSummary">0 / 25件</strong>
-          <p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p>
+        <article class="prep-summary-card prep-completion-card">
+          <div class="prep-progress-ring"><strong id="prepCompleteSummary">0 / 25件</strong></div>
+          <div><small>完了した準備</small><p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p></div>
         </article>
-        <article class="prep-summary-card">
-          <small>次に進めること</small>
-          <strong id="prepNextTitle">準備内容を読み込み中</strong>
-          <p id="prepNextDate">期限の目安を表示します。</p>
+        <article class="prep-summary-card prep-next-card">
+          <span class="ios-date-icon"><i class="iconoir-task-list" aria-hidden="true"></i></span>
+          <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">期限の目安を表示します。</p></div>
+          <button class="ios-primary-button" id="prepOpenTasks" type="button">タスクを開く</button>
         </article>
         <article class="prep-summary-card">
           <small>先に着手する予定</small>
@@ -2048,8 +2475,10 @@
       setText("paymentRemaining", yen(selfFunding));
 
       const venue = settings.venueName.trim() || "PRIMROSE";
-      setText("venueTitle", `${venue} お見積り`);
-      setText("venueCopy", "初回来館でもらった見積をもとに、確定した日程とこれからの準備を整理しています。");
+      setText("venueTitle", venue);
+      setText("venueCopy", "おふたりで、素敵な一日をつくりましょう。");
+      setText("iosToday", new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "long", day: "numeric", weekday: "short" }).format(new Date()));
+      setText("iosWeddingDate", settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定");
       setText("heroCandidateDate", `挙式日：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}`);
 
       const budgetCard = document.querySelector("#budgetCard");
@@ -2180,7 +2609,7 @@
       document.querySelector("#homePrepProgress").setAttribute("aria-valuenow", String(stats.percent));
       setText("homePrepNext", next ? "次は「" + next.text + "」" : "準備はすべて完了しています。");
 
-      setText("prepCompleteSummary", stats.done + " / " + stats.total + "件");
+      setText("prepCompleteSummary", stats.done + "\n/" + stats.total + "件");
       setText("prepCompleteNote", stats.total === 0 ? "予定を追加できます。" : stats.done === stats.total ? "当日までの準備が整いました。" : "未完了はあと" + (stats.total - stats.done) + "件です。");
       setText("prepNextTitle", next ? next.text : "すべて完了");
       setText("prepNextDate", next ? prepShortDate(prepDueValue(next)) + "までの目安" : "おつかれさまでした。");
@@ -2333,13 +2762,16 @@
       const meeting = parseLocalDate(settings.nextMeetingDate);
       if (!meeting || Number.isNaN(meeting.getTime())) {
         setText("nextMeetingStatus", "日付と開始時刻を入力すると、打ち合わせまでの日数を表示します。");
+        setText("iosMeetingDate", "未設定");
         return;
       }
       const days = daysFromToday(meeting);
       const prefix = days > 0 ? `あと${days}日` : days === 0 ? "今日" : `${Math.abs(days)}日前に経過`;
       const startTime = settings.nextMeetingTime ? ` ${settings.nextMeetingTime}開始` : "";
+      const compactTime = settings.nextMeetingTime ? ` ${settings.nextMeetingTime.replace(/^0/, "")}` : "";
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
       setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}${startTime}（${prefix}）${extras ? `　${extras}` : ""}`);
+      setText("iosMeetingDate", `${new Intl.DateTimeFormat("ja-JP", { month: "numeric", day: "numeric", weekday: "short" }).format(meeting)}${compactTime}`);
     }
 
     function normalizedGoogleFormUrl(value) {
@@ -2770,6 +3202,7 @@
     function switchTab(tabName, shouldScroll = true) {
       const availableTabs = new Set(tabButtons.map(button => button.dataset.tabTarget));
       const tab = availableTabs.has(tabName) ? tabName : "home";
+      const tabTitles = { home: "まとめ", budget: "見積", guests: "人数試算", prep: "準備", venue: "会場メモ" };
       document.querySelectorAll("[data-tab-panel]").forEach(panel => {
         panel.hidden = panel.dataset.tabPanel !== tab;
       });
@@ -2778,8 +3211,15 @@
         button.setAttribute("aria-selected", String(selected));
         button.tabIndex = selected ? 0 : -1;
       });
+      document.body.dataset.activeTab = tab;
+      setText("screenTitle", tabTitles[tab]);
       try { localStorage.setItem(TAB_STORAGE_KEY, tab); } catch {}
-      if (shouldScroll) document.querySelector(`[data-tab-panel="${tab}"]`).scrollIntoView({ behavior: "smooth", block: "start" });
+      if (shouldScroll) {
+        const scrollTarget = window.matchMedia("(max-width: 520px)").matches
+          ? document.querySelector(".page")
+          : document.querySelector(`[data-tab-panel="${tab}"]`);
+        scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     }
 
     const tabButtons = [...document.querySelectorAll(".tab-button")];
@@ -2811,6 +3251,10 @@
 
     document.querySelectorAll("[data-tab-target]").forEach(button => {
       button.addEventListener("click", () => switchTab(button.dataset.tabTarget));
+    });
+    document.querySelector("#prepOpenTasks").addEventListener("click", () => {
+      const prepPanels = document.querySelectorAll('[data-tab-panel="prep"]');
+      prepPanels[1]?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
 
     [...textSettingIds, ...numericSettingIds].forEach(id => {
