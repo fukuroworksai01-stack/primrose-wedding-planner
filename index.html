@@ -1310,9 +1310,9 @@
       --ios-surface: rgba(255, 255, 255, .9);
       --ios-surface-solid: #fffdfd;
       --ios-ink: #373234;
-      --ios-muted: #777173;
+      --ios-muted: #70696b;
       --ios-accent: #d27d86;
-      --ios-accent-dark: #b96570;
+      --ios-accent-dark: #a65560;
       --ios-accent-soft: #fbefef;
       --ios-divider: rgba(60, 60, 67, .12);
       --ios-shadow: 0 10px 32px rgba(69, 55, 59, .07);
@@ -1502,9 +1502,28 @@
     .ui-ios-option1 .home-prep-card small,
     .ui-ios-option1 .home-prep-card strong { color: var(--ios-accent-dark); }
     .ui-ios-option1 .home-prep-card button,
-    .ui-ios-option1 .primary-button { min-height: 44px; color: #fff; border-color: var(--ios-accent); border-radius: 13px; background: var(--ios-accent); }
+    .ui-ios-option1 .primary-button { min-height: 44px; color: #fff; border-color: var(--ios-accent-dark); border-radius: 13px; background: var(--ios-accent-dark); }
     .ui-ios-option1 .home-prep-card button:hover,
     .ui-ios-option1 .primary-button:hover { color: #fff; background: var(--ios-accent-dark); }
+    .ui-ios-option1 .home-prep-actions { display: grid; gap: 7px; }
+    .ui-ios-option1 .secondary-link-button {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 9px 14px;
+      color: var(--ios-accent-dark);
+      border: 1px solid rgba(166, 85, 96, .32);
+      border-radius: 13px;
+      background: #fff;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+    .ui-ios-option1 .secondary-link-button:hover { background: var(--ios-accent-soft); }
+    .ui-ios-option1 .secondary-link-button:focus-visible,
+    .ui-ios-option1 .ios-action-row:focus-visible { outline: 3px solid rgba(166, 85, 96, .4); outline-offset: -3px; }
 
     .ui-ios-option1 .ios-key-dates {
       display: grid;
@@ -1580,8 +1599,8 @@
     .ui-ios-option1 .prep-next-card .ios-date-icon { width: 50px; height: 50px; }
     .ui-ios-option1 .prep-next-card .ios-date-icon i { font-size: 25px; }
     .ui-ios-option1 .ios-next-chevron { position: absolute; top: 30px; right: 16px; color: #a5a1a2; font-size: 22px; }
-    .ui-ios-option1 .ios-primary-button { grid-column: 1 / -1; min-height: 44px; padding: 10px 16px; color: #fff; border: 0; border-radius: 13px; background: var(--ios-accent); font-weight: 750; cursor: pointer; }
-    .ui-ios-option1 .ios-primary-button:hover { background: var(--ios-accent-dark); }
+    .ui-ios-option1 .ios-primary-button { grid-column: 1 / -1; min-height: 44px; padding: 10px 16px; color: #fff; border: 0; border-radius: 13px; background: var(--ios-accent-dark); font-weight: 750; cursor: pointer; }
+    .ui-ios-option1 .ios-primary-button:hover { background: #914550; }
     .ui-ios-option1 .prep-overall-progress { margin-top: 18px; }
     .ui-ios-option1 .progress-bar { overflow: hidden; height: 8px; border-radius: 999px; background: #ecebee; }
     .ui-ios-option1 .progress-bar span,
@@ -1613,6 +1632,153 @@
     .ui-ios-option1 .prep-task-check { accent-color: var(--ios-accent); }
     .ui-ios-option1 .prep-task-category { color: var(--ios-accent-dark); background: var(--ios-accent-soft); }
     .ui-ios-option1 .prep-add { border-color: var(--ios-divider); border-radius: 18px; background: #fffafa; }
+
+    .ui-ios-option1 .couple-owner-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .ui-ios-option1 .couple-owner-stat {
+      min-width: 0;
+      padding: 7px 8px;
+      border: 1px solid var(--ios-divider);
+      border-radius: 11px;
+      color: var(--ios-muted);
+      background: #fff;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+    .ui-ios-option1 .couple-owner-stat strong { display: block; margin: 2px 0 0; color: var(--ios-ink); font-size: 13px; }
+
+    .ui-ios-option1 .ios-action-group {
+      overflow: hidden;
+      border: 1px solid var(--ios-divider);
+      border-radius: 16px;
+      background: var(--ios-surface-solid);
+      box-shadow: 0 8px 26px rgba(60, 60, 67, .045);
+    }
+    .ui-ios-option1 .venue-onew-shortcut { margin: 0 0 16px; }
+    .ui-ios-option1 .ios-action-row {
+      min-height: 68px;
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr) auto;
+      gap: 12px;
+      align-items: center;
+      padding: 11px 14px;
+      color: var(--ios-ink);
+      border: 0;
+      background: transparent;
+      text-align: left;
+      text-decoration: none;
+    }
+    .ui-ios-option1 .ios-action-row + .ios-action-row { border-top: 1px solid var(--ios-divider); }
+    .ui-ios-option1 .ios-action-row:hover { background: #fff8f8; }
+    .ui-ios-option1 .ios-action-row > i:first-child {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      color: var(--ios-accent-dark);
+      border-radius: 12px;
+      background: var(--ios-accent-soft);
+      font-size: 22px;
+    }
+    .ui-ios-option1 .ios-action-copy { min-width: 0; }
+    .ui-ios-option1 .ios-action-copy strong { display: block; color: var(--ios-ink); font-size: 14px; }
+    .ui-ios-option1 .ios-action-copy small { display: block; margin-top: 3px; color: var(--ios-muted); font-size: 11px; line-height: 1.45; }
+    .ui-ios-option1 .ios-action-row > .iconoir-nav-arrow-right { color: #918c8e; font-size: 20px; }
+
+    .ui-ios-option1 .couple-share-card {
+      margin-top: 12px;
+      padding: 16px;
+      border: 1px solid var(--ios-divider);
+      border-radius: 16px;
+      background: #fffafa;
+    }
+    .ui-ios-option1 .couple-share-head { display: flex; gap: 11px; align-items: flex-start; }
+    .ui-ios-option1 .couple-share-head > i { color: var(--ios-accent-dark); font-size: 25px; }
+    .ui-ios-option1 .couple-share-head strong { display: block; color: var(--ios-ink); font-size: 15px; }
+    .ui-ios-option1 .couple-share-head p { margin: 4px 0 0; color: var(--ios-muted); font-size: 11px; line-height: 1.55; }
+    .ui-ios-option1 .couple-share-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 13px; }
+    .ui-ios-option1 .couple-share-actions button { min-height: 44px; border-radius: 12px; font-size: 12px; font-weight: 750; }
+    .ui-ios-option1 .couple-share-actions .primary-button { color: #fff; }
+    .ui-ios-option1 .couple-share-note { margin: 10px 0 0; color: var(--ios-muted); font-size: 10px; line-height: 1.55; }
+    .ui-ios-option1 .couple-share-status { min-height: 1.4em; margin: 7px 0 0; color: var(--ios-accent-dark); font-size: 11px; font-weight: 700; }
+
+    .ui-ios-option1 .prep-owner-filter { display: block; width: min(100%, 430px); }
+    .ui-ios-option1 .prep-owner-filter > span { display: block; margin-bottom: 6px; }
+    .ui-ios-option1 .prep-owner-segment {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 3px;
+      padding: 3px;
+      border-radius: 12px;
+      background: #ece8e9;
+    }
+    .ui-ios-option1 .prep-owner-button {
+      min-height: 38px;
+      padding: 5px 7px;
+      color: var(--ios-muted);
+      border: 0;
+      border-radius: 9px;
+      background: transparent;
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .ui-ios-option1 .prep-owner-button[aria-pressed="true"] { color: var(--ios-ink); background: #fff; box-shadow: 0 1px 5px rgba(60, 60, 67, .12); }
+
+    .ui-ios-option1 .prep-task-check-wrap {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      align-self: start;
+      margin: -9px 0 0 -9px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .ui-ios-option1 .prep-task-check-wrap:hover { background: var(--ios-accent-soft); }
+    .ui-ios-option1 .prep-task-check { width: 22px; height: 22px; margin: 0; }
+    .ui-ios-option1 .prep-delete,
+    .ui-ios-option1 .invite-share button { min-height: 44px; }
+
+    .ui-ios-option1 .budget-summary-panel .planning-results { margin-top: 14px; }
+    .ui-ios-option1 .budget-settings {
+      margin-top: 16px;
+      padding: 0;
+      border: 1px solid var(--ios-divider);
+      border-radius: 16px;
+      background: var(--ios-surface-solid);
+    }
+    .ui-ios-option1 .budget-settings > summary { min-height: 50px; padding: 14px 16px; color: var(--ios-ink); font-weight: 750; }
+    .ui-ios-option1 .budget-settings[open] > summary { border-bottom: 1px solid var(--ios-divider); }
+    .ui-ios-option1 .budget-settings-body { padding: 16px; }
+
+    .ui-ios-option1 .onew-panel { background: #fffafa; }
+    .ui-ios-option1 .onew-login-card {
+      min-height: 86px;
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr) auto;
+      gap: 13px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 14px 16px;
+      color: #fff;
+      border-radius: 17px;
+      background: var(--ios-accent-dark);
+      box-shadow: 0 10px 24px rgba(166, 85, 96, .18);
+      text-decoration: none;
+    }
+    .ui-ios-option1 .onew-login-card > i:first-child { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: rgba(255, 255, 255, .16); font-size: 25px; }
+    .ui-ios-option1 .onew-login-copy strong { display: block; color: #fff; font-size: 16px; }
+    .ui-ios-option1 .onew-login-copy small { display: block; margin-top: 4px; color: rgba(255, 255, 255, .86); font-size: 11px; line-height: 1.4; }
+    .ui-ios-option1 .onew-login-card > .iconoir-nav-arrow-right { color: #fff; font-size: 23px; }
+    .ui-ios-option1 .onew-login-card:focus-visible { outline-color: var(--ios-ink); }
+    .ui-ios-option1 .invite-backup-settings { margin-top: 15px; border-color: var(--ios-divider); border-radius: 16px; background: var(--ios-surface-solid); }
+    .ui-ios-option1 .invite-backup-settings > summary { min-height: 50px; padding: 14px 16px; color: var(--ios-ink); font-weight: 750; }
+    .ui-ios-option1 .invite-backup-body { padding: 0 16px 16px; }
 
     .ui-ios-option1 .card,
     .ui-ios-option1 .result-card,
@@ -1667,11 +1833,11 @@
       .ui-ios-option1 .tab-button { min-width: 0; min-height: 57px; flex-direction: column; gap: 2px; padding: 3px 1px; border-radius: 13px; font-size: 10px; line-height: 1.1; }
       .ui-ios-option1 .tab-button i { font-size: 24px; }
       .ui-ios-option1 .tab-button[aria-selected="true"] { background: transparent; }
-      .ui-ios-option1 .tab-button:focus-visible { outline: 0; }
+      .ui-ios-option1 .tab-button:focus-visible { outline: 3px solid rgba(166, 85, 96, .45); outline-offset: -3px; }
 
       .ui-ios-option1 .panel { margin-top: 13px; padding: 18px 16px; border-radius: 20px; }
       .ui-ios-option1 .prep-overview { margin-top: 4px; padding: 0 10px; border: 0; border-radius: 0; background: transparent; box-shadow: none; backdrop-filter: none; }
-      .ui-ios-option1 .prep-overview-head { display: none; }
+      .ui-ios-option1 .prep-overview-head { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
       .ui-ios-option1 .ios-key-dates { gap: 0; margin-top: 0; border-radius: 14px; background: var(--ios-surface-solid); }
       .ui-ios-option1 .ios-key-date { position: relative; min-height: 88px; padding: 12px 16px; }
       .ui-ios-option1 .ios-key-date + .ios-key-date::before { position: absolute; top: 0; right: 16px; left: 16px; height: 1px; background: var(--ios-divider); content: ""; }
@@ -1696,7 +1862,7 @@
       .ui-ios-option1 .prep-next-card strong { margin-top: 0; padding-right: 12px; font-size: 15px; line-height: 1.45; }
       .ui-ios-option1 .prep-next-card p { margin-top: 3px; font-size: 11px; }
       .ui-ios-option1 .ios-next-chevron { top: 26px; right: 13px; }
-      .ui-ios-option1 .ios-primary-button { min-height: 32px; padding: 4px 12px; border-radius: 10px; font-size: 14px; }
+      .ui-ios-option1 .ios-primary-button { min-height: 44px; padding: 9px 12px; border-radius: 11px; font-size: 14px; }
       .ui-ios-option1 .prep-priority-card { display: none; }
       .ui-ios-option1 .prep-overall-progress { margin: 17px 4px 0; padding-bottom: 0; }
       .ui-ios-option1 .progress-label { font-size: 14px; }
@@ -1714,6 +1880,15 @@
       .ui-ios-option1 .prep-owner-filter { width: 100%; }
       .ui-ios-option1 .prep-task { padding: 15px 13px; }
       .ui-ios-option1 .prep-task-side { gap: 8px; }
+      .ui-ios-option1 .couple-owner-stats { gap: 4px; }
+      .ui-ios-option1 .couple-owner-stat { padding-inline: 4px; }
+      .ui-ios-option1 .ios-action-row { min-height: 66px; padding: 10px 12px; }
+      .ui-ios-option1 .couple-share-actions { grid-template-columns: 1fr; }
+      .ui-ios-option1 .prep-owner-button { min-height: 41px; padding-inline: 4px; }
+      .ui-ios-option1 .budget-summary-panel { margin-top: 4px; }
+      .ui-ios-option1 .budget-summary-panel .planning-results { gap: 8px; }
+      .ui-ios-option1 .budget-summary-panel .result-card { min-height: 0; }
+      .ui-ios-option1 .onew-login-card { min-height: 82px; padding: 13px; }
     }
 
     @media (max-width: 360px) {
@@ -1765,7 +1940,7 @@
           <h1 id="screenTitle">準備</h1>
           <p class="hero-copy" id="venueCopy">おふたりで、素敵な一日をつくりましょう。</p>
           <p class="ios-today"><i class="iconoir-calendar" aria-hidden="true"></i><span id="iosToday">今日</span> 時点</p>
-          <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>準備開始</span></div>
+          <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>ONE-W利用</span></div>
           <p class="hero-location" id="heroCandidateDate">挙式日：2027年3月7日</p>
         </div>
         <div>
@@ -1793,10 +1968,10 @@
       <div class="stage-head">
         <div>
           <p class="eyebrow">NEXT MEETING</p>
-          <h2>2027年3月7日に決まりました</h2>
-          <p>次は9月6日9:30の初回打ち合わせです。費用の上がり幅、これからの準備、ONE-Wの利用可否を確認します。</p>
+          <h2 id="homeNextMeetingTitle">9月6日（日）9:30 初回打ち合わせ</h2>
+          <p>ふたりで、費用の上がり幅、これからの準備、ONE-Wのログイン情報と回答管理を確認します。</p>
         </div>
-        <span class="stage-state">日程確定・準備開始</span>
+        <span class="stage-state">日程確定・ONE-W利用</span>
       </div>
       <ol class="decision-steps" aria-label="これからの進め方">
         <li class="decision-step done"><b>1</b><span>挙式日を確定</span></li>
@@ -1826,7 +2001,10 @@
           <div class="progress-label"><span>準備の進み具合</span><span id="homePrepPercent">0%</span></div>
           <div class="progress-bar" id="homePrepProgress" role="progressbar" aria-label="準備の進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="homePrepBar"></span></div>
         </div>
-        <button type="button" data-tab-target="prep">準備を進める</button>
+        <div class="home-prep-actions">
+          <button type="button" data-tab-target="prep">準備を進める</button>
+          <a class="secondary-link-button" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer">ONE-Wにログイン</a>
+        </div>
       </div>
     </section>
 
@@ -1836,7 +2014,7 @@
       <div class="question-grid">
         <article class="question-card"><span class="question-number">QUESTION 01</span><strong>この見積から上がりやすい項目と、平均の追加額は？</strong><p>料理・衣裳・装花・写真映像の実例を聞きます。</p></article>
         <article class="question-card"><span class="question-number">QUESTION 02</span><strong>打ち合わせの回数・期限・次回までの宿題は？</strong><p>いつ何を決めるか、全体の流れを確認します。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 03</span><strong>ONE-Wを利用できる？料金や回答管理の範囲は？</strong><p>URLの発行時期、出欠・アレルギー・送迎管理を確認します。</p></article>
+        <article class="question-card"><span class="question-number">QUESTION 03</span><strong>ONE-Wのログイン情報・回答項目・締切設定は？</strong><p>URLの発行時期、出欠・アレルギー・送迎管理を確認します。</p></article>
         <article class="question-card"><span class="question-number">QUESTION 04</span><strong>持込料・支払期限・キャンセルや日程変更の条件は？</strong><p>追加費用と変更条件を、書面でも確認します。</p></article>
       </div>
     </section>
@@ -1861,13 +2039,21 @@
           <i class="iconoir-nav-arrow-right ios-date-chevron" aria-hidden="true"></i>
         </button>
       </div>
-      <h3 class="ios-section-heading">準備の進捗</h3>
+      <h2 class="ios-section-heading">準備の進捗</h2>
       <div class="prep-summary-grid">
         <article class="prep-summary-card prep-completion-card">
           <div class="prep-progress-ring"><strong id="prepCompleteSummary">0 / 25件</strong></div>
-          <div><small>完了した準備</small><p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p></div>
+          <div>
+            <small>ふたりの進み具合</small>
+            <p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p>
+            <div class="couple-owner-stats" aria-label="担当ごとの進捗">
+              <span class="couple-owner-stat">ふたり<strong id="coupleTogetherStat">0 / 0</strong></span>
+              <span class="couple-owner-stat">新郎<strong id="coupleGroomStat">0 / 0</strong></span>
+              <span class="couple-owner-stat">新婦<strong id="coupleBrideStat">0 / 0</strong></span>
+            </div>
+          </div>
         </article>
-        <h3 class="ios-section-heading ios-next-heading">次に進めること</h3>
+        <h2 class="ios-section-heading ios-next-heading">次に進めること</h2>
         <article class="prep-summary-card prep-next-card">
           <span class="ios-date-icon"><i class="iconoir-clipboard-check" aria-hidden="true"></i></span>
           <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">期限の目安を表示します。</p></div>
@@ -1884,6 +2070,31 @@
         <div class="progress-label" aria-live="polite"><span><i class="iconoir-check-circle" aria-hidden="true"></i>全体の進捗</span><span id="prepProgressText">0%</span></div>
         <div class="progress-bar" id="prepOverallProgress" role="progressbar" aria-label="準備全体の進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="prepProgressBar"></span></div>
       </div>
+      <h2 class="ios-section-heading">よく使う</h2>
+      <div class="ios-action-group">
+        <a class="ios-action-row" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer" aria-label="ONE-Wの新郎新婦向けログイン画面を開く">
+          <i class="iconoir-notes" aria-hidden="true"></i>
+          <span class="ios-action-copy"><strong>ONE-Wにログイン</strong><small>出欠・アレルギー・招待状を管理</small></span>
+          <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
+        </a>
+        <button class="ios-action-row" type="button" data-tab-target="venue">
+          <i class="iconoir-calendar" aria-hidden="true"></i>
+          <span class="ios-action-copy"><strong>初回打ち合わせメモ</strong><small>9月6日 9:30の確認事項を整理</small></span>
+          <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
+        </button>
+      </div>
+      <section class="couple-share-card" aria-labelledby="coupleShareTitle">
+        <div class="couple-share-head">
+          <i class="iconoir-group" aria-hidden="true"></i>
+          <div><strong id="coupleShareTitle">ふたりで同じ内容を使う</strong><p>この端末の見積・メモ・タスクを共有データとして相手へ送れます。</p></div>
+        </div>
+        <div class="couple-share-actions">
+          <button class="primary-button" id="shareCoupleBackup" type="button">共有データを送る</button>
+          <button id="loadCoupleBackup" type="button">受け取ったデータを読む</button>
+        </div>
+        <p class="couple-share-note">端末間の自動同期ではありません。共有データには見積と会場メモが含まれるため、夫婦間だけで送ってください。</p>
+        <p class="couple-share-status" id="coupleShareStatus" aria-live="polite"></p>
+      </section>
     </section>
 
     <section class="panel" data-tab-panel="prep">
@@ -1895,14 +2106,20 @@
           <button class="prep-filter-button" type="button" data-prep-filter="open" aria-pressed="false">未完了</button>
           <button class="prep-filter-button" type="button" data-prep-filter="done" aria-pressed="false">完了</button>
         </div>
-        <label class="prep-owner-filter"><span>担当で絞る</span>
-          <select id="prepOwnerFilter">
+        <div class="prep-owner-filter"><span>担当で絞る</span>
+          <div class="prep-owner-segment" role="group" aria-label="担当で絞る">
+            <button class="prep-owner-button" type="button" data-prep-owner="all" aria-pressed="true">全員</button>
+            <button class="prep-owner-button" type="button" data-prep-owner="ふたり" aria-pressed="false">ふたり</button>
+            <button class="prep-owner-button" type="button" data-prep-owner="新郎" aria-pressed="false">新郎</button>
+            <button class="prep-owner-button" type="button" data-prep-owner="新婦" aria-pressed="false">新婦</button>
+          </div>
+          <select id="prepOwnerFilter" hidden aria-hidden="true" tabindex="-1">
             <option value="all">全員</option>
             <option value="ふたり">ふたり</option>
             <option value="新郎">新郎</option>
             <option value="新婦">新婦</option>
           </select>
-        </label>
+        </div>
       </div>
       <div class="prep-phase-list" id="prepPhaseList"></div>
       <p class="prep-empty hidden" id="prepEmpty">条件に合う予定はありません。</p>
@@ -1934,41 +2151,54 @@
       </details>
     </section>
 
-    <section class="panel" data-tab-panel="budget" hidden>
-      <h2 class="section-title">試算条件</h2>
-      <p class="tab-intro">ここで変えるのは契約内容ではなく、初回見積を調整・試算するための仮の条件です。</p>
-      <div class="settings-grid">
-        <label class="field"><span>確定した挙式日</span><input id="weddingDate" type="date" value="2027-03-07"></label>
-        <label class="field"><span>見積に記載の時刻</span><input id="weddingTime" type="time" value="11:00"></label>
-        <label class="field"><span>想定人数</span><input id="guestCount" type="number" min="0" max="200" step="1" value="50"></label>
-        <label class="field"><span>消費税率（%）</span><input id="taxRate" type="number" min="0" max="100" step="0.1" value="10"></label>
-        <label class="field"><span>条件付き特典合計</span><input id="nonTaxBenefits" type="number" min="0" step="1000" value="800000"></label>
-        <label class="field"><span>予約金（契約時の内金）</span><input id="deposit" type="number" min="0" step="1000" value="50000"></label>
-        <label class="field"><span>ご祝儀見込／人</span><input id="giftPerGuest" type="number" min="0" step="1000" value="33000"></label>
-        <label class="field"><span>予算上限</span><input id="budgetTarget" type="number" min="0" step="10000" value="2500000"></label>
-        <label class="field"><span>サービス料率（%）</span><input id="serviceRate" type="number" min="0" max="100" step="0.1" value="15"></label>
-        <label class="field"><span>人数増減費／人（税込）</span><input id="guestDeltaCost" type="number" min="0" step="1000" value="22000"></label>
-      </div>
-      <label class="switch-row"><input id="syncGuests" type="checkbox" checked> 想定人数を料理・ドリンクの数量に反映する</label>
+    <section class="panel budget-summary-panel" data-tab-panel="budget" hidden>
+      <h2 class="section-title">見積の目安</h2>
+      <p class="tab-intro">初回見積をもとにした試算です。まずは自己負担と予算差を確認できます。</p>
       <div class="planning-results">
         <div class="result-card"><small>ご祝儀総額見込</small><strong id="giftTotal">1,650,000円</strong></div>
         <div class="result-card"><small>自己負担見込</small><strong id="selfFunding">700,670円</strong></div>
         <div class="result-card" id="budgetCard"><small id="budgetLabel">予算残り</small><strong id="budgetDifference">149,330円</strong></div>
       </div>
+      <details class="budget-settings">
+        <summary>試算条件を変更</summary>
+        <div class="budget-settings-body">
+          <p class="tab-intro">ここで変えるのは契約内容ではなく、初回見積を調整するための仮の条件です。</p>
+          <div class="settings-grid">
+            <label class="field"><span>確定した挙式日</span><input id="weddingDate" type="date" value="2027-03-07"></label>
+            <label class="field"><span>見積に記載の時刻</span><input id="weddingTime" type="time" value="11:00"></label>
+            <label class="field"><span>想定人数</span><input id="guestCount" type="number" min="0" max="200" step="1" value="50"></label>
+            <label class="field"><span>消費税率（%）</span><input id="taxRate" type="number" min="0" max="100" step="0.1" value="10"></label>
+            <label class="field"><span>条件付き特典合計</span><input id="nonTaxBenefits" type="number" min="0" step="1000" value="800000"></label>
+            <label class="field"><span>予約金（契約時の内金）</span><input id="deposit" type="number" min="0" step="1000" value="50000"></label>
+            <label class="field"><span>ご祝儀見込／人</span><input id="giftPerGuest" type="number" min="0" step="1000" value="33000"></label>
+            <label class="field"><span>予算上限</span><input id="budgetTarget" type="number" min="0" step="10000" value="2500000"></label>
+            <label class="field"><span>サービス料率（%）</span><input id="serviceRate" type="number" min="0" max="100" step="0.1" value="15"></label>
+            <label class="field"><span>人数増減費／人（税込）</span><input id="guestDeltaCost" type="number" min="0" step="1000" value="22000"></label>
+          </div>
+          <label class="switch-row"><input id="syncGuests" type="checkbox" checked> 想定人数を料理・ドリンクの数量に反映する</label>
+        </div>
+      </details>
       <div class="action-bar">
-        <button class="primary-button" type="button" id="saveBackup">バックアップを書き出す</button>
-        <button type="button" id="loadBackup">バックアップを読み込む</button>
+        <button class="primary-button" type="button" id="saveBackup">夫婦用データを書き出す</button>
+        <button type="button" id="loadBackup">夫婦用データを読み込む</button>
         <input class="hidden" id="backupFile" type="file" accept="application/json,.json">
         <button type="button" id="exportCsv">明細をCSV出力</button>
         <button type="button" id="printPage">印刷</button>
         <button class="danger-button" type="button" id="resetAll">初期状態に戻す</button>
-        <span class="save-state" id="saveState">変更はこの端末に自動保存されます</span>
+        <span class="save-state" id="saveState">変更はこの端末だけに自動保存されます</span>
       </div>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
       <h2 class="section-title">初回来館の記録</h2>
       <p class="tab-intro">日程が決まったので、初回打ち合わせの予定と式場への質問をまとめます。</p>
+      <div class="ios-action-group venue-onew-shortcut">
+        <a class="ios-action-row" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer" aria-label="ONE-Wの新郎新婦向けログイン画面を開く">
+          <i class="iconoir-notes" aria-hidden="true"></i>
+          <span class="ios-action-copy"><strong>ONE-Wにログイン</strong><small>招待状とゲスト回答を管理</small></span>
+          <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
       <div class="settings-grid">
         <label class="field"><span>式場名</span><input id="venueName" type="text" value="PRIMROSE" maxlength="60"></label>
         <label class="field"><span>見学日</span><input id="visitDate" type="date"></label>
@@ -1981,30 +2211,47 @@
       <div class="note-box" style="margin-top:14px"><p><strong>初回打ち合わせ</strong></p><p id="nextMeetingStatus">2026年9月6日(日) 9:30開始</p></div>
     </section>
 
-    <section class="panel" data-tab-panel="venue" hidden>
+    <section class="panel onew-panel" data-tab-panel="venue" hidden>
       <div class="invite-admin-head">
         <div>
-          <h2 class="section-title">Web招待状</h2>
-          <p>ONE-Wの利用可否を確認しつつ、このサイトの招待状も予備として残せます。</p>
+          <h2 class="section-title">ONE-W 招待状</h2>
+          <p>出欠・アレルギー・招待状はONE-Wで管理します。</p>
         </div>
-        <span class="invite-form-state" id="inviteFormStatus">ONE-W 利用可否を確認中</span>
+        <span class="invite-form-state ready" id="inviteFormStatus">ONE-Wを利用中</span>
       </div>
-      <div class="settings-grid" style="margin-top:18px">
-        <label class="field"><span>招待状に表示する名前</span><input id="invitationNames" type="text" placeholder="例：太郎・花子" maxlength="60"></label>
-        <label class="field"><span>出欠回答期限</span><input id="rsvpDeadline" type="date"></label>
-        <label class="field"><span>招待状サービス</span><select id="invitationService"><option value="one-w-pending">ONE-W（利用可否を確認中）</option><option value="site">このサイト＋Googleフォーム</option><option value="undecided">未定</option></select></label>
-        <label class="field invite-field-wide"><span>公開したGoogleフォームのURL</span><input id="googleFormUrl" type="url" inputmode="url" placeholder="https://forms.gle/... または https://docs.google.com/forms/..."></label>
-      </div>
-      <div class="invite-help">
-        <p id="invitationHelpText"><strong>9月6日に確認：</strong>ONE-Wの料金、URL発行時期、出欠・アレルギー・送迎希望をどこまで管理できるか。</p>
-        <a id="invitationHelpLink" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener">ONE-W 新郎新婦専用サイト</a>
-      </div>
-      <div class="invite-share">
-        <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
-        <button class="primary-button" id="openInvitation" type="button">招待状を確認</button>
-        <button id="copyInvitationUrl" type="button" disabled>共有URLをコピー</button>
-      </div>
-      <p class="invite-privacy-note" id="invitePrivacyNote">ONE-Wの利用可否は未確定です。回答先は初回打ち合わせ後に決めます。</p>
+      <a class="onew-login-card" id="onewLoginLink" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer" aria-label="ONE-Wの新郎新婦向けログイン画面を開く">
+        <i class="iconoir-notes" aria-hidden="true"></i>
+        <span class="onew-login-copy"><strong>ONE-Wにログイン</strong><small>新郎新婦専用ページを開きます</small></span>
+        <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
+      </a>
+      <p class="invite-privacy-note">出欠やアレルギーなどの回答内容は、ONE-W側で管理されます。</p>
+      <details class="invite-backup-settings">
+        <summary>このサイトの予備招待状を設定</summary>
+        <div class="invite-backup-body">
+          <div class="settings-grid" style="margin-top:16px">
+            <label class="field"><span>招待状サービス</span><select id="invitationService"><option value="one-w">ONE-Wを利用</option><option value="site">このサイト＋Googleフォーム</option><option value="undecided">未定</option></select></label>
+            <div class="site-invite-only invite-field-wide" hidden>
+              <div class="settings-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
+                <label class="field"><span>招待状に表示する名前</span><input id="invitationNames" type="text" placeholder="例：太郎・花子" maxlength="60"></label>
+                <label class="field"><span>出欠回答期限</span><input id="rsvpDeadline" type="date"></label>
+                <label class="field invite-field-wide"><span>公開したGoogleフォームのURL</span><input id="googleFormUrl" type="url" inputmode="url" placeholder="https://forms.gle/... または https://docs.google.com/forms/..."></label>
+              </div>
+            </div>
+          </div>
+          <div class="site-invite-only" hidden>
+            <div class="invite-help">
+              <p id="invitationHelpText">公開したGoogleフォームを回答先として設定できます。</p>
+              <a id="invitationHelpLink" href="https://docs.google.com/forms/" target="_blank" rel="noopener noreferrer">Googleフォームを開く</a>
+            </div>
+            <div class="invite-share">
+              <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
+              <button class="primary-button" id="openInvitation" type="button">予備招待状を確認</button>
+              <button id="copyInvitationUrl" type="button" disabled>共有URLをコピー</button>
+            </div>
+            <p class="invite-privacy-note" id="invitePrivacyNote">ONE-Wを使う間は、予備招待状の共有は無効です。</p>
+          </div>
+        </div>
+      </details>
     </section>
 
     <section class="panel" data-tab-panel="venue" hidden>
@@ -2237,6 +2484,7 @@
     const LEGACY_STORAGE_KEY = "primrose-wedding-dashboard-v2";
     const TAB_STORAGE_KEY = "primrose-wedding-active-tab-v2";
     const ONE_W_PORTAL_URL = "https://fivestar.one-w.net/bg";
+    const PUBLIC_APP_URL = "https://fukuroworksai01-stack.github.io/primrose-wedding-planner/";
     const baseSettings = {
       weddingDate: "2027-03-07",
       weddingTime: "11:00",
@@ -2249,7 +2497,7 @@
       nextMeetingTime: "09:30",
       invitationNames: "",
       rsvpDeadline: "",
-      invitationService: "one-w-pending",
+      invitationService: "one-w",
       googleFormUrl: "",
       guestCount: 50,
       guestAttending: 0,
@@ -2263,7 +2511,7 @@
       guestDeltaCost: 22000,
       syncGuests: true
     };
-    const UX_VERSION = 7;
+    const UX_VERSION = 8;
     const initialRows = defaultRows.map(row => [...row, row[4] !== "参考価格"]);
     const prepPhases = [
       { id: "foundation", kicker: "STEP 01 / NOW", title: "初回打ち合わせ", period: "9月6日 9:30まで" },
@@ -2276,14 +2524,14 @@
       { id: "set-priorities", phase: "foundation", category: "ふたりで相談", text: "希望する雰囲気・予算上限・ゲスト概数を整理する", owner: "ふたり", daysBefore: 187 },
       { id: "compare-venues", phase: "foundation", category: "打ち合わせ", text: "初回打ち合わせで聞きたいことを書き出す", owner: "ふたり", daysBefore: 186 },
       { id: "check-estimate", phase: "foundation", category: "見積", text: "追加料金・持込料・今後上がりやすい項目を整理する", owner: "ふたり", daysBefore: 185 },
-      { id: "check-contract", phase: "foundation", category: "招待状", text: "ONE-Wの料金・URL発行時期・回答管理について質問をまとめる", owner: "ふたり", daysBefore: 184 },
+      { id: "check-contract", phase: "foundation", category: "招待状", text: "ONE-Wのログイン情報・URL発行時期・回答項目を確認する", owner: "ふたり", daysBefore: 184 },
       { id: "choose-venue", phase: "foundation", category: "打ち合わせ", text: "9月6日 9:30の初回打ち合わせに参加し、決まったことを記録する", owner: "ふたり", daysBefore: 182 },
 
       { id: "guest-list", phase: "direction", category: "ゲスト", text: "両家の招待候補・住所・連絡先をまとめる", owner: "ふたり", daysBefore: 175 },
       { id: "choose-dress", phase: "direction", category: "衣裳・美容", text: "ドレスの試着を始め、衣裳プランを決める", owner: "新婦", daysBefore: 170 },
       { id: "choose-tuxedo", phase: "direction", category: "衣裳・美容", text: "タキシードと新郎小物の候補を決める", owner: "新郎", daysBefore: 164 },
       { id: "order-rings", phase: "direction", category: "指輪", text: "結婚指輪を決め、仕上がり日を確認して注文する", owner: "ふたり", daysBefore: 154 },
-      { id: "prepare-invitation", phase: "direction", category: "招待状", text: "利用する招待状サービスと必要な写真・文章を決める", owner: "ふたり", daysBefore: 147 },
+      { id: "prepare-invitation", phase: "direction", category: "招待状", text: "ONE-W招待状に使う写真・文章を準備する", owner: "ふたり", daysBefore: 147 },
 
       { id: "send-invitation", phase: "details", category: "招待状", text: "招待状を送り、出欠回答の期限を案内する", owner: "ふたり", daysBefore: 105 },
       { id: "food-drink", phase: "details", category: "料理", text: "料理・飲物・ケーキとアレルギー対応を決める", owner: "ふたり", daysBefore: 98 },
@@ -2347,13 +2595,14 @@
         if (!source.nextMeetingTime) migrated.nextMeetingTime = baseSettings.nextMeetingTime;
         if (!source.invitationService) migrated.invitationService = baseSettings.invitationService;
       }
+      if (versionNumber < 8 && (!source.invitationService || source.invitationService === "one-w-pending")) migrated.invitationService = "one-w";
       return migrated;
     }
 
     function migratePrepTasks(value, version) {
       const normalized = normalizePrepTasks(value);
       const versionNumber = Number.isFinite(Number(version)) ? Number(version) : 0;
-      if (versionNumber >= 7) return normalized;
+      if (versionNumber >= 8) return normalized;
       const currentTemplates = new Map(prepTaskTemplates.map(task => [task.id, task]));
       return normalized.map(task => {
         const template = currentTemplates.get(task.id);
@@ -2388,7 +2637,7 @@
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, prepTasks }));
         localStorage.removeItem(LEGACY_STORAGE_KEY);
-        label.textContent = `保存済み ${new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}`;
+        label.textContent = `この端末に保存済み ${new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}`;
       } catch {
         label.textContent = "自動保存を利用できない環境です";
       }
@@ -2637,6 +2886,13 @@
 
       setText("prepCompleteSummary", stats.done + "\n/" + stats.total + "件");
       setText("prepCompleteNote", stats.total === 0 ? "予定を追加できます。" : stats.done === stats.total ? "当日までの準備が整いました。" : "未完了はあと" + (stats.total - stats.done) + "件です。");
+      const ownerProgress = owner => {
+        const tasks = prepTasks.filter(task => task.owner === owner);
+        return tasks.filter(task => task.done).length + " / " + tasks.length;
+      };
+      setText("coupleTogetherStat", ownerProgress("ふたり"));
+      setText("coupleGroomStat", ownerProgress("新郎"));
+      setText("coupleBrideStat", ownerProgress("新婦"));
       setText("prepNextTitle", next ? next.text : "すべて完了");
       setText("prepNextDate", next ? prepShortDate(prepDueValue(next)) + "までの目安" : "おつかれさまでした。");
       setText("prepPriorityCount", stats.priority.length + "件");
@@ -2675,6 +2931,10 @@
         saveState();
         renderPrep();
       });
+      const checkboxWrap = document.createElement("label");
+      checkboxWrap.className = "prep-task-check-wrap";
+      checkboxWrap.title = task.done ? "未完了に戻す" : "完了にする";
+      checkboxWrap.append(checkbox);
 
       const body = document.createElement("div");
       const category = document.createElement("span");
@@ -2737,7 +2997,7 @@
         side.append(remove);
       }
 
-      item.append(checkbox, body, side);
+      item.append(checkboxWrap, body, side);
       return item;
     }
 
@@ -2790,6 +3050,7 @@
       if (!meeting || Number.isNaN(meeting.getTime())) {
         setText("nextMeetingStatus", "日付と開始時刻を入力すると、打ち合わせまでの日数を表示します。");
         setText("iosMeetingDate", "未設定");
+        setText("homeNextMeetingTitle", "次回打ち合わせは未設定です");
         return;
       }
       const days = daysFromToday(meeting);
@@ -2799,6 +3060,7 @@
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
       setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}${startTime}（${prefix}）${extras ? `　${extras}` : ""}`);
       setText("iosMeetingDate", `${formatIosDate(meeting, false)}${compactTime}`);
+      setText("homeNextMeetingTitle", `${formatIosDate(meeting, false)}${compactTime} 初回打ち合わせ`);
     }
 
     function normalizedGoogleFormUrl(value) {
@@ -2812,7 +3074,9 @@
     }
 
     function invitationPageUrl() {
-      const url = new URL("invite/", window.location.href);
+      const currentUrl = new URL(window.location.href);
+      const localPreview = currentUrl.protocol === "file:" || currentUrl.hostname === "localhost" || currentUrl.hostname === "127.0.0.1";
+      const url = new URL("invite/", localPreview ? PUBLIC_APP_URL : currentUrl);
       const values = {
         from: settings.invitationNames.trim(),
         date: settings.weddingDate,
@@ -2835,14 +3099,14 @@
       const help = document.querySelector("#invitationHelpText");
       const helpLink = document.querySelector("#invitationHelpLink");
       const privacy = document.querySelector("#invitePrivacyNote");
-      if (service === "one-w-pending") {
-        status.textContent = "ONE-W 利用可否を確認中";
-        help.textContent = "9月6日に確認：ONE-Wの料金、URL発行時期、出欠・アレルギー・送迎希望をどこまで管理できるか。";
+      const usingSiteInvite = service === "site";
+      document.querySelectorAll(".site-invite-only").forEach(element => { element.hidden = !usingSiteInvite; });
+      if (service === "one-w" || service === "one-w-pending") {
+        status.textContent = "ONE-Wを利用中";
+        help.textContent = "ONE-Wを利用します。このサイトの招待状は予備として設定できます。";
         helpLink.href = ONE_W_PORTAL_URL;
-        helpLink.textContent = "ONE-W 新郎新婦専用サイト";
-        privacy.textContent = formUrl
-          ? "GoogleフォームのURLは予備として保存されています。ONE-Wの利用可否が決まるまでゲスト共有は無効です。"
-          : "ONE-Wの利用可否は未確定です。回答先は初回打ち合わせ後に決めます。";
+        helpLink.textContent = "ONE-Wにログイン";
+        privacy.textContent = "ONE-Wを使う間は、このサイトの予備招待状の共有は無効です。";
       } else if (service === "undecided") {
         status.textContent = "招待状サービス未定";
         help.textContent = "初回打ち合わせ後に、ONE-Wかこのサイトの招待状を選べます。";
@@ -2869,7 +3133,7 @@
         privacy.textContent = "回答フォームを連携するまで、この招待状は確認用です。ゲストへの共有はまだ行わないでください。";
       }
       const shareReady = service === "site" && Boolean(formUrl);
-      status.classList.toggle("ready", shareReady);
+      status.classList.toggle("ready", service === "one-w" || shareReady);
       document.querySelector("#inviteShareUrl").value = invitationPageUrl();
       document.querySelector("#copyInvitationUrl").disabled = !shareReady;
     }
@@ -3224,9 +3488,44 @@
       setTimeout(() => URL.revokeObjectURL(link.href), 1000);
     }
 
-    function exportBackup() {
+    function backupPayload() {
+      return {
+        app: "primrose-wedding-planner",
+        schemaVersion: 1,
+        uxVersion: UX_VERSION,
+        exportedAt: new Date().toISOString(),
+        settings,
+        rows,
+        prepTasks
+      };
+    }
+
+    function backupFileName() {
       const date = new Date().toISOString().slice(0, 10);
-      downloadFile(`PRIMROSE_お見積り_${date}.json`, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, prepTasks }, null, 2), "application/json");
+      return `PRIMROSE_ふたり共有_${date}.json`;
+    }
+
+    function exportBackup() {
+      downloadFile(backupFileName(), JSON.stringify(backupPayload(), null, 2), "application/json");
+      setText("coupleShareStatus", "共有データを書き出しました。相手の端末で読み込んでください。");
+    }
+
+    async function shareCoupleBackup() {
+      const content = JSON.stringify(backupPayload(), null, 2);
+      try {
+        const file = new File([content], backupFileName(), { type: "application/json" });
+        if (navigator.share && navigator.canShare?.({ files: [file] })) {
+          await navigator.share({ title: "ふたりの結婚式準備", text: "PRIMROSEの見積・メモ・タスク共有データです。", files: [file] });
+          setText("coupleShareStatus", "共有画面を開きました。夫婦間だけで送ってください。");
+        } else {
+          exportBackup();
+        }
+      } catch (error) {
+        if (error?.name !== "AbortError") {
+          exportBackup();
+          setText("coupleShareStatus", "共有データを保存しました。LINEなどに添付して送れます。");
+        }
+      }
     }
 
     function exportCsv() {
@@ -3283,7 +3582,7 @@
       else return;
       event.preventDefault();
       const nextButton = tabButtons[nextIndex];
-      switchTab(nextButton.dataset.tabTarget, false);
+      switchTab(nextButton.dataset.tabTarget, true);
       nextButton.focus();
     });
 
@@ -3307,6 +3606,15 @@
         document.querySelectorAll(".prep-filter-button").forEach(filterButton => {
           filterButton.setAttribute("aria-pressed", String(filterButton === button));
         });
+        renderPrep();
+      });
+    });
+    document.querySelectorAll(".prep-owner-button").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".prep-owner-button").forEach(ownerButton => {
+          ownerButton.setAttribute("aria-pressed", String(ownerButton === button));
+        });
+        document.querySelector("#prepOwnerFilter").value = button.dataset.prepOwner;
         renderPrep();
       });
     });
@@ -3345,6 +3653,8 @@
     document.querySelector("#printPage").addEventListener("click", () => window.print());
     document.querySelector("#exportCsv").addEventListener("click", exportCsv);
     document.querySelector("#saveBackup").addEventListener("click", exportBackup);
+    document.querySelector("#shareCoupleBackup").addEventListener("click", shareCoupleBackup);
+    document.querySelector("#loadCoupleBackup").addEventListener("click", () => document.querySelector("#backupFile").click());
     document.querySelector("#openInvitation").addEventListener("click", () => window.open(invitationPageUrl(), "_blank", "noopener"));
     document.querySelector("#copyInvitationUrl").addEventListener("click", async event => {
       if (event.currentTarget.disabled) return;
@@ -3364,7 +3674,16 @@
       if (!file) return;
       try {
         const imported = JSON.parse(await file.text());
+        if (imported.app && imported.app !== "primrose-wedding-planner") throw new Error("別のアプリのデータです");
         if (!imported.settings || !Array.isArray(imported.rows) || imported.rows.length !== initialRows.length) throw new Error("形式が一致しません");
+        const importedAt = imported.exportedAt ? new Date(imported.exportedAt) : null;
+        const importedLabel = importedAt && !Number.isNaN(importedAt.getTime())
+          ? new Intl.DateTimeFormat("ja-JP", { year: "numeric", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }).format(importedAt)
+          : "日時不明";
+        if (!confirm(`${importedLabel}に作成された共有データで、この端末の内容を更新しますか？`)) {
+          event.target.value = "";
+          return;
+        }
         settings = migrateSettings(imported.settings, imported.uxVersion);
         rows = imported.rows;
         prepTasks = migratePrepTasks(imported.prepTasks, imported.uxVersion);
@@ -3375,8 +3694,10 @@
         updateSummary();
         updateCountdown();
         saveState();
-        alert("設定を読み込みました。");
+        setText("coupleShareStatus", `${importedLabel}の共有データを読み込みました。`);
+        alert("夫婦用の共有データを読み込みました。");
       } catch {
+        setText("coupleShareStatus", "共有データを読み込めませんでした。ファイルを確認してください。");
         alert("このファイルは読み込めませんでした。");
       }
       event.target.value = "";
