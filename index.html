@@ -909,11 +909,18 @@
       font-weight: 900;
     }
     .prep-task-title { margin: 0; color: var(--ink); font-weight: 800; line-height: 1.55; }
+    .prep-task-description { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; }
+    .prep-source-note { margin: 9px 0 0; color: var(--muted); font-size: 11px; overflow-wrap: anywhere; }
+    .prep-source-note a { display: inline-flex; align-items: center; min-height: 44px; color: var(--blue); font-size: 12px; }
+    .prep-source-note small { display: block; font-size: 11px; line-height: 1.6; }
+    .prep-archive { margin-top: 18px; padding: 12px 16px; }
+    .prep-archive p { color: var(--muted); font-size: 12px; }
     .prep-task.done .prep-task-title { color: var(--muted); text-decoration: line-through; }
     .prep-task-meta { display: grid; grid-template-columns: repeat(2, minmax(125px, 170px)); gap: 9px; margin-top: 10px; }
     .prep-field { display: grid; gap: 3px; }
     .prep-field span { color: var(--muted); font-size: 10px; font-weight: 800; }
     .prep-field select, .prep-field input { width: 100%; min-width: 0; font-size: 12px; }
+    .prep-field output { display: block; align-self: center; padding: 8px 0; color: var(--ink); font-size: 12px; line-height: 1.5; }
     .prep-field select:focus, .prep-field input:focus, .prep-owner-filter select:focus {
       border-color: var(--blue);
       outline: 3px solid rgba(123,77,85,.14);
@@ -2055,7 +2062,7 @@
         <div>
           <p class="eyebrow" id="venueTitle">PRIMROSE</p>
           <h1 id="screenTitle">準備</h1>
-          <p class="hero-copy" id="venueCopy">おふたりで、素敵な一日をつくりましょう。</p>
+          <p class="hero-copy" id="venueCopy">智哉 &amp; 梨那</p>
           <p class="ios-today"><i class="iconoir-calendar" aria-hidden="true"></i><span id="iosToday">今日</span> 時点</p>
           <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>ONE-W利用</span></div>
           <p class="hero-location" id="heroCandidateDate">挙式日：2027年3月7日</p>
@@ -2090,28 +2097,28 @@
         </div>
         <span class="stage-state">日程確定・ONE-W利用</span>
       </div>
-      <ol class="decision-steps" aria-label="これからの進め方">
-        <li class="decision-step done"><b>1</b><span>挙式日を確定</span></li>
-        <li class="decision-step current"><b>2</b><span>9/19 2nd打ち合わせ</span></li>
-        <li class="decision-step"><b>3</b><span>招待・当日準備</span></li>
+      <ol class="decision-steps" aria-label="PDFに記載された次回の予定">
+        <li class="decision-step current"><b>1</b><span>9/19 9:30 2nd</span></li>
+        <li class="decision-step"><b>2</b><span>9/19 12:00 衣裳合わせ</span></li>
+        <li class="decision-step"><b>3</b><span>9/27 14:00 映像</span></li>
       </ol>
       <p class="stage-note">挙式日：<strong id="candidateDateStatus">2027年3月7日</strong></p>
     </section>
 
     <section class="panel" data-tab-panel="home" hidden>
       <h2 class="section-title">初回見積の要点</h2>
-      <p class="tab-intro">まずは「いくらか」と「何が条件付きか」だけ押さえれば大丈夫です。</p>
+      <p class="tab-intro">2026年8月23日発行のプリムローズ見積PDF。50名想定の初回見積です。</p>
       <div class="home-grid">
         <article class="home-card"><div><small>見積書の合計</small><strong id="homeEstimateTotal">2,350,670円</strong></div><button type="button" data-tab-target="budget">計算内訳を見る</button></article>
         <article class="home-card"><div><small>予約金を含む総費用</small><strong id="homeEstimateWithDeposit">2,400,670円</strong></div><button type="button" data-tab-target="budget">予約金の扱いを見る</button></article>
         <article class="home-card"><div><small>自己負担の目安</small><strong id="homeSelfFunding">700,670円</strong></div><button type="button" data-tab-target="guests">人数を変えて試す</button></article>
         <article class="home-card"><div><small>条件付き特典</small><strong id="homeConditionalBenefits">800,000円</strong></div><button type="button" data-tab-target="venue">適用条件を見る</button></article>
       </div>
-      <p class="home-callout"><strong>注意：</strong>この見積には「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が含まれています。特典が外れた場合の金額も確認してください。</p>
+      <p class="home-callout">見積PDFには「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が記載されています。</p>
       <div class="home-prep-card">
         <div>
           <small>PREPARATION</small>
-          <strong id="homePrepTitle">準備 0 / 25件完了</strong>
+          <strong id="homePrepTitle">準備を読み込み中</strong>
           <p id="homePrepNext">次に進める予定を表示します。</p>
         </div>
         <div class="home-prep-progress">
@@ -2126,21 +2133,22 @@
     </section>
 
     <section class="panel" data-tab-panel="home" hidden>
-      <h2 class="section-title">次回の打ち合わせで確認</h2>
+      <h2 class="section-title">2nd打ち合わせの内容</h2>
       <p class="tab-intro">9月19日はペーパーアイテム・招待者登録・配席・写真のラインナップを確認します。</p>
       <div class="question-grid">
-        <article class="question-card"><span class="question-number">QUESTION 01</span><strong>この見積から上がりやすい項目と、平均の追加額は？</strong><p>料理・衣裳・装花・写真映像の実例を聞きます。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 02</span><strong>招待者の登録と配席はどう進める？</strong><p>ONE-Wの仮登録を一緒に確認します。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 03</span><strong>ペーパーアイテム・写真商品は何を選ぶ？</strong><p>お気に入りの候補と、招待状の返信期限を相談します。</p></article>
-        <article class="question-card"><span class="question-number">QUESTION 04</span><strong>持込料・支払期限・キャンセルや日程変更の条件は？</strong><p>追加費用と変更条件を、書面でも確認します。</p></article>
+        <article class="question-card"><strong>ペーパーアイテム紹介</strong><p>席札・メニューカード・招待状・席次表。</p></article>
+        <article class="question-card"><strong>ONE-W招待者登録確認</strong><p>登録した招待者を確認。</p></article>
+        <article class="question-card"><strong>配席確認</strong><p>ゲストの配席を確認。</p></article>
+        <article class="question-card"><strong>写真ラインナップ</strong><p>データ商品・アルバム商品の紹介。</p></article>
       </div>
+      <p class="prep-source-note"><a href="https://drive.google.com/file/d/1VA-WOWwM5L_0wDAOvovJB7Yzh9Zu5Y9R/view" target="_blank" rel="noopener noreferrer">HappyWeddingSchedule.pdf · 1ページ</a></p>
     </section>
 
     <section class="panel prep-overview" data-tab-panel="prep">
       <div class="prep-overview-head">
         <div>
-          <h2 class="section-title">挙式日から逆算した<wbr>準備スケジュール</h2>
-          <p>次は9月19日9:30の2nd打ち合わせ。式場の確定日程と、ふたりで決める準備をまとめます。</p>
+          <h2 class="section-title">式場の準備スケジュール</h2>
+          <p>式場のPDFに記載された宿題・打ち合わせ・締切をまとめます。</p>
         </div>
         <span class="prep-days-badge" id="prepDaysBadge">挙式までの日数を計算中</span>
       </div>
@@ -2159,10 +2167,10 @@
       <h2 class="ios-section-heading">準備の進捗</h2>
       <div class="prep-summary-grid">
         <article class="prep-summary-card prep-completion-card">
-          <div class="prep-progress-ring"><strong id="prepCompleteSummary">0 / 25件</strong></div>
+          <div class="prep-progress-ring"><strong id="prepCompleteSummary">読み込み中</strong></div>
           <div>
             <small>ふたりの進み具合</small>
-            <p id="prepCompleteNote">ひとつずつ進めれば大丈夫です。</p>
+            <p id="prepCompleteNote">PDFに記載された準備の進捗です。</p>
             <div class="couple-owner-stats" aria-label="担当ごとの進捗">
               <span class="couple-owner-stat">ふたり<strong id="coupleTogetherStat">0 / 0</strong></span>
               <span class="couple-owner-stat">新郎<strong id="coupleGroomStat">0 / 0</strong></span>
@@ -2173,7 +2181,7 @@
         <h2 class="ios-section-heading ios-next-heading">次に進めること</h2>
         <article class="prep-summary-card prep-next-card">
           <span class="ios-date-icon"><i class="iconoir-clipboard-check" aria-hidden="true"></i></span>
-          <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">期限の目安を表示します。</p></div>
+          <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">PDFに記載された日程を表示します。</p></div>
           <i class="iconoir-nav-arrow-right ios-next-chevron" aria-hidden="true"></i>
           <button class="ios-primary-button" id="prepOpenTasks" type="button">タスクを開く</button>
         </article>
@@ -2220,8 +2228,8 @@
     </section>
 
     <section class="panel" data-tab-panel="prep">
-      <h2 class="section-title">時期別のやること</h2>
-      <p class="tab-intro">「式場の予定」はPDFに記載の確定日程。それ以外は準備の目安です。担当・完了状況はふたりで調整できます。</p>
+      <h2 class="section-title">PDFに記載されたやること</h2>
+      <p class="tab-intro">記載のない日付は補完していません。各項目の「原本を開く」から資料を確認できます。担当と完了状況はふたりで設定できます。</p>
       <div class="prep-toolbar">
         <div class="prep-filter-buttons" role="group" aria-label="準備の表示">
           <button class="prep-filter-button" type="button" data-prep-filter="all" aria-pressed="true">すべて</button>
@@ -2246,30 +2254,10 @@
       <div class="prep-phase-list" id="prepPhaseList"></div>
       <p class="prep-empty hidden" id="prepEmpty">条件に合う予定はありません。</p>
 
-      <details class="prep-add">
-        <summary>ふたりの予定を追加</summary>
-        <form class="prep-add-form" id="prepAddForm">
-          <label class="prep-field"><span>やること</span><input id="prepNewText" type="text" maxlength="120" placeholder="例：両親の衣裳を予約" required></label>
-          <label class="prep-field"><span>時期</span>
-            <select id="prepNewPhase">
-              <option value="foundation">次回打ち合わせの準備</option>
-              <option value="direction">招待の土台</option>
-              <option value="details">内容を固める</option>
-              <option value="finalize">人数・当日準備</option>
-              <option value="last">最終仕上げ</option>
-            </select>
-          </label>
-          <label class="prep-field"><span>担当</span>
-            <select id="prepNewOwner">
-              <option value="ふたり">ふたり</option>
-              <option value="新郎">新郎</option>
-              <option value="新婦">新婦</option>
-            </select>
-          </label>
-          <label class="prep-field"><span>期限</span><input id="prepNewDate" type="date"></label>
-          <button type="submit">追加する</button>
-        </form>
-        <p class="prep-add-note">追加した予定はこの端末に自動保存され、あとから削除できます。</p>
+      <details class="prep-archive hidden" id="prepArchiveDetails">
+        <summary>以前の準備データ</summary>
+        <p>PDFへの置き換え前の入力は表示に使いません。復旧用データとして、この端末内に保管しています。</p>
+        <button id="exportPrepArchive" type="button">以前の準備データを書き出す</button>
       </details>
     </section>
 
@@ -2421,7 +2409,7 @@
       </div>
       <div>
         <h2 class="section-title">自己負担の目安</h2>
-        <p class="tab-intro">ご祝儀は仮の金額です。契約判断では、余裕を持った資金計画も確認してください。</p>
+        <p class="tab-intro">見積PDFのご祝儀想定は1名33,000円。入力した人数・金額による試算です。</p>
         <div class="info-grid" style="margin-top:14px">
           <div class="info-card"><small>見積書の合計</small><strong id="contractTotal">2,350,670円</strong></div>
           <div class="info-card attend"><small>ご祝儀見込</small><strong id="paidTotal">1,650,000円</strong></div>
@@ -2442,7 +2430,7 @@
       </div>
       <div class="note-box">
         <p><strong>割引の適用条件に注意</strong></p>
-        <p>明細割引は税計算前、条件付き特典は税計算後に差し引く設定です。当日契約しない場合の金額も式場へ確認してください。</p>
+        <p>見積PDFの計算順に合わせ、明細割引は税計算前、非課税特典は税計算後に差し引いています。</p>
         <p>初期状態では、原本の最終額との照合差額は<strong>0円</strong>です。</p>
       </div>
     </section>
@@ -2522,7 +2510,7 @@
           </tbody>
         </table>
       </div>
-      <p class="home-callout">この初回見積は、すべての特典が適用される前提です。特に「当日ご成約特典」を外した金額と、各特典の有効期限を確認してください。</p>
+      <p class="home-callout">初回見積PDFには上記4つの特典、合計800,000円が記載されています。</p>
     </section>
 
     <section class="panel two-col" data-tab-panel="venue" hidden>
@@ -2574,6 +2562,7 @@
   </main>
 
   <script src="wedding-details.js?v=1"></script>
+  <script src="preparation-data.js?v=1"></script>
   <script src="invite/rsvp-config.js?v=1"></script>
   <script>
     const defaultRows = [
@@ -2670,55 +2659,11 @@
       guestDeltaCost: 22000,
       syncGuests: true
     };
-    const UX_VERSION = 9;
+    const UX_VERSION = 10;
+    const PDF_PREP_UX_VERSION = 10;
     const initialRows = defaultRows.map(row => [...row, row[4] !== "参考価格"]);
-    const prepPhases = [
-      { id: "foundation", kicker: "STEP 01 / NOW", title: "次回打ち合わせの準備", period: "9月19日 9:30まで" },
-      { id: "direction", kicker: "STEP 02", title: "招待の土台", period: "打ち合わせ後〜約5か月前" },
-      { id: "details", kicker: "STEP 03", title: "内容を固める", period: "約3.5〜2.5か月前" },
-      { id: "finalize", kicker: "STEP 04", title: "人数・当日準備", period: "約2か月〜3週間前" },
-      { id: "last", kicker: "STEP 05", title: "最終仕上げ", period: "約2週間前〜前日" }
-    ];
-    const prepTaskTemplates = [
-      { id: "set-priorities", phase: "foundation", category: "ふたりで相談", text: "希望する雰囲気・予算上限・ゲスト概数を整理する", owner: "ふたり", daysBefore: 170 },
-      { id: "compare-venues", phase: "foundation", category: "打ち合わせ", text: "次回の打ち合わせで聞きたいことを書き出す", owner: "ふたり", daysBefore: 170 },
-      { id: "check-estimate", phase: "foundation", category: "見積", text: "追加料金・持込料・今後上がりやすい項目を整理する", owner: "ふたり", daysBefore: 170 },
-      { id: "check-contract", phase: "foundation", category: "招待状", text: "ONE-Wの招待者登録と、Web招待状の返信期限を確認する", owner: "ふたり", daysBefore: 170 },
-      { id: "choose-venue", phase: "foundation", category: "打ち合わせ", text: "初回打ち合わせで決まったこと・宿題をふたりで共有する", owner: "ふたり", daysBefore: 170 },
-
-      { id: "guest-list", phase: "direction", category: "ゲスト", text: "両家の招待候補・住所・連絡先をまとめる", owner: "ふたり", daysBefore: 170 },
-      { id: "choose-dress", phase: "direction", category: "衣裳・美容", text: "9月19日12:00の衣裳合わせで、ドレスの候補を相談する", owner: "新婦", daysBefore: null, dueDate: "2026-09-19", source: "venue" },
-      { id: "choose-tuxedo", phase: "direction", category: "衣裳・美容", text: "9月19日12:00の衣裳合わせで、タキシード・小物を相談する", owner: "新郎", daysBefore: null, dueDate: "2026-09-19", source: "venue" },
-      { id: "order-rings", phase: "direction", category: "指輪", text: "結婚指輪を決め、仕上がり日を確認して注文する", owner: "ふたり", daysBefore: 154 },
-      { id: "prepare-invitation", phase: "direction", category: "招待状", text: "招待状に使う写真・文章を準備する", owner: "ふたり", daysBefore: 147 },
-
-      { id: "send-invitation", phase: "details", category: "招待状", text: "招待状を送り、出欠回答の期限を案内する", owner: "ふたり", daysBefore: 105 },
-      { id: "food-drink", phase: "details", category: "料理", text: "料理・飲物・ケーキとアレルギー対応を決める", owner: "ふたり", daysBefore: 98 },
-      { id: "flowers", phase: "details", category: "装花", text: "会場装花・ブーケ・テーブルの色合いを決める", owner: "ふたり", daysBefore: 91 },
-      { id: "program-music", phase: "details", category: "進行・演出", text: "当日の進行・BGM・スピーチ・余興を決める", owner: "ふたり", daysBefore: 84 },
-      { id: "photo-video", phase: "details", category: "写真・映像", text: "写真・映像・前撮りの内容と必要な素材を確定する", owner: "新郎", daysBefore: 77 },
-      { id: "legal-travel", phase: "details", category: "手続き・旅行", text: "婚姻届の必要書類、休暇、旅行の予定を確認する", owner: "ふたり", daysBefore: 70 },
-
-      { id: "final-responses", phase: "finalize", category: "ゲスト", text: "出欠・アレルギー・送迎・宿泊希望を確定する", owner: "ふたり", daysBefore: 56 },
-      { id: "seating", phase: "finalize", category: "ゲスト", text: "席次と肩書きを両家で確認する", owner: "ふたり", daysBefore: 42 },
-      { id: "beauty-fitting", phase: "finalize", category: "衣裳・美容", text: "ヘアメイクリハーサルと最終フィッティングを行う", owner: "新婦", daysBefore: 35 },
-      { id: "gifts-paper", phase: "finalize", category: "ギフト・印刷", text: "引出物・プチギフト・席札などの内容と数量を確定する", owner: "ふたり", daysBefore: 28 },
-      { id: "assign-roles", phase: "finalize", category: "当日運営", text: "受付・スピーチなどの依頼と関係者の連絡先を整理する", owner: "新郎", daysBefore: 21 },
-
-      { id: "final-count-payment", phase: "last", category: "会場・予算", text: "最終人数・最終見積・支払額を確認する（支払締切は2月24日）", owner: "ふたり", daysBefore: 14 },
-      { id: "deliver-items", phase: "last", category: "持ち物", text: "衣裳・指輪・手紙・ギフト・持込物をまとめて搬入する", owner: "ふたり", daysBefore: 7 },
-      { id: "share-schedule", phase: "last", category: "当日運営", text: "当日の時間割・緊急連絡先・お車代や謝礼を共有する", owner: "新郎", daysBefore: 3 },
-      { id: "rest-before", phase: "last", category: "体調", text: "持ち物を最終確認し、リハーサル後は早めに休む", owner: "新婦", daysBefore: 1 },
-      { id: "venue-guest-register", phase: "foundation", category: "ONE-W", text: "次回打ち合わせまでに、ONE-Wの招待者を仮登録する", owner: "ふたり", daysBefore: null, dueDate: "2026-09-19", source: "venue" },
-      { id: "venue-favorites", phase: "foundation", category: "ONE-W", text: "次回打ち合わせまでに、カタログの気になる商品をお気に入り登録する", owner: "ふたり", daysBefore: null, dueDate: "2026-09-19", source: "venue" },
-      { id: "venue-second-meeting", phase: "foundation", category: "打ち合わせ", text: "9月19日9:30の2nd打ち合わせ（登録・配席・ペーパーアイテム・写真）", owner: "ふたり", daysBefore: null, dueDate: "2026-09-19", source: "venue" },
-      { id: "venue-video-meeting", phase: "direction", category: "映像", text: "9月27日14:00の映像打ち合わせ（記録ビデオ・当日上映ムービー）", owner: "ふたり", daysBefore: null, dueDate: "2026-09-27", source: "venue" },
-      { id: "venue-content-lock", phase: "finalize", category: "式場締切", text: "内容変更締切・ONE-Wロック（料理・映像・写真・装花・引出物・印刷物）", owner: "ふたり", daysBefore: null, dueDate: "2027-02-07", source: "venue" },
-      { id: "venue-quantity-lock", phase: "last", category: "式場締切", text: "数量変更締切：担当者に最終数量を連絡する", owner: "ふたり", daysBefore: null, dueDate: "2027-02-21", source: "venue" },
-      { id: "venue-payment", phase: "last", category: "式場締切", text: "ご精算締切：最終見積を確認して支払いを完了する", owner: "ふたり", daysBefore: null, dueDate: "2027-02-24", source: "venue" },
-      { id: "marrysys-register", phase: "direction", category: "映像・BGM", text: "Marrysysの登録案内を確認し、本登録・基本情報の確認を行う", owner: "新郎", daysBefore: null }
-    ].map(task => ({ dueDate: "", done: false, custom: false, source: "suggested", ...task }));
-    const prepPhaseIds = new Set(prepPhases.map(phase => phase.id));
+    const prepPhases = WEDDING_PREPARATION.phases;
+    const prepTaskTemplates = WEDDING_PREPARATION.tasks;
     const prepOwners = new Set(["ふたり", "新郎", "新婦"]);
     const serviceTargetItems = new Set([
       "婚礼料理", "お子様料理 3,000円", "お子様料理 4,000円", "お子様料理 6,000円",
@@ -2747,6 +2692,7 @@
     let settings = migrateSettings(saved?.settings, saved?.uxVersion);
     let rows = saved ? saved.rows : structuredClone(initialRows);
     let prepTasks = migratePrepTasks(saved?.prepTasks, saved?.uxVersion);
+    let prepArchive = buildPrepArchive(saved?.prepTasks, saved?.uxVersion, saved?.prepArchive);
 
     const yen = value => value == null ? "—" : `${new Intl.NumberFormat("ja-JP").format(Math.round(value))}円`;
     const signedYen = value => `${value < 0 ? "−" : value > 0 ? "+" : ""}${yen(Math.abs(value))}`;
@@ -2782,47 +2728,31 @@
     }
 
     function migratePrepTasks(value, version) {
-      const normalized = normalizePrepTasks(value);
-      const versionNumber = Number.isFinite(Number(version)) ? Number(version) : 0;
-      if (versionNumber >= UX_VERSION) return normalized;
-      const currentTemplates = new Map(prepTaskTemplates.map(task => [task.id, task]));
-      const migrated = normalized.map(task => {
-        const template = currentTemplates.get(task.id);
-        if (!template || task.custom) return task;
-        return {
-          ...task,
-          phase: template.phase,
-          category: template.category,
-          text: template.text,
-          daysBefore: template.daysBefore,
-          dueDate: task.dueDate || template.dueDate,
-          source: task.dueDate && task.dueDate !== template.dueDate ? "user" : template.source
-        };
-      });
-      const existingIds = new Set(migrated.map(task => task.id));
-      prepTaskTemplates.filter(task => task.id.startsWith("venue-") || task.id === "marrysys-register").forEach(task => {
-        if (!existingIds.has(task.id)) migrated.push({ ...task });
-      });
-      return migrated;
+      return normalizePrepTasks(Number(version) >= PDF_PREP_UX_VERSION ? value : undefined);
     }
 
     function normalizePrepTasks(value) {
-      const source = Array.isArray(value) ? value : prepTaskTemplates;
+      const byId = new Map();
+      if (Array.isArray(value)) value.forEach(task => {
+        if (task && typeof task === "object" && !byId.has(task.id)) byId.set(task.id, task);
+      });
+      // 保存・共有データから引き継ぐのは担当と完了だけ。本文と日程は常にPDFの転記。
+      return prepTaskTemplates.map(template => {
+        const state = byId.get(template.id);
+        return { ...template, owner: prepOwners.has(state?.owner) ? state.owner : "ふたり", done: state?.done === true };
+      });
+    }
+
+    function buildPrepArchive(value, version, previous) {
+      const archive = Array.isArray(previous) ? structuredClone(previous).filter(entry => entry && Array.isArray(entry.tasks)) : [];
+      if (Array.isArray(value) && value.length && Number(version || 0) < PDF_PREP_UX_VERSION) {
+        archive.push({ archivedAt: new Date().toISOString(), uxVersion: Number(version) || 0, tasks: structuredClone(value) });
+      }
       const seen = new Set();
-      return source.slice(0, 100).filter(task => task && typeof task === "object").map(task => ({
-        id: String(task.id || (globalThis.crypto?.randomUUID ? globalThis.crypto.randomUUID() : "prep-" + Date.now() + "-" + Math.random().toString(16).slice(2))).slice(0, 80),
-        phase: prepPhaseIds.has(task.phase) ? task.phase : "foundation",
-        category: String(task.category || "ふたりの予定").slice(0, 40),
-        text: String(task.text || "").trim().slice(0, 120),
-        owner: prepOwners.has(task.owner) ? task.owner : "ふたり",
-        daysBefore: task.daysBefore !== null && task.daysBefore !== "" && task.daysBefore !== undefined && Number.isFinite(Number(task.daysBefore)) ? Number(task.daysBefore) : null,
-        dueDate: /^\d{4}-\d{2}-\d{2}$/.test(String(task.dueDate || "")) ? String(task.dueDate) : "",
-        done: Boolean(task.done),
-        custom: Boolean(task.custom),
-        source: ["venue", "user"].includes(task.source) ? task.source : "suggested"
-      })).filter(task => {
-        if (!task.text || seen.has(task.id)) return false;
-        seen.add(task.id);
+      return archive.filter(entry => {
+        const key = JSON.stringify({ uxVersion: entry.uxVersion, tasks: entry.tasks });
+        if (seen.has(key)) return false;
+        seen.add(key);
         return true;
       });
     }
@@ -2830,7 +2760,7 @@
     function saveState() {
       const label = document.querySelector("#saveState");
       try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, prepTasks }));
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({ uxVersion: UX_VERSION, settings, rows, prepTasks, prepArchive }));
         localStorage.removeItem(LEGACY_STORAGE_KEY);
         label.textContent = `この端末に保存済み ${new Date().toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" })}`;
       } catch {
@@ -2940,7 +2870,7 @@
 
       const venue = settings.venueName.trim() || "PRIMROSE";
       setText("venueTitle", venue);
-      setText("venueCopy", "おふたりで、素敵な一日をつくりましょう。");
+      setText("venueCopy", WEDDING_DETAILS.confirmed.names);
       setText("iosToday", formatIosDate(new Date()));
       setText("iosWeddingDate", settings.weddingDate ? formatIosDate(parseLocalDate(settings.weddingDate)) + (settings.weddingTime ? " " + settings.weddingTime : "") : "未設定");
       setText("heroCandidateDate", `挙式：${settings.weddingDate ? formatJapaneseDate(settings.weddingDate) : "未設定"}${settings.weddingTime ? " " + settings.weddingTime : ""}`);
@@ -3007,12 +2937,6 @@
       return Math.ceil((target.getTime() - today.getTime()) / 86400000);
     }
 
-    function addDays(date, amount) {
-      const result = new Date(date.getTime());
-      result.setDate(result.getDate() + amount);
-      return result;
-    }
-
     function dateInputValue(date) {
       if (!date || Number.isNaN(date.getTime())) return "";
       const year = date.getFullYear();
@@ -3022,11 +2946,7 @@
     }
 
     function prepDueValue(task) {
-      if (task.source === "user") return task.dueDate;
-      if (task.dueDate) return task.dueDate;
-      const wedding = parseLocalDate(settings.weddingDate);
-      if (!wedding || Number.isNaN(wedding.getTime()) || task.daysBefore === null) return "";
-      return dateInputValue(addDays(wedding, -task.daysBefore));
+      return task.dueDate || "";
     }
 
     function prepDueDate(task) {
@@ -3037,16 +2957,30 @@
       const date = parseLocalDate(value);
       return date && !Number.isNaN(date.getTime())
         ? new Intl.DateTimeFormat("ja-JP", { month: "numeric", day: "numeric", weekday: "short" }).format(date)
-        : "期限未設定";
+        : "日付の記載なし";
+    }
+
+    function prepScheduleLabel(task) {
+      if (!task.dueDate) return task.period || "日付の記載なし";
+      const time = task.dueTime ? " " + task.dueTime : "";
+      const date = prepShortDate(task.dueDate) + time;
+      if (task.kind === "homework") return date + "の打ち合わせ前まで";
+      if (task.kind === "appointment") return date + " 開始";
+      return date + " 締切";
     }
 
     function prepStatus(task) {
       if (task.done) return { label: "完了", className: "complete", days: null };
       const due = prepDueDate(task);
-      if (!due || Number.isNaN(due.getTime())) return { label: "期限未設定", className: "", days: null };
+      if (!due || Number.isNaN(due.getTime())) return { label: task.kind === "conditional" ? "必要な場合" : "日程未記載", className: "", days: null };
       const days = daysFromToday(due);
-      if (days < 0) return { label: task.source === "venue" ? "予定日を過ぎています" : "目安日を過ぎています", className: "overdue", days };
-      if (days === 0) return { label: "今日まで", className: "soon", days };
+      if (days < 0) return { label: task.kind === "deadline" ? "締切日を過ぎています" : "予定日を過ぎています", className: "overdue", days };
+      if (days === 0 && task.dueTime) {
+        const [hours, minutes] = task.dueTime.split(":").map(Number);
+        due.setHours(hours, minutes, 0, 0);
+        if (new Date() >= due) return { label: "予定時刻を過ぎています", className: "overdue", days };
+      }
+      if (days === 0) return { label: task.kind === "appointment" ? "今日の予定" : "今日まで", className: "soon", days };
       if (days <= 14) return { label: "あと" + days + "日", className: "soon", days };
       return { label: "あと" + days + "日", className: "", days };
     }
@@ -3054,24 +2988,25 @@
     function prepStats() {
       const total = prepTasks.length;
       const done = prepTasks.filter(task => task.done).length;
-      const open = prepTasks.filter(task => !task.done).sort((a, b) => {
+      const open = prepTasks.filter(task => !task.done);
+      const compareDates = (a, b) => {
         const aDate = prepDueDate(a);
         const bDate = prepDueDate(b);
         const aTime = aDate && !Number.isNaN(aDate.getTime()) ? aDate.getTime() : Number.POSITIVE_INFINITY;
         const bTime = bDate && !Number.isNaN(bDate.getTime()) ? bDate.getTime() : Number.POSITIVE_INFINITY;
-        return aTime - bTime;
-      });
+        return aTime - bTime || (a.dueTime || "23:59").localeCompare(b.dueTime || "23:59");
+      };
       const priority = open.filter(task => {
         const status = prepStatus(task);
         return status.days !== null && status.days <= 14;
-      });
-      const overdue = priority.filter(task => prepStatus(task).days < 0);
+      }).sort(compareDates);
+      const overdue = priority.filter(task => prepStatus(task).className === "overdue");
       return { total, done, percent: total ? Math.round(done / total * 100) : 0, open, priority, overdue };
     }
 
     function updatePrepHome() {
       const stats = prepStats();
-      const next = stats.open[0] || null;
+      const next = stats.priority[0] || stats.open[0] || null;
       const wedding = parseLocalDate(settings.weddingDate);
       const weddingDays = wedding && !Number.isNaN(wedding.getTime()) ? daysFromToday(wedding) : null;
 
@@ -3082,7 +3017,7 @@
       setText("homePrepNext", next ? "次は「" + next.text + "」" : "準備はすべて完了しています。");
 
       setText("prepCompleteSummary", stats.done + "\n/" + stats.total + "件");
-      setText("prepCompleteNote", stats.total === 0 ? "予定を追加できます。" : stats.done === stats.total ? "当日までの準備が整いました。" : "未完了はあと" + (stats.total - stats.done) + "件です。");
+      setText("prepCompleteNote", stats.done === stats.total ? "資料に記載された項目はすべて完了です。" : "未完了はあと" + (stats.total - stats.done) + "件です。");
       const ownerProgress = owner => {
         const tasks = prepTasks.filter(task => task.owner === owner);
         return tasks.filter(task => task.done).length + " / " + tasks.length;
@@ -3091,9 +3026,9 @@
       setText("coupleGroomStat", ownerProgress("新郎"));
       setText("coupleBrideStat", ownerProgress("新婦"));
       setText("prepNextTitle", next ? next.text : "すべて完了");
-      setText("prepNextDate", next ? prepShortDate(prepDueValue(next)) + (next.source === "venue" ? " · 式場の予定" : next.source === "user" ? " · ふたりで設定" : " · 準備の目安") : "おつかれさまでした。");
+      setText("prepNextDate", next ? prepScheduleLabel(next) : "資料に記載された項目はすべて完了です。");
       setText("prepPriorityCount", stats.priority.length + "件");
-      setText("prepPriorityNote", stats.overdue.length ? stats.overdue.length + "件は予定日を過ぎています。" : stats.priority.length ? "2週間以内の予定です。" : "いま急ぐ予定はありません。");
+      setText("prepPriorityNote", stats.overdue.length ? stats.overdue.length + "件は記載の日時を過ぎています。" : stats.priority.length ? "記載の日付が2週間以内の項目です。" : "日付が記載された項目で、2週間以内の予定はありません。");
       setText("prepProgressText", stats.percent + "%");
       document.querySelector("#prepProgressBar").style.width = stats.percent + "%";
       document.querySelector("#prepOverallProgress").setAttribute("aria-valuenow", String(stats.percent));
@@ -3136,10 +3071,13 @@
       const body = document.createElement("div");
       const category = document.createElement("span");
       category.className = "prep-task-category";
-      category.textContent = task.category + (task.source === "venue" ? " · 式場の予定" : task.source === "user" ? " · ふたりで設定" : " · 目安");
+      category.textContent = task.category;
       const title = document.createElement("p");
       title.className = "prep-task-title";
       title.textContent = task.text;
+      const description = document.createElement("p");
+      description.className = "prep-task-description";
+      description.textContent = task.description;
 
       const meta = document.createElement("div");
       meta.className = "prep-task-meta";
@@ -3159,19 +3097,26 @@
         renderPrep();
       });
 
-      const due = document.createElement("input");
-      due.type = "date";
-      due.value = prepDueValue(task);
-      due.setAttribute("aria-label", "期限：" + task.text);
-      due.addEventListener("change", () => {
-        task.dueDate = due.value;
-        task.source = "user";
-        saveState();
-        renderPrep();
-      });
-
-      meta.append(prepField("担当", owner), prepField("期限", due));
-      body.append(category, title, meta);
+      const schedule = document.createElement("output");
+      schedule.textContent = prepScheduleLabel(task);
+      meta.append(prepField("担当", owner), prepField("資料の日程・実施時期", schedule));
+      const reference = WEDDING_PREPARATION.documents[task.document];
+      const source = document.createElement("p");
+      source.className = "prep-source-note";
+      const sourceLink = document.createElement("a");
+      sourceLink.href = "https://drive.google.com/file/d/" + reference.id + "/view";
+      sourceLink.target = "_blank";
+      sourceLink.rel = "noopener noreferrer";
+      sourceLink.textContent = "原本を開く ↗";
+      sourceLink.setAttribute("aria-label", task.text + "の原本：" + reference.title + " " + task.page + "ページ");
+      const excerpt = document.createElement("small");
+      excerpt.textContent = "資料の該当箇所：" + task.excerpt;
+      const sourceTitle = document.createElement("small");
+      sourceTitle.textContent = reference.title + " · " + task.page + "ページ";
+      source.append(sourceLink, sourceTitle, excerpt);
+      body.append(category, title);
+      if (task.description) body.append(description);
+      body.append(meta, source);
 
       const side = document.createElement("div");
       side.className = "prep-task-side";
@@ -3180,20 +3125,6 @@
       status.className = "prep-task-status" + (statusValue.className ? " " + statusValue.className : "");
       status.textContent = statusValue.label;
       side.append(status);
-
-      if (task.custom) {
-        const remove = document.createElement("button");
-        remove.type = "button";
-        remove.className = "prep-delete";
-        remove.textContent = "削除";
-        remove.addEventListener("click", () => {
-          if (!confirm("この予定を削除しますか？")) return;
-          prepTasks = prepTasks.filter(itemTask => itemTask.id !== task.id);
-          saveState();
-          renderPrep();
-        });
-        side.append(remove);
-      }
 
       item.append(checkboxWrap, body, side);
       return item;
@@ -3223,7 +3154,7 @@
         const heading = document.createElement("div");
         const kicker = document.createElement("span");
         kicker.className = "prep-phase-kicker";
-        kicker.textContent = phase.kicker + " · " + phase.period;
+        kicker.textContent = phase.period;
         const title = document.createElement("h3");
         title.textContent = phase.title;
         heading.append(kicker, title);
@@ -3240,6 +3171,7 @@
       });
 
       document.querySelector("#prepEmpty").classList.toggle("hidden", visibleCount > 0);
+      document.querySelector("#prepArchiveDetails").classList.toggle("hidden", prepArchive.length === 0);
       updatePrepHome();
     }
 
@@ -3308,7 +3240,7 @@
         help.textContent = "出欠・アレルギー・送迎をページ内で回答し、非公開のスプレッドシートに送信できます。";
         helpLink.href = new URL("showcase/", PUBLIC_APP_URL).toString();
         helpLink.textContent = "3つのデザインを見る";
-        privacy.textContent = !connected ? "受付に接続できるまでゲストへの共有は行わないでください。" : validDeadline ? "回答一覧は一般公開しません。ONE-Wへの自動転記はありません。" : "PDFには返信期限の記載がありません。式場と相談して、挙式日より前の返信期限を設定してください。";
+        privacy.textContent = !connected ? "回答受付は未接続です。" : validDeadline ? "回答一覧は一般公開しません。ONE-Wへの自動転記はありません。" : "返信期限はPDFに記載がありません。ゲストへの共有には、挙式日より前の期限の設定が必要です。";
       }
       const shareReady = usingSiteInvite && connected && Boolean(validDeadline) && Boolean(settings.invitationNames.trim()) && Boolean(settings.weddingDate && settings.weddingTime && settings.venueName.trim());
       status.classList.toggle("ready", service === "one-w" || shareReady);
@@ -3676,12 +3608,14 @@
     function backupPayload() {
       return {
         app: "primrose-wedding-planner",
-        schemaVersion: 1,
+        schemaVersion: 2,
         uxVersion: UX_VERSION,
+        prepSourceVersion: WEDDING_PREPARATION.version,
         exportedAt: new Date().toISOString(),
         settings,
         rows,
-        prepTasks
+        prepTasks,
+        prepArchive
       };
     }
 
@@ -3693,6 +3627,10 @@
     function exportBackup() {
       downloadFile(backupFileName(), JSON.stringify(backupPayload(), null, 2), "application/json");
       setText("coupleShareStatus", "共有データを書き出しました。相手の端末で読み込んでください。");
+    }
+
+    function exportPrepArchive() {
+      downloadFile("以前の準備データ.json", JSON.stringify({ app: "primrose-wedding-planner-prep-archive", archive: prepArchive }, null, 2), "application/json");
     }
 
     async function shareCoupleBackup() {
@@ -3804,33 +3742,6 @@
       });
     });
     document.querySelector("#prepOwnerFilter").addEventListener("change", renderPrep);
-    document.querySelector("#prepAddForm").addEventListener("submit", event => {
-      event.preventDefault();
-      const textInput = document.querySelector("#prepNewText");
-      const taskText = textInput.value.trim();
-      if (!taskText) {
-        textInput.reportValidity();
-        return;
-      }
-      const generatedId = globalThis.crypto?.randomUUID
-        ? globalThis.crypto.randomUUID()
-        : "custom-" + Date.now() + "-" + Math.random().toString(16).slice(2);
-      prepTasks.push({
-        id: generatedId,
-        phase: document.querySelector("#prepNewPhase").value,
-        category: "ふたりの予定",
-        text: taskText.slice(0, 120),
-        owner: document.querySelector("#prepNewOwner").value,
-        daysBefore: null,
-        dueDate: document.querySelector("#prepNewDate").value,
-        done: false,
-        custom: true,
-        source: "user"
-      });
-      event.currentTarget.reset();
-      saveState();
-      renderPrep();
-    });
     document.querySelector("#syncGuests").addEventListener("change", () => refresh(true));
     document.querySelector("#search").addEventListener("input", applyFilters);
     document.querySelector("#showReference").addEventListener("change", applyFilters);
@@ -3839,6 +3750,7 @@
     document.querySelector("#printPage").addEventListener("click", () => window.print());
     document.querySelector("#exportCsv").addEventListener("click", exportCsv);
     document.querySelector("#saveBackup").addEventListener("click", exportBackup);
+    document.querySelector("#exportPrepArchive").addEventListener("click", exportPrepArchive);
     document.querySelector("#shareCoupleBackup").addEventListener("click", shareCoupleBackup);
     document.querySelector("#loadCoupleBackup").addEventListener("click", () => document.querySelector("#backupFile").click());
     document.querySelector("#openInvitation").addEventListener("click", () => window.open(invitationPageUrl(), "_blank", "noopener"));
@@ -3872,6 +3784,7 @@
         }
         settings = migrateSettings(imported.settings, imported.uxVersion);
         rows = imported.rows;
+        prepArchive = buildPrepArchive(imported.prepTasks, imported.uxVersion, [...prepArchive, ...(Array.isArray(imported.prepArchive) ? imported.prepArchive : [])]);
         prepTasks = migratePrepTasks(imported.prepTasks, imported.uxVersion);
         hydrateSettings();
         recomputeRows();
