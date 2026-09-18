@@ -2,79 +2,131 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#f7f3f4">
   <title>ふたりの結婚式ノート</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Allura&amp;family=Noto+Sans+JP:wght@400;500;700;800&amp;family=Noto+Serif+JP:wght@400;500;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconoir@7.12.1/css/iconoir.css">
   <style>
-    :root{--ivory:#f6f2ed;--paper:#fff;--ink:#302925;--muted:#766b64;--rose:#b78f89;--rose-soft:#eadbd6;--line:#ded3cc;--navy:#253541}
+    :root{--bg:#f7f3f4;--surface:rgba(255,255,255,.84);--solid:#fff;--ink:#252124;--muted:#756d72;--rose:#bd737d;--rose-dark:#9f5964;--rose-soft:#f7e8ea;--line:rgba(84,67,73,.13);--shadow:0 15px 40px rgba(70,47,54,.08)}
     *{box-sizing:border-box}
-    body{margin:0;background:var(--ivory);color:var(--ink);font-family:"Noto Sans JP",sans-serif;font-size:14px;line-height:1.8;-webkit-font-smoothing:antialiased}
-    img{display:block;max-width:100%}
+    html{scroll-behavior:smooth}
+    body{min-height:100vh;margin:0;padding-bottom:calc(26px + env(safe-area-inset-bottom));overflow-x:hidden;color:var(--ink);background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI","Yu Gothic",sans-serif;font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased}
     a{color:inherit}
-    .wrap{width:min(100% - 28px,1040px);margin:auto;padding:34px 0 70px}
-    .hero{padding:48px 22px 38px;border:1px solid var(--line);background:var(--paper);text-align:center}
-    .script{margin:0;color:var(--rose);font:48px/1 "Allura",cursive}
-    h1{margin:9px 0 0;font-family:"Noto Serif JP",serif;font-size:27px;line-height:1.45;letter-spacing:.08em}
-    .lead{max-width:630px;margin:18px auto 0;color:var(--muted);font-size:12px}
-    .summary{display:grid;grid-template-columns:repeat(3,1fr);margin-top:16px;border:1px solid var(--line);background:#fff}
-    .summary div{padding:14px 9px;text-align:center}
-    .summary div+div{border-left:1px solid var(--line)}
-    .summary small{display:block;color:var(--muted);font-size:9px}
-    .summary strong{display:block;margin-top:2px;font-family:"Noto Serif JP",serif;font-size:14px}
-    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:31px}
-    .card{display:flex;min-width:0;flex-direction:column;border:1px solid var(--line);background:#fff;box-shadow:0 12px 30px rgba(65,47,39,.05)}
-    .preview{position:relative;overflow:hidden;aspect-ratio:16/10;background:#e7e0dc}
-    .preview img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .45s ease}
-    .card:hover .preview img{transform:scale(1.025)}
-    .card-body{display:flex;flex:1;flex-direction:column;padding:20px}
-    .type{margin:0;color:var(--rose);font-size:9px;font-weight:800;letter-spacing:.14em}
-    .card h2{margin:4px 0 0;font-family:"Noto Serif JP",serif;font-size:20px;line-height:1.5;letter-spacing:.04em}
-    .card p{margin:10px 0 0;color:var(--muted);font-size:11px}
-    .tags{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 20px}
-    .tags span{padding:4px 8px;border:1px solid var(--line);color:#6e625b;background:#faf8f6;font-size:9px}
-    .open{display:flex;min-height:50px;align-items:center;justify-content:space-between;margin-top:auto;padding:10px 14px;border:1px solid var(--navy);color:var(--navy);font-weight:800;text-decoration:none}
-    .open:after{content:"OPEN";font-size:8px;letter-spacing:.12em}
-    .open:hover{color:#fff;background:var(--navy)}
-    .open:focus-visible{outline:3px solid #2769ad;outline-offset:3px}
-    .help{margin:32px 0 0;padding:20px;border:1px solid var(--line);background:#fff;text-align:center}
-    .help strong{font-family:"Noto Serif JP",serif;font-size:15px}
-    .help p{margin:6px 0 0;color:var(--muted);font-size:10px}
-    footer{margin-top:34px;color:#958780;font-size:9px;text-align:center;letter-spacing:.08em}
-    @media(max-width:680px){.wrap{width:min(100% - 20px,470px);padding-top:12px}.hero{padding:39px 17px 31px}.script{font-size:43px}h1{font-size:23px}.summary{grid-template-columns:1fr}.summary div+div{border-top:1px solid var(--line);border-left:0}.cards{grid-template-columns:1fr;gap:17px}.preview{aspect-ratio:16/11}.card-body{padding:18px}.card h2{font-size:19px}}
-    @media(prefers-reduced-motion:reduce){.preview img{transition:none}}
+    img{display:block;max-width:100%}
+    button,summary,a{-webkit-tap-highlight-color:transparent}
+    .page{width:min(100% - 24px,880px);margin:auto;padding:34px 0 54px}
+    .hero{position:relative;overflow:hidden;padding:38px 34px 30px;border:1px solid var(--line);border-radius:28px;background:var(--surface);box-shadow:var(--shadow);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+    .botanical{position:absolute;top:-47px;right:-50px;width:300px;opacity:.38;pointer-events:none}
+    .eyebrow{position:relative;margin:0;color:var(--rose-dark);font-size:11px;font-weight:800;letter-spacing:.12em}
+    h1{position:relative;margin:8px 0 0;font-size:clamp(35px,6vw,52px);font-weight:760;line-height:1.08;letter-spacing:-.045em}
+    .lead{position:relative;max-width:510px;margin:14px 0 0;color:var(--muted);font-size:14px}
+    .status{position:relative;display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+    .status span{padding:6px 10px;border-radius:99px;color:var(--rose-dark);background:var(--rose-soft);font-size:11px;font-weight:750}
+    .date-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+    .date-card{display:grid;grid-template-columns:48px minmax(0,1fr);gap:12px;align-items:center;min-height:78px;padding:12px 15px;border:1px solid var(--line);border-radius:18px;background:var(--solid)}
+    .date-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:15px;color:var(--rose-dark);background:var(--rose-soft);font-size:23px}
+    .date-card small{display:block;color:var(--muted);font-size:11px;font-weight:700}
+    .date-card strong{display:block;margin-top:1px;font-size:16px;font-weight:720;line-height:1.35}
+    .section-heading{margin:28px 4px 8px;font-size:16px;font-weight:760;letter-spacing:-.01em}
+    .primary-card{min-width:0;overflow:hidden;padding:20px;border:1px solid var(--line);border-radius:22px;background:var(--solid);box-shadow:var(--shadow)}
+    .primary-card-head{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:center}
+    .app-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;color:#fff;background:linear-gradient(145deg,#c9858e,#a75e69);box-shadow:0 9px 20px rgba(166,85,96,.22);font-size:25px}
+    .primary-card small{display:block;color:var(--rose-dark);font-size:10px;font-weight:800;letter-spacing:.08em}
+    .primary-card h2{margin:2px 0 0;font-size:20px;line-height:1.35;letter-spacing:-.02em}
+    .primary-card p{margin:14px 0 0;color:var(--muted);font-size:12px}
+    .quick-actions{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:8px;margin-top:17px}
+    .action{min-width:0;min-height:48px;display:flex;gap:7px;align-items:center;justify-content:center;padding:9px 12px;border:1px solid var(--line);border-radius:14px;color:var(--rose-dark);background:#fff;font-size:12px;font-weight:760;text-align:center;text-decoration:none;overflow-wrap:anywhere}
+    .action.primary{color:#fff;border-color:var(--rose-dark);background:var(--rose-dark)}
+    .action i{font-size:18px}
+    .action:focus-visible,summary:focus-visible,.sample-link:focus-visible{outline:3px solid rgba(166,85,96,.38);outline-offset:2px}
+    .invite-box{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--solid);box-shadow:var(--shadow)}
+    .invite-box>summary{min-height:72px;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 16px;cursor:pointer;list-style:none}
+    .invite-box>summary::-webkit-details-marker{display:none}
+    .invite-summary-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;color:var(--rose-dark);background:var(--rose-soft);font-size:21px}
+    .invite-box>summary strong{display:block;font-size:15px}
+    .invite-box>summary small{display:block;margin-top:2px;color:var(--muted);font-size:10px}
+    .chevron{color:#a59ca1;font-size:20px;transition:transform .2s ease}
+    .invite-box[open] .chevron{transform:rotate(90deg)}
+    .samples-wrap{padding:0 16px 16px;border-top:1px solid var(--line)}
+    .samples-note{margin:13px 2px;color:var(--muted);font-size:11px}
+    .samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+    .sample{overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .sample img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;background:#eee9ea}
+    .sample-body{padding:11px}
+    .sample h3{margin:0;font-size:13px}
+    .sample p{margin:4px 0 10px;color:var(--muted);font-size:10px}
+    .sample-link{min-height:42px;display:flex;align-items:center;justify-content:space-between;color:var(--rose-dark);font-size:11px;font-weight:800;text-decoration:none}
+    .foot-note{margin:22px 5px 0;color:#958c91;font-size:10px;text-align:center}
+    @media(max-width:620px){
+      .page{width:100%;padding:0 10px 34px}
+      .hero{margin:0 -10px;padding:52px 20px 23px;border:0;border-radius:0 0 26px 26px;box-shadow:none}
+      .botanical{top:-24px;right:-77px;width:275px;opacity:.34}
+      .lead{max-width:310px;font-size:13px}
+      .date-grid{grid-template-columns:1fr;gap:0;overflow:hidden;border:1px solid var(--line);border-radius:17px;background:#fff}
+      .date-card{border:0;border-radius:0}
+      .date-card+.date-card{position:relative}
+      .date-card+.date-card:before{position:absolute;top:0;right:15px;left:15px;height:1px;background:var(--line);content:""}
+      .section-heading{margin-top:24px}
+      .primary-card{padding:16px;border-radius:20px}
+      .quick-actions{grid-template-columns:1fr 1fr}
+      .action.primary{grid-column:1/-1}
+      .samples{display:flex;gap:10px;overflow-x:auto;padding-bottom:3px;scroll-snap-type:x mandatory}
+      .sample{min-width:78%;scroll-snap-align:start}
+      .samples-wrap{padding-right:0}
+      .samples .sample:last-child{margin-right:16px}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chevron{transition:none}}
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <main class="page">
     <header class="hero">
-      <p class="script">For the two of us</p>
-      <h1>ふたりの結婚式を<br>一緒に考える</h1>
-      <p class="lead">PRIMROSEの初回見積と準備スケジュール、Web招待状のデザインをまとめました。気になるページを開いてみてね。</p>
+      <img class="botanical" src="../assets/ui/botanical-corner.png" alt="" aria-hidden="true">
+      <p class="eyebrow">OUR WEDDING</p>
+      <h1>ふたりの<br>結婚式ノート</h1>
+      <p class="lead">日程、見積、準備をふたりで確認するためのホームです。</p>
+      <div class="status"><span>日程確定</span><span>ONE-W利用</span></div>
     </header>
 
-    <section class="summary" aria-label="結婚式の予定"><div><small>会場</small><strong>PRIMROSE</strong></div><div><small>日程</small><strong>2027年3月7日</strong></div><div><small>想定人数</small><strong>50名</strong></div></section>
-
-    <section class="cards" aria-label="4つのページ">
-      <article class="card"><div class="preview"><img src="../assets/showcase/planner.png?v=6" alt="ふたりの結婚式プランナー"></div><div class="card-body"><p class="type">WEDDING PLANNER</p><h2>ふたりの結婚式プランナー</h2><p>iOS風の画面で、初回見積・人数試算・大切な日程・挙式日から逆算した準備をひとつにまとめています。</p><div class="tags"><span>見積</span><span>準備スケジュール</span><span>人数試算</span></div><a class="open" id="plannerLink" href="../?tab=prep" target="_blank" rel="noopener">ページを開く</a></div></article>
-
-      <article class="card"><div class="preview"><img src="../assets/showcase/invite-1.png?v=3" alt="バルーンスタイルのWeb招待状"></div><div class="card-body"><p class="type">WEB INVITATION</p><h2>バルーン</h2><p>明るいオレンジと大きなWEDDING文字。写真とバルーンが主役の、楽しく華やかな招待状です。</p><div class="tags"><span>明るい</span><span>華やか</span><span>写真中心</span></div><a class="open invite-link" data-route="../invite/" href="../invite/" target="_blank" rel="noopener">ページを開く</a></div></article>
-
-      <article class="card"><div class="preview"><img src="../assets/showcase/invite-2.png?v=3" alt="ポップガーデンスタイルのWeb招待状"></div><div class="card-body"><p class="type">WEB INVITATION</p><h2>ポップガーデン</h2><p>ピーチ色と白のカードを使った、カジュアルで読みやすい招待状。ページ内で出欠回答まで完結します。</p><div class="tags"><span>ポップ</span><span>読みやすい</span><span>出欠フォーム</span></div><a class="open invite-link" data-route="../invite/reference/" href="../invite/reference/" target="_blank" rel="noopener">ページを開く</a></div></article>
-
-      <article class="card"><div class="preview"><img src="../assets/showcase/invite-3.png?v=3" alt="ボタニカルクラシックスタイルのWeb招待状"></div><div class="card-body"><p class="type">WEB INVITATION</p><h2>ボタニカルクラシック</h2><p>くすみピンクと明朝体、植物モチーフを合わせた、落ち着きのある上品な招待状です。</p><div class="tags"><span>上品</span><span>クラシック</span><span>出欠フォーム</span></div><a class="open invite-link" data-route="../invite/botanical/" href="../invite/botanical/" target="_blank" rel="noopener">ページを開く</a></div></article>
+    <section class="date-grid" aria-label="大切な予定">
+      <div class="date-card"><span class="date-icon"><i class="iconoir-heart" aria-hidden="true"></i></span><span><small>挙式／披露宴</small><strong>2027年3月7日 12:00／13:00</strong></span></div>
+      <div class="date-card"><span class="date-icon"><i class="iconoir-calendar" aria-hidden="true"></i></span><span><small>次回打ち合わせ</small><strong>9月19日 9:30</strong></span></div>
     </section>
 
-    <aside class="help"><strong>気になるデザインを教えてね</strong><p>写真・名前・日程・文章も、ふたりに合わせて整えていけます。</p></aside>
-    <footer>PRIMROSE WEDDING</footer>
+    <h2 class="section-heading">ふたりの準備</h2>
+    <section class="primary-card" aria-label="結婚式プランナー">
+      <div class="primary-card-head"><span class="app-icon"><i class="iconoir-notes" aria-hidden="true"></i></span><div><small>WEDDING PLANNER</small><h2>準備をひとつにまとめる</h2></div></div>
+      <p>やること、初回見積、人数の試算、会場メモを確認できます。入力内容は端末ごとに保存され、共有データで相手に渡せます。</p>
+      <div class="quick-actions">
+        <a class="action primary" id="plannerLink" href="../?tab=prep"><i class="iconoir-check-circle" aria-hidden="true"></i>準備を続ける</a>
+        <a class="action" href="../?tab=budget"><i class="iconoir-wallet" aria-hidden="true"></i>見積を見る</a>
+        <a class="action" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer"><i class="iconoir-open-new-window" aria-hidden="true"></i>ONE-W</a>
+      </div>
+    </section>
+
+    <h2 class="section-heading">招待状</h2>
+    <details class="invite-box">
+      <summary><span class="invite-summary-icon"><i class="iconoir-page" aria-hidden="true"></i></span><span><strong>Web招待状</strong><small>3つのデザインから選ぶ</small></span><i class="iconoir-nav-arrow-right chevron" aria-hidden="true"></i></summary>
+      <div class="samples-wrap">
+        <p class="samples-note">どのデザインも、出欠・アレルギー・送迎をページ内で回答できます。返信期限を決めてからゲストに共有してください。</p>
+        <div class="samples">
+          <article class="sample"><img src="../assets/showcase/invite-1.png?v=3" alt="バルーンの招待状"><div class="sample-body"><h3>バルーン</h3><p>明るく華やかな写真中心</p><a class="sample-link invite-link" data-route="../invite/" href="../invite/" target="_blank" rel="noopener">見てみる <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><img src="../assets/showcase/invite-2.png?v=3" alt="ポップガーデンの招待状"><div class="sample-body"><h3>ポップガーデン</h3><p>カジュアルで読みやすい</p><a class="sample-link invite-link" data-route="../invite/reference/" href="../invite/reference/" target="_blank" rel="noopener">見てみる <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><img src="../assets/showcase/invite-3.png?v=3" alt="ボタニカルクラシックの招待状"><div class="sample-body"><h3>ボタニカル</h3><p>落ち着きのある上品な印象</p><a class="sample-link invite-link" data-route="../invite/botanical/" href="../invite/botanical/" target="_blank" rel="noopener">見てみる <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+        </div>
+      </div>
+    </details>
+
+    <p class="foot-note">PRIMROSE · 2027.03.07</p>
   </main>
+  <script src="../wedding-details.js?v=1"></script>
   <script>
     const pageParams=new URLSearchParams(location.search);
-    const shared=new URLSearchParams({date:pageParams.get("date")||"2027-03-07",time:pageParams.get("time")||"11:00",venue:pageParams.get("venue")||"PRIMROSE",form:pageParams.get("form")||"https://forms.gle/fnEFTiymL2n5E5Gc8"});
-    if(pageParams.get("from"))shared.set("from",pageParams.get("from"));
-    if(pageParams.get("deadline"))shared.set("deadline",pageParams.get("deadline"));
+    const details=WEDDING_DETAILS.resolve(location.search);
+    const shared=new URLSearchParams({date:details.date,from:details.names,venue:details.venue});
+    ["time","reception","end"].forEach(key=>{const value=details.getTime(key);if(value)shared.set(key,value)});
+    if(details.deadline)shared.set("deadline",details.deadline);
     document.querySelectorAll(".invite-link").forEach(link=>{const url=new URL(link.dataset.route,location.href);url.search=shared.toString();link.href=url.toString()});
   </script>
 </body>

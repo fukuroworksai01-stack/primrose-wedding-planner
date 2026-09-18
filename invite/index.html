@@ -243,11 +243,11 @@
         </div>
         <div class="info-block">
           <p class="time-main">挙式 <strong id="detailTime" class="undecided">後日ご案内</strong></p>
-          <p class="time-note">受付・開始時刻の詳細はあらためてご案内いたします</p>
+          <p class="time-note">セント・ポール大聖堂<br>受付時刻はあらためてご案内いたします</p>
         </div>
         <div class="info-block">
           <p class="time-main">披露宴 <strong id="receptionTime" class="undecided">後日ご案内</strong></p>
-          <p class="time-note">挙式後にご案内いたします</p>
+          <p class="time-note">ボヌール</p>
         </div>
         <div class="venue-block">
           <strong id="detailVenue">PRIMROSE</strong>
@@ -309,14 +309,16 @@
     </footer>
   </div>
 
+  <script src="../wedding-details.js?v=1"></script>
   <script>
     const params = new URLSearchParams(location.search);
-    const names = params.get("from")?.trim() || "私たち";
-    const dateValue = params.get("date") || "2027-03-07";
-    const getTime = key => /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(params.get(key) || "") ? params.get(key) : "";
+    const details = WEDDING_DETAILS.resolve(location.search);
+    const names = details.names;
+    const dateValue = details.date;
+    const getTime = details.getTime;
     const timeValue = getTime("time");
-    const venue = params.get("venue")?.trim() || "PRIMROSE";
-    const deadline = params.get("deadline") || "";
+    const venue = details.venue;
+    const deadline = details.deadline;
 
     const date = new Date(dateValue + "T00:00:00");
     const validDate = !Number.isNaN(date.getTime());

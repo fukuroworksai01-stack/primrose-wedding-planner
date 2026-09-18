@@ -193,7 +193,7 @@
         <img class="section-title reveal" src="../../assets/invite3/title-information.png" alt="Information"><p class="info-kicker reveal">Details of our special day</p>
         <h2 class="info-sub reveal"><span>WEDDING CEREMONY</span><small>挙式・披露宴</small></h2>
         <p class="date-line reveal"><span id="infoYear">2027.</span><strong id="infoDate">03.07</strong><small id="infoWeekday">Sun</small></p>
-        <div class="ceremony-cards reveal"><article class="ceremony-card"><span>挙式</span><strong id="ceremonyTime" class="undecided">後日ご案内</strong><small>受付時刻などの詳細は<br>あらためてご案内いたします</small></article><article class="ceremony-card"><span>披露宴</span><strong id="partyTime" class="undecided">後日ご案内</strong><small>詳しい時間は<br>あらためてご案内いたします</small></article></div>
+        <div class="ceremony-cards reveal"><article class="ceremony-card"><span>挙式</span><strong id="ceremonyTime" class="undecided">後日ご案内</strong><small>セント・ポール大聖堂<br>受付時刻は別途ご案内</small></article><article class="ceremony-card"><span>披露宴</span><strong id="partyTime" class="undecided">後日ご案内</strong><small>ボヌール</small></article></div>
         <div class="divider"></div>
         <h2 class="info-sub reveal"><span>VENUE ACCESS</span><small>アクセス</small></h2>
         <p class="venue-name reveal"><strong id="venueName">PRIMROSE</strong>〒701-0151<br>岡山県岡山市北区平野544-1</p>
@@ -218,15 +218,17 @@
     <footer><img src="../../assets/invite3/footer-thanks.png" alt="Thank you"><small>HOPE WE CAN SHARE OUR HAPPINESS.</small></footer>
   </div>
 
+  <script src="../../wedding-details.js?v=1"></script>
   <script>
     const params=new URLSearchParams(location.search);
-    const names=params.get("from")?.trim()||"私たち";
-    const dateValue=params.get("date")||"2027-03-07";
-    const getTime=key=>/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(params.get(key)||"")?params.get(key):"";
+    const details=WEDDING_DETAILS.resolve(location.search);
+    const names=details.names;
+    const dateValue=details.date;
+    const getTime=details.getTime;
     const timeValue=getTime("time");
-    const venue=params.get("venue")?.trim()||"PRIMROSE";
-    const deadline=params.get("deadline")||"";
-    const date=new Date(dateValue+"T00:00:00");
+    const venue=details.venue;
+    const deadline=details.deadline;
+    const date=new Date(dateValue+"T"+(timeValue||"00:00")+":00");
     const validDate=!Number.isNaN(date.getTime());
     const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const partyTime=getTime("reception");
