@@ -1,0 +1,34 @@
+.rsvp-widget { --rsvp-accent: var(--orange-deep, #976875); --rsvp-border: #d5c5bc; margin-top: 28px; color: #302922; font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 1.75; text-align: left; letter-spacing: normal; }
+.rsvp-widget [hidden] { display: none !important; }
+.rsvp-widget .rsvp-panel { margin: 0; padding: 24px 20px; border: 1px solid #eadbd1; border-radius: 18px; background: #fff; }
+.rsvp-widget .rsvp-field { min-width: 0; margin: 0 0 24px; padding: 0; border: 0; }
+.rsvp-widget legend, .rsvp-widget .rsvp-label { display: block; padding: 0; margin: 0 0 10px; color: #302922; font-size: 14px; font-weight: 700; }
+.rsvp-widget .rsvp-required { display: inline-block; margin-left: 7px; color: var(--rsvp-accent); font-size: 10px; vertical-align: 1px; }
+.rsvp-widget .rsvp-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.rsvp-widget .rsvp-choices.stack { grid-template-columns: 1fr; }
+.rsvp-widget .rsvp-choice { display: flex; align-items: center; gap: 8px; min-height: 48px; margin: 0; padding: 11px 9px; border: 1px solid var(--rsvp-border); border-radius: 9px; background: #fff; font-size: 13px; cursor: pointer; }
+.rsvp-widget .rsvp-choice:has(input:checked) { border-color: var(--rsvp-accent); background: #fbf5f1; }
+.rsvp-widget input[type="radio"] { flex: 0 0 auto; width: 18px; height: 18px; margin: 0; accent-color: var(--rsvp-accent); }
+.rsvp-widget .rsvp-input { display: block; width: 100%; max-width: 100%; padding: 12px; border: 1px solid var(--rsvp-border); border-radius: 9px; background: #fff; color: #302922; font: inherit; font-size: 16px; line-height: 1.6; letter-spacing: normal; }
+.rsvp-widget textarea.rsvp-input { min-height: 110px; resize: vertical; }
+.rsvp-widget .rsvp-hint { display: block; margin: 7px 0 0; color: #6e625b; font-size: 12px; }
+.rsvp-widget .rsvp-privacy { max-width: none; margin: 20px 0 !important; color: #6e625b; font-size: 11px !important; line-height: 1.8 !important; text-align: left; }
+.rsvp-widget .rsvp-action { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 50px; margin: 0; padding: 12px 10px; border: 1px solid var(--rsvp-accent); border-radius: 10px; background: var(--rsvp-accent); color: #fff; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; }
+.rsvp-widget .rsvp-action.secondary { color: var(--rsvp-accent); background: #fff; }
+.rsvp-widget .rsvp-action:disabled { opacity: .6; cursor: wait; }
+.rsvp-widget .rsvp-actions { display: grid; gap: 12px; margin-top: 24px; }
+.rsvp-widget .rsvp-review-title, .rsvp-widget .rsvp-success-title { max-width: none; margin: 0 0 20px !important; font-size: 18px !important; font-weight: 700; line-height: 1.6 !important; }
+.rsvp-widget .rsvp-review-list { margin: 0; }
+.rsvp-widget .rsvp-review-list > div { padding: 12px 0; border-bottom: 1px solid #eee5df; }
+.rsvp-widget .rsvp-review-list dt { color: #74665d; font-size: 11px; }
+.rsvp-widget .rsvp-review-list dd { margin: 4px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.rsvp-widget .rsvp-feedback { max-width: none; margin: 16px 0 !important; color: #8e3020; font-size: 13px !important; line-height: 1.7 !important; overflow-wrap: anywhere; }
+.rsvp-widget .rsvp-success { text-align: center; }
+.rsvp-widget .rsvp-success p { max-width: none; font-size: 13px !important; }
+.rsvp-widget .rsvp-receipt { display: block; margin-top: 8px; font-size: 20px; letter-spacing: .08em; }
+.rsvp-widget .rsvp-fallback { display: block; margin-top: 20px; color: var(--rsvp-accent); font-size: 12px; text-align: center; text-underline-offset: 4px; }
+.rsvp-widget .rsvp-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+.rsvp-widget :is(input, textarea, button, a):focus-visible { outline: 3px solid #286cc0; outline-offset: 3px; }
+.rsvp-widget .rsvp-panel:focus { outline: none; }
+@media (max-width: 370px) { .rsvp-widget .rsvp-panel { padding: 22px 14px; } .rsvp-widget .rsvp-choices { gap: 6px; } }
+@media (prefers-reduced-motion: reduce) { .rsvp-widget * { scroll-behavior: auto !important; } }

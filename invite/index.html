@@ -107,6 +107,7 @@
     .date-row strong { font-size: 38px; letter-spacing: .01em; }
     .time-main { margin: 0; color: #111; font-size: 15px; font-weight: 800; letter-spacing: .18em; }
     .time-main strong { margin-left: 8px; font-size: 27px; }
+    .time-main strong.undecided { font-size: 16px; letter-spacing: normal; }
     .time-note { margin: 6px 0 0; color: #76635a; font-size: 10px; }
     .venue-block { margin-top: 24px; color: #111; text-align: left; }
     .venue-block strong { display: block; font-size: 17px; letter-spacing: .08em; }
@@ -176,6 +177,7 @@
     }
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
+  <link rel="stylesheet" href="rsvp.css?v=1">
 </head>
 <body>
   <div class="site-shell">
@@ -240,11 +242,11 @@
           <span id="infoWeekday">Sun</span>
         </div>
         <div class="info-block">
-          <p class="time-main">挙式 <strong id="detailTime">11:00</strong></p>
-          <p class="time-note">開始時刻は現在の予定です</p>
+          <p class="time-main">挙式 <strong id="detailTime" class="undecided">後日ご案内</strong></p>
+          <p class="time-note">受付・開始時刻の詳細はあらためてご案内いたします</p>
         </div>
         <div class="info-block">
-          <p class="time-main">披露宴 <strong id="receptionTime">12:00</strong></p>
+          <p class="time-main">披露宴 <strong id="receptionTime" class="undecided">後日ご案内</strong></p>
           <p class="time-note">挙式後にご案内いたします</p>
         </div>
         <div class="venue-block">
@@ -266,9 +268,9 @@
           <p>シャトルバスの利用希望と<br>食物アレルギーについては<br>出欠フォームでお知らせください</p>
         </div>
         <div class="schedule" aria-label="当日の予定">
-          <div class="schedule-item"><time id="scheduleCeremony">11:00</time><span>挙式</span></div>
-          <div class="schedule-item"><time id="scheduleReception">12:00</time><span>披露宴</span></div>
-          <div class="schedule-item"><time>14:30</time><span>おひらき予定</span></div>
+          <div class="schedule-item"><time id="scheduleCeremony">—</time><span>挙式</span></div>
+          <div class="schedule-item"><time id="scheduleReception">—</time><span>披露宴</span></div>
+          <div class="schedule-item"><time id="scheduleEnd">—</time><span>おひらき</span></div>
         </div>
       </section>
 
@@ -293,10 +295,10 @@
       <div class="rsvp-wrap">
         <section class="rsvp" id="rsvp" aria-labelledby="rsvpTitle">
           <h2 class="section-title" id="rsvpTitle">Presence or Absence</h2>
-          <p>お手数ですが、下のボタンから<br>出欠と必要事項をご回答ください</p>
+          <p>こちらのページで<br>出欠と必要事項をご回答いただけます</p>
           <p class="deadline" id="deadlineText">回答期限は後日お知らせします</p>
-          <a class="rsvp-button" id="rsvpButton" href="#rsvp" aria-disabled="true"><span>出欠回答は後日ご案内します</span></a>
-          <p class="form-note" id="formNote">回答方法が決まりましたら、あらためてお知らせします。</p>
+          <div data-rsvp-widget data-design="balloon"></div>
+          <noscript>ご回答にはJavaScriptを有効にしてください。</noscript>
         </section>
       </div>
     </main>
@@ -311,38 +313,22 @@
     const params = new URLSearchParams(location.search);
     const names = params.get("from")?.trim() || "私たち";
     const dateValue = params.get("date") || "2027-03-07";
-    const timeValue = params.get("time") || "11:00";
+    const getTime = key => /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(params.get(key) || "") ? params.get(key) : "";
+    const timeValue = getTime("time");
     const venue = params.get("venue")?.trim() || "PRIMROSE";
     const deadline = params.get("deadline") || "";
 
-    const safeFormUrl = value => {
-      try {
-        const url = new URL(value || "");
-        const allowedHost = url.hostname === "forms.gle" || url.hostname === "docs.google.com";
-        return url.protocol === "https:" && allowedHost ? url.toString() : "";
-      } catch {
-        return "";
-      }
-    };
-    const addMinutes = (value, minutes) => {
-      const match = /^(\d{1,2}):(\d{2})$/.exec(value);
-      if (!match) return "12:00";
-      const total = (Number(match[1]) * 60 + Number(match[2]) + minutes) % 1440;
-      return String(Math.floor(total / 60)).padStart(2, "0") + ":" + String(total % 60).padStart(2, "0");
-    };
-
-    const formUrl = safeFormUrl(params.get("form"));
     const date = new Date(dateValue + "T00:00:00");
     const validDate = !Number.isNaN(date.getTime());
     const weekdays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     const monthNames = ["JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"];
-    const receptionValue = addMinutes(timeValue, 60);
+    const receptionValue = getTime("reception");
 
     document.querySelector("#heroName").textContent = names === "私たち" ? "With love" : names;
-    document.querySelector("#detailTime").textContent = timeValue;
-    document.querySelector("#scheduleCeremony").textContent = timeValue;
-    document.querySelector("#receptionTime").textContent = receptionValue;
-    document.querySelector("#scheduleReception").textContent = receptionValue;
+    [["#detailTime", timeValue], ["#receptionTime", receptionValue]].forEach(([id, value]) => { const el = document.querySelector(id); el.textContent = value || "後日ご案内"; el.classList.toggle("undecided", !value); });
+    document.querySelector("#scheduleCeremony").textContent = timeValue || "—";
+    document.querySelector("#scheduleReception").textContent = receptionValue || "—";
+    document.querySelector("#scheduleEnd").textContent = getTime("end") || "—";
     document.querySelector("#detailVenue").textContent = venue;
     document.title = names + " Wedding Invitation";
 
@@ -373,17 +359,8 @@
       }
     }
 
-    const rsvpButton = document.querySelector("#rsvpButton");
-    if (formUrl) {
-      rsvpButton.href = formUrl;
-      rsvpButton.target = "_blank";
-      rsvpButton.rel = "noopener";
-      rsvpButton.removeAttribute("aria-disabled");
-      rsvpButton.querySelector("span").textContent = "出欠を回答する";
-      document.querySelector("#formNote").textContent = "回答内容はGoogleフォームへ送信されます。";
-    } else {
-      rsvpButton.addEventListener("click", event => event.preventDefault());
-    }
   </script>
+  <script src="rsvp-config.js?v=1"></script>
+  <script src="rsvp-client.js?v=1"></script>
 </body>
 </html>

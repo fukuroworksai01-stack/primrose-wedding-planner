@@ -82,6 +82,7 @@
     .ceremony-card{display:grid;place-content:center;aspect-ratio:161/246;padding:23px 12px;color:#fff;background:url("../../assets/invite3/info-detail-bg.png") center/100% 100% no-repeat;text-shadow:0 1px 2px rgba(0,0,0,.08)}
     .ceremony-card span{font-size:18px}
     .ceremony-card strong{font-family:"GFS Didot",serif;font-size:35px;font-weight:400;line-height:1.2}
+    .ceremony-card strong.undecided{font-family:inherit;font-size:16px;line-height:2}
     .ceremony-card small{margin-top:8px;font-size:11px;line-height:1.8}
     .divider{height:1px;margin:48px 0 34px;background:#332e2c}
     .venue-name{margin:0;font-size:13px;line-height:2;letter-spacing:.03em}
@@ -159,6 +160,7 @@
     @media(min-width:751px){body{padding:22px 0}.page{box-shadow:0 0 45px rgba(78,58,55,.14)}.hero{min-height:1200px}.hero-frame{height:920px}.hero-script{top:45px;font-size:108px}.vertical{top:330px;font-size:16px}.vertical.left{left:25px}.vertical.right{right:25px}.hero-lockup strong{font-size:22px}.reception,.information{padding-inline:48px}.formal,.host-text,.message-copy{font-size:14px}.host-photo{max-width:660px}.host-copy{padding-inline:42px}.rsvp{padding-inline:24px}.rsvp-form{max-width:700px;margin-inline:auto}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
   </style>
+  <link rel="stylesheet" href="../rsvp.css?v=1">
 </head>
 <body>
   <div class="page">
@@ -191,7 +193,7 @@
         <img class="section-title reveal" src="../../assets/invite3/title-information.png" alt="Information"><p class="info-kicker reveal">Details of our special day</p>
         <h2 class="info-sub reveal"><span>WEDDING CEREMONY</span><small>挙式・披露宴</small></h2>
         <p class="date-line reveal"><span id="infoYear">2027.</span><strong id="infoDate">03.07</strong><small id="infoWeekday">Sun</small></p>
-        <div class="ceremony-cards reveal"><article class="ceremony-card"><span>挙式</span><strong id="ceremonyTime">11:00</strong><small>受付 / 10:30<br>終了 / 12:00</small></article><article class="ceremony-card"><span>披露宴</span><strong id="partyTime">12:00</strong><small>受付 / 11:30<br>お披楽喜 / 14:30</small></article></div>
+        <div class="ceremony-cards reveal"><article class="ceremony-card"><span>挙式</span><strong id="ceremonyTime" class="undecided">後日ご案内</strong><small>受付時刻などの詳細は<br>あらためてご案内いたします</small></article><article class="ceremony-card"><span>披露宴</span><strong id="partyTime" class="undecided">後日ご案内</strong><small>詳しい時間は<br>あらためてご案内いたします</small></article></div>
         <div class="divider"></div>
         <h2 class="info-sub reveal"><span>VENUE ACCESS</span><small>アクセス</small></h2>
         <p class="venue-name reveal"><strong id="venueName">PRIMROSE</strong>〒701-0151<br>岡山県岡山市北区平野544-1</p>
@@ -202,27 +204,15 @@
       <section class="message">
         <img class="section-title reveal" src="../../assets/invite3/title-message.png" alt="Message"><p class="message-kicker reveal">TO OUR ESTEEMED FRIENDS</p>
         <p class="message-copy reveal">当日は更衣室とクロークをご利用いただけます<br>お荷物を先にお預けいただき<br>身軽にお過ごしください<br><br>シャトルバスの利用希望と<br>食物アレルギーについては<br>出欠フォームでお知らせください</p>
-        <div class="timeline reveal"><p class="timeline-title">Wedding Time Line</p><div class="timeline-row"><div class="timeline-item"><strong>10:30</strong><i></i><span>受付</span></div><div class="timeline-item"><strong>11:00</strong><i></i><span>挙式</span></div><div class="timeline-item"><strong>11:30</strong><i></i><span>集合写真</span></div><div class="timeline-item"><strong>12:00</strong><i></i><span>披露宴</span></div><div class="timeline-item"><strong>14:30</strong><i></i><span>おひらき</span></div></div></div>
+        <div class="timeline reveal"><p class="timeline-title">Wedding Time Line</p><div class="timeline-row"><div class="timeline-item"><strong id="timelineArrival">—</strong><i></i><span>受付</span></div><div class="timeline-item"><strong id="timelineCeremony">—</strong><i></i><span>挙式</span></div><div class="timeline-item"><strong id="timelinePhoto">—</strong><i></i><span>集合写真</span></div><div class="timeline-item"><strong id="timelineParty">—</strong><i></i><span>披露宴</span></div><div class="timeline-item"><strong id="timelineEnd">—</strong><i></i><span>おひらき</span></div></div></div>
         <div class="gallery-wrap reveal"><div class="gallery" id="gallery"><figure><img src="../../assets/invite3/gallery-ceremony.webp" alt="プリムローズの大聖堂" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-party.webp" alt="プリムローズの披露宴会場" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-cuisine.webp" alt="プリムローズの婚礼料理" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-garden.webp" alt="プリムローズのガーデン" loading="lazy"></figure><figure><img src="../../assets/invite3/gallery-dress.webp" alt="花嫁のドレス" loading="lazy"></figure></div><div class="gallery-dots" id="galleryDots" aria-label="ギャラリーを選ぶ"><button class="active" type="button" aria-label="写真1を表示">1</button><button type="button" aria-label="写真2を表示">2</button><button type="button" aria-label="写真3を表示">3</button><button type="button" aria-label="写真4を表示">4</button><button type="button" aria-label="写真5を表示">5</button></div></div>
       </section>
 
       <section class="rsvp" id="rsvp" aria-labelledby="rsvpTitle">
         <h2 id="rsvpTitle"><img class="section-title reveal" src="../../assets/invite3/title-poa.png" alt="Presence or Absence"></h2>
         <p class="rsvp-intro reveal">お手数ですが　下記より<br>出欠情報のご連絡をお願い申し上げます<br><strong id="deadlineText">回答期限は後日お知らせします</strong></p>
-        <form class="rsvp-form reveal" id="guestForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfMmYBCDFUUHWC0RjOXKgT9rHcCuR8KveNR62yhDbJk3IdIjA/formResponse" method="post" target="formSink">
-          <div class="form-panel" id="formFields">
-            <div class="field"><label class="field-label" for="guestName">お名前 Name<span class="required">必須</span></label><input class="text-input" id="guestName" name="entry.1082329911" type="text" autocomplete="name" placeholder="例）山田 花子" required></div>
-            <div class="field"><label class="field-label" for="allergy">アレルギー Allergy<span class="required">必須</span></label><textarea class="text-area" id="allergy" name="entry.970491917" placeholder="ない場合は「なし」とご入力ください" required></textarea><small class="field-help">食物アレルギー・食事制限をご記入ください</small></div>
-            <fieldset class="field"><legend>シャトルバス Shuttle Bus<span class="required">必須</span></legend><div class="choice-list"><label class="choice"><input type="radio" name="entry.740219987" value="利用する予定" required><span>利用する予定</span></label><label class="choice"><input type="radio" name="entry.740219987" value="利用しない予定" required><span>利用しない予定</span></label><label class="choice"><input type="radio" name="entry.740219987" value="未定" required><span>未定</span></label></div></fieldset>
-            <div class="field"><label class="field-label" for="guestMessage">メッセージ Message</label><textarea class="text-area" id="guestMessage" name="entry.940094029" maxlength="250" placeholder="ふたりへのメッセージ（任意）"></textarea></div>
-            <fieldset class="field"><legend>ご出欠 Attendance<span class="required">必須</span></legend><div class="attendance"><label><input type="radio" name="entry.719709755" value="出席します" required><span><strong>ご出席</strong><small>attend</small></span></label><label><input type="radio" name="entry.719709755" value="欠席します" required><span><strong>ご欠席</strong><small>decline</small></span></label></div></fieldset>
-            <button class="form-action primary" id="reviewButton" type="button">確認する　Confirm the following</button>
-          </div>
-          <div class="form-panel form-review" id="formReview" hidden><p class="review-title">回答内容の確認</p><dl class="review-list"><div><dt>お名前</dt><dd data-review="entry.1082329911"></dd></div><div><dt>アレルギー</dt><dd data-review="entry.970491917"></dd></div><div><dt>シャトル</dt><dd data-review="entry.740219987"></dd></div><div><dt>メッセージ</dt><dd data-review="entry.940094029"></dd></div><div><dt>ご出欠</dt><dd data-review="entry.719709755"></dd></div></dl><div class="review-actions"><button class="form-action" id="editButton" type="button">修正する</button><button class="form-action primary" id="sendButton" type="submit">この内容で送信</button></div></div>
-          <input type="hidden" name="fvv" value="1"><input type="hidden" name="pageHistory" value="0">
-        </form>
-        <div class="form-panel form-success" id="formSuccess" role="status" aria-live="polite" hidden><p class="success-title">ご回答ありがとうございました</p><p class="success-copy">回答を受け付けました。<br>変更がある場合は、もう一度ご回答ください。</p><button class="form-action primary" id="answerAgain" type="button">もう一度回答する</button></div>
-        <a class="form-fallback" id="formFallback" href="https://forms.gle/fnEFTiymL2n5E5Gc8" target="_blank" rel="noopener">送信できない場合はGoogleフォームを開く</a><p class="form-note">回答内容はGoogleフォームへ送信されます</p><iframe class="form-sink" id="formSink" name="formSink" title="回答の送信先" aria-hidden="true"></iframe>
+        <div data-rsvp-widget data-design="botanical"></div>
+        <noscript>ご回答にはJavaScriptを有効にしてください。</noscript>
       </section>
     </main>
     <footer><img src="../../assets/invite3/footer-thanks.png" alt="Thank you"><small>HOPE WE CAN SHARE OUR HAPPINESS.</small></footer>
@@ -232,32 +222,26 @@
     const params=new URLSearchParams(location.search);
     const names=params.get("from")?.trim()||"私たち";
     const dateValue=params.get("date")||"2027-03-07";
-    const timeValue=params.get("time")||"11:00";
+    const getTime=key=>/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(params.get(key)||"")?params.get(key):"";
+    const timeValue=getTime("time");
     const venue=params.get("venue")?.trim()||"PRIMROSE";
     const deadline=params.get("deadline")||"";
-    const safeFormUrl=value=>{try{const url=new URL(value||"");return url.protocol==="https:"&&(url.hostname==="forms.gle"||url.hostname==="docs.google.com")?url.toString():""}catch{return""}};
-    const addMinutes=(value,minutes)=>{const match=/^(\d{1,2}):(\d{2})$/.exec(value);if(!match)return"12:00";const total=(Number(match[1])*60+Number(match[2])+minutes)%1440;return String(Math.floor(total/60)).padStart(2,"0")+":"+String(total%60).padStart(2,"0")};
-    const formUrl=safeFormUrl(params.get("form"));
     const date=new Date(dateValue+"T00:00:00");
     const validDate=!Number.isNaN(date.getTime());
     const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-    const partyTime=addMinutes(timeValue,60);
+    const partyTime=getTime("reception");
     document.querySelector("#heroNames").textContent=names==="私たち"?"WITH LOVE":names;
     document.querySelector("#venueName").textContent=venue;
-    document.querySelector("#ceremonyTime").textContent=timeValue;
-    document.querySelector("#partyTime").textContent=partyTime;
+    [["#ceremonyTime",timeValue],["#partyTime",partyTime]].forEach(([id,value])=>{const el=document.querySelector(id);el.textContent=value||"後日ご案内";el.classList.toggle("undecided",!value)});
+    [["#timelineArrival","arrival"],["#timelineCeremony","time"],["#timelinePhoto","photoTime"],["#timelineParty","reception"],["#timelineEnd","end"]].forEach(([id,key])=>document.querySelector(id).textContent=getTime(key)||"—");
     document.title=names+" Wedding Invitation";
     if(validDate){const y=String(date.getFullYear()),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");document.querySelector("#goalDate").textContent=y+"."+m+"."+d;document.querySelector("#infoYear").textContent=y+".";document.querySelector("#infoDate").textContent=m+"."+d;document.querySelector("#infoWeekday").textContent=weekdays[date.getDay()]}
     if(deadline){const deadlineDate=new Date(deadline+"T00:00:00");if(!Number.isNaN(deadlineDate.getTime()))document.querySelector("#deadlineText").textContent=new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric"}).format(deadlineDate)+"までにご回答ください"}
     const updateCountdown=()=>{if(!validDate)return;const diff=Math.max(0,date.getTime()-Date.now());document.querySelector("#countDays").textContent=String(Math.floor(diff/86400000));document.querySelector("#countHours").textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,"0");document.querySelector("#countMinutes").textContent=String(Math.floor(diff%3600000/60000)).padStart(2,"0");document.querySelector("#countSeconds").textContent=String(Math.floor(diff%60000/1000)).padStart(2,"0")};updateCountdown();window.setInterval(updateCountdown,1000);
     const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in");observer.unobserve(entry.target)}}),{threshold:.08});document.querySelectorAll(".reveal").forEach(element=>observer.observe(element));
     const gallery=document.querySelector("#gallery"),galleryDots=[...document.querySelectorAll("#galleryDots button")];galleryDots.forEach((button,index)=>button.addEventListener("click",()=>gallery.scrollTo({left:index*gallery.clientWidth,behavior:"smooth"})));let galleryTimer;gallery.addEventListener("scroll",()=>{clearTimeout(galleryTimer);galleryTimer=setTimeout(()=>{const active=Math.round(gallery.scrollLeft/gallery.clientWidth);galleryDots.forEach((button,index)=>button.classList.toggle("active",index===active))},80)});
-    const guestForm=document.querySelector("#guestForm"),formFields=document.querySelector("#formFields"),formReview=document.querySelector("#formReview"),formSuccess=document.querySelector("#formSuccess"),reviewButton=document.querySelector("#reviewButton"),editButton=document.querySelector("#editButton"),sendButton=document.querySelector("#sendButton"),answerAgain=document.querySelector("#answerAgain"),formFallback=document.querySelector("#formFallback");let reviewReady=false,submitting=false;formFallback.href=formUrl||"https://forms.gle/fnEFTiymL2n5E5Gc8";
-    const showReview=()=>{if(!guestForm.reportValidity())return;const data=new FormData(guestForm);document.querySelectorAll("[data-review]").forEach(item=>item.textContent=(data.get(item.dataset.review)||"未入力").toString());formFields.hidden=true;formReview.hidden=false;reviewReady=true;formReview.scrollIntoView({behavior:"smooth",block:"center"})};
-    reviewButton.addEventListener("click",showReview);editButton.addEventListener("click",()=>{formReview.hidden=true;formFields.hidden=false;reviewReady=false;formFields.scrollIntoView({behavior:"smooth",block:"start"})});
-    guestForm.addEventListener("submit",event=>{if(!reviewReady){event.preventDefault();showReview();return}submitting=true;sendButton.disabled=true;sendButton.textContent="送信しています…";window.setTimeout(()=>{guestForm.hidden=true;formSuccess.hidden=false;formSuccess.scrollIntoView({behavior:"smooth",block:"center"});submitting=false},1100)});
-    document.querySelector("#formSink").addEventListener("load",()=>{if(submitting){guestForm.hidden=true;formSuccess.hidden=false;submitting=false}});
-    answerAgain.addEventListener("click",()=>{guestForm.reset();formSuccess.hidden=true;guestForm.hidden=false;formReview.hidden=true;formFields.hidden=false;reviewReady=false;sendButton.disabled=false;sendButton.textContent="この内容で送信";formFields.scrollIntoView({behavior:"smooth",block:"start"})});
   </script>
+  <script src="../rsvp-config.js?v=1"></script>
+  <script src="../rsvp-client.js?v=1"></script>
 </body>
 </html>

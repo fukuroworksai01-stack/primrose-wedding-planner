@@ -67,6 +67,7 @@
     .date-card strong { font-size:36px; letter-spacing:0; }
     .time-card p { margin:0; font-size:14px; font-weight:800; letter-spacing:.16em; }
     .time-card strong { margin-left:7px; font-size:26px; }
+    .time-card strong.undecided { font-size:16px; letter-spacing:normal; }
     .time-card small { display:block; margin-top:5px; color:#79675e; font-size:9px; }
     .venue { margin-top:23px; color:#111; text-align:left; }
     .venue strong { display:block; font-size:17px; letter-spacing:.08em; }
@@ -142,6 +143,7 @@
     @media(min-width:391px){ body{padding:22px 0}.page{box-shadow:0 0 44px rgba(77,58,48,.12)} }
     @media(prefers-reduced-motion:reduce){ html{scroll-behavior:auto} }
   </style>
+  <link rel="stylesheet" href="../rsvp.css?v=1">
 </head>
 <body>
   <div class="page">
@@ -193,8 +195,8 @@
         <h2 class="title" id="infoTitle">Information</h2><div class="rule" aria-hidden="true"></div>
         <p class="info-kicker">挙式・披露宴</p>
         <div class="info-card date-card"><span id="infoYear">2027</span><strong id="infoDate">03.07</strong><span id="infoWeekday">Sun</span></div>
-        <div class="info-card time-card"><p>挙式 <strong id="ceremonyTime">11:00</strong></p><small>開始時刻は現在の予定です</small></div>
-        <div class="info-card time-card"><p>披露宴 <strong id="partyTime">12:00</strong></p><small>挙式後にご案内いたします</small></div>
+        <div class="info-card time-card"><p>挙式 <strong id="ceremonyTime" class="undecided">後日ご案内</strong></p><small>受付・開始時刻の詳細はあらためてご案内いたします</small></div>
+        <div class="info-card time-card"><p>披露宴 <strong id="partyTime" class="undecided">後日ご案内</strong></p><small>挙式後にご案内いたします</small></div>
         <div class="venue"><strong id="venueName">PRIMROSE</strong><span>〒701-0151<br>岡山県岡山市北区平野544-1</span></div>
         <iframe class="map" title="プリムローズ周辺地図" loading="lazy" src="https://www.google.com/maps?q=%E3%83%97%E3%83%AA%E3%83%A0%E3%83%AD%E3%83%BC%E3%82%BA%20%E5%B2%A1%E5%B1%B1%E7%9C%8C%E5%B2%A1%E5%B1%B1%E5%B8%82%E5%8C%97%E5%8C%BA%E5%B9%B3%E9%87%8E544-1&amp;output=embed"></iframe>
         <div class="map-links">
@@ -206,7 +208,7 @@
       <section class="message" aria-labelledby="messageTitle">
         <h2 class="title" id="messageTitle">Message</h2><div class="rule" aria-hidden="true"></div>
         <div class="message-copy"><p>当日は更衣室とクロークをご利用いただけます<br>お荷物を先にお預けいただき<br>身軽にお過ごしください</p><p>シャトルバスの利用希望と<br>食物アレルギーについては<br>出欠フォームでお知らせください</p></div>
-        <div class="timeline"><div><time id="timelineCeremony">11:00</time><span>挙式</span></div><div><time id="timelineParty">12:00</time><span>披露宴</span></div><div><time>14:30</time><span>おひらき予定</span></div></div>
+        <div class="timeline"><div><time id="timelineCeremony">—</time><span>挙式</span></div><div><time id="timelineParty">—</time><span>披露宴</span></div><div><time id="timelineEnd">—</time><span>おひらき</span></div></div>
       </section>
 
       <section class="gallery" aria-labelledby="galleryTitle">
@@ -223,73 +225,8 @@
         <p class="rsvp-intro">こちらのページで<br>出欠と必要事項をご回答いただけます</p>
         <p class="rsvp-intro deadline" id="deadlineText">回答期限は後日お知らせします</p>
 
-        <form class="guest-form" id="guestForm" action="https://docs.google.com/forms/d/e/1FAIpQLSfMmYBCDFUUHWC0RjOXKgT9rHcCuR8KveNR62yhDbJk3IdIjA/formResponse" method="post" target="formSink">
-          <div class="form-sheet form-fields" id="formFields">
-            <fieldset class="field">
-              <legend class="field-title">ご出欠<span class="required">必須</span></legend>
-              <div class="choice-row">
-                <label class="choice"><input type="radio" name="entry.719709755" value="出席します" required><span>出席します</span></label>
-                <label class="choice"><input type="radio" name="entry.719709755" value="欠席します" required><span>欠席します</span></label>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label for="guestName">お名前<span class="required">必須</span></label>
-              <input class="text-input" id="guestName" name="entry.1082329911" type="text" autocomplete="name" placeholder="例）山田 花子" required>
-            </div>
-
-            <div class="field">
-              <label for="allergy">食物アレルギー・食事制限<span class="required">必須</span></label>
-              <textarea class="text-area" id="allergy" name="entry.970491917" placeholder="ない場合は「なし」とご入力ください" required></textarea>
-            </div>
-
-            <fieldset class="field">
-              <legend class="field-title">岡山駅からの無料シャトルバス<span class="required">必須</span></legend>
-              <div class="choice-row three">
-                <label class="choice"><input type="radio" name="entry.740219987" value="利用する予定" required><span>利用する予定</span></label>
-                <label class="choice"><input type="radio" name="entry.740219987" value="利用しない予定" required><span>利用しない予定</span></label>
-                <label class="choice"><input type="radio" name="entry.740219987" value="未定" required><span>未定</span></label>
-              </div>
-            </fieldset>
-
-            <div class="field">
-              <label for="guestMessage">ふたりへのメッセージ</label>
-              <textarea class="text-area" id="guestMessage" name="entry.940094029" placeholder="任意でご入力ください"></textarea>
-              <small class="field-hint">この項目は任意です</small>
-            </div>
-
-            <button class="form-action" id="reviewButton" type="button">回答内容を確認する</button>
-          </div>
-
-          <div class="form-sheet form-review" id="formReview" hidden>
-            <p class="review-title">回答内容の確認</p>
-            <dl class="review-list">
-              <div><dt>ご出欠</dt><dd data-review="entry.719709755"></dd></div>
-              <div><dt>お名前</dt><dd data-review="entry.1082329911"></dd></div>
-              <div><dt>アレルギー</dt><dd data-review="entry.970491917"></dd></div>
-              <div><dt>シャトル</dt><dd data-review="entry.740219987"></dd></div>
-              <div><dt>メッセージ</dt><dd data-review="entry.940094029"></dd></div>
-            </dl>
-            <div class="review-actions">
-              <button class="form-action" id="editButton" type="button">修正する</button>
-              <button class="form-action primary" id="sendButton" type="submit">この内容で送信</button>
-            </div>
-          </div>
-
-          <input type="hidden" name="fvv" value="1">
-          <input type="hidden" name="pageHistory" value="0">
-        </form>
-
-        <div class="form-sheet form-success" id="formSuccess" role="status" aria-live="polite" hidden>
-          <div class="success-mark" aria-hidden="true">✓</div>
-          <p class="success-title">ご回答ありがとうございました</p>
-          <p class="success-copy">回答を受け付けました。<br>変更がある場合は、もう一度ご回答ください。</p>
-          <button class="form-action" id="answerAgain" type="button">もう一度回答する</button>
-        </div>
-
-        <a class="form-link" id="formFallback" href="https://forms.gle/fnEFTiymL2n5E5Gc8" target="_blank" rel="noopener">送信できない場合はGoogleフォームを開く</a>
-        <p class="form-note">回答内容はGoogleフォームへ安全に送信されます</p>
-        <iframe class="form-sink" id="formSink" name="formSink" title="回答の送信先" aria-hidden="true"></iframe>
+        <div data-rsvp-widget data-design="garden"></div>
+        <noscript>ご回答にはJavaScriptを有効にしてください。</noscript>
       </section></div>
     </main>
 
@@ -300,53 +237,26 @@
     const params=new URLSearchParams(location.search);
     const names=params.get("from")?.trim()||"私たち";
     const dateValue=params.get("date")||"2027-03-07";
-    const timeValue=params.get("time")||"11:00";
+    const getTime=key=>/^(?:[01]\d|2[0-3]):[0-5]\d$/.test(params.get(key)||"")?params.get(key):"";
+    const timeValue=getTime("time");
     const venue=params.get("venue")?.trim()||"PRIMROSE";
     const deadline=params.get("deadline")||"";
-    const safeFormUrl=value=>{try{const url=new URL(value||"");return url.protocol==="https:"&&(url.hostname==="forms.gle"||url.hostname==="docs.google.com")?url.toString():""}catch{return""}};
-    const addMinutes=(value,minutes)=>{const match=/^(\d{1,2}):(\d{2})$/.exec(value);if(!match)return"12:00";const total=(Number(match[1])*60+Number(match[2])+minutes)%1440;return String(Math.floor(total/60)).padStart(2,"0")+":"+String(total%60).padStart(2,"0")};
-    const formUrl=safeFormUrl(params.get("form"));
     const date=new Date(dateValue+"T00:00:00");
     const validDate=!Number.isNaN(date.getTime());
     const weekdays=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const months=["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
-    const partyTime=addMinutes(timeValue,60);
+    const partyTime=getTime("reception");
     document.querySelector("#heroName").textContent=names==="私たち"?"With love":names;
-    ["#ceremonyTime","#timelineCeremony"].forEach(id=>document.querySelector(id).textContent=timeValue);
-    ["#partyTime","#timelineParty"].forEach(id=>document.querySelector(id).textContent=partyTime);
+    [["#ceremonyTime",timeValue],["#partyTime",partyTime]].forEach(([id,value])=>{const el=document.querySelector(id);el.textContent=value||"後日ご案内";el.classList.toggle("undecided",!value)});
+    document.querySelector("#timelineCeremony").textContent=timeValue||"—";
+    document.querySelector("#timelineParty").textContent=partyTime||"—";
+    document.querySelector("#timelineEnd").textContent=getTime("end")||"—";
     document.querySelector("#venueName").textContent=venue;
     document.title=names+" Wedding Invitation";
     if(validDate){const y=String(date.getFullYear()),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");document.querySelector("#dateYear").textContent=y;document.querySelector("#dateDay").textContent=d;document.querySelector("#dateMonthName").textContent=months[date.getMonth()];document.querySelector("#infoYear").textContent=y;document.querySelector("#infoDate").textContent=m+"."+d;document.querySelector("#infoWeekday").textContent=weekdays[date.getDay()];document.querySelector("#countdownDate").textContent=y+"."+m+"."+d;const today=new Date();today.setHours(0,0,0,0);document.querySelector("#countdownDays").textContent=String(Math.max(0,Math.ceil((date-today)/86400000)))}else{document.querySelector(".hero-date").hidden=true}
     if(deadline){const deadlineDate=new Date(deadline+"T00:00:00");if(!Number.isNaN(deadlineDate.getTime()))document.querySelector("#deadlineText").textContent=new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric"}).format(deadlineDate)+"までにご回答ください"}
-    const guestForm=document.querySelector("#guestForm");
-    const formFields=document.querySelector("#formFields");
-    const formReview=document.querySelector("#formReview");
-    const formSuccess=document.querySelector("#formSuccess");
-    const reviewButton=document.querySelector("#reviewButton");
-    const editButton=document.querySelector("#editButton");
-    const sendButton=document.querySelector("#sendButton");
-    const answerAgain=document.querySelector("#answerAgain");
-    const formFallback=document.querySelector("#formFallback");
-    let reviewReady=false;
-    let submitting=false;
-    formFallback.href=formUrl||"https://forms.gle/fnEFTiymL2n5E5Gc8";
-    const showReview=()=>{
-      if(!guestForm.reportValidity())return;
-      const data=new FormData(guestForm);
-      document.querySelectorAll("[data-review]").forEach(item=>item.textContent=(data.get(item.dataset.review)||"未入力").toString());
-      formFields.hidden=true;formReview.hidden=false;reviewReady=true;
-      formReview.scrollIntoView({behavior:"smooth",block:"center"});
-    };
-    const showFields=()=>{formReview.hidden=true;formFields.hidden=false;reviewReady=false;formFields.scrollIntoView({behavior:"smooth",block:"start"})};
-    reviewButton.addEventListener("click",showReview);
-    editButton.addEventListener("click",showFields);
-    guestForm.addEventListener("submit",event=>{
-      if(!reviewReady){event.preventDefault();showReview();return}
-      submitting=true;sendButton.disabled=true;sendButton.textContent="送信しています…";
-      window.setTimeout(()=>{guestForm.hidden=true;formSuccess.hidden=false;formSuccess.scrollIntoView({behavior:"smooth",block:"center"});submitting=false},1100);
-    });
-    document.querySelector("#formSink").addEventListener("load",()=>{if(submitting){guestForm.hidden=true;formSuccess.hidden=false;submitting=false}});
-    answerAgain.addEventListener("click",()=>{guestForm.reset();formSuccess.hidden=true;guestForm.hidden=false;formReview.hidden=true;formFields.hidden=false;reviewReady=false;sendButton.disabled=false;sendButton.textContent="この内容で送信";formFields.scrollIntoView({behavior:"smooth",block:"start"})});
   </script>
+  <script src="../rsvp-config.js?v=1"></script>
+  <script src="../rsvp-client.js?v=1"></script>
 </body>
 </html>
