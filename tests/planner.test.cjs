@@ -141,6 +141,53 @@ test('明細はスマホの入力ラベルを維持し、PDFにない日付は�
   assert.equal(p.read('prepDueValue(prepTasks.find(task => task.id === "pdf-fourth-meeting"))'), '');
   assert.equal(p.read('prepDueValue(prepTasks.find(task => task.id === "pdf-content-deadline"))'), '2027-02-07');
 });
+test('準備行の詳細を閉じても担当・完了・資料日程を残し、原本へのリンクを保持する', () => {
+  class Element {
+    constructor(tagName) { this.tagName = tagName; this.children = []; this.attributes = {}; this.listeners = {}; }
+    append(...children) { this.children.push(...children); }
+    setAttribute(name, value) { this.attributes[name] = value; }
+    addEventListener(name, listener) { this.listeners[name] = listener; }
+  }
+  const p = planner();
+  p.context.document.createElement = tagName => new Element(tagName);
+  let saved = 0; let rendered = 0;
+  p.context.saveState = () => saved++;
+  p.context.renderPrep = () => rendered++;
+  vm.runInContext(main.slice(main.indexOf('    function parseLocalDate('), main.indexOf('    function updatePrepHome(')), p.context);
+  vm.runInContext(main.slice(main.indexOf('    function prepField('), main.indexOf('    function renderPrep()')), p.context);
+  const item = vm.runInContext('renderPrepTask(prepTasks.find(task => task.description))', p.context);
+  const flatten = element => [element, ...element.children.flatMap(flatten)];
+  const elements = flatten(item);
+  const task = p.read('prepTasks.find(task => task.description)');
+  const disclosure = elements.find(element => element.tagName === 'details');
+  assert.equal(disclosure.children[0].textContent, '内容・原本');
+  assert.equal(disclosure.children[1].textContent, task.description);
+  assert.ok(!disclosure.open);
+  assert.ok(elements.find(element => element.tagName === 'output'));
+  assert.ok(!flatten(disclosure).some(element => ['input', 'select', 'output'].includes(element.tagName)));
+  const source = flatten(disclosure).find(element => element.tagName === 'a');
+  assert.equal(source.href, `https://drive.google.com/file/d/${preparation.documents[task.document].id}/view`);
+  assert.equal(source.rel, 'noopener noreferrer');
+  const checkbox = elements.find(element => element.type === 'checkbox');
+  assert.equal(checkbox.attributes['aria-label'], '完了にする：' + task.text);
+  checkbox.checked = true; checkbox.listeners.change();
+  const owner = elements.find(element => element.tagName === 'select');
+  owner.value = '新婦'; owner.listeners.change();
+  const updated = p.read('prepTasks.find(task => task.description)');
+  assert.equal(updated.done, true); assert.equal(updated.owner, '新婦');
+  assert.equal(saved, 2); assert.equal(rendered, 2);
+});
+test('印刷では閉じた準備の説明を展開し、終了後に元の開閉状態へ戻す', () => {
+  const closed = { open: false }; const open = { open: true }; const listeners = {};
+  vm.runInNewContext(main.slice(main.indexOf('    const prepPrintClosedDetails'), main.indexOf('    document.querySelector("#printPage")')), {
+    window: { addEventListener: (name, listener) => { listeners[name] = listener; } },
+    document: { querySelectorAll: () => [closed, open].filter(detail => !detail.open) }
+  });
+  listeners.beforeprint(); assert.equal(closed.open, true); assert.equal(open.open, true);
+  listeners.beforeprint(); // Repeated print preparation must not forget the original closed state.
+  listeners.afterprint(); assert.equal(closed.open, false); assert.equal(open.open, true);
+  listeners.afterprint(); assert.equal(open.open, true);
+});
 test('宿題の9時半を過ぎたら超過を示し、12時の衣裳合わせは今日の予定とする', () => {
   const p = planner();
   vm.runInContext(main.slice(main.indexOf('    function parseLocalDate('), main.indexOf('    function updatePrepHome(')), p.context);

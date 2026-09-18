@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#f8f5f4">
+  <meta name="theme-color" content="#faf4f5">
   <title>ふたりの結婚式プランナー | PRIMROSE</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconoir@7.12.1/css/iconoir.css">
   <style>
@@ -2053,11 +2053,12 @@
       .ui-ios-option1 .ios-botanical { display: none; }
     }
   </style>
+  <link rel="stylesheet" href="ios-ui.css?v=1">
 </head>
-<body class="ui-ios-option1" data-active-tab="prep">
+<body class="ui-ios-option1 ui-ios-modern" data-active-tab="prep">
   <main class="page">
     <header class="hero">
-      <img class="ios-botanical" src="assets/ui/botanical-corner.png" alt="" aria-hidden="true">
+      <img class="ios-botanical" src="assets/ui/botanical-corner.png" alt="" aria-hidden="true" width="1374" height="1145">
       <div class="hero-main">
         <div>
           <p class="eyebrow" id="venueTitle">PRIMROSE</p>
@@ -2091,7 +2092,7 @@
     <section class="panel estimate-stage-panel" data-tab-panel="home" hidden>
       <div class="stage-head">
         <div>
-          <p class="eyebrow">NEXT MEETING</p>
+          <p class="eyebrow">次の打ち合わせ</p>
           <h2 id="homeNextMeetingTitle">9月19日（土）9:30 2nd打ち合わせ</h2>
           <p>ONE-Wの招待者仮登録とお気に入りを準備。12:00から衣裳合わせ、9月27日14:00から映像打ち合わせです。</p>
         </div>
@@ -2117,7 +2118,7 @@
       <p class="home-callout">見積PDFには「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が記載されています。</p>
       <div class="home-prep-card">
         <div>
-          <small>PREPARATION</small>
+          <small>準備の進捗</small>
           <strong id="homePrepTitle">準備を読み込み中</strong>
           <p id="homePrepNext">次に進める予定を表示します。</p>
         </div>
@@ -2183,7 +2184,7 @@
           <span class="ios-date-icon"><i class="iconoir-clipboard-check" aria-hidden="true"></i></span>
           <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">PDFに記載された日程を表示します。</p></div>
           <i class="iconoir-nav-arrow-right ios-next-chevron" aria-hidden="true"></i>
-          <button class="ios-primary-button" id="prepOpenTasks" type="button">タスクを開く</button>
+          <button class="ios-primary-button" id="prepOpenTasks" type="button">一覧を開く</button>
         </article>
         <article class="prep-summary-card prep-priority-card">
           <small>先に着手する予定</small>
@@ -2213,7 +2214,9 @@
           <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
         </a>
       </div>
-      <section class="couple-share-card" aria-labelledby="coupleShareTitle">
+      <details class="couple-share-card">
+        <summary><i class="iconoir-group" aria-hidden="true"></i>ふたりのデータ共有</summary>
+        <div class="couple-share-body">
         <div class="couple-share-head">
           <i class="iconoir-group" aria-hidden="true"></i>
           <div><strong id="coupleShareTitle">ふたりで同じ内容を使う</strong><p>この端末の見積・メモ・タスクを共有データとして相手へ送れます。</p></div>
@@ -2224,12 +2227,13 @@
         </div>
         <p class="couple-share-note">端末間の自動同期ではありません。共有データには見積と会場メモが含まれるため、夫婦間だけで送ってください。</p>
         <p class="couple-share-status" id="coupleShareStatus" aria-live="polite"></p>
-      </section>
+        </div>
+      </details>
     </section>
 
-    <section class="panel" data-tab-panel="prep">
-      <h2 class="section-title">PDFに記載されたやること</h2>
-      <p class="tab-intro">記載のない日付は補完していません。各項目の「原本を開く」から資料を確認できます。担当と完了状況はふたりで設定できます。</p>
+    <section class="panel prep-list-panel" data-tab-panel="prep">
+      <h2 class="section-title">準備リスト</h2>
+      <p class="tab-intro">式場資料に記載された項目です。日付未記載の項目は補完していません。</p>
       <div class="prep-toolbar">
         <div class="prep-filter-buttons" role="group" aria-label="準備の表示">
           <button class="prep-filter-button" type="button" data-prep-filter="all" aria-pressed="true">すべて</button>
@@ -3114,9 +3118,14 @@
       const sourceTitle = document.createElement("small");
       sourceTitle.textContent = reference.title + " · " + task.page + "ページ";
       source.append(sourceLink, sourceTitle, excerpt);
-      body.append(category, title);
-      if (task.description) body.append(description);
-      body.append(meta, source);
+      const detail = document.createElement("details");
+      detail.className = "prep-task-details";
+      const detailSummary = document.createElement("summary");
+      detailSummary.textContent = "内容・原本";
+      detail.append(detailSummary);
+      if (task.description) detail.append(description);
+      detail.append(source);
+      body.append(category, title, meta, detail);
 
       const side = document.createElement("div");
       side.className = "prep-task-side";
@@ -3747,6 +3756,17 @@
     document.querySelector("#showReference").addEventListener("change", applyFilters);
     document.querySelector("#openAll").addEventListener("click", () => document.querySelectorAll("#detailSections details").forEach(d => d.open = true));
     document.querySelector("#closeAll").addEventListener("click", () => document.querySelectorAll("#detailSections details").forEach(d => d.open = false));
+    const prepPrintClosedDetails = new Set();
+    window.addEventListener("beforeprint", () => {
+      document.querySelectorAll(".prep-task-details:not([open])").forEach(detail => {
+        prepPrintClosedDetails.add(detail);
+        detail.open = true;
+      });
+    });
+    window.addEventListener("afterprint", () => {
+      prepPrintClosedDetails.forEach(detail => { detail.open = false; });
+      prepPrintClosedDetails.clear();
+    });
     document.querySelector("#printPage").addEventListener("click", () => window.print());
     document.querySelector("#exportCsv").addEventListener("click", exportCsv);
     document.querySelector("#saveBackup").addEventListener("click", exportBackup);
