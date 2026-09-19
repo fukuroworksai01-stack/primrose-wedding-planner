@@ -48,6 +48,10 @@ body.ui-ios-modern {
 .ui-ios-modern .hero-copy { position: static; margin: 10px 0 0; color: var(--ios-muted); font-size: 14px; }
 .ui-ios-modern .ios-today { margin: 10px 0 0; gap: 6px; color: var(--ios-muted); font-size: 14px; }
 .ui-ios-modern .ios-today i { color: var(--ios-muted); font-size: 16px; }
+.ui-ios-modern .hero-invite-link { position: relative; display: inline-flex; align-items: center; gap: 9px; min-height: 48px; margin-top: 16px; padding: 10px 14px; border: 1px solid var(--ios-divider); border-radius: 12px; color: var(--ios-accent-dark); background: var(--ios-surface); font-size: 15px; font-weight: 700; text-decoration: none; }
+.ui-ios-modern .hero-invite-link:hover { background: var(--ios-accent-soft); }
+.ui-ios-modern .hero-invite-link .iconoir-page { font-size: 20px; }
+.ui-ios-modern .hero-invite-link .iconoir-nav-arrow-right { margin-left: 3px; font-size: 17px; }
 .ui-ios-modern .app-tabs { top: 8px; margin-top: 18px; padding: 5px; gap: 3px; border: 0; border-radius: 12px; background: var(--tab-surface); box-shadow: none; backdrop-filter: saturate(180%) blur(20px); }
 .ui-ios-modern .tab-button { min-height: 48px; color: var(--ios-muted); font-size: 15px; font-weight: 600; border-radius: 9px; letter-spacing: 0; box-shadow: none; }
 .ui-ios-modern .tab-button[aria-selected="true"] { color: var(--ios-accent-dark); background: var(--ios-accent-soft); box-shadow: none; }
