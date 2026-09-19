@@ -2053,7 +2053,7 @@
       .ui-ios-option1 .ios-botanical { display: none; }
     }
   </style>
-  <link rel="stylesheet" href="ios-ui.css?v=1">
+  <link rel="stylesheet" href="ios-ui.css?v=3">
 </head>
 <body class="ui-ios-option1 ui-ios-modern" data-active-tab="prep">
   <main class="page">
@@ -3135,7 +3135,8 @@
       status.textContent = statusValue.label;
       side.append(status);
 
-      item.append(checkboxWrap, body, side);
+      body.prepend(side);
+      item.append(checkboxWrap, body);
       return item;
     }
 

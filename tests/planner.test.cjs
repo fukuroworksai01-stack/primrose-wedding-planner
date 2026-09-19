@@ -145,6 +145,7 @@ test('準備行の詳細を閉じても担当・完了・資料日程を残し�
   class Element {
     constructor(tagName) { this.tagName = tagName; this.children = []; this.attributes = {}; this.listeners = {}; }
     append(...children) { this.children.push(...children); }
+    prepend(...children) { this.children.unshift(...children); }
     setAttribute(name, value) { this.attributes[name] = value; }
     addEventListener(name, listener) { this.listeners[name] = listener; }
   }
@@ -158,6 +159,8 @@ test('準備行の詳細を閉じても担当・完了・資料日程を残し�
   const item = vm.runInContext('renderPrepTask(prepTasks.find(task => task.description))', p.context);
   const flatten = element => [element, ...element.children.flatMap(flatten)];
   const elements = flatten(item);
+  assert.equal(item.children.length, 2);
+  assert.equal(item.children[1].children[0].className, 'prep-task-side');
   const task = p.read('prepTasks.find(task => task.description)');
   const disclosure = elements.find(element => element.tagName === 'details');
   assert.equal(disclosure.children[0].textContent, '内容・原本');
