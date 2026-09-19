@@ -32,8 +32,10 @@ test('PDFの挙式・披露宴・氏名を全ページの共通初期値にす�
 test('プランナーからWeb招待状へ進め、3デザインを最初から見られる', () => {
   const showcase = fs.readFileSync(path.join(__dirname, '../showcase/index.html'), 'utf8');
   assert.match(page, /class="hero-invite-link" href="showcase\/#invitations"/);
+  assert.match(page, /class="ios-action-row" href="showcase\/#invitations"/);
   assert.match(showcase, /id="invitations"/);
-  assert.match(showcase, /<details class="invite-box" open>/);
+  assert.ok(showcase.indexOf('id="invitations"') < showcase.indexOf('class="date-grid"'));
+  assert.match(showcase, /shared\.set\("preview","1"\)/);
   for (const route of ['../invite/', '../invite/reference/', '../invite/botanical/']) {
     assert.ok(showcase.includes(`data-route="${route}"`));
   }

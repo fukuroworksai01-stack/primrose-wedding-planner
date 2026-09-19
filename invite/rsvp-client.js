@@ -3,7 +3,10 @@
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root.document) {
-    const start = () => root.document.querySelectorAll('[data-rsvp-widget]').forEach((mount, index) => api.mount(mount, root.WEDDING_RSVP_CONFIG || {}, index));
+    const start = () => {
+      if (api.isPreviewMode(root.location?.search || '')) api.addPreviewNavigation(root.document);
+      root.document.querySelectorAll('[data-rsvp-widget]').forEach((mount, index) => api.mount(mount, root.WEDDING_RSVP_CONFIG || {}, index));
+    };
     if (root.document.readyState === 'loading') root.document.addEventListener('DOMContentLoaded', start, { once: true });
     else start();
   }
@@ -24,6 +27,26 @@
   function acceptedMessage(event, requestId) {
     const data = event && event.data;
     return !!requestId && trustedOrigin(event.origin) && data && data.type === 'wedding-rsvp-result' && data.requestId === requestId && typeof data.ok === 'boolean' && (data.ok === false || /^[0-9A-F]{8}$/.test(data.receipt));
+  }
+  function isPreviewMode(search) {
+    return new URLSearchParams(search).get('preview') === '1';
+  }
+  function addPreviewNavigation(doc) {
+    if (doc.querySelector('.rsvp-preview-nav')) return;
+    const source = [...doc.scripts].find(script => /\/rsvp-client\.js(?:\?|$)/.test(script.src));
+    if (!source) return;
+    const nav = doc.createElement('nav');
+    nav.className = 'rsvp-preview-nav';
+    nav.dataset.design = doc.querySelector('[data-rsvp-widget]')?.dataset.design || '';
+    nav.setAttribute('aria-label', '招待状プレビューの操作');
+    const back = doc.createElement('a');
+    back.href = new URL('../showcase/#invitations', source.src).href;
+    back.textContent = '← デザイン一覧へ戻る';
+    const note = doc.createElement('span');
+    note.textContent = 'プレビュー・送信なし';
+    nav.append(back, note);
+    doc.body.classList.add('rsvp-preview-mode');
+    doc.body.prepend(nav);
   }
   function normaliseFields(source) {
     const get = key => String(source[key] || '').replace(/\r\n?/g, '\n').trim();
@@ -46,6 +69,7 @@
   }
   function mount(element, config, index) {
     const endpoint = validEndpoint(config.endpoint);
+    const preview = isPreviewMode(globalThis.location?.search || '');
     const prefix = 'rsvp-' + index;
     const input = (key, title, attributes, hint) => '<div class="rsvp-field"><label class="rsvp-label" for="' + prefix + '-' + key + '">' + title + '</label><input class="rsvp-input" id="' + prefix + '-' + key + '" name="' + key + '" ' + attributes + '>' + (hint ? '<small class="rsvp-hint">' + hint + '</small>' : '') + '</div>';
     const required = '<span class="rsvp-required">必須</span>';
@@ -70,10 +94,10 @@
     const form = q('form'), fields = q('fields'), review = q('review'), success = q('success');
     const send = q('send'), edit = q('edit'), feedback = q('feedback');
     let responseId = uuid(), payload = null, pendingId = '', timer = 0, controller = null, busy = false;
-    const fallback = () => { if (endpoint) { const url = new URL(endpoint); url.searchParams.set('response', responseId); q('fallback').href = url.href; q('fallback').hidden = false; } };
+    const fallback = () => { if (!preview && endpoint) { const url = new URL(endpoint); url.searchParams.set('response', responseId); q('fallback').href = url.href; q('fallback').hidden = false; } };
     const focus = panel => { panel.focus({ preventScroll: true }); panel.scrollIntoView({ behavior: globalThis.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' }); };
     const message = text => { feedback.textContent = text; feedback.hidden = !text; };
-    const status = sending => { busy = sending; send.disabled = sending || !endpoint; edit.disabled = sending; form.setAttribute('aria-busy', String(sending)); send.textContent = sending ? '送信しています…' : 'この内容で送信'; };
+    const status = sending => { busy = sending; send.disabled = sending || preview || !endpoint; edit.disabled = sending; form.setAttribute('aria-busy', String(sending)); send.textContent = preview ? 'プレビューでは送信できません' : sending ? '送信しています…' : 'この内容で送信'; };
     const stop = () => { clearTimeout(timer); pendingId = ''; status(false); };
     function syncConditional() {
       const absent = form.elements.attendance.value === '欠席します';
@@ -96,7 +120,8 @@
       payload = Object.freeze({ ...data, responseId, requestId: uuid(), eventKey: config.eventKey, replyOrigin: location.origin, design: element.dataset.design || 'direct' });
       element.querySelectorAll('[data-review]').forEach(item => { item.textContent = data[item.dataset.review] || '未入力'; });
       fields.hidden = true; review.hidden = false; message(''); focus(review);
-      if (!endpoint) message('現在、出欠回答の受付準備中です。');
+      if (preview) message('プレビュー中のため、回答は送信されません。');
+      else if (!endpoint) message('現在、出欠回答の受付準備中です。');
     }
     function receive(data, origin) {
       if (!acceptedMessage({ data, origin }, pendingId)) return false;
@@ -106,7 +131,7 @@
       return true;
     }
     async function submit() {
-      if (busy || !payload || !endpoint) return;
+      if (busy || preview || !payload || !endpoint) return;
       pendingId = payload.requestId; status(true); message('');
       const currentId = pendingId;
       controller = new AbortController();
@@ -131,7 +156,8 @@
     q('another').addEventListener('click', () => { responseId = uuid(); form.reset(); syncConditional(); fallback(); showFields(); });
     globalThis.addEventListener('beforeunload', event => { if (busy) { event.preventDefault(); event.returnValue = ''; } });
     status(false); syncConditional(); fallback();
-    if (!endpoint) message('現在、出欠回答の受付準備中です。');
+    if (preview) message('プレビュー中のため、回答は送信されません。');
+    else if (!endpoint) message('現在、出欠回答の受付準備中です。');
   }
-  return { mount, validEndpoint, trustedOrigin, acceptedMessage, normaliseFields };
+  return { mount, validEndpoint, trustedOrigin, acceptedMessage, normaliseFields, isPreviewMode, addPreviewNavigation };
 });

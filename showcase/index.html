@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
   <meta name="theme-color" content="#f7f3f4">
-  <title>ふたりの結婚式ノート</title>
+  <title>Web招待状を見比べる | PRIMROSE</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/iconoir@7.12.1/css/iconoir.css">
   <style>
     :root{--bg:#f7f3f4;--surface:rgba(255,255,255,.84);--solid:#fff;--ink:#252124;--muted:#756d72;--rose:#bd737d;--rose-dark:#9f5964;--rose-soft:#f7e8ea;--line:rgba(84,67,73,.13);--shadow:0 15px 40px rgba(70,47,54,.08)}
@@ -29,6 +29,10 @@
     .date-card small{display:block;color:var(--muted);font-size:11px;font-weight:700}
     .date-card strong{display:block;margin-top:1px;font-size:16px;font-weight:720;line-height:1.35}
     .section-heading{margin:28px 4px 8px;font-size:16px;font-weight:760;letter-spacing:-.01em}
+    .gallery-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:24px}
+    .gallery-head .section-heading{margin:0 4px}
+    .gallery-back{display:inline-flex;align-items:center;min-height:44px;padding:8px 10px;border-radius:10px;color:var(--rose-dark);font-size:13px;font-weight:750;text-decoration:none;white-space:nowrap}
+    .gallery-back:hover{background:var(--rose-soft)}
     .primary-card{min-width:0;overflow:hidden;padding:20px;border:1px solid var(--line);border-radius:22px;background:var(--solid);box-shadow:var(--shadow)}
     .primary-card-head{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:center}
     .app-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;color:#fff;background:linear-gradient(145deg,#c9858e,#a75e69);box-shadow:0 9px 20px rgba(166,85,96,.22);font-size:25px}
@@ -41,15 +45,10 @@
     .action i{font-size:18px}
     .action:focus-visible,summary:focus-visible,.sample-link:focus-visible{outline:3px solid rgba(166,85,96,.38);outline-offset:2px}
     .invite-box{overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--solid);box-shadow:var(--shadow)}
-    .invite-box>summary{min-height:72px;display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 16px;cursor:pointer;list-style:none}
-    .invite-box>summary::-webkit-details-marker{display:none}
-    .invite-summary-icon{width:44px;height:44px;display:grid;place-items:center;border-radius:14px;color:var(--rose-dark);background:var(--rose-soft);font-size:21px}
-    .invite-box>summary strong{display:block;font-size:15px}
-    .invite-box>summary small{display:block;margin-top:2px;color:var(--muted);font-size:13px}
-    .chevron{color:#a59ca1;font-size:20px;transition:transform .2s ease}
-    .invite-box[open] .chevron{transform:rotate(90deg)}
-    .samples-wrap{padding:0 16px 16px;border-top:1px solid var(--line)}
-    .samples-note{margin:13px 2px;color:var(--muted);font-size:13px}
+    .back-link{position:relative;display:inline-flex;align-items:center;gap:7px;min-height:44px;margin:0 0 20px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;color:var(--rose-dark);background:#fff;font-size:13px;font-weight:750;text-decoration:none}
+    .back-link i{font-size:19px}
+    .samples-wrap{padding:16px}
+    .samples-note{margin:0 2px 14px;color:var(--muted);font-size:13px}
     .samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
     .sample{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}
     .sample:focus-within{outline:3px solid rgba(166,85,96,.38);outline-offset:2px}
@@ -78,18 +77,31 @@
       .sample img{width:104px;height:100%;min-height:132px;aspect-ratio:auto}
       .sample-body{align-self:center;padding:12px}
     }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.chevron{transition:none}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
   <main class="page">
     <header class="hero">
       <img class="botanical" src="../assets/ui/botanical-corner.png" alt="" aria-hidden="true">
+      <a class="back-link" href="../?tab=prep"><i class="iconoir-arrow-left" aria-hidden="true"></i>プランナーに戻る</a>
       <p class="eyebrow">OUR WEDDING</p>
-      <h1>ふたりの<br>結婚式ノート</h1>
-      <p class="lead">日程、見積、準備をふたりで確認するためのホームです。</p>
+      <h1>Web招待状</h1>
+      <p class="lead">3つのデザインを開いて見比べられます。ゲストに送るONE-Wの招待状とは別です。</p>
       <div class="status"><span>日程確定</span><span>ONE-W利用</span></div>
     </header>
+
+    <div class="gallery-head" id="invitations"><h2 class="section-heading" id="invitationHeading">3つのデザイン</h2><a class="gallery-back" href="../?tab=prep">プランナーへ戻る</a></div>
+    <section class="invite-box" aria-labelledby="invitationHeading">
+      <div class="samples-wrap">
+        <p class="samples-note">気になるデザインを開いて確認できます。プレビュー中は出欠回答が送信されません。</p>
+        <div class="samples">
+          <article class="sample"><img src="../assets/showcase/invite-1.png?v=3" alt="バルーンの招待状"><div class="sample-body"><h3>バルーン</h3><p>明るく華やかな写真中心</p><a class="sample-link invite-link" data-route="../invite/" href="../invite/" aria-label="バルーンの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><img src="../assets/showcase/invite-2.png?v=3" alt="ポップガーデンの招待状"><div class="sample-body"><h3>ポップガーデン</h3><p>カジュアルで読みやすい</p><a class="sample-link invite-link" data-route="../invite/reference/" href="../invite/reference/" aria-label="ポップガーデンの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><img src="../assets/showcase/invite-3.png?v=3" alt="ボタニカルクラシックの招待状"><div class="sample-body"><h3>ボタニカル</h3><p>落ち着きのある上品な印象</p><a class="sample-link invite-link" data-route="../invite/botanical/" href="../invite/botanical/" aria-label="ボタニカルの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+        </div>
+      </div>
+    </section>
 
     <section class="date-grid" aria-label="大切な予定">
       <div class="date-card"><span class="date-icon"><i class="iconoir-heart" aria-hidden="true"></i></span><span><small>挙式／披露宴</small><strong>2027年3月7日 12:00／13:00</strong></span></div>
@@ -107,19 +119,6 @@
       </div>
     </section>
 
-    <h2 class="section-heading" id="invitations">招待状</h2>
-    <details class="invite-box" open>
-      <summary><span class="invite-summary-icon"><i class="iconoir-page" aria-hidden="true"></i></span><span><strong>Web招待状</strong><small>3つのデザインから選ぶ</small></span><i class="iconoir-nav-arrow-right chevron" aria-hidden="true"></i></summary>
-      <div class="samples-wrap">
-        <p class="samples-note">3つのデザインを見比べられます。ONE-Wで発行する本番用の招待状とは別です。</p>
-        <div class="samples">
-          <article class="sample"><img src="../assets/showcase/invite-1.png?v=3" alt="バルーンの招待状"><div class="sample-body"><h3>バルーン</h3><p>明るく華やかな写真中心</p><a class="sample-link invite-link" data-route="../invite/" href="../invite/" target="_blank" rel="noopener">見てみる <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
-          <article class="sample"><img src="../assets/showcase/invite-2.png?v=3" alt="ポップガーデンの招待状"><div class="sample-body"><h3>ポップガーデン</h3><p>カジュアルで読みやすい</p><a class="sample-link invite-link" data-route="../invite/reference/" href="../invite/reference/" target="_blank" rel="noopener">見てみる <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
-          <article class="sample"><img src="../assets/showcase/invite-3.png?v=3" alt="ボタニカルクラシックの招待状"><div class="sample-body"><h3>ボタニカル</h3><p>落ち着きのある上品な印象</p><a class="sample-link invite-link" data-route="../invite/botanical/" href="../invite/botanical/" target="_blank" rel="noopener">見てみる <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
-        </div>
-      </div>
-    </details>
-
     <p class="foot-note">PRIMROSE · 2027.03.07</p>
   </main>
   <script src="../wedding-details.js?v=1"></script>
@@ -129,6 +128,7 @@
     const shared=new URLSearchParams({date:details.date,from:details.names,venue:details.venue});
     ["time","reception","end"].forEach(key=>{const value=details.getTime(key);if(value)shared.set(key,value)});
     if(details.deadline)shared.set("deadline",details.deadline);
+    shared.set("preview","1");
     document.querySelectorAll(".invite-link").forEach(link=>{const url=new URL(link.dataset.route,location.href);url.search=shared.toString();link.href=url.toString()});
   </script>
 </body>

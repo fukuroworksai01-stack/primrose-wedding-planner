@@ -1,3 +1,10 @@
+.rsvp-preview-nav { position: sticky; z-index: 100; top: 0; display: flex; align-items: center; justify-content: space-between; gap: 8px 16px; width: min(100%, 750px); min-height: 60px; margin: 0 auto; padding: 7px 12px; border-bottom: 1px solid #e4d4d7; background: rgba(255, 251, 252, .97); color: #51474d; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; font-size: 12px; font-weight: 650; line-height: 1.4; box-shadow: 0 3px 12px rgba(65, 40, 48, .08); }
+.rsvp-preview-nav[data-design="balloon"] { max-width: 430px; }
+.rsvp-preview-nav[data-design="garden"] { max-width: 390px; }
+.rsvp-preview-nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 7px 10px; border-radius: 9px; color: #923454; background: #fcebf0; font-size: 13px; font-weight: 750; text-decoration: none; white-space: nowrap; }
+.rsvp-preview-nav a:focus-visible { outline: 3px solid #923454; outline-offset: 2px; }
+.rsvp-preview-nav span { text-align: right; }
+.rsvp-preview-mode .rsvp-action[data-role="send"]:disabled { cursor: not-allowed; }
 .rsvp-widget { --rsvp-accent: var(--orange-deep, #976875); --rsvp-border: #d5c5bc; margin-top: 28px; color: #302922; font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, sans-serif; font-size: 14px; line-height: 1.75; text-align: left; letter-spacing: normal; }
 .rsvp-widget [hidden] { display: none !important; }
 .rsvp-widget .rsvp-panel { margin: 0; padding: 24px 20px; border: 1px solid #eadbd1; border-radius: 18px; background: #fff; }
@@ -30,5 +37,5 @@
 .rsvp-widget .rsvp-honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 .rsvp-widget :is(input, textarea, button, a):focus-visible { outline: 3px solid #286cc0; outline-offset: 3px; }
 .rsvp-widget .rsvp-panel:focus { outline: none; }
-@media (max-width: 370px) { .rsvp-widget .rsvp-panel { padding: 22px 14px; } .rsvp-widget .rsvp-choices { gap: 6px; } }
+@media (max-width: 370px) { .rsvp-preview-nav { flex-wrap: wrap; } .rsvp-preview-nav span { text-align: left; } .rsvp-widget .rsvp-panel { padding: 22px 14px; } .rsvp-widget .rsvp-choices { gap: 6px; } }
 @media (prefers-reduced-motion: reduce) { .rsvp-widget * { scroll-behavior: auto !important; } }

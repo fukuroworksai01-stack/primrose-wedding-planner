@@ -160,7 +160,7 @@
     @media(min-width:751px){body{padding:22px 0}.page{box-shadow:0 0 45px rgba(78,58,55,.14)}.hero{min-height:1200px}.hero-frame{height:920px}.hero-script{top:45px;font-size:108px}.vertical{top:330px;font-size:16px}.vertical.left{left:25px}.vertical.right{right:25px}.hero-lockup strong{font-size:22px}.reception,.information{padding-inline:48px}.formal,.host-text,.message-copy{font-size:14px}.host-photo{max-width:660px}.host-copy{padding-inline:42px}.rsvp{padding-inline:24px}.rsvp-form{max-width:700px;margin-inline:auto}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
   </style>
-  <link rel="stylesheet" href="../rsvp.css?v=1">
+  <link rel="stylesheet" href="../rsvp.css?v=2">
 </head>
 <body>
   <div class="page">
@@ -244,6 +244,6 @@
     const gallery=document.querySelector("#gallery"),galleryDots=[...document.querySelectorAll("#galleryDots button")];galleryDots.forEach((button,index)=>button.addEventListener("click",()=>gallery.scrollTo({left:index*gallery.clientWidth,behavior:"smooth"})));let galleryTimer;gallery.addEventListener("scroll",()=>{clearTimeout(galleryTimer);galleryTimer=setTimeout(()=>{const active=Math.round(gallery.scrollLeft/gallery.clientWidth);galleryDots.forEach((button,index)=>button.classList.toggle("active",index===active))},80)});
   </script>
   <script src="../rsvp-config.js?v=1"></script>
-  <script src="../rsvp-client.js?v=1"></script>
+  <script src="../rsvp-client.js?v=2"></script>
 </body>
 </html>

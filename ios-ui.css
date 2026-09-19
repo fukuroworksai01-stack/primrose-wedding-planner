@@ -112,7 +112,7 @@ body.ui-ios-modern {
 .ui-ios-modern .ios-action-row { width: 100%; min-height: 68px; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 12px; padding: 13px 16px; color: var(--ios-ink); border-radius: 0; background: transparent; text-align: left; }
 .ui-ios-modern .ios-action-row:hover { background: var(--control-bg); }
 .ui-ios-modern .ios-action-row > i:first-child { width: 32px; height: 32px; border-radius: 8px; background: var(--ios-accent-dark); color: #fff; font-size: 19px; }
-.ui-ios-modern .ios-action-row:nth-child(3) > i:first-child { background: #aa6d8f; }
+.ui-ios-modern .ios-action-row.marrysys-shortcut > i:first-child { background: #aa6d8f; }
 .ui-ios-modern .ios-action-copy strong { font-size: 17px; font-weight: 650; }
 .ui-ios-modern .ios-action-copy small { font-size: 14px; line-height: 1.4; }
 .ui-ios-modern .ios-action-row > .iconoir-nav-arrow-right { color: #8e8e93; font-size: 18px; }

@@ -121,6 +121,23 @@ test('送信先URLは設定済みApps Scriptのexecだけ許可', () => {
   assert.ok(client.validEndpoint('https://script.google.com/macros/s/EXAMPLE/exec'));
   for (const value of ['javascript:alert(1)', 'https://attacker.invalid/exec', 'https://script.google.com/macros/s/ID/dev', 'https://script.google.com/macros/s/ID/exec?x=1', 'https://name:pass@script.google.com/macros/s/ID/exec']) assert.equal(client.validEndpoint(value), '');
 });
+test('デザイン比較のプレビューだけを判別し、一覧に戻れる', () => {
+  assert.equal(client.isPreviewMode('?preview=1'), true);
+  assert.equal(client.isPreviewMode('?preview=0'), false);
+  assert.equal(client.isPreviewMode(''), false);
+  const created = [];
+  const document = {
+    scripts: [{ src: 'https://example.test/primrose-wedding-planner/invite/rsvp-client.js?v=2' }],
+    body: { classList: { add(value) { assert.equal(value, 'rsvp-preview-mode'); } }, prepend(element) { created.push(element); } },
+    querySelector(selector) { return selector === '[data-rsvp-widget]' ? { dataset: { design: 'garden' } } : null; },
+    createElement(tagName) { return { tagName, dataset: {}, children: [], setAttribute() {}, append(...children) { this.children.push(...children); } }; }
+  };
+  client.addPreviewNavigation(document);
+  assert.equal(created.length, 1);
+  assert.equal(created[0].dataset.design, 'garden');
+  assert.equal(created[0].children[0].href, 'https://example.test/primrose-wedding-planner/showcase/#invitations');
+  assert.match(created[0].children[1].textContent, /送信なし/);
+});
 test('Google由来かつ今回の送信IDの確認のみ受け付ける', () => {
   const requestId = randomUUID(), message = { origin: 'https://n-example-script.googleusercontent.com', data: { type: 'wedding-rsvp-result', requestId, ok: true, receipt: 'ABCDEF12' } };
   assert.equal(client.acceptedMessage(message, requestId), true);
