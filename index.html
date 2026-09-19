@@ -2053,7 +2053,7 @@
       .ui-ios-option1 .ios-botanical { display: none; }
     }
   </style>
-  <link rel="stylesheet" href="ios-ui.css?v=5">
+  <link rel="stylesheet" href="ios-ui.css?v=6">
 </head>
 <body class="ui-ios-option1 ui-ios-modern" data-active-tab="prep">
   <main class="page">
@@ -2093,17 +2093,17 @@
     <section class="panel estimate-stage-panel" data-tab-panel="home" hidden>
       <div class="stage-head">
         <div>
-          <p class="eyebrow">次の打ち合わせ</p>
-          <h2 id="homeNextMeetingTitle">9月19日（土）9:30 2nd打ち合わせ</h2>
-          <p>ONE-Wの招待者仮登録とお気に入りを準備。12:00から衣裳合わせ、9月27日14:00から映像打ち合わせです。</p>
+          <p class="eyebrow">次の予定</p>
+          <h2 id="homeNextMeetingTitle">式場の日程を読み込み中</h2>
+          <p id="homeNextMeetingNote">式場PDFに日付がある予定を表示します。</p>
         </div>
-        <span class="stage-state">日程確定・ONE-W利用</span>
+        <span class="stage-state">式場PDFの日程</span>
       </div>
-      <ol class="decision-steps" aria-label="PDFに記載された次回の予定">
-        <li class="decision-step current"><b>1</b><span>9/19 9:30 2nd</span></li>
-        <li class="decision-step"><b>2</b><span>9/19 12:00 衣裳合わせ</span></li>
-        <li class="decision-step"><b>3</b><span>9/27 14:00 映像</span></li>
-      </ol>
+      <ol class="decision-steps" id="homeFlowPreview" aria-label="これからの日付がある予定"></ol>
+      <div class="home-flow-footer">
+        <p id="homePrepPast">これまでの予定を読み込み中</p>
+        <button type="button" data-tab-target="prep">これまで・今後を見る</button>
+      </div>
       <p class="stage-note">挙式日：<strong id="candidateDateStatus">2027年3月7日</strong></p>
     </section>
 
@@ -2117,25 +2117,10 @@
         <article class="home-card"><div><small>条件付き特典</small><strong id="homeConditionalBenefits">800,000円</strong></div><button type="button" data-tab-target="venue">適用条件を見る</button></article>
       </div>
       <p class="home-callout">見積PDFには「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が記載されています。</p>
-      <div class="home-prep-card">
-        <div>
-          <small>準備の進捗</small>
-          <strong id="homePrepTitle">準備を読み込み中</strong>
-          <p id="homePrepNext">次に進める予定を表示します。</p>
-        </div>
-        <div class="home-prep-progress">
-          <div class="progress-label"><span>準備の進み具合</span><span id="homePrepPercent">0%</span></div>
-          <div class="progress-bar" id="homePrepProgress" role="progressbar" aria-label="準備の進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="homePrepBar"></span></div>
-        </div>
-        <div class="home-prep-actions">
-          <button type="button" data-tab-target="prep">準備を進める</button>
-          <a class="secondary-link-button" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer">ONE-Wにログイン</a>
-        </div>
-      </div>
     </section>
 
     <section class="panel" data-tab-panel="home" hidden>
-      <h2 class="section-title">2nd打ち合わせの内容</h2>
+      <h2 class="section-title">9月19日の打ち合わせ内容</h2>
       <p class="tab-intro">9月19日はペーパーアイテム・招待者登録・配席・写真のラインナップを確認します。</p>
       <div class="question-grid">
         <article class="question-card"><strong>ペーパーアイテム紹介</strong><p>席札・メニューカード・招待状・席次表。</p></article>
@@ -2160,43 +2145,32 @@
           <span class="ios-date-copy"><small>挙式日・開始時刻</small><strong id="iosWeddingDate">2027年3月7日(日) 12:00</strong></span>
           <i class="iconoir-nav-arrow-right ios-date-chevron" aria-hidden="true"></i>
         </button>
-        <button class="ios-key-date" type="button" data-tab-target="venue">
+        <button class="ios-key-date" id="prepNextKeyDate" type="button" aria-controls="prepFlow">
           <span class="ios-date-icon"><i class="iconoir-calendar" aria-hidden="true"></i></span>
-          <span class="ios-date-copy"><small>次回打ち合わせ</small><strong id="iosMeetingDate">9月19日(土) 9:30</strong></span>
+          <span class="ios-date-copy"><small id="iosNextDateLabel">次の予定</small><strong id="iosMeetingDate">日程を読み込み中</strong></span>
           <i class="iconoir-nav-arrow-right ios-date-chevron" aria-hidden="true"></i>
         </button>
       </div>
-      <h2 class="ios-section-heading">準備の進捗</h2>
-      <div class="prep-summary-grid">
-        <article class="prep-summary-card prep-completion-card">
-          <div class="prep-progress-ring"><strong id="prepCompleteSummary">読み込み中</strong></div>
-          <div>
-            <small>ふたりの進み具合</small>
-            <p id="prepCompleteNote">PDFに記載された準備の進捗です。</p>
-            <div class="couple-owner-stats" aria-label="担当ごとの進捗">
-              <span class="couple-owner-stat">ふたり<strong id="coupleTogetherStat">0 / 0</strong></span>
-              <span class="couple-owner-stat">新郎<strong id="coupleGroomStat">0 / 0</strong></span>
-              <span class="couple-owner-stat">新婦<strong id="coupleBrideStat">0 / 0</strong></span>
-            </div>
-          </div>
-        </article>
-        <h2 class="ios-section-heading ios-next-heading">次に進めること</h2>
-        <article class="prep-summary-card prep-next-card">
-          <span class="ios-date-icon"><i class="iconoir-clipboard-check" aria-hidden="true"></i></span>
-          <div><small>次に進めること</small><strong id="prepNextTitle">準備内容を読み込み中</strong><p id="prepNextDate">PDFに記載された日程を表示します。</p></div>
-          <i class="iconoir-nav-arrow-right ios-next-chevron" aria-hidden="true"></i>
-          <button class="ios-primary-button" id="prepOpenTasks" type="button">一覧を開く</button>
-        </article>
-        <article class="prep-summary-card prep-priority-card">
-          <small>先に着手する予定</small>
-          <strong id="prepPriorityCount">0件</strong>
-          <p id="prepPriorityNote">期限が近い予定をまとめます。</p>
-        </article>
-      </div>
-      <div class="prep-overall-progress">
-        <div class="progress-label" aria-live="polite"><span><i class="iconoir-check-circle" aria-hidden="true"></i>全体の進捗</span><span id="prepProgressText">0%</span></div>
-        <div class="progress-bar" id="prepOverallProgress" role="progressbar" aria-label="準備全体の進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="prepProgressBar"></span></div>
-      </div>
+      <section class="prep-flow" id="prepFlow" aria-labelledby="prepFlowHeading" tabindex="-1">
+        <div class="prep-flow-head">
+          <h2 class="ios-section-heading" id="prepFlowHeading">式までの流れ</h2>
+          <p>式場PDFに日付がある予定を、これからとこれまでに分けて表示します。</p>
+        </div>
+        <div class="prep-flow-grid">
+          <section class="prep-flow-card" aria-labelledby="prepUpcomingHeading">
+            <h3 id="prepUpcomingHeading"><i class="iconoir-calendar" aria-hidden="true"></i>今後の流れ</h3>
+            <ol class="prep-flow-list" id="prepUpcomingFlow"></ol>
+          </section>
+          <section class="prep-flow-card is-past" aria-labelledby="prepPastHeading">
+            <h3 id="prepPastHeading"><i class="iconoir-calendar" aria-hidden="true"></i>これまでの流れ</h3>
+            <ol class="prep-flow-list" id="prepPastFlow"></ol>
+          </section>
+        </div>
+        <details class="prep-undated">
+          <summary>日付未記載・時期だけ記載の項目 <span id="prepUndatedCount"></span></summary>
+          <ul id="prepUndatedList"></ul>
+        </details>
+      </section>
       <h2 class="ios-section-heading">よく使う</h2>
       <div class="ios-action-group">
         <a class="ios-action-row" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer" aria-label="ONE-Wの新郎新婦向けログイン画面を開く">
@@ -2211,7 +2185,7 @@
         </a>
         <button class="ios-action-row" type="button" data-tab-target="venue">
           <i class="iconoir-calendar" aria-hidden="true"></i>
-          <span class="ios-action-copy"><strong>打ち合わせ・式場資料</strong><small>次回の予定と確定した締切を確認</small></span>
+          <span class="ios-action-copy"><strong>打ち合わせ・式場資料</strong><small>資料の日程と確定した締切を確認</small></span>
           <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
         </button>
         <a class="ios-action-row marrysys-shortcut" href="https://www.marrysys.jp/login" target="_blank" rel="noopener noreferrer">
@@ -2332,11 +2306,11 @@
         <label class="field"><span>見学日</span><input id="visitDate" type="date"></label>
         <label class="field"><span>担当者</span><input id="coordinator" type="text" placeholder="担当者名" maxlength="40"></label>
         <label class="field"><span>式場の連絡先</span><input id="venuePhone" type="tel" placeholder="電話番号" maxlength="30"></label>
-        <label class="field"><span>次回打ち合わせ日</span><input id="nextMeetingDate" type="date" value="2026-09-19"></label>
+        <label class="field"><span>登録した打ち合わせ日</span><input id="nextMeetingDate" type="date" value="2026-09-19"></label>
         <label class="field"><span>開始時刻</span><input id="nextMeetingTime" type="time" value="09:30"></label>
       </div>
       <label class="field" style="margin-top:12px"><span>式場への確認事項・メモ</span><textarea class="memo-input" id="venueMemo" placeholder="確認したいこと、持参物、担当者からの連絡など"></textarea></label>
-      <div class="note-box" style="margin-top:14px"><p><strong>次回打ち合わせ</strong></p><p id="nextMeetingStatus">2026年9月19日(土) 9:30開始</p></div>
+      <div class="note-box" style="margin-top:14px"><p><strong>登録した打ち合わせ</strong></p><p id="nextMeetingStatus">2026年9月19日(土) 9:30開始</p></div>
     </section>
 
     <section class="panel onew-panel" data-tab-panel="venue" hidden>
@@ -3014,35 +2988,132 @@
       return { total, done, percent: total ? Math.round(done / total * 100) : 0, open, priority, overdue };
     }
 
+    function prepFlowGroups(reference = new Date()) {
+      const dated = prepTasks.filter(task => task.dueDate);
+      dated.push({
+        id: "pdf-wedding-day",
+        text: "挙式・披露宴",
+        category: "結婚式",
+        dueDate: WEDDING_DETAILS.confirmed.date,
+        dueTime: WEDDING_DETAILS.confirmed.time,
+        kind: "ceremony"
+      });
+      const byMoment = new Map();
+      dated.forEach(task => {
+        const key = task.dueDate + "T" + (task.dueTime || "23:59:59");
+        if (!byMoment.has(key)) {
+          const moment = parseLocalDate(task.dueDate);
+          if (!moment || Number.isNaN(moment.getTime())) return;
+          const [hours, minutes] = (task.dueTime || "23:59").split(":").map(Number);
+          moment.setHours(hours, minutes, task.dueTime ? 0 : 59, task.dueTime ? 0 : 999);
+          byMoment.set(key, { date: task.dueDate, time: task.dueTime, moment, tasks: [] });
+        }
+        byMoment.get(key).tasks.push(task);
+      });
+      const groups = [...byMoment.values()].sort((a, b) => a.moment - b.moment);
+      groups.forEach(group => {
+        group.primary = group.tasks.find(task => task.kind === "ceremony")
+          || group.tasks.find(task => task.kind === "appointment")
+          || group.tasks.find(task => task.kind === "deadline")
+          || group.tasks[0];
+      });
+      return {
+        past: groups.filter(group => group.moment < reference),
+        future: groups.filter(group => group.moment >= reference),
+        undated: prepTasks.filter(task => !task.dueDate)
+      };
+    }
+
+    function prepFlowDateLabel(group, includeYear = true) {
+      return formatIosDate(parseLocalDate(group.date), includeYear) + (group.time ? " " + group.time : "");
+    }
+
+    function renderPrepFlowList(id, groups, isPast) {
+      const root = document.querySelector("#" + id);
+      root.textContent = "";
+      if (!groups.length) {
+        const empty = document.createElement("li");
+        empty.className = "prep-flow-empty";
+        empty.textContent = isPast ? "これまでに日付がある予定はありません。" : "今後の日付がある予定はありません。";
+        root.append(empty);
+        return;
+      }
+      const ordered = isPast ? [...groups].reverse() : groups;
+      ordered.forEach(group => {
+        const item = document.createElement("li");
+        item.className = "prep-flow-item";
+        const date = document.createElement("time");
+        date.dateTime = group.date + (group.time ? "T" + group.time : "");
+        date.textContent = prepFlowDateLabel(group);
+        const category = document.createElement("span");
+        category.className = "prep-flow-category";
+        category.textContent = ({ ceremony: "当日", appointment: "打ち合わせ", deadline: "締切", homework: "事前準備" })[group.primary.kind] || "予定";
+        const title = document.createElement("strong");
+        title.textContent = group.primary.text;
+        item.append(date, category, title);
+        const related = group.tasks.filter(task => task !== group.primary);
+        if (related.length) {
+          const list = document.createElement("ul");
+          list.className = "prep-flow-related";
+          related.forEach(task => {
+            const detail = document.createElement("li");
+            detail.textContent = (task.kind === "homework" ? "打ち合わせ前まで：" : "") + task.text;
+            list.append(detail);
+          });
+          item.append(list);
+        }
+        root.append(item);
+      });
+    }
+
+    function renderPrepUndated(tasks) {
+      setText("prepUndatedCount", "（" + tasks.length + "件）");
+      const root = document.querySelector("#prepUndatedList");
+      root.textContent = "";
+      tasks.forEach(task => {
+        const item = document.createElement("li");
+        const period = document.createElement("span");
+        period.textContent = task.period || "日付の記載なし";
+        const title = document.createElement("strong");
+        title.textContent = task.text;
+        item.append(period, title);
+        root.append(item);
+      });
+    }
+
     function updatePrepHome() {
-      const stats = prepStats();
-      const next = stats.priority[0] || stats.open[0] || null;
+      const flow = prepFlowGroups();
+      const next = flow.future[0] || null;
+      const latest = flow.past.at(-1) || null;
       const wedding = parseLocalDate(settings.weddingDate);
       const weddingDays = wedding && !Number.isNaN(wedding.getTime()) ? daysFromToday(wedding) : null;
 
-      setText("homePrepTitle", "準備 " + stats.done + " / " + stats.total + "件完了");
-      setText("homePrepPercent", stats.percent + "%");
-      document.querySelector("#homePrepBar").style.width = stats.percent + "%";
-      document.querySelector("#homePrepProgress").setAttribute("aria-valuenow", String(stats.percent));
-      setText("homePrepNext", next ? "次は「" + next.text + "」" : "準備はすべて完了しています。");
-
-      setText("prepCompleteSummary", stats.done + "\n/" + stats.total + "件");
-      setText("prepCompleteNote", stats.done === stats.total ? "資料に記載された項目はすべて完了です。" : "未完了はあと" + (stats.total - stats.done) + "件です。");
-      const ownerProgress = owner => {
-        const tasks = prepTasks.filter(task => task.owner === owner);
-        return tasks.filter(task => task.done).length + " / " + tasks.length;
-      };
-      setText("coupleTogetherStat", ownerProgress("ふたり"));
-      setText("coupleGroomStat", ownerProgress("新郎"));
-      setText("coupleBrideStat", ownerProgress("新婦"));
-      setText("prepNextTitle", next ? next.text : "すべて完了");
-      setText("prepNextDate", next ? prepScheduleLabel(next) : "資料に記載された項目はすべて完了です。");
-      setText("prepPriorityCount", stats.priority.length + "件");
-      setText("prepPriorityNote", stats.overdue.length ? stats.overdue.length + "件は記載の日時を過ぎています。" : stats.priority.length ? "記載の日付が2週間以内の項目です。" : "日付が記載された項目で、2週間以内の予定はありません。");
-      setText("prepProgressText", stats.percent + "%");
-      document.querySelector("#prepProgressBar").style.width = stats.percent + "%";
-      document.querySelector("#prepOverallProgress").setAttribute("aria-valuenow", String(stats.percent));
-      document.querySelector(".prep-progress-ring").style.setProperty("--prep-ring-progress", Math.max(stats.percent, 2) + "%");
+      setText("homePrepPast", latest ? "これまで：" + prepFlowDateLabel(latest, false) + " " + latest.primary.text : "これまで：日付のある予定はまだありません");
+      setText("homeNextMeetingTitle", next ? prepFlowDateLabel(next) + " " + next.primary.text : "日付のある予定は終了しています");
+      setText("homeNextMeetingNote", next ? "このあと日付が決まっている予定です。日程未記載の項目は準備リストで確認できます。" : "日程未記載の項目は準備リストで確認できます。");
+      setText("iosNextDateLabel", next ? next.primary.text : "今後の予定");
+      setText("iosMeetingDate", next ? prepFlowDateLabel(next, false) : "日付のある予定はありません");
+      const homePreview = document.querySelector("#homeFlowPreview");
+      homePreview.textContent = "";
+      flow.future.slice(0, 3).forEach((group, index) => {
+        const item = document.createElement("li");
+        item.className = "decision-step" + (index === 0 ? " current" : "");
+        const number = document.createElement("b");
+        number.textContent = String(index + 1);
+        const label = document.createElement("span");
+        label.textContent = prepFlowDateLabel(group, false) + " " + group.primary.text;
+        item.append(number, label);
+        homePreview.append(item);
+      });
+      if (!flow.future.length) {
+        const empty = document.createElement("li");
+        empty.className = "decision-step";
+        empty.textContent = "今後の日付がある予定はありません。";
+        homePreview.append(empty);
+      }
+      renderPrepFlowList("prepUpcomingFlow", flow.future, false);
+      renderPrepFlowList("prepPastFlow", flow.past, true);
+      renderPrepUndated(flow.undated);
 
       if (weddingDays === null) setText("prepDaysBadge", "挙式日を設定してください");
       else if (weddingDays > 0) setText("prepDaysBadge", "挙式まであと" + weddingDays + "日");
@@ -3176,7 +3247,7 @@
         heading.append(kicker, title);
         const count = document.createElement("span");
         count.className = "prep-phase-count";
-        count.textContent = allPhaseTasks.filter(task => task.done).length + " / " + allPhaseTasks.length + "件完了";
+        count.textContent = allPhaseTasks.length + "件";
         head.append(heading, count);
 
         const list = document.createElement("div");
@@ -3195,18 +3266,13 @@
       const meeting = parseLocalDate(settings.nextMeetingDate);
       if (!meeting || Number.isNaN(meeting.getTime())) {
         setText("nextMeetingStatus", "日付と開始時刻を入力すると、打ち合わせまでの日数を表示します。");
-        setText("iosMeetingDate", "未設定");
-        setText("homeNextMeetingTitle", "次回打ち合わせは未設定です");
         return;
       }
       const days = daysFromToday(meeting);
-      const prefix = days > 0 ? `あと${days}日` : days === 0 ? "今日" : `${Math.abs(days)}日前に経過`;
+      const prefix = days > 0 ? `あと${days}日` : days === 0 ? "今日" : `${Math.abs(days)}日前`;
       const startTime = settings.nextMeetingTime ? ` ${settings.nextMeetingTime}開始` : "";
-      const compactTime = settings.nextMeetingTime ? ` ${settings.nextMeetingTime.replace(/^0/, "")}` : "";
       const extras = [settings.coordinator.trim() && `担当：${settings.coordinator.trim()}`, settings.venuePhone.trim() && `連絡先：${settings.venuePhone.trim()}`].filter(Boolean).join("　");
       setText("nextMeetingStatus", `${formatJapaneseDate(settings.nextMeetingDate)}${startTime}（${prefix}）${extras ? `　${extras}` : ""}`);
-      setText("iosMeetingDate", `${formatIosDate(meeting, false)}${compactTime}`);
-      setText("homeNextMeetingTitle", `${formatIosDate(meeting, false)}${compactTime} ${settings.nextMeetingDate === "2026-09-19" ? "2nd打ち合わせ" : "打ち合わせ"}`);
     }
 
     function invitationPageUrl() {
@@ -3728,9 +3794,10 @@
     document.querySelectorAll("[data-tab-target]").forEach(button => {
       button.addEventListener("click", () => switchTab(button.dataset.tabTarget));
     });
-    document.querySelector("#prepOpenTasks").addEventListener("click", () => {
-      const prepPanels = document.querySelectorAll('[data-tab-panel="prep"]');
-      prepPanels[1]?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document.querySelector("#prepNextKeyDate").addEventListener("click", () => {
+      const flow = document.querySelector("#prepFlow");
+      flow.scrollIntoView({ behavior: "smooth", block: "start" });
+      flow.focus({ preventScroll: true });
     });
 
     [...textSettingIds, ...numericSettingIds].forEach(id => {
@@ -3829,7 +3896,7 @@
       event.target.value = "";
     });
     document.querySelector("#resetAll").addEventListener("click", () => {
-      if (!confirm("入力した試算条件・明細・準備の進捗を初期状態に戻しますか？")) return;
+      if (!confirm("入力した試算条件・明細・準備リストの完了チェックを初期状態に戻しますか？")) return;
       settings = structuredClone(baseSettings);
       rows = structuredClone(initialRows);
       prepTasks = structuredClone(prepTaskTemplates);

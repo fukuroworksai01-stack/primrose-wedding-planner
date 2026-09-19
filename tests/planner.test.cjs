@@ -90,6 +90,25 @@ test('予定と3つの締切はPDF固定値、宿題は9/19の打ち合わせ前
   assert.equal(p.read('settings.rsvpDeadline'), '');
   assert.deepEqual(p.read('migratePrepTasks(prepTasks, 10)'), tasks);
 });
+test('準備の進捗率を見せず、日付のある予定を過去と今後の流れに分ける', () => {
+  assert.ok(page.includes('id="prepUpcomingFlow"') && page.includes('id="prepPastFlow"'));
+  assert.ok(!page.includes('ふたりの進み具合') && !page.includes('id="homePrepProgress"'));
+  const p = planner();
+  vm.runInContext(main.slice(main.indexOf('    function parseLocalDate('), main.indexOf('    function updatePrepHome(')), p.context);
+  vm.runInContext('const flowAtNoon = prepFlowGroups(new Date(2026, 8, 20, 12, 0));', p.context);
+  const flow = p.read('flowAtNoon');
+  assert.equal(flow.past.length, 2);
+  assert.equal(flow.past[0].primary.id, 'pdf-second-meeting');
+  assert.equal(flow.past[0].tasks.length, 3);
+  assert.equal(flow.past[1].primary.id, 'pdf-costume-meeting');
+  assert.equal(flow.future[0].primary.id, 'pdf-movie-meeting');
+  assert.equal(flow.future.at(-1).primary.id, 'pdf-wedding-day');
+  assert.ok(flow.undated.some(task => task.id === 'pdf-third-meeting'));
+  vm.runInContext('const flowDuringMeeting = prepFlowGroups(new Date(2026, 8, 19, 9, 45));', p.context);
+  const duringMeeting = p.read('flowDuringMeeting');
+  assert.equal(duringMeeting.past.length, 1);
+  assert.equal(duringMeeting.future[0].primary.id, 'pdf-costume-meeting');
+});
 test('全項目のPDF・ページ・該当箇所があり、一般タスクや逆算用の日数はない', () => {
   assert.equal(new Set(preparation.tasks.map(task => task.id)).size, preparation.tasks.length);
   for (const task of preparation.tasks) {
