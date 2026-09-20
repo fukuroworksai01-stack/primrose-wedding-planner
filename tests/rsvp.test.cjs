@@ -154,8 +154,8 @@ test('クライアント側の欠席データを正規化し、表示にHTMLを�
   assert.ok(source.includes('item.textContent = data')); assert.ok(!source.includes("addEventListener('load'"));
   assert.ok(source.includes("credentials: 'omit'")); assert.ok(!source.includes("mode: 'no-cors'"));
 });
-test('3デザインは共通フォームを一つだけ読み込み、未確定の時刻を作らない', () => {
-  for (const relative of ['invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html']) {
+test('6デザインは共通フォームを一つだけ読み込み、未確定の時刻を作らない', () => {
+  for (const relative of ['invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html', 'invite/letter/index.html', 'invite/story/index.html', 'invite/rose/index.html']) {
     const page = fs.readFileSync(path.join(__dirname, '..', relative), 'utf8');
     assert.equal((page.match(/data-rsvp-widget/g) || []).length, 1);
     assert.ok(page.indexOf('rsvp-config.js') < page.indexOf('rsvp-client.js'));
@@ -163,5 +163,12 @@ test('3デザインは共通フォームを一つだけ読み込み、未確定�
     assert.ok(!page.includes('addMinutes'));
     assert.ok(!page.includes('params.get("form")'));
     for (const script of page.matchAll(/<script>([\s\S]*?)<\/script>/g)) assert.doesNotThrow(() => new vm.Script(script[1]));
+  }
+});
+test('追加した3デザインの識別子を回答一覧に保存できる', () => {
+  for (const design of ['letter', 'story', 'rose']) {
+    const b = backend();
+    assert.equal(b.api.submitRsvp(payload({ design })).ok, true);
+    assert.equal(b.answers.rows[1][11], design);
   }
 });

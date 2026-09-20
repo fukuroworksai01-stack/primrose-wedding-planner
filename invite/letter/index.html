@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#fcfaf6">
+  <title>シンプルレター | Wedding Invitation</title>
+  <link rel="stylesheet" href="../rsvp.css?v=2">
+  <link rel="stylesheet" href="../variants.css?v=1">
+</head>
+<body class="theme-letter">
+  <main class="page">
+    <header class="hero">
+      <div class="letter-frame">
+        <p class="eyebrow">Wedding Invitation</p>
+        <h1>ご招待</h1>
+        <p class="hero-names" data-event-names>智哉 &amp; 梨那</p>
+        <p class="hero-date" data-event-date>2027年3月7日（日曜日）</p>
+        <a class="jump-link" href="#rsvp">出欠を回答する</a>
+      </div>
+    </header>
+
+    <section class="section letter-message" aria-labelledby="letterMessage">
+      <p class="section-kicker">Message</p>
+      <h2 class="section-title" id="letterMessage">大切な皆さまへ</h2>
+      <p class="prose">このたび 私たちは結婚式を挙げることになりました。<br>日頃お世話になっている皆さまに 感謝の気持ちをお伝えしたく ささやかな席を設けます。</p>
+      <p class="prose">ご多用のところ恐縮ですが ぜひご一緒にお過ごしいただけましたら幸いです。</p>
+    </section>
+
+    <figure class="venue-photo letter-photo">
+      <img src="../../assets/invite3/gallery-ceremony.webp" alt="プリムローズのセント・ポール大聖堂" loading="lazy">
+      <figcaption>会場イメージ · St. Paul Cathedral</figcaption>
+    </figure>
+
+    <section class="section information" aria-labelledby="letterInformation">
+      <p class="section-kicker">Information</p>
+      <h2 class="section-title" id="letterInformation">当日のご案内</h2>
+      <p class="event-date" data-event-date>2027年3月7日（日曜日）</p>
+      <dl class="schedule">
+        <div><dt>挙式</dt><dd><span data-event-time="time">12:00</span><small>セント・ポール大聖堂</small></dd></div>
+        <div><dt>披露宴</dt><dd><span data-event-time="reception">13:00</span><small>ボヌール</small></dd></div>
+        <div><dt>おひらき</dt><dd data-event-time="end">15:20</dd></div>
+      </dl>
+      <div class="venue-details">
+        <strong data-event-venue>PRIMROSE</strong>
+        <address>〒701-0151 岡山県岡山市北区平野544-1</address>
+        <a class="access-link" href="https://space.fivestar-wedding.com/primrose-okayama/access/" target="_blank" rel="noopener noreferrer">会場へのアクセスを見る ↗</a>
+      </div>
+    </section>
+
+    <section class="section rsvp-section" id="rsvp" aria-labelledby="letterRsvp">
+      <p class="section-kicker">RSVP</p>
+      <h2 class="section-title" id="letterRsvp">ご出欠のお返事</h2>
+      <p class="prose">ご出欠と、お食事・送迎についてこのページでお知らせください。おひとりずつご回答をお願いします。</p>
+      <p class="deadline" data-event-deadline>回答期限は後日ご案内します</p>
+      <div data-rsvp-widget data-design="letter"></div>
+    </section>
+    <footer class="footer"><strong>Thank you</strong><small data-event-names>智哉 &amp; 梨那</small></footer>
+  </main>
+  <script src="../../wedding-details.js?v=1"></script>
+  <script src="../variants.js?v=1"></script>
+  <script src="../rsvp-config.js?v=1"></script>
+  <script src="../rsvp-client.js?v=2"></script>
+</body>
+</html>

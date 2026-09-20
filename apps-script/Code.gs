@@ -92,7 +92,7 @@ function validate_(input) {
     responseId: input.responseId.toLowerCase(), requestId: input.requestId.toLowerCase(),
     attendance: attendance, name: text_(input, 'name', 100, true), kana: text_(input, 'kana', 100, false),
     allergyFlag: allergyFlag, allergy: allergy, shuttle: shuttle, message: text_(input, 'message', 1000, false),
-    design: ['balloon', 'garden', 'botanical', 'direct'].indexOf(design) >= 0 ? design : 'direct'
+    design: ['balloon', 'garden', 'botanical', 'letter', 'story', 'rose', 'direct'].indexOf(design) >= 0 ? design : 'direct'
   };
 }
 function safeCell_(value) { return /^[\s\u200b\ufeff]*[=+\-@]/.test(value) ? "'" + value : value; }

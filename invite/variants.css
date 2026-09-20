@@ -1,0 +1,128 @@
+:root{color-scheme:light}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;color:var(--ink);background:var(--surround);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-underline-offset:4px}
+button,input,textarea{font:inherit}
+.page{width:min(100%,760px);min-height:100vh;margin:auto;overflow:hidden;background:var(--paper);box-shadow:0 20px 70px rgba(38,31,28,.12)}
+.hero{position:relative;isolation:isolate;overflow:hidden}
+.eyebrow{margin:0;font-size:11px;font-weight:700;letter-spacing:.25em;text-transform:uppercase}
+.hero h1,.display-title{font-family:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;font-weight:400}
+.hero h1{margin:18px 0 0;line-height:1.1}
+.hero-names{margin:20px 0 0;font-size:18px;letter-spacing:.1em}
+.hero-date{margin:22px 0 0;font-size:15px;letter-spacing:.07em}
+.jump-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin-top:30px;padding:12px 26px;border:1px solid currentColor;border-radius:99px;font-size:14px;font-weight:700;text-decoration:none}
+.jump-link:hover{filter:brightness(.85)}
+.jump-link:focus-visible,.access-link:focus-visible,.rsvp-section a:focus-visible{outline:3px solid #2766ad;outline-offset:4px}
+.section{padding:76px clamp(24px,8vw,72px)}
+.section-kicker{margin:0 0 11px;color:var(--accent);font-size:11px;font-weight:750;letter-spacing:.22em;text-transform:uppercase}
+.section-title{margin:0 0 24px;font-family:"Hiragino Mincho ProN","Yu Mincho",Georgia,serif;font-size:clamp(29px,5vw,44px);font-weight:400;line-height:1.35;letter-spacing:.04em}
+.prose{max-width:35em;margin:0;font-size:14px;line-height:2.15;letter-spacing:.035em}
+.prose+.prose{margin-top:18px}
+.venue-photo{margin:0}
+.venue-photo img{width:100%;height:100%;object-fit:cover}
+.venue-photo figcaption{padding:8px 0;color:var(--muted);font-size:11px;line-height:1.5}
+.information{background:var(--info-bg)}
+.event-date{margin:0 0 24px;font-size:17px;font-weight:700;line-height:1.6}
+.schedule{display:grid;gap:0;margin:0}
+.schedule div{display:grid;grid-template-columns:100px minmax(0,1fr);gap:12px;align-items:baseline;padding:15px 0;border-top:1px solid var(--rule)}
+.schedule div:last-child{border-bottom:1px solid var(--rule)}
+.schedule dt{color:var(--muted);font-size:13px}
+.schedule dd{margin:0;font-size:16px;font-weight:700;line-height:1.55}
+.schedule small{display:block;color:var(--muted);font-size:12px;font-weight:400}
+.venue-details{margin-top:36px}
+.venue-details strong{display:block;font-size:17px;line-height:1.5}
+.venue-details address{margin-top:5px;font-size:13px;font-style:normal;line-height:1.8}
+.access-link{display:inline-flex;align-items:center;justify-content:center;min-height:46px;margin-top:20px;padding:10px 20px;border:1px solid var(--accent);border-radius:99px;color:var(--accent);font-size:13px;font-weight:700;text-decoration:none}
+.rsvp-section{background:var(--rsvp-bg);scroll-margin-top:70px}
+.rsvp-section .section-title{margin-bottom:15px}
+.deadline{margin:16px 0 0;color:var(--accent);font-size:13px;font-weight:700}
+.rsvp-widget{--rsvp-accent:var(--accent);--rsvp-border:var(--rule);margin-top:29px}
+.rsvp-widget .rsvp-panel{border-color:var(--rule);box-shadow:0 10px 28px rgba(50,35,38,.05)}
+.rsvp-widget .rsvp-choice:has(input:checked){background:var(--rsvp-selected)}
+.footer{padding:43px 24px 58px;text-align:center}
+.footer small{display:block;margin-top:9px;color:var(--muted);font-size:11px;letter-spacing:.08em}
+.footer strong{font-family:Georgia,serif;font-size:18px;font-weight:400;font-style:italic;letter-spacing:.07em}
+
+/* 4: 静かな紙の招待状。余白と和文の読みやすさを優先する。 */
+.theme-letter{--surround:#ded9d2;--paper:#fcfaf6;--ink:#272b2a;--muted:#625e58;--accent:#7e6465;--rule:#d5c9bf;--info-bg:#f4eee8;--rsvp-bg:#f9f5f0;--rsvp-selected:#f5e9e8}
+.theme-letter .page{max-width:640px}
+.theme-letter .hero{min-height:690px;padding:30px;background:#fcfaf6}
+.letter-frame{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:630px;padding:72px 22px;border:1px solid #c5b8ac;text-align:center}
+.letter-frame::before,.letter-frame::after{position:absolute;left:50%;width:62px;height:12px;background:#fcfaf6;content:"";transform:translateX(-50%)}
+.letter-frame::before{top:-7px}.letter-frame::after{bottom:-7px}
+.theme-letter .hero .eyebrow{color:#806a6c}
+.theme-letter .hero h1{margin-top:35px;font-size:clamp(55px,11vw,78px);letter-spacing:.16em;text-indent:.16em}
+.theme-letter .hero-names{margin-top:44px;font-family:Georgia,serif;font-size:22px;font-style:italic;letter-spacing:.07em}
+.theme-letter .hero-date{margin-top:13px;font-size:14px}
+.theme-letter .hero .jump-link{margin-top:42px}
+.theme-letter .letter-message{padding-top:72px;text-align:center}
+.theme-letter .letter-message .prose{margin-inline:auto}
+.theme-letter .letter-photo{width:calc(100% - clamp(48px,16vw,144px));height:360px;margin:0 auto 72px}
+.theme-letter .letter-photo img{height:100%;object-position:center 36%}
+.theme-letter .letter-photo figcaption{text-align:right}
+.theme-letter .information .section-title{font-size:35px}
+
+/* 5: 写真を主役にしたエディトリアル。要点は次の画面で整理。 */
+.theme-story{--surround:#282a29;--paper:#fff;--ink:#171b19;--muted:#56615c;--accent:#345e54;--rule:#cfd9d1;--info-bg:#edf3ef;--rsvp-bg:#fafaf7;--rsvp-selected:#eaf3ee}
+.theme-story .hero{display:flex;align-items:flex-end;min-height:min(920px,100svh);padding:clamp(25px,8vw,62px);color:#fff;background:#35463f url('../assets/invite3/hero.webp') 50% 50%/cover no-repeat}
+.theme-story .hero::before{position:absolute;z-index:-1;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.13) 0%,rgba(0,0,0,.07) 37%,rgba(9,21,15,.75) 100%);content:""}
+.theme-story .hero-inner{max-width:540px}
+.theme-story .hero h1{font-family:Georgia,"Hiragino Mincho ProN",serif;font-size:clamp(61px,13vw,103px);font-style:italic;letter-spacing:-.065em}
+.theme-story .hero-names{font-size:22px}
+.theme-story .hero-date{font-size:14px}
+.theme-story .hero .jump-link{background:#fff;color:#213b32;border-color:#fff}
+.theme-story .photo-note{position:absolute;top:23px;right:25px;margin:0;font-size:10px;letter-spacing:.1em;text-shadow:0 1px 8px #000}
+.theme-story .story-intro{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.theme-story .story-intro .section-title{font-size:clamp(30px,4vw,42px)}
+.theme-story .story-photo{height:410px}
+.theme-story .story-gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 clamp(24px,8vw,72px) 76px}
+.theme-story .story-gallery img{width:100%;height:240px;object-fit:cover}
+.theme-story .story-gallery figcaption{padding-top:8px;color:var(--muted);font-size:11px}
+.theme-story .information{border-top:1px solid var(--rule)}
+
+/* 6: 淡いローズと実際の花の装飾を使った祝祭感。 */
+.theme-rose{--surround:#e8d9dd;--paper:#fffaf9;--ink:#47343d;--muted:#735f67;--accent:#a5506c;--rule:#e3c9d0;--info-bg:#fff8f7;--rsvp-bg:#f9edef;--rsvp-selected:#f9e6ec}
+.theme-rose .page{max-width:690px}
+.theme-rose .hero{min-height:760px;padding:42px 24px 0;background:linear-gradient(165deg,#f8e9ed,#fffaf9 65%);text-align:center}
+.theme-rose .corner{position:absolute;z-index:-1;top:-53px;right:-91px;width:390px;opacity:.68;pointer-events:none}
+.theme-rose .hero-inner{position:relative;max-width:510px;margin:110px auto 0}
+.theme-rose .hero h1{margin-top:27px;font-size:clamp(63px,12vw,92px);font-style:italic;letter-spacing:-.065em}
+.theme-rose .hero .eyebrow{color:#965e72}
+.theme-rose .hero-names{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:20px}
+.theme-rose .hero .jump-link{color:#fff;background:#a5506c;border-color:#a5506c}
+.theme-rose .hero-photo{position:relative;width:min(100%,380px);height:250px;margin:65px auto 0;padding:9px 9px 24px;background:#fff;box-shadow:0 11px 33px rgba(105,60,72,.13);transform:rotate(-2.5deg)}
+.theme-rose .hero-photo img{width:100%;height:100%;object-fit:cover}
+.theme-rose .hero-photo figcaption{position:absolute;right:12px;bottom:3px;color:#897b7c;font-size:9px;letter-spacing:.08em}
+.theme-rose .rose-message{position:relative;text-align:center}
+.theme-rose .rose-message .prose{margin-inline:auto}
+.theme-rose .rose-message::after{display:block;width:70px;height:1px;margin:38px auto 0;background:#d4a1ae;content:""}
+.theme-rose .rose-feature{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center;padding-top:0}
+.theme-rose .rose-feature img{height:310px;object-fit:cover;border-radius:180px 180px 8px 8px}
+.theme-rose .rose-feature p{margin:0;font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:20px;line-height:1.9}
+.theme-rose .rose-feature small{display:block;margin-top:14px;color:var(--muted);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;font-size:11px}
+.theme-rose .information{border-top:1px solid var(--rule)}
+
+@media(max-width:600px){
+  .page{box-shadow:none}
+  .section{padding:62px 23px}
+  .schedule div{grid-template-columns:83px minmax(0,1fr)}
+  .theme-letter .hero{padding:16px}
+  .letter-frame{min-height:660px;padding:70px 18px}
+  .theme-letter .letter-photo{width:calc(100% - 46px);height:270px;margin-bottom:62px}
+  .theme-story .hero{min-height:700px;min-height:100svh;padding:28px 25px 54px;background-position:53% center}
+  .rsvp-preview-mode.theme-story .hero{min-height:calc(100svh - 60px)}
+  .theme-story .story-intro{grid-template-columns:1fr;gap:22px}
+  .theme-story .story-photo{height:270px;grid-row:1}
+  .theme-story .story-gallery{gap:8px;padding:0 23px 62px}
+  .theme-story .story-gallery img{height:150px}
+  .theme-rose .hero{min-height:715px;padding-top:32px}
+  .theme-rose .hero-inner{margin-top:100px}
+  .theme-rose .corner{right:-140px;width:350px}
+  .theme-rose .hero-photo{width:min(82%,330px);height:210px;margin-top:50px}
+  .theme-rose .rose-feature{grid-template-columns:1fr;gap:20px;text-align:center}
+  .theme-rose .rose-feature img{width:230px;height:260px;margin:auto}
+}
+@media(max-width:360px){.theme-letter .hero h1{font-size:49px}.theme-story .hero h1{font-size:58px}.theme-rose .hero h1{font-size:59px}.rsvp-widget .rsvp-panel{padding-inline:13px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

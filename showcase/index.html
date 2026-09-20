@@ -53,6 +53,20 @@
     .sample{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff}
     .sample:focus-within{outline:3px solid rgba(166,85,96,.38);outline-offset:2px}
     .sample img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top center;background:#eee9ea}
+    .sample-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;aspect-ratio:4/3;overflow:hidden;text-align:center}
+    .sample-visual small{font-size:9px;letter-spacing:.18em}
+    .sample-visual strong{font-family:Georgia,"Hiragino Mincho ProN","Yu Mincho",serif;font-weight:400}
+    .visual-letter{color:#39332f;background:#fcfaf6}
+    .visual-letter:before{position:absolute;inset:12px;border:1px solid #cbbeb2;content:""}
+    .visual-letter strong{margin:8px 0;font-size:42px;letter-spacing:.13em;text-indent:.13em}
+    .visual-story{align-items:flex-start;justify-content:flex-end;padding:18px;color:#fff;background:#39534a url('../assets/invite3/hero.webp') center/cover no-repeat;text-align:left}
+    .visual-story:before{position:absolute;inset:0;background:linear-gradient(transparent 32%,rgba(11,26,20,.75));content:""}
+    .visual-story>*{position:relative}
+    .visual-story strong{font-size:39px;font-style:italic;line-height:1}
+    .visual-rose{color:#96516b;background:linear-gradient(145deg,#f5dce5,#fffaf9)}
+    .visual-rose:before{position:absolute;top:-20px;right:-45px;width:180px;height:150px;background:url('../assets/ui/botanical-corner.png') center/contain no-repeat;content:""}
+    .visual-rose strong{margin:7px 0;font-size:43px;font-style:italic}
+    .visual-rose img{width:55%;max-height:41%;aspect-ratio:3/2;object-fit:cover;transform:rotate(-3deg);box-shadow:0 8px 16px rgba(84,44,57,.16)}
     .sample-body{padding:11px}
     .sample h3{margin:0;font-size:16px}
     .sample p{margin:4px 0 10px;color:var(--muted);font-size:13px}
@@ -75,6 +89,14 @@
       .samples{grid-template-columns:1fr;gap:10px}
       .sample{display:grid;grid-template-columns:104px minmax(0,1fr);min-height:132px}
       .sample img{width:104px;height:100%;min-height:132px;aspect-ratio:auto}
+      .sample-visual{width:104px;height:100%;min-height:132px;aspect-ratio:auto}
+      .visual-letter:before{inset:6px}
+      .sample-visual small{font-size:6px}
+      .visual-letter strong{font-size:19px}
+      .visual-story{padding:8px}
+      .visual-story strong,.visual-rose strong{font-size:23px}
+      .visual-rose img{width:74%;max-height:37%}
+      .sample .sample-visual img{height:auto;min-height:0;aspect-ratio:3/2}
       .sample-body{align-self:center;padding:12px}
     }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
@@ -87,11 +109,11 @@
       <a class="back-link" href="../?tab=prep"><i class="iconoir-arrow-left" aria-hidden="true"></i>プランナーに戻る</a>
       <p class="eyebrow">OUR WEDDING</p>
       <h1>Web招待状</h1>
-      <p class="lead">3つのデザインを開いて見比べられます。ゲストに送るONE-Wの招待状とは別です。</p>
+      <p class="lead">6つのデザインから、ふたりらしい招待状を選べます。日時・会場の案内から出欠回答まで、各ページで確認できます。</p>
       <div class="status"><span>日程確定</span><span>ONE-W利用</span></div>
     </header>
 
-    <div class="gallery-head" id="invitations"><h2 class="section-heading" id="invitationHeading">3つのデザイン</h2><a class="gallery-back" href="../?tab=prep">プランナーへ戻る</a></div>
+    <div class="gallery-head" id="invitations"><h2 class="section-heading" id="invitationHeading">6つのデザイン</h2><a class="gallery-back" href="../?tab=prep">プランナーへ戻る</a></div>
     <section class="invite-box" aria-labelledby="invitationHeading">
       <div class="samples-wrap">
         <p class="samples-note">気になるデザインを開いて確認できます。プレビュー中は出欠回答が送信されません。</p>
@@ -99,13 +121,16 @@
           <article class="sample"><img src="../assets/showcase/invite-1.png?v=3" alt="バルーンの招待状"><div class="sample-body"><h3>バルーン</h3><p>明るく華やかな写真中心</p><a class="sample-link invite-link" data-route="../invite/" href="../invite/" aria-label="バルーンの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
           <article class="sample"><img src="../assets/showcase/invite-2.png?v=3" alt="ポップガーデンの招待状"><div class="sample-body"><h3>ポップガーデン</h3><p>カジュアルで読みやすい</p><a class="sample-link invite-link" data-route="../invite/reference/" href="../invite/reference/" aria-label="ポップガーデンの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
           <article class="sample"><img src="../assets/showcase/invite-3.png?v=3" alt="ボタニカルクラシックの招待状"><div class="sample-body"><h3>ボタニカル</h3><p>落ち着きのある上品な印象</p><a class="sample-link invite-link" data-route="../invite/botanical/" href="../invite/botanical/" aria-label="ボタニカルの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><div class="sample-visual visual-letter" aria-hidden="true"><small>WEDDING INVITATION</small><strong>ご招待</strong><small>2027.03.07</small></div><div class="sample-body"><h3>シンプルレター</h3><p>ご親族にも伝わる、端正な文面</p><a class="sample-link invite-link" data-route="../invite/letter/" href="../invite/letter/" aria-label="シンプルレターの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><div class="sample-visual visual-story" aria-hidden="true"><small>YOU ARE INVITED</small><strong>Our Wedding</strong></div><div class="sample-body"><h3>フォトストーリー</h3><p>会場の写真が主役のモダンな一枚</p><a class="sample-link invite-link" data-route="../invite/story/" href="../invite/story/" aria-label="フォトストーリーの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
+          <article class="sample"><div class="sample-visual visual-rose" aria-hidden="true"><small>WEDDING INVITATION</small><strong>For You</strong><img src="../assets/invite3/gallery-garden.webp" alt=""></div><div class="sample-body"><h3>ローズガーデン</h3><p>花と淡いピンクのやさしい雰囲気</p><a class="sample-link invite-link" data-route="../invite/rose/" href="../invite/rose/" aria-label="ローズガーデンの招待状をプレビュー">プレビュー <i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a></div></article>
         </div>
       </div>
     </section>
 
     <section class="date-grid" aria-label="大切な予定">
       <div class="date-card"><span class="date-icon"><i class="iconoir-heart" aria-hidden="true"></i></span><span><small>挙式／披露宴</small><strong>2027年3月7日 12:00／13:00</strong></span></div>
-      <div class="date-card"><span class="date-icon"><i class="iconoir-calendar" aria-hidden="true"></i></span><span><small>次回打ち合わせ</small><strong>9月19日 9:30</strong></span></div>
+      <div class="date-card"><span class="date-icon"><i class="iconoir-map-pin" aria-hidden="true"></i></span><span><small>会場</small><strong>PRIMROSE · 岡山</strong></span></div>
     </section>
 
     <h2 class="section-heading">ふたりの準備</h2>
