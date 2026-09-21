@@ -67,11 +67,11 @@ test('見積とメモは維持し、旧チェックリストは全て表示か�
     { id: 'my-plan', text: 'ふたりの追加予定', owner: '新婦', done: false, dueDate: '', daysBefore: null, custom: true }
   ] });
   const settings = p.read('settings');
-  assert.equal(settings.weddingTime, '12:00'); assert.equal(settings.nextMeetingDate, '2026-09-19');
+  assert.equal(settings.weddingTime, '12:00'); assert.equal(settings.nextMeetingDate, '2026-10-25'); assert.equal(settings.nextMeetingTime, '15:00');
   assert.equal(settings.guestCount, 60); assert.equal(settings.venueMemo, '持参物を確認'); assert.equal(settings.rsvpDeadline, '2027-01-15');
   assert.ok(!('googleFormUrl' in settings)); assert.equal(p.read('rows')[0][5], 320000);
   const tasks = p.read('prepTasks');
-  assert.equal(tasks.length, 20);
+  assert.equal(tasks.length, preparation.tasks.length);
   assert.ok(tasks.every(task => task.id.startsWith('pdf-') && task.source === 'pdf' && !task.done));
   assert.ok(!tasks.some(task => ['choose-dress', 'my-plan'].includes(task.id)));
   const archive = p.read('prepArchive');
@@ -82,12 +82,16 @@ test('見積とメモは維持し、旧チェックリストは全て表示か�
 });
 test('予定と3つの締切はPDF固定値、宿題は9/19の打ち合わせ前までにする', () => {
   const p = planner(); const tasks = p.read('prepTasks');
-  for (const [id, date] of Object.entries({ 'pdf-costume-meeting': '2026-09-19', 'pdf-second-meeting': '2026-09-19', 'pdf-movie-meeting': '2026-09-27', 'pdf-content-deadline': '2027-02-07', 'pdf-quantity-deadline': '2027-02-21', 'pdf-payment-deadline': '2027-02-24' })) {
+  for (const [id, date] of Object.entries({ 'pdf-costume-meeting': '2026-09-19', 'pdf-second-meeting': '2026-09-19', 'pdf-movie-meeting': '2026-09-27', 'pdf-third-meeting': '2026-10-25', 'pdf-invitation-reply-guidance': '2027-01-19', 'pdf-content-deadline': '2027-02-07', 'pdf-quantity-deadline': '2027-02-21', 'pdf-payment-deadline': '2027-02-24' })) {
     const task = tasks.find(task => task.id === id); assert.equal(task.dueDate, date); assert.equal(task.source, 'pdf');
   }
   assert.equal(tasks.find(task => task.id === 'pdf-costume-meeting').dueTime, '12:00');
   assert.equal(tasks.find(task => task.id === 'pdf-onew-guests').dueTime, '09:30');
   assert.equal(tasks.find(task => task.id === 'pdf-movie-meeting').dueTime, '14:00');
+  assert.equal(tasks.find(task => task.id === 'pdf-third-meeting').dueTime, '15:00');
+  assert.equal(tasks.find(task => task.id === 'pdf-third-meeting').document, 'secondMeeting');
+  assert.equal(tasks.find(task => task.id === 'pdf-paper-invitation').dueDate, '');
+  assert.equal(tasks.find(task => task.id === 'pdf-paper-invitation').period, '2026年10月中・紙を注文する場合');
   assert.equal(p.read('settings.rsvpDeadline'), '');
   assert.deepEqual(p.read('migratePrepTasks(prepTasks, 10)'), tasks);
 });
@@ -104,7 +108,8 @@ test('準備の進捗率を見せず、日付のある予定を過去と今後�
   assert.equal(flow.past[1].primary.id, 'pdf-costume-meeting');
   assert.equal(flow.future[0].primary.id, 'pdf-movie-meeting');
   assert.equal(flow.future.at(-1).primary.id, 'pdf-wedding-day');
-  assert.ok(flow.undated.some(task => task.id === 'pdf-third-meeting'));
+  assert.ok(flow.future.some(group => group.primary.id === 'pdf-third-meeting'));
+  assert.ok(flow.undated.some(task => task.id === 'pdf-paper-invitation'));
   vm.runInContext('const flowDuringMeeting = prepFlowGroups(new Date(2026, 8, 19, 9, 45));', p.context);
   const duringMeeting = p.read('flowDuringMeeting');
   assert.equal(duringMeeting.past.length, 1);
@@ -169,7 +174,8 @@ test('明細はスマホの入力ラベルを維持し、PDFにない日付は�
   const p = planner();
   vm.runInContext(main.slice(main.indexOf('    function parseLocalDate('), main.indexOf('    function prepStats(')), p.context);
   assert.equal(p.read('prepDueValue({dueDate:"",daysBefore:170})'), '');
-  assert.equal(p.read('prepScheduleLabel(prepTasks.find(task => task.id === "pdf-third-meeting"))'), '日付の記載なし');
+  assert.equal(p.read('prepScheduleLabel(prepTasks.find(task => task.id === "pdf-third-meeting"))'), '10/25(日) 15:00 開始');
+  assert.equal(p.read('prepScheduleLabel(prepTasks.find(task => task.id === "pdf-invitation-reply-guidance"))'), '1/19(火) 式場からの作成案内');
   assert.equal(p.read('prepScheduleLabel(prepTasks.find(task => task.id === "pdf-family-costume"))'), '式の2か月前まで');
   assert.ok(p.read('prepScheduleLabel(prepTasks.find(task => task.id === "pdf-onew-guests"))').endsWith('09:30の打ち合わせ前まで'));
   vm.runInContext('settings.weddingDate = "2028-04-01"', p.context);
@@ -232,7 +238,26 @@ test('宿題の9時半を過ぎたら超過を示し、12時の衣裳合わせ�
   vm.runInContext('const NativeDate = Date; Date = class extends NativeDate { constructor(...args) { super(...(args.length ? args : [2026,8,19,9,45,0,0])); } };', p.context);
   assert.equal(p.read('prepStatus(prepTasks.find(task => task.id === "pdf-onew-guests")).className'), 'overdue');
   assert.equal(p.read('prepStatus(prepTasks.find(task => task.id === "pdf-costume-meeting")).label'), '今日の予定');
-  assert.equal(p.read('prepStats().overdue.length'), 3);
+  assert.equal(p.read('prepStats().overdue.length'), 2);
+  assert.equal(p.read('prepStatus(prepTasks.find(task => task.id === "pdf-second-meeting")).className'), 'past');
   vm.runInContext('prepTasks.forEach(task => { if (task.phase === "homework" || task.phase === "appointments") task.done = true; });', p.context);
-  assert.equal(p.read('prepStats().open[0].id'), 'pdf-marrysys-email');
+  assert.equal(p.read('prepStats().open[0].id'), 'pdf-second-seating');
+});
+
+test('2回目のメモと追加資料を参照し、以前の次回予定だけを10月25日へ更新する', () => {
+  assert.equal(preparation.version, 2);
+  assert.equal(preparation.documents.secondMeeting.id, '1uPT1daAijO96AKQclYgCGZtAO7P5Q5rU');
+  for (const key of ['seating', 'relationships', 'invitationSamples', 'attireGuide', 'fittingList', 'familyAttire', 'timelineGuide']) {
+    assert.ok(preparation.documents[key]?.id);
+    assert.ok(page.includes('https://drive.google.com/file/d/' + preparation.documents[key].id + '/view'));
+  }
+  assert.ok(page.includes('集合写真は検討中'));
+  assert.ok(page.includes('現在の見積には加えていません'));
+  assert.ok(page.includes('投函のおすすめ日は2026年12月4日・9日・15日'));
+  const p = planner({ uxVersion: 10, rows: planner().read('rows'), settings: { nextMeetingDate: '2026-09-19', nextMeetingTime: '09:30' } });
+  assert.equal(p.read('settings.nextMeetingDate'), '2026-10-25');
+  assert.equal(p.read('settings.nextMeetingTime'), '15:00');
+  const custom = planner({ uxVersion: 10, rows: planner().read('rows'), settings: { nextMeetingDate: '2026-11-01', nextMeetingTime: '11:00' } });
+  assert.equal(custom.read('settings.nextMeetingDate'), '2026-11-01');
+  assert.equal(custom.read('settings.nextMeetingTime'), '11:00');
 });

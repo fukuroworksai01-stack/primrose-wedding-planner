@@ -1,4 +1,4 @@
-/* HappyWeddingSchedule.pdf に記載された確定日程。回答期限・受付時刻は未記載です。 */
+/* 結婚式スケジュールPDFの確定日程。2回目のメモの返信日は作成案内であり、公開する招待状の期限には自動設定しない。受付時刻は未記載。 */
 (function (root, factory) {
   const details = factory();
   if (typeof module === 'object' && module.exports) module.exports = details;

@@ -194,6 +194,7 @@ body.ui-ios-modern {
 .ui-ios-modern .prep-task-status { padding: 0; border: 0; border-radius: 0; color: var(--ios-muted); background: none; font-size: 13px; font-weight: 700; }
 .ui-ios-modern .prep-task-status.soon { color: #8a6200; background: none; }
 .ui-ios-modern .prep-task-status.overdue { color: var(--red); background: none; }
+.ui-ios-modern .prep-task-status.past { color: var(--ios-muted); background: none; }
 .ui-ios-modern .prep-task-status.complete { color: var(--green); background: none; }
 .ui-ios-modern .prep-task-details { margin-top: 8px; border: 0; background: transparent; }
 .ui-ios-modern .prep-task-details > summary { min-height: 44px; padding: 0; color: var(--ios-accent-dark); font-size: 15px; }
@@ -203,6 +204,21 @@ body.ui-ios-modern {
 .ui-ios-modern .prep-source-note a { font-size: 14px; }
 .ui-ios-modern .prep-source-note small { font-size: 13px; color: var(--ios-muted); }
 .ui-ios-modern .prep-archive { padding: 12px 16px; }
+.ui-ios-modern .prep-resource-panel > details { border-top: 1px solid var(--ios-divider); border-radius: 0; }
+.ui-ios-modern .prep-resource-panel > details > summary { padding: 10px 2px; }
+.ui-ios-modern .prep-resource-body { padding: 0 2px 16px; }
+.ui-ios-modern .prep-resource-body p { margin: 8px 0; color: var(--ios-muted); font-size: 15px; line-height: 1.7; }
+.ui-ios-modern .prep-resource-body strong { color: var(--ios-ink); }
+.ui-ios-modern .prep-resource-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.ui-ios-modern .prep-resource-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 12px; border: 1px solid var(--ios-divider); border-radius: 10px; background: var(--ios-surface); color: var(--ios-accent-dark); font-size: 14px; font-weight: 650; text-decoration: none; }
+.ui-ios-modern .prep-resource-links a:hover { background: var(--ios-accent-soft); }
+.ui-ios-modern .prep-resource-privacy { margin: 14px 0 0; color: var(--ios-muted); font-size: 13px; }
+.ui-ios-modern .prep-fitting-list { margin: 12px 0; padding: 0 12px; border: 1px solid var(--ios-divider); border-radius: 12px; background: var(--control-bg); }
+.ui-ios-modern .prep-fitting-list > summary { font-size: 15px; }
+.ui-ios-modern .prep-fitting-list dl { margin: 0; }
+.ui-ios-modern .prep-fitting-list dl > div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--ios-divider); font-size: 14px; }
+.ui-ios-modern .prep-fitting-list dt { font-weight: 600; }
+.ui-ios-modern .prep-fitting-list dd { margin: 0; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .ui-ios-modern .field input,
 .ui-ios-modern .field select,
 .ui-ios-modern textarea,
@@ -289,6 +305,8 @@ body.ui-ios-modern {
   .ui-ios-modern .ios-key-date { min-height: 80px; padding: 14px 16px; }
   .ui-ios-modern .ios-date-copy strong { font-size: 18px; }
   .ui-ios-modern .prep-list-panel { padding: 0; border-radius: 0; background: none; }
+  .ui-ios-modern .prep-resource-links { display: grid; grid-template-columns: 1fr; }
+  .ui-ios-modern .prep-resource-links a { width: 100%; }
   .ui-ios-modern .prep-summary-card { padding: 18px 16px; }
   .ui-ios-modern .prep-completion-card { min-height: 0; gap: 14px; }
   .ui-ios-modern .prep-next-card { padding: 16px; }
@@ -354,6 +372,7 @@ body.ui-ios-modern {
   .ui-ios-modern .prep-task { break-inside: avoid; }
   .ui-ios-modern .prep-flow-card, .ui-ios-modern .prep-flow-item { break-inside: avoid; }
   .ui-ios-modern .prep-undated > ul { display: block; }
+  .ui-ios-modern .prep-resource-panel details > :not(summary) { display: block; }
   .ui-ios-modern .prep-task-side { position: static; grid-column: 2; }
   .ui-ios-modern .detail-table tbody tr { display: table-row; }
   .ui-ios-modern .detail-table td { display: table-cell; }
