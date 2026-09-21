@@ -4,7 +4,7 @@
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root.document) {
     const start = () => {
-      if (api.isPreviewMode(root.location?.search || '')) api.addPreviewNavigation(root.document);
+      if (api.isPreviewMode(root.location?.search || '')) api.addPreviewNavigation(root.document, root.location.search);
       root.document.querySelectorAll('[data-rsvp-widget]').forEach((mount, index) => api.mount(mount, root.WEDDING_RSVP_CONFIG || {}, index));
     };
     if (root.document.readyState === 'loading') root.document.addEventListener('DOMContentLoaded', start, { once: true });
@@ -31,7 +31,7 @@
   function isPreviewMode(search) {
     return new URLSearchParams(search).get('preview') === '1';
   }
-  function addPreviewNavigation(doc) {
+  function addPreviewNavigation(doc, search = '') {
     if (doc.querySelector('.rsvp-preview-nav')) return;
     const source = [...doc.scripts].find(script => /\/rsvp-client\.js(?:\?|$)/.test(script.src));
     if (!source) return;
@@ -40,7 +40,12 @@
     nav.dataset.design = doc.querySelector('[data-rsvp-widget]')?.dataset.design || '';
     nav.setAttribute('aria-label', '招待状プレビューの操作');
     const back = doc.createElement('a');
-    back.href = new URL('../showcase/#invitations', source.src).href;
+    const gallery = new URL('../showcase/#invitations', source.src);
+    const params = new URLSearchParams(search);
+    ['date', 'from', 'venue', 'time', 'reception', 'end', 'deadline'].forEach(key => {
+      if (params.has(key)) gallery.searchParams.set(key, params.get(key));
+    });
+    back.href = gallery.href;
     back.textContent = '← デザイン一覧へ戻る';
     const note = doc.createElement('span');
     note.textContent = 'プレビュー・送信なし';

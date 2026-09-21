@@ -23,21 +23,21 @@ test('PDFの挙式・披露宴・氏名を全ページの共通初期値にす�
   assert.equal(event.date, '2027-03-07'); assert.equal(event.names, '智哉 & 梨那');
   assert.equal(event.getTime('time'), '12:00'); assert.equal(event.getTime('reception'), '13:00'); assert.equal(event.getTime('end'), '15:20');
   assert.equal(event.getTime('arrival'), ''); assert.equal(event.getTime('photoTime'), ''); assert.equal(event.deadline, '');
-  for (const file of ['index.html', 'showcase/index.html', 'invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html', 'invite/letter/index.html', 'invite/story/index.html', 'invite/rose/index.html']) {
+  for (const file of ['index.html', 'showcase/index.html', 'invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html', 'invite/letter/index.html', 'invite/story/index.html', 'invite/rose/index.html', 'invite/celestial/index.html', 'invite/japonica/index.html', 'invite/champagne/index.html']) {
     const html = fs.readFileSync(path.join(__dirname, '..', file), 'utf8');
     assert.ok(html.includes('wedding-details.js'));
     for (const script of html.matchAll(/<script>([\s\S]*?)<\/script>/g)) assert.doesNotThrow(() => new vm.Script(script[1]));
   }
 });
-test('プランナーからWeb招待状へ進め、6デザインを最初から見られる', () => {
+test('プランナーからWeb招待状へ進め、9デザインを最初から見られる', () => {
   const showcase = fs.readFileSync(path.join(__dirname, '../showcase/index.html'), 'utf8');
   assert.match(page, /class="hero-invite-link" href="showcase\/#invitations"/);
   assert.match(page, /class="ios-action-row" href="showcase\/#invitations"/);
   assert.match(showcase, /id="invitations"/);
   assert.ok(showcase.indexOf('id="invitations"') < showcase.indexOf('class="date-grid"'));
   assert.match(showcase, /shared\.set\("preview","1"\)/);
-  assert.match(showcase, /6つのデザイン/);
-  for (const route of ['../invite/', '../invite/reference/', '../invite/botanical/', '../invite/letter/', '../invite/story/', '../invite/rose/']) {
+  assert.match(showcase, /9つのデザイン/);
+  for (const route of ['../invite/', '../invite/reference/', '../invite/botanical/', '../invite/letter/', '../invite/story/', '../invite/rose/', '../invite/celestial/', '../invite/japonica/', '../invite/champagne/']) {
     assert.ok(showcase.includes(`data-route="${route}"`));
   }
 });
@@ -162,7 +162,7 @@ test('共有URLは選択デザインと確定時刻を使い、Googleフォー�
   assert.equal(url.searchParams.get('time'), '12:00'); assert.equal(url.searchParams.get('reception'), '13:00'); assert.equal(url.searchParams.get('end'), '15:20');
   assert.equal(url.searchParams.get('deadline'), '2027-01-15'); assert.ok(!url.searchParams.has('form'));
   assert.ok(!page.includes('公開したGoogleフォーム')); assert.ok(page.includes('原本の') || page.includes('日程・時間・締切の原本'));
-  for (const [design, route] of Object.entries({ balloon: 'invite/', garden: 'invite/reference/', botanical: 'invite/botanical/', letter: 'invite/letter/', story: 'invite/story/', rose: 'invite/rose/' })) {
+  for (const [design, route] of Object.entries({ balloon: 'invite/', garden: 'invite/reference/', botanical: 'invite/botanical/', letter: 'invite/letter/', story: 'invite/story/', rose: 'invite/rose/', celestial: 'invite/celestial/', japonica: 'invite/japonica/', champagne: 'invite/champagne/' })) {
     vm.runInContext(`settings.invitationDesign = ${JSON.stringify(design)}`, p.context);
     assert.equal(new URL(p.read('invitationPageUrl()')).pathname, '/primrose-wedding-planner/' + route);
   }

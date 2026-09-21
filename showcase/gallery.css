@@ -1,0 +1,73 @@
+/* The preview cards use the same art and palette as the full invitations. */
+body.gallery{background:#f8f5f1;color:#453735}
+.gallery-page{width:min(1120px,calc(100% - 64px));margin:auto}
+.gallery-nav{display:flex;justify-content:space-between;align-items:center;gap:20px;min-height:82px;border-bottom:1px solid #e1d9ce}
+.gallery-nav a{display:flex;align-items:center;min-height:44px;font-size:12px;text-decoration:none}
+.gallery-nav>span{font-family:var(--serif);font-size:13px;letter-spacing:.13em}
+.gallery-hero{position:relative;padding:74px 0 62px;overflow:hidden}
+.hero-flower{position:absolute;right:-30px;top:-14px;width:360px;height:340px;background:url("../assets/ui/botanical-corner.png") center/contain no-repeat;opacity:.6;pointer-events:none}
+.gallery-eyebrow{position:relative;margin:0 0 22px;color:#8b695b;font-size:10px;font-weight:500;letter-spacing:.18em}
+.gallery-hero h1{position:relative;margin:0;font-family:var(--serif);font-size:clamp(29px,3.8vw,44px);font-weight:400;line-height:1.9;letter-spacing:.06em}
+.gallery-hero h1 em{font-style:normal}
+.gallery-lead{position:relative;margin:24px 0 0;color:#7d7068;font-size:13px;line-height:2}
+.collection-sign{position:absolute;right:52px;bottom:35px;margin:0;color:#b88c77;font-family:var(--serif);font-size:47px;font-style:italic;rotate:-8deg}
+.collection{scroll-margin-top:24px}
+.collection-head{display:flex;align-items:end;justify-content:space-between;gap:18px;border-bottom:1px solid #d7cbbd;padding-bottom:19px}
+.collection-head .gallery-eyebrow{margin-bottom:10px;font-size:9px}
+.collection-head h2{margin:0;font-family:var(--serif);font-size:25px;font-weight:500;letter-spacing:.05em}
+.collection-head>p{margin:0;color:#85766c;font-size:12px}
+.preview-note{margin:16px 0 30px;color:#84776e;font-size:11px;line-height:1.9}
+.samples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:42px 28px}
+.sample{position:relative;min-width:0}
+.stationery{position:relative;isolation:isolate;container-type:inline-size;display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:380/530;overflow:hidden;background:var(--cover);color:var(--ink);box-shadow:0 2px 4px #5744270b,0 13px 30px #57442712;transition:transform .5s,box-shadow .5s}
+.stationery .cover-art *{animation:none!important}
+.stationery .art-frame{inset:8%;border-width:1px}.stationery .art-frame::after{inset:4px}
+.stationery .mini-copy{position:relative;width:100%;padding:0 8%;text-align:center}
+.stationery .mini-copy>small{font-size:2.2cqw;font-weight:500;letter-spacing:.15em}
+.stationery .cover-heading{font-size:22cqw;line-height:.87;margin:6cqw 0 0;font-weight:400}
+.stationery .cover-heading em{margin-top:3cqw}
+.mini-names{margin:8cqw 0 0;font-family:var(--serif);font-size:6.2cqw;letter-spacing:.08em}
+.mini-date{margin:5cqw 0 0;font-family:var(--serif);font-size:7.4cqw;letter-spacing:.07em}
+.mini-line{display:block;width:1px;height:8cqw;margin:5cqw auto 4cqw;background:var(--gold)}
+.stationery.theme-balloon .art-frame{inset:9% 10%;border-radius:48% 48% 0 0}
+.stationery.theme-reference .art-frame{border-radius:150px 150px 0 0}
+.stationery.theme-botanical .art-frame{inset:5%}
+.stationery.theme-letter .mini-copy{width:80%;padding:9% 6%;background:var(--paper);box-shadow:0 7px 17px #6d482b25;rotate:-3deg}
+.stationery.theme-letter .mini-copy::before{position:absolute;inset:7px;border:1px solid var(--rule);content:""}
+.stationery.theme-letter .cover-heading{font-size:18cqw}
+.stationery.theme-letter .art-frame{inset:auto 0 0;height:35%}
+.stationery.theme-letter .art-seal{width:10cqw;height:10cqw;left:calc(50% - 5cqw);bottom:6%;border-width:2px;font-size:5cqw}
+.stationery.theme-story .art-frame{inset:15% -24% -10% 48%}
+.stationery.theme-story .mini-copy{text-align:left;padding:0 11%}
+.stationery.theme-story .cover-heading{font-size:26cqw}.stationery.theme-story .cover-heading em{margin-left:3cqw}
+.stationery.theme-story .mini-line{width:10cqw;height:1px;margin-left:0}.stationery.theme-story .mini-date{font-size:12cqw;letter-spacing:-.03em}
+.stationery.theme-rose .art-frame{inset:7% 5%;border-radius:50%}
+.stationery.theme-celestial .cover-art::after{box-shadow:-4px 2px 0 -1px #d1b881;animation:none}
+.stationery.theme-japonica .art-ribbon{height:24%;top:5%}.stationery.theme-japonica .art-orbit{width:60%;height:auto;aspect-ratio:1;left:20%;top:25%}
+.stationery.theme-japonica .mini-copy{padding-top:12%}.stationery.theme-japonica .cover-heading{font-size:17cqw}
+.stationery.theme-champagne .art-frame{inset:10% 9%;border-radius:100px 100px 0 0}
+.stationery.theme-champagne .cover-heading{font-size:21cqw}
+.sample-body{padding:17px 1px 0}
+.sample-number{display:flex;align-items:center;gap:10px;margin:0 0 10px;color:#ae8a71;font-family:var(--serif);font-size:18px}
+.sample-number span{font-family:var(--sans);font-size:8px;font-weight:500;letter-spacing:.16em}
+.sample h3{margin:0;font-family:var(--serif);font-size:20px;font-weight:500;letter-spacing:.06em}
+.sample-en{margin:4px 0 0;color:#a98e78;font-family:var(--serif);font-size:19px;font-style:italic}
+.sample-description{min-height:38px;margin:8px 0 0;color:#817266;font-size:11px;line-height:1.8}
+.sample-link{display:flex;align-items:center;justify-content:space-between;min-height:48px;margin-top:10px;border-top:1px solid #ddcfc2;color:#715344;font-size:12px;text-decoration:none}
+.sample-link>span:last-child{font-size:20px}.sample-link::after{position:absolute;inset:0;content:""}
+.sample:focus-within{outline:2px solid #927959;outline-offset:7px}
+@media(hover:hover){.sample:hover .stationery{transform:translateY(-6px);box-shadow:0 24px 36px #57442724}.sample:hover .sample-link{color:#ad665a}}
+.date-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:62px;padding:36px 0;border-block:1px solid #ddcfc2}
+.date-grid>div+div{padding-left:30px;border-left:1px solid #ddcfc2}
+.date-grid small{display:block;margin-bottom:13px;color:#a18169;font-size:9px;letter-spacing:.16em}
+.date-grid strong{font-family:var(--serif);font-size:22px;font-weight:500;letter-spacing:.05em}.date-grid p{margin:10px 0 0;color:#857367;font-size:11px}
+.gallery-footer{padding:40px 0 46px;text-align:center}.footer-sign{margin:0 0 20px;font-family:var(--serif);font-size:38px;font-style:italic;color:#ad8b71}.gallery-footer>div{display:flex;justify-content:center;gap:30px}.gallery-footer a{display:flex;align-items:center;min-height:44px;color:#857367;font-size:11px;text-decoration:none}
+@media(max-width:720px){
+.gallery-page{width:calc(100% - 36px)}.gallery-nav{min-height:64px}.gallery-nav>span{font-size:9px;letter-spacing:.07em}.gallery-nav a{font-size:11px}
+.gallery-hero{padding:45px 4px 42px}.hero-flower{top:-42px;right:-102px;width:280px;height:250px;opacity:.45}.gallery-hero h1{font-size:26px;line-height:2}.gallery-eyebrow{font-size:9px;margin-bottom:20px}.gallery-lead{font-size:11px;margin-top:17px}.collection-sign{position:relative;right:auto;bottom:auto;margin:12px 0 0;text-align:right;font-size:26px;opacity:.6}
+.collection-head{align-items:center}.collection-head h2{font-size:21px}.collection-head>p{font-size:10px;max-width:8em;line-height:1.9}.preview-note{font-size:10px;margin:13px 0 22px}
+.samples{grid-template-columns:repeat(2,minmax(0,1fr));gap:27px 16px}.sample-body{padding-top:12px}.sample-number{margin-bottom:6px;font-size:15px}.sample-number span{font-size:6px;letter-spacing:.12em}.sample h3{font-size:17px;letter-spacing:0}.sample-en{font-size:16px}.sample-description{font-size:10px;min-height:36px;line-height:1.8}.sample-link{font-size:11px;min-height:44px;margin-top:8px}
+.date-grid{gap:18px;margin-top:39px;padding:28px 0}.date-grid>div+div{padding-left:18px}.date-grid strong{font-size:17px}.date-grid p{font-size:10px;line-height:1.8}.footer-sign{font-size:31px}
+}
+@media(max-width:360px){.gallery-page{width:calc(100% - 28px)}.samples{gap:25px 12px}.gallery-hero h1{font-size:23px}.collection-sign{display:none}.sample h3{font-size:15px}.sample-description{min-height:54px}.date-grid{grid-template-columns:1fr}.date-grid>div+div{border-left:0;border-top:1px solid #ddcfc2;padding:22px 0 0}}
+@media(prefers-reduced-motion:reduce){.stationery{transition:none}}

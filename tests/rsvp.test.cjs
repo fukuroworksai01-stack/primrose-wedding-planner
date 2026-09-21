@@ -137,6 +137,12 @@ test('デザイン比較のプレビューだけを判別し、一覧に戻れ�
   assert.equal(created[0].dataset.design, 'garden');
   assert.equal(created[0].children[0].href, 'https://example.test/primrose-wedding-planner/showcase/#invitations');
   assert.match(created[0].children[1].textContent, /送信なし/);
+  client.addPreviewNavigation(document, '?preview=1&date=2027-03-07&from=A%20%26%20B&deadline=2027-01-19&form=https://invalid.test');
+  const back = new URL(created[1].children[0].href);
+  assert.equal(back.searchParams.get('from'), 'A & B');
+  assert.equal(back.searchParams.get('deadline'), '2027-01-19');
+  assert.equal(back.searchParams.has('form'), false);
+  assert.equal(back.hash, '#invitations');
 });
 test('Google由来かつ今回の送信IDの確認のみ受け付ける', () => {
   const requestId = randomUUID(), message = { origin: 'https://n-example-script.googleusercontent.com', data: { type: 'wedding-rsvp-result', requestId, ok: true, receipt: 'ABCDEF12' } };
@@ -154,8 +160,8 @@ test('クライアント側の欠席データを正規化し、表示にHTMLを�
   assert.ok(source.includes('item.textContent = data')); assert.ok(!source.includes("addEventListener('load'"));
   assert.ok(source.includes("credentials: 'omit'")); assert.ok(!source.includes("mode: 'no-cors'"));
 });
-test('6デザインは共通フォームを一つだけ読み込み、未確定の時刻を作らない', () => {
-  for (const relative of ['invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html', 'invite/letter/index.html', 'invite/story/index.html', 'invite/rose/index.html']) {
+test('9デザインは共通フォームを一つだけ読み込み、未確定の時刻を作らない', () => {
+  for (const relative of ['invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html', 'invite/letter/index.html', 'invite/story/index.html', 'invite/rose/index.html', 'invite/celestial/index.html', 'invite/japonica/index.html', 'invite/champagne/index.html']) {
     const page = fs.readFileSync(path.join(__dirname, '..', relative), 'utf8');
     assert.equal((page.match(/data-rsvp-widget/g) || []).length, 1);
     assert.ok(page.indexOf('rsvp-config.js') < page.indexOf('rsvp-client.js'));
@@ -165,8 +171,17 @@ test('6デザインは共通フォームを一つだけ読み込み、未確定�
     for (const script of page.matchAll(/<script>([\s\S]*?)<\/script>/g)) assert.doesNotThrow(() => new vm.Script(script[1]));
   }
 });
-test('追加した3デザインの識別子を回答一覧に保存できる', () => {
-  for (const design of ['letter', 'story', 'rose']) {
+test('9案に別人のモデル写真や架空のふたりの物語を表示しない', () => {
+  for (const relative of ['invite/index.html', 'invite/reference/index.html', 'invite/botanical/index.html', 'invite/letter/index.html', 'invite/story/index.html', 'invite/rose/index.html', 'invite/celestial/index.html', 'invite/japonica/index.html', 'invite/champagne/index.html']) {
+    const page = fs.readFileSync(path.join(__dirname, '..', relative), 'utf8');
+    assert.ok(page.includes('authentic.css'));
+    assert.ok(page.includes('data-event-date-short'));
+    assert.ok(page.includes('セント・ポール大聖堂'));
+    assert.ok(!/assets\/invite3\/|img_dress|img_movie|bg_mv_|Groom|Bride|Our Wedding|For You|会場イメージ/.test(page));
+  }
+});
+test('9デザインの識別子を回答一覧に保存できる', () => {
+  for (const design of ['balloon', 'garden', 'botanical', 'letter', 'story', 'rose', 'celestial', 'japonica', 'champagne']) {
     const b = backend();
     assert.equal(b.api.submitRsvp(payload({ design })).ok, true);
     assert.equal(b.answers.rows[1][11], design);

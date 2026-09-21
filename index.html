@@ -2180,7 +2180,7 @@
         </a>
         <a class="ios-action-row" href="showcase/#invitations">
           <i class="iconoir-page" aria-hidden="true"></i>
-          <span class="ios-action-copy"><strong>Web招待状を見比べる</strong><small>6つのデザインをプレビュー</small></span>
+          <span class="ios-action-copy"><strong>Web招待状を見比べる</strong><small>9つのデザインをプレビュー</small></span>
           <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
         </a>
         <button class="ios-action-row" type="button" data-tab-target="venue">
@@ -2388,14 +2388,14 @@
               <div class="settings-grid" style="grid-template-columns:repeat(2,minmax(0,1fr))">
                 <label class="field"><span>招待状に表示する名前</span><input id="invitationNames" type="text" placeholder="例：太郎・花子" maxlength="60"></label>
                 <label class="field"><span>出欠回答期限</span><input id="rsvpDeadline" type="date"></label>
-                <label class="field invite-field-wide"><span>招待状のデザイン</span><select id="invitationDesign"><option value="balloon">バルーン</option><option value="garden">ポップガーデン</option><option value="botanical">ボタニカル</option><option value="letter">シンプルレター</option><option value="story">フォトストーリー</option><option value="rose">ローズガーデン</option></select></label>
+                <label class="field invite-field-wide"><span>招待状のデザイン</span><select id="invitationDesign"><option value="balloon">花の招待状</option><option value="garden">緑の招待状</option><option value="botanical">ボタニカル</option><option value="letter">レター</option><option value="story">エディトリアル</option><option value="rose">ローズ</option><option value="celestial">星空</option><option value="japonica">和の結び</option><option value="champagne">シャンパン</option></select></label>
               </div>
             </div>
           </div>
           <div class="site-invite-only" hidden>
             <div class="invite-help">
               <p id="invitationHelpText">出欠・アレルギー・送迎の回答を、招待状のページ内から送信できます。</p>
-              <a id="invitationHelpLink" href="showcase/" target="_blank" rel="noopener noreferrer">6つのデザインを見る</a>
+              <a id="invitationHelpLink" href="showcase/" target="_blank" rel="noopener noreferrer">9つのデザインを見る</a>
             </div>
             <div class="invite-share">
               <input id="inviteShareUrl" type="text" aria-label="Web招待状の共有URL" readonly>
@@ -2765,7 +2765,7 @@
         migrated.nextMeetingDate = baseSettings.nextMeetingDate;
         migrated.nextMeetingTime = baseSettings.nextMeetingTime;
       }
-      if (!["balloon", "garden", "botanical", "letter", "story", "rose"].includes(migrated.invitationDesign)) migrated.invitationDesign = "balloon";
+      if (!["balloon", "garden", "botanical", "letter", "story", "rose", "celestial", "japonica", "champagne"].includes(migrated.invitationDesign)) migrated.invitationDesign = "balloon";
       delete migrated.googleFormUrl;
       return migrated;
     }
@@ -3340,7 +3340,7 @@
     }
 
     function invitationPageUrl() {
-      const route = { balloon: "invite/", garden: "invite/reference/", botanical: "invite/botanical/", letter: "invite/letter/", story: "invite/story/", rose: "invite/rose/" }[settings.invitationDesign] || "invite/";
+      const route = { balloon: "invite/", garden: "invite/reference/", botanical: "invite/botanical/", letter: "invite/letter/", story: "invite/story/", rose: "invite/rose/", celestial: "invite/celestial/", japonica: "invite/japonica/", champagne: "invite/champagne/" }[settings.invitationDesign] || "invite/";
       const url = new URL(route, PUBLIC_APP_URL);
       const values = {
         from: settings.invitationNames.trim(),
@@ -3385,7 +3385,7 @@
         status.textContent = !connected ? "回答受付の接続を確認" : validDeadline ? "スプレッドシート連携済み" : "返信期限を設定";
         help.textContent = "出欠・アレルギー・送迎をページ内で回答し、非公開のスプレッドシートに送信できます。";
         helpLink.href = new URL("showcase/", PUBLIC_APP_URL).toString();
-        helpLink.textContent = "6つのデザインを見る";
+        helpLink.textContent = "9つのデザインを見る";
         privacy.textContent = !connected ? "回答受付は未接続です。" : validDeadline ? "回答一覧は一般公開しません。ONE-Wへの自動転記はありません。" : "返信期限はPDFに記載がありません。ゲストへの共有には、挙式日より前の期限の設定が必要です。";
       }
       const shareReady = usingSiteInvite && connected && Boolean(validDeadline) && Boolean(settings.invitationNames.trim()) && Boolean(settings.weddingDate && settings.weddingTime && settings.venueName.trim());
