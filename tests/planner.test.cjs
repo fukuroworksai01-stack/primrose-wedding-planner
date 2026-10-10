@@ -72,7 +72,7 @@ test('見積とメモは維持し、旧チェックリストは全て表示か�
   assert.ok(!('googleFormUrl' in settings)); assert.equal(p.read('rows')[0][5], 320000);
   const tasks = p.read('prepTasks');
   assert.equal(tasks.length, preparation.tasks.length);
-  assert.ok(tasks.every(task => task.id.startsWith('pdf-') && task.source === 'pdf' && !task.done));
+  assert.ok(tasks.every(task => task.id.startsWith('pdf-') && ['pdf', 'message'].includes(task.source) && !task.done));
   assert.ok(!tasks.some(task => ['choose-dress', 'my-plan'].includes(task.id)));
   const archive = p.read('prepArchive');
   assert.equal(archive.length, 1); assert.equal(archive[0].tasks[0].dueDate, '2026-09-20');
@@ -80,16 +80,18 @@ test('見積とメモは維持し、旧チェックリストは全て表示か�
   const reloaded = planner({ uxVersion: 10, settings, rows: baseline, prepTasks: tasks, prepArchive: archive });
   assert.deepEqual(reloaded.read('prepArchive'), archive);
 });
-test('予定と3つの締切はPDF固定値、宿題は9/19の打ち合わせ前までにする', () => {
+test('予定と締切は資料・最新連絡の固定値を使い、古い宿題の日付は維持する', () => {
   const p = planner(); const tasks = p.read('prepTasks');
   for (const [id, date] of Object.entries({ 'pdf-costume-meeting': '2026-09-19', 'pdf-second-meeting': '2026-09-19', 'pdf-movie-meeting': '2026-09-27', 'pdf-third-meeting': '2026-10-25', 'pdf-invitation-reply-guidance': '2027-01-19', 'pdf-content-deadline': '2027-02-07', 'pdf-quantity-deadline': '2027-02-21', 'pdf-payment-deadline': '2027-02-24' })) {
-    const task = tasks.find(task => task.id === id); assert.equal(task.dueDate, date); assert.equal(task.source, 'pdf');
+    const task = tasks.find(task => task.id === id); assert.equal(task.dueDate, date);
+    assert.equal(task.source, id === 'pdf-third-meeting' ? 'message' : 'pdf');
   }
   assert.equal(tasks.find(task => task.id === 'pdf-costume-meeting').dueTime, '12:00');
   assert.equal(tasks.find(task => task.id === 'pdf-onew-guests').dueTime, '09:30');
   assert.equal(tasks.find(task => task.id === 'pdf-movie-meeting').dueTime, '14:00');
   assert.equal(tasks.find(task => task.id === 'pdf-third-meeting').dueTime, '15:00');
-  assert.equal(tasks.find(task => task.id === 'pdf-third-meeting').document, 'secondMeeting');
+  assert.equal(tasks.find(task => task.id === 'pdf-third-meeting').document, 'octoberContact');
+  assert.equal(tasks.find(task => task.id === 'pdf-third-meeting').relatedDocument, 'secondMeeting');
   assert.equal(tasks.find(task => task.id === 'pdf-paper-invitation').dueDate, '');
   assert.equal(tasks.find(task => task.id === 'pdf-paper-invitation').period, '2026年10月中・紙を注文する場合');
   assert.equal(p.read('settings.rsvpDeadline'), '');
@@ -115,11 +117,20 @@ test('準備の進捗率を見せず、日付のある予定を過去と今後�
   assert.equal(duringMeeting.past.length, 1);
   assert.equal(duringMeeting.future[0].primary.id, 'pdf-costume-meeting');
 });
-test('全項目のPDF・ページ・該当箇所があり、一般タスクや逆算用の日数はない', () => {
+test('全項目の出典と該当箇所があり、連絡に架空のPDF・ページを付けない', () => {
   assert.equal(new Set(preparation.tasks.map(task => task.id)).size, preparation.tasks.length);
   for (const task of preparation.tasks) {
     const document = preparation.documents[task.document];
-    assert.ok(document && document.id && task.page >= 1 && task.page <= document.pages && task.excerpt);
+    assert.ok(document && task.excerpt);
+    if (task.source === 'message') {
+      assert.equal(document.type, 'message');
+      assert.equal(document.receivedDate, '2026-10-10');
+      assert.ok(document.paragraphs.length > 0);
+      assert.ok(!('page' in task) && !('id' in document));
+      assert.ok(preparation.documents[task.relatedDocument].id);
+    } else {
+      assert.ok(document.id && task.page >= 1 && task.page <= document.pages);
+    }
     assert.ok(preparation.phases.some(phase => phase.id === task.phase));
     assert.ok(!('daysBefore' in task));
     assert.equal(task.owner, 'ふたり');
@@ -197,12 +208,12 @@ test('準備行の詳細を閉じても担当・完了・資料日程を残し�
   p.context.renderPrep = () => rendered++;
   vm.runInContext(main.slice(main.indexOf('    function parseLocalDate('), main.indexOf('    function updatePrepHome(')), p.context);
   vm.runInContext(main.slice(main.indexOf('    function prepField('), main.indexOf('    function renderPrep()')), p.context);
-  const item = vm.runInContext('renderPrepTask(prepTasks.find(task => task.description))', p.context);
+  const item = vm.runInContext('renderPrepTask(prepTasks.find(task => task.source === "pdf" && task.description))', p.context);
   const flatten = element => [element, ...element.children.flatMap(flatten)];
   const elements = flatten(item);
   assert.equal(item.children.length, 2);
   assert.equal(item.children[1].children[0].className, 'prep-task-side');
-  const task = p.read('prepTasks.find(task => task.description)');
+  const task = p.read('prepTasks.find(task => task.source === "pdf" && task.description)');
   const disclosure = elements.find(element => element.tagName === 'details');
   assert.equal(disclosure.children[0].textContent, '内容・原本');
   assert.equal(disclosure.children[1].textContent, task.description);
@@ -217,9 +228,18 @@ test('準備行の詳細を閉じても担当・完了・資料日程を残し�
   checkbox.checked = true; checkbox.listeners.change();
   const owner = elements.find(element => element.tagName === 'select');
   owner.value = '新婦'; owner.listeners.change();
-  const updated = p.read('prepTasks.find(task => task.description)');
+  const updated = p.read('prepTasks.find(task => task.source === "pdf" && task.description)');
   assert.equal(updated.done, true); assert.equal(updated.owner, '新婦');
   assert.equal(saved, 2); assert.equal(rendered, 2);
+  const message = vm.runInContext('renderPrepTask(prepTasks.find(task => task.id === "pdf-second-invitation"))', p.context);
+  const messageElements = flatten(message);
+  assert.ok(messageElements.some(element => element.textContent?.includes('2026-10-10受信')));
+  assert.ok(messageElements.some(element => element.textContent?.startsWith('連絡の該当箇所：')));
+  const relatedLinks = messageElements.filter(element => element.tagName === 'a');
+  assert.equal(relatedLinks.length, 1);
+  assert.equal(relatedLinks[0].href, `https://drive.google.com/file/d/${preparation.documents.secondMeeting.id}/view`);
+  assert.match(relatedLinks[0].textContent, /以前の打ち合わせ資料/);
+  assert.ok(!messageElements.some(element => String(element.textContent || element.href || '').includes('undefined')));
 });
 test('印刷では閉じた準備の説明を展開し、終了後に元の開閉状態へ戻す', () => {
   const closed = { open: false }; const open = { open: true }; const listeners = {};
@@ -245,7 +265,7 @@ test('宿題の9時半を過ぎたら超過を示し、12時の衣裳合わせ�
 });
 
 test('2回目のメモと追加資料を参照し、以前の次回予定だけを10月25日へ更新する', () => {
-  assert.equal(preparation.version, 2);
+  assert.equal(preparation.version, 3);
   assert.equal(preparation.documents.secondMeeting.id, '1uPT1daAijO96AKQclYgCGZtAO7P5Q5rU');
   for (const key of ['seating', 'relationships', 'invitationSamples', 'attireGuide', 'fittingList', 'familyAttire', 'timelineGuide']) {
     assert.ok(preparation.documents[key]?.id);
@@ -260,4 +280,69 @@ test('2回目のメモと追加資料を参照し、以前の次回予定だけ�
   const custom = planner({ uxVersion: 10, rows: planner().read('rows'), settings: { nextMeetingDate: '2026-11-01', nextMeetingTime: '11:00' } });
   assert.equal(custom.read('settings.nextMeetingDate'), '2026-11-01');
   assert.equal(custom.read('settings.nextMeetingTime'), '11:00');
+});
+
+test('10月10日の連絡を3つの準備に整理し、演出相談は任意・終了時刻は未案内とする', () => {
+  const brief = preparation.meetingBrief;
+  assert.deepEqual(brief.preparationIds, ['pdf-second-seating', 'pdf-second-invitation', 'pdf-second-photo']);
+  const expectedText = [/ONE-W.*席位置/, /紙とWEB.*手作り/, /集合写真.*親御様/];
+  brief.preparationIds.forEach((id, index) => {
+    const task = preparation.tasks.find(item => item.id === id);
+    assert.match(task.text, expectedText[index]);
+    assert.equal(task.dueDate, '2026-10-25'); assert.equal(task.dueTime, '15:00');
+    assert.equal(task.source, 'message'); assert.equal(task.document, brief.document);
+  });
+  assert.match(brief.optionalTopic, /あれば/);
+  assert.ok(!preparation.tasks.some(task => task.kind === 'homework' && /演出/.test(task.text)));
+  assert.match(brief.durationNote, /長め.*終了時刻は未案内/);
+  const meeting = preparation.tasks.find(task => task.id === brief.taskId);
+  assert.ok(!/約2時間|17:00/.test(meeting.description + brief.durationNote));
+});
+
+test('最新連絡への更新後も同じ準備項目の担当・完了と見積・メモを引き継ぐ', () => {
+  const baseline = planner();
+  const saved = baseline.read('prepTasks');
+  const invitation = saved.find(task => task.id === 'pdf-second-invitation');
+  Object.assign(invitation, { text: '以前の文言', source: 'pdf', document: 'secondMeeting', page: 1, owner: '新婦', done: true });
+  const p = planner({ uxVersion: 11, rows: baseline.read('rows'), settings: { venueMemo: '親族に聞くこと' }, prepTasks: saved });
+  const updated = p.read('prepTasks.find(task => task.id === "pdf-second-invitation")');
+  assert.equal(updated.owner, '新婦'); assert.equal(updated.done, true);
+  assert.equal(updated.source, 'message'); assert.equal(updated.document, 'octoberContact');
+  assert.ok(!('page' in updated));
+  assert.equal(p.read('settings.venueMemo'), '親族に聞くこと');
+  vm.runInContext('recomputeRows()', p.context);
+  assert.equal(p.read('totals().final'), 2350670);
+});
+
+test('ホームでは準備を先に示し、見積・過去予定・詳細な記録は閉じておく', () => {
+  assert.ok(page.indexOf('class="panel planner-priorities"') < page.indexOf('class="planner-estimate"'));
+  assert.equal((page.match(/class="planner-action-card"/g) || []).length, 3);
+  for (const selector of ['class="planner-estimate"', 'class="prep-flow-card is-past"', 'class="prep-task-library" id="prepTaskLibrary"']) {
+    assert.match(page, new RegExp('<details ' + selector + '>'));
+  }
+  assert.match(main, /const initialTab = pageParams.get\("tab"\) \|\| "home"/);
+  assert.ok(!page.includes('id="homePrepProgress"'));
+});
+
+test('打ち合わせ時刻を過ぎたら案内を振り返る表示にし、準備を自動完了にしない', () => {
+  const p = planner();
+  const nodes = new Map();
+  function element(tagName) { return { tagName, children: [], textContent: '', append(...children) { this.children.push(...children); } }; }
+  p.context.document = { createElement: element, querySelector: selector => {
+    if (!nodes.has(selector)) nodes.set(selector, element('div'));
+    return nodes.get(selector);
+  } };
+  p.context.setText = (id, value) => { p.context.document.querySelector('#' + id).textContent = value; };
+  vm.runInContext(main.slice(main.indexOf('    function parseLocalDate('), main.indexOf('    function prepField(')), p.context);
+  p.context.renderPrepFlowList = () => {};
+  p.context.renderPrepUndated = () => {};
+  vm.runInContext('const ClockDate = Date; let clockNow = ClockDate.parse("2026-10-25T14:59:00+09:00"); Date = class extends ClockDate { constructor(...args) { super(...(args.length ? args : [clockNow])); } static now() { return clockNow; } }; updatePrepHome();', p.context);
+  assert.equal(nodes.get('#homeMeetingEyebrow').textContent, '次の打ち合わせ · 3回目');
+  assert.equal(nodes.get('#homePreparationTitle').textContent, 'まず、この3つを進める');
+  assert.equal(nodes.get('#homeNextMeetingTitle').textContent, '10月25日（日） 15:00〜');
+  assert.equal(nodes.get('#venueLatestMessage').children.length, preparation.documents.octoberContact.paragraphs.length);
+  vm.runInContext('clockNow = ClockDate.parse("2026-10-25T15:00:00+09:00"); updatePrepHome();', p.context);
+  assert.equal(nodes.get('#homeMeetingEyebrow').textContent, '10月25日の打ち合わせの案内');
+  assert.equal(nodes.get('#homePreparationTitle').textContent, '準備・相談したことを見返す');
+  assert.ok(p.read('prepTasks').every(task => !task.done));
 });

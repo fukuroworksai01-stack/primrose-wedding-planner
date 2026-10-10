@@ -3,8 +3,15 @@
   if (typeof module === "object" && module.exports) module.exports = data;
   else root.WEDDING_PREPARATION = data;
 })(typeof globalThis !== "undefined" ? globalThis : this, function () {
-  // Drive内のPDFを目視確認した転記。未記載の日付・宿題は補完しない。
+  // Drive内のPDFと、本人が共有した式場からの連絡。未記載の日時は補完しない。
   const documents = {
+    octoberContact: { type: "message", title: "式場からの次回打ち合わせの連絡", receivedDate: "2026-10-10", paragraphs: [
+      "10/25(日)15：00～　次回のお打合せ宜しくお願い致します♪",
+      "次回は少し時間長くいただきましておふたりの一日の流れと必要なアイテムについて紹介させていただきます。おふたりが「こんな演出したいな」なことがございましたら、その際にぜひ教えてくださいませ。",
+      "①ONE-Wの配席にてゲスト様のお席位置のご検討",
+      "②招待状→紙とWEBの送り分け予定　手作りできそうかご検討ください！",
+      "写真→集合写真は親御様にご相談してみてください！"
+    ] },
     schedule: { title: "プリムローズ_結婚式スケジュール（2027-03-07）.pdf", id: "1VA-WOWwM5L_0wDAOvovJB7Yzh9Zu5Y9R", pages: 1 },
     homework: { title: "プリムローズ_打ち合わせメモ（1回目）.pdf", id: "1u2ixXzdW1htRmOH_fzEAt-1O3ABka3D1", pages: 1 },
     video: { title: "プリムローズ_映像・BGM準備_メール送受信確認.pdf", id: "1VwGeAt9tEAG7r6CR71r1rIYK9t6Z5GqE", pages: 2 },
@@ -18,8 +25,8 @@
     timelineGuide: { title: "プリムローズ_タイムスケジュール表ガイド.pdf", id: "1CScsNTW9WQ6Wiaod4eZ4Htvw2kZDqnsG", pages: 1 }
   };
   const phases = [
-    { id: "next", title: "3rd打ち合わせまで", period: "2026年10月25日 15:00まで" },
-    { id: "homework", title: "次回までの宿題", period: "2nd打ち合わせ前まで" },
+    { id: "next", title: "10月25日に向けた準備", period: "2026年10月25日 15:00まで" },
+    { id: "homework", title: "初回打ち合わせからの準備", period: "9月19日の2nd打ち合わせ前まで" },
     { id: "appointments", title: "日程が決まっている打ち合わせ", period: "9月19日・9月27日・10月25日" },
     { id: "video", title: "映像・BGMサイトの登録", period: "日付の記載なし" },
     { id: "meetings", title: "今後の打ち合わせ", period: "資料に記載された実施時期" },
@@ -29,9 +36,9 @@
     { id: "final", title: "最終確認", period: "式の1〜2週間前" }
   ];
   const tasks = [
-    { id: "pdf-second-seating", phase: "next", category: "ONE-W", text: "ONE-Wで席順の仮配席を進める", description: "次回打ち合わせまでのお願い。席順表見本では、ONE-Wの席順を4th STAGEまでに配席する案内もあります。", dueDate: "2026-10-25", dueTime: "15:00", kind: "homework", document: "secondMeeting", page: 1, excerpt: "次回までのお願い／One-Wにて配席" },
-    { id: "pdf-second-invitation", phase: "next", category: "招待状", text: "Web・紙の招待状をどう使うか検討する", description: "2nd打ち合わせでは招待状の内容を相談。紙の注文を希望する場合は、別途10月中に担当者へ連絡します。", dueDate: "2026-10-25", dueTime: "15:00", kind: "homework", document: "secondMeeting", page: 1, excerpt: "次回までのお願い／ご招待状とお写真についてご検討" },
-    { id: "pdf-second-photo", phase: "next", category: "写真", text: "集合写真・写真データを検討する", description: "集合写真は検討中。写真データ200カット・150,000円の案内がありますが、選択・契約済みとは扱いません。", dueDate: "2026-10-25", dueTime: "15:00", kind: "homework", document: "secondMeeting", page: 1, excerpt: "お写真について／集合写真 ご検討／データ 200カット ￥150,000" },
+    { id: "pdf-second-seating", phase: "next", category: "ONE-W", text: "ONE-Wでゲストの席位置を検討する", description: "10月10日の連絡で、次回までにゲストのお席位置を検討するよう案内されています。席順表見本では、4th STAGEまでに配席を整える案内もあります。", dueDate: "2026-10-25", dueTime: "15:00", kind: "homework", source: "message", document: "octoberContact", relatedDocument: "secondMeeting", excerpt: "ONE-Wの配席にてゲスト様のお席位置のご検討" },
+    { id: "pdf-second-invitation", phase: "next", category: "招待状", text: "紙とWEBの送り分け・手作りを検討する", description: "誰に紙・WEBで送るか、手作りできそうかを検討します。紙を式場へ注文する場合は、2回目の打ち合わせ資料で10月中の連絡が案内されています。", dueDate: "2026-10-25", dueTime: "15:00", kind: "homework", source: "message", document: "octoberContact", relatedDocument: "secondMeeting", excerpt: "招待状→紙とWEBの送り分け予定　手作りできそうかご検討ください！" },
+    { id: "pdf-second-photo", phase: "next", category: "写真", text: "集合写真について親御様に相談する", description: "集合写真をどうするか、親御様に相談します。以前の資料にある写真データ200カット・150,000円は別の検討項目で、選択・契約済みではありません。", dueDate: "2026-10-25", dueTime: "15:00", kind: "homework", source: "message", document: "octoberContact", relatedDocument: "secondMeeting", excerpt: "写真→集合写真は親御様にご相談してみてください！" },
     { id: "pdf-paper-invitation", phase: "next", category: "紙の招待状", text: "紙の招待状を注文する場合は担当者へ連絡する", description: "ONE-Wのカタログで候補をお気に入り登録し、紙を注文する場合に連絡します。", kind: "conditional", period: "2026年10月中・紙を注文する場合", document: "secondMeeting", page: 1, excerpt: "紙のご注文の場合はONE-Wカタログのお気に入り／ご注文の場合は10月中にご連絡ください" },
     { id: "pdf-onew-guests", phase: "homework", category: "ONE-W", text: "ONE-Wの招待者を仮登録する", dueDate: "2026-09-19", dueTime: "09:30", kind: "homework", period: "2nd打ち合わせ前まで", document: "homework", page: 1, excerpt: "One-Wの『招待者仮登録』" },
     { id: "pdf-onew-favorites", phase: "homework", category: "ONE-W", text: "カタログの気になるアイテムをお気に入り登録する", description: "ONE-Wの「カタログ」で、気になったアイテムに♡を付けます。", dueDate: "2026-09-19", dueTime: "09:30", kind: "homework", period: "2nd打ち合わせ前まで", document: "homework", page: 1, excerpt: "『カタログ』にて気になったアイテムをお気に入り登録（♡マーク）" },
@@ -41,7 +48,7 @@
     { id: "pdf-marrysys-email", phase: "video", category: "Marrysys", text: "メールの送受信を確認する", description: "check.prim@marrysys.jp 宛に、件名は披露宴日8桁「20270307」、本文は氏名フルネーム・携帯電話番号を記載。返信が届くか確認します。iCloudは返信に約1分かかる場合があります。", kind: "undated", document: "video", page: 1, excerpt: "STEP 1〜3／メールの送受信確認" },
     { id: "pdf-marrysys-registration", phase: "video", category: "Marrysys", text: "登録完了メールから本登録を行う", description: "代表1名の作業。数日中に届く登録完了メールのURLから、半角英数6文字以上のパスワードを設定します。", kind: "undated", document: "video", page: 2, excerpt: "STEP 4〜6／登録完了メールを確認・パスワード設定" },
     { id: "pdf-marrysys-profile", phase: "video", category: "Marrysys", text: "基本情報の氏名表記を確認する", description: "ログインIDは新郎の携帯番号。基本情報の氏名（漢字・アルファベット）を確認します。担当者とはメッセージで連絡でき、マイページはブックマークやホーム画面に追加できます。", kind: "undated", document: "video", page: 2, excerpt: "基本情報でお名前の漢字とアルファベットを必ずご確認ください" },
-    { id: "pdf-third-meeting", phase: "meetings", category: "3rd stage", text: "3rd打ち合わせ", description: "内容提案（料理・ケーキ・アイテムの紹介）、配席。約2時間。日時は2回目の打ち合わせメモで確定。", dueDate: "2026-10-25", dueTime: "15:00", kind: "appointment", document: "secondMeeting", page: 1, excerpt: "次回のお打ち合わせ／10/25（日）15:00〜 3rd打ち合わせ" },
+    { id: "pdf-third-meeting", phase: "meetings", category: "3rd stage", text: "3回目の打ち合わせ", description: "当日の一日の流れと必要なアイテムの紹介。希望する演出があれば相談できます。今回は長めの打ち合わせの案内で、終了時刻はまだ案内されていません。", dueDate: "2026-10-25", dueTime: "15:00", kind: "appointment", source: "message", document: "octoberContact", relatedDocument: "secondMeeting", excerpt: "10/25(日)15：00～／一日の流れと必要なアイテム／少し時間長く" },
     { id: "pdf-fourth-meeting", phase: "meetings", category: "4th stage", text: "会場装花・内容決定の打ち合わせ", description: "メイン・ゲストテーブルの装花打ち合わせ。配席・進行・引出物等の内容決定と見積書提示。約3時間。", kind: "window", period: "式の2〜3か月前", document: "schedule", page: 1, excerpt: "お式の2〜3か月前／4th stage" },
     { id: "pdf-emcee-meeting", phase: "meetings", category: "司会", text: "司会打ち合わせ", description: "披露宴の進行について決定。約1.5時間。", kind: "window", period: "式の1〜2か月前", document: "schedule", page: 1, excerpt: "お式の1〜2か月前／司会打合せ" },
     { id: "pdf-bgm-meeting", phase: "meetings", category: "BGM", text: "BGM打ち合わせ", description: "披露宴のBGMについて決定。約1.5時間。", kind: "window", period: "式の1〜2か月前", document: "schedule", page: 1, excerpt: "お式の1〜2か月前／BGM打ち合せ" },
@@ -55,5 +62,12 @@
     { id: "pdf-final-meeting", phase: "final", category: "5th stage", text: "最終確認・準備物のお預かり・挙式リハーサル", description: "約2時間。式の2週間前から案内されます。", kind: "window", period: "式の1〜2週間前", document: "schedule", page: 1, excerpt: "5th stage／最終確認・ご準備物のお預かり・挙式リハーサル" },
     { id: "pdf-final-fitting", phase: "final", category: "必要な場合", text: "直前ドレスフィッティング", description: "サイズ確認。必要に応じて行う案内です。", kind: "conditional", period: "式の1〜2週間前・必要に応じて", document: "schedule", page: 1, excerpt: "必要に応じて直前ドレスフィッティング（サイズ確認）" }
   ].map(task => ({ dueDate: "", dueTime: "", period: "", description: "", owner: "ふたり", done: false, source: "pdf", ...task }));
-  return { version: 2, documents, phases, tasks };
+  const meetingBrief = {
+    document: "octoberContact", taskId: "pdf-third-meeting",
+    preparationIds: ["pdf-second-seating", "pdf-second-invitation", "pdf-second-photo"],
+    summary: "当日の一日の流れと、必要なアイテムの紹介があります。",
+    durationNote: "今回は長めの打ち合わせです。終了時刻は未案内です。",
+    optionalTopic: "やってみたい演出があれば、この日に相談できます。"
+  };
+  return { version: 3, documents, phases, tasks, meetingBrief };
 });

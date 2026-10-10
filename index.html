@@ -2054,17 +2054,19 @@
     }
   </style>
   <link rel="stylesheet" href="ios-ui.css?v=7">
+  <link rel="stylesheet" href="preparation-home.css?v=1">
 </head>
-<body class="ui-ios-option1 ui-ios-modern" data-active-tab="prep">
+<body class="ui-ios-option1 ui-ios-modern" data-active-tab="home">
   <main class="page">
     <header class="hero">
       <img class="ios-botanical" src="assets/ui/botanical-corner.png" alt="" aria-hidden="true" width="1374" height="1145">
       <div class="hero-main">
         <div>
           <p class="eyebrow" id="venueTitle">PRIMROSE</p>
-          <h1 id="screenTitle">準備</h1>
+          <h1 id="screenTitle">結婚式の準備</h1>
           <p class="hero-copy" id="venueCopy">智哉 &amp; 梨那</p>
           <p class="ios-today"><i class="iconoir-calendar" aria-hidden="true"></i><span id="iosToday">今日</span> 時点</p>
+          <p class="planner-wedding-line"><span id="plannerWeddingDay">2027年3月7日（日）12:00 挙式</span></p>
           <a class="hero-invite-link" href="showcase/#invitations"><i class="iconoir-page" aria-hidden="true"></i><span>Web招待状を見る</span><i class="iconoir-nav-arrow-right" aria-hidden="true"></i></a>
           <div class="hero-statuses" aria-label="結婚式準備の状態"><span>日程確定</span><span>初回見積</span><span>ONE-W利用</span></div>
           <p class="hero-location" id="heroCandidateDate">挙式日：2027年3月7日</p>
@@ -2083,64 +2085,96 @@
     </header>
 
     <nav class="app-tabs" aria-label="結婚式準備メニュー" role="tablist">
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="home"><i class="iconoir-view-grid" aria-hidden="true"></i><span>まとめ</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="home"><i class="iconoir-view-grid" aria-hidden="true"></i><span>まとめ</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="prep"><i class="iconoir-calendar" aria-hidden="true"></i><span>式までの流れ</span></button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="budget"><i class="iconoir-yen-square" aria-hidden="true"></i><span>見積</span></button>
       <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="guests"><i class="iconoir-group" aria-hidden="true"></i><span>人数試算</span></button>
-      <button class="tab-button" type="button" role="tab" aria-selected="true" data-tab-target="prep"><i class="iconoir-clipboard-check" aria-hidden="true"></i><span>準備</span></button>
-      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue"><i class="iconoir-notes" aria-hidden="true"></i><span>会場メモ</span></button>
+      <button class="tab-button" type="button" role="tab" aria-selected="false" data-tab-target="venue"><i class="iconoir-notes" aria-hidden="true"></i><span>資料・会場</span></button>
     </nav>
 
-    <section class="panel estimate-stage-panel" data-tab-panel="home" hidden>
-      <div class="stage-head">
-        <div>
-          <p class="eyebrow">次の予定</p>
-          <h2 id="homeNextMeetingTitle">式場の日程を読み込み中</h2>
-          <p id="homeNextMeetingNote">式場PDFに日付がある予定を表示します。</p>
+    <section class="panel planner-next" data-tab-panel="home">
+      <div class="planner-next-layout">
+        <div class="planner-date-tile" aria-hidden="true"><span>OCTOBER</span><strong>25</strong><small>SUNDAY</small></div>
+        <div class="planner-meeting-copy">
+          <p class="planner-overline" id="homeMeetingEyebrow">次の打ち合わせ · 3回目</p>
+          <h2 id="homeNextMeetingTitle">10月25日（日）15:00〜</h2>
+          <p class="planner-meeting-topic" id="homeNextMeetingNote">当日の一日の流れと、必要なアイテムの紹介があります。</p>
+          <p class="planner-duration" id="homeMeetingDuration">今回は長めの打ち合わせです。終了時刻は未案内です。</p>
         </div>
-        <span class="stage-state">式場PDFの日程</span>
       </div>
-      <ol class="decision-steps" id="homeFlowPreview" aria-label="これからの日付がある予定"></ol>
-      <div class="home-flow-footer">
-        <p id="homePrepPast">これまでの予定を読み込み中</p>
-        <button type="button" data-tab-target="prep">これまで・今後を見る</button>
-      </div>
-      <p class="stage-note">挙式日：<strong id="candidateDateStatus">2027年3月7日</strong></p>
+      <div class="planner-meeting-footer"><span>10月10日の式場からの連絡を反映</span><a href="#nextPreparation">打ち合わせまでの準備を見る <span aria-hidden="true">↓</span></a></div>
     </section>
 
-    <section class="panel" data-tab-panel="home" hidden>
-      <h2 class="section-title">初回見積の要点</h2>
-      <p class="tab-intro">2026年8月23日発行のプリムローズ見積PDF。50名想定の初回見積です。</p>
-      <div class="home-grid">
-        <article class="home-card"><div><small>見積書の合計</small><strong id="homeEstimateTotal">2,350,670円</strong></div><button type="button" data-tab-target="budget">計算内訳を見る</button></article>
-        <article class="home-card"><div><small>予約金を含む総費用</small><strong id="homeEstimateWithDeposit">2,400,670円</strong></div><button type="button" data-tab-target="budget">予約金の扱いを見る</button></article>
+    <section class="panel planner-priorities" data-tab-panel="home">
+      <div id="nextPreparation" class="planner-section-head" tabindex="-1"><div><p class="planner-overline" id="homePreparationPeriod">10月25日の打ち合わせまでに</p><h2 id="homePreparationTitle">まず、この3つを進める</h2></div><p>席を考える・送り方を決める・家族に相談する</p></div>
+      <div class="planner-action-grid">
+        <article class="planner-action-card">
+          <div class="planner-action-label"><span>01</span><p>ゲスト・配席</p></div>
+          <h3>ゲストの席を<br class="desktop-break">仮に並べる</h3>
+          <p>ONE-Wの「配席」で、ゲストのお席位置を検討します。</p>
+          <details class="planner-hints"><summary>考えるときのヒント</summary><ul><li>同じテーブルに座ってほしい人は？</li><li>迷っている席は、どこ？</li></ul><a href="https://drive.google.com/file/d/1C3FWgyuS-rUKOCw1uwNIUR4IhjaZKA5T/view" target="_blank" rel="noopener noreferrer">式場の席順表見本を見る</a></details>
+          <a class="planner-card-link" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer">ONE-Wで配席を考える <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="planner-action-card">
+          <div class="planner-action-label"><span>02</span><p>招待状</p></div>
+          <h3>紙とWEBの<br class="desktop-break">送り分けを考える</h3>
+          <p>誰にどちらで送るか、手作りできそうかを検討します。</p>
+          <details class="planner-hints"><summary>考えるときのヒント</summary><ul><li>紙で届けたい人、WEBで送る人は？</li><li>手作りできそうな部分は？</li></ul><p>紙を式場に注文する場合は、10月中に担当者へ連絡する案内があります。</p></details>
+          <a class="planner-card-link" href="https://drive.google.com/file/d/1UmSojnZEx-lQOcJdVn8D-3b_VzOkTO91/view" target="_blank" rel="noopener noreferrer">招待状の文例を見る <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="planner-action-card">
+          <div class="planner-action-label"><span>03</span><p>写真・家族への相談</p></div>
+          <h3>集合写真を<br class="desktop-break">親御様に相談する</h3>
+          <p>集合写真をどうするか、親御様の希望を聞いておきます。</p>
+          <details class="planner-hints"><summary>相談するときのヒント</summary><ul><li>集合写真を残したいか、希望はある？</li><li>式場に確認しておきたいことは？</li></ul><p>集合写真は検討中。写真データ200カット・150,000円は別の案内価格で、現在の見積には加えていません。</p></details>
+          <a class="planner-card-link" href="https://drive.google.com/file/d/1uPT1daAijO96AKQclYgCGZtAO7P5Q5rU/view" target="_blank" rel="noopener noreferrer">写真の案内を見返す <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+      <aside class="planner-optional"><div><span class="planner-optional-label">希望があれば</span><h3>「こんな演出をしたい」も、次の打ち合わせで。</h3><p id="homeMeetingOptional">やってみたい演出があれば、この日に相談できます。</p></div><a href="https://drive.google.com/file/d/1CScsNTW9WQ6Wiaod4eZ4Htvw2kZDqnsG/view" target="_blank" rel="noopener noreferrer">披露宴の流れのガイド <span aria-hidden="true">↗</span></a></aside>
+    </section>
+
+    <section class="panel planner-forward" data-tab-panel="home">
+      <div class="planner-section-head"><div><p class="planner-overline">この先の見通し</p><h2>式まで、何を決めていく？</h2></div><button class="planner-text-button" type="button" data-tab-target="prep">すべての日程を見る <span aria-hidden="true">→</span></button></div>
+      <div class="planner-path">
+        <article><span>招待状を届ける</span><h3>12月の投函候補から検討</h3><p>式場の候補日は12月4日・9日・15日。返信日は1月19日で作成する案内です。</p></article>
+        <article><span>式の2〜3か月前</span><h3>装花・配席・進行を決める</h3><p>4回目は会場装花、配席、進行、引出物など。具体的な日時はこれからです。</p></article>
+        <article><span>式の1〜2か月前</span><h3>司会・BGMを相談する</h3><p>披露宴の進行と音楽を決めます。親族の衣裳合わせは式の2か月前までの案内です。</p></article>
+      </div>
+      <div class="planner-deadline-row"><strong>忘れずに見たい締切</strong><span><b>2/7</b> 内容変更・ONE-Wロック</span><span><b>2/21</b> 数量変更</span><span><b>2/24</b> 精算</span></div>
+      <div class="home-flow-footer"><p id="homePrepPast">これまでの予定を読み込み中</p><button type="button" data-tab-target="prep">これまで・今後を見る</button></div>
+      <details class="planner-dated-preview"><summary>日付が決まっている直近の予定</summary><ol class="decision-steps" id="homeFlowPreview" aria-label="これからの日付がある予定"></ol></details>
+    </section>
+
+    <section class="panel planner-tools" data-tab-panel="home">
+      <div class="planner-section-head"><div><p class="planner-overline">必要なものに、すぐアクセス</p><h2>準備に使うページ</h2></div></div>
+      <div class="planner-shortcuts">
+        <a href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer"><i class="iconoir-group" aria-hidden="true"></i><span><strong>ONE-W</strong><small>ゲスト・配席・招待状</small></span><span aria-hidden="true">↗</span></a>
+        <a href="https://www.marrysys.jp/login" target="_blank" rel="noopener noreferrer"><i class="iconoir-play" aria-hidden="true"></i><span><strong>Marrysys</strong><small>映像・BGMの準備</small></span><span aria-hidden="true">↗</span></a>
+        <a href="showcase/#invitations"><i class="iconoir-page" aria-hidden="true"></i><span><strong>Web招待状</strong><small>9つのデザインを見る</small></span><span aria-hidden="true">→</span></a>
+        <button type="button" data-tab-target="venue"><i class="iconoir-notes" aria-hidden="true"></i><span><strong>式場の資料・連絡先</strong><small>原本と会場の情報</small></span><span aria-hidden="true">→</span></button>
+      </div>
+    </section>
+
+    <section class="panel planner-reference" data-tab-panel="home">
+      <details class="planner-estimate"><summary><span>初回見積を確認する<small>50名想定・2026年8月23日発行</small></span><strong id="homeEstimateTotal">2,350,670円</strong></summary><div class="planner-reference-body"><p>予約金50,000円を差し引いた、初回見積の金額です。最終的な請求額ではありません。</p><div class="home-grid">
+        <article class="home-card"><div><small>予約金を含む総費用</small><strong id="homeEstimateWithDeposit">2,400,670円</strong></div><button type="button" data-tab-target="budget">見積の内訳を見る</button></article>
         <article class="home-card"><div><small>自己負担の目安</small><strong id="homeSelfFunding">700,670円</strong></div><button type="button" data-tab-target="guests">人数を変えて試す</button></article>
         <article class="home-card"><div><small>条件付き特典</small><strong id="homeConditionalBenefits">800,000円</strong></div><button type="button" data-tab-target="venue">適用条件を見る</button></article>
-      </div>
-      <p class="home-callout">見積PDFには「当日ご成約特典 −300,000円」など、契約時期や日程に条件がある特典が記載されています。</p>
+      </div></div></details>
+      <details class="planner-venue-message"><summary><span>式場からのお知らせ<small>2026年10月10日 · 次回打ち合わせの連絡</small></span></summary><div class="planner-reference-body" id="venueLatestMessage"></div></details>
+      <p class="planner-source-footer">日程・費用は式場資料、直近の準備は10月10日の連絡をもとにしています。<span id="candidateDateStatus">2027年3月7日</span> 挙式。</p>
     </section>
 
-    <section class="panel" data-tab-panel="home" hidden>
-      <h2 class="section-title">2回目の打ち合わせから</h2>
-      <p class="tab-intro">9月19日の打ち合わせは終了。次回は10月25日（日）15:00からの3rd打ち合わせです。</p>
-      <div class="question-grid">
-        <article class="question-card"><strong>ONE-Wの席順</strong><p>次回までに仮配席を進めます。席順表の見本も届いています。</p></article>
-        <article class="question-card"><strong>招待状</strong><p>Webと紙を検討。紙を注文する場合は10月中に担当者へ連絡します。</p></article>
-        <article class="question-card"><strong>投函と返信日</strong><p>式場の投函候補は12月4日・9日・15日。返信日は2027年1月19日で作成する案内です。</p></article>
-        <article class="question-card"><strong>写真</strong><p>集合写真は検討中。データ200カット・150,000円は案内価格で、現在の見積には加えていません。</p></article>
-      </div>
-      <p class="prep-source-note"><a href="https://drive.google.com/file/d/1uPT1daAijO96AKQclYgCGZtAO7P5Q5rU/view" target="_blank" rel="noopener noreferrer">2回目の打ち合わせメモ · 1ページ</a></p>
-    </section>
-
-    <section class="panel prep-overview" data-tab-panel="prep">
+    <section class="panel prep-overview" data-tab-panel="prep" hidden>
       <div class="prep-overview-head">
         <div>
-          <h2 class="section-title">式場の準備スケジュール</h2>
-          <p>式場のPDFに記載された宿題・打ち合わせ・締切をまとめます。</p>
+          <h2 class="section-title">式までの流れ</h2>
+          <p>これからの予定と、これまでの打ち合わせを見渡せます。</p>
         </div>
         <span class="prep-days-badge" id="prepDaysBadge">挙式までの日数を計算中</span>
       </div>
       <div class="ios-key-dates" aria-label="大切な日程">
-        <button class="ios-key-date" type="button" data-tab-target="budget">
+        <button class="ios-key-date" type="button" data-tab-target="venue">
           <span class="ios-date-icon"><i class="iconoir-rings" aria-hidden="true"></i></span>
           <span class="ios-date-copy"><small>挙式日・開始時刻</small><strong id="iosWeddingDate">2027年3月7日(日) 12:00</strong></span>
           <i class="iconoir-nav-arrow-right ios-date-chevron" aria-hidden="true"></i>
@@ -2154,20 +2188,20 @@
       <section class="prep-flow" id="prepFlow" aria-labelledby="prepFlowHeading" tabindex="-1">
         <div class="prep-flow-head">
           <h2 class="ios-section-heading" id="prepFlowHeading">式までの流れ</h2>
-          <p>式場PDFに日付がある予定を、これからとこれまでに分けて表示します。</p>
+          <p>打ち合わせ・返信日・締切を日付順に。日程がまだ決まっていない準備は、この下から確認できます。</p>
         </div>
         <div class="prep-flow-grid">
           <section class="prep-flow-card" aria-labelledby="prepUpcomingHeading">
             <h3 id="prepUpcomingHeading"><i class="iconoir-calendar" aria-hidden="true"></i>今後の流れ</h3>
             <ol class="prep-flow-list" id="prepUpcomingFlow"></ol>
           </section>
-          <section class="prep-flow-card is-past" aria-labelledby="prepPastHeading">
-            <h3 id="prepPastHeading"><i class="iconoir-calendar" aria-hidden="true"></i>これまでの流れ</h3>
+          <details class="prep-flow-card is-past">
+            <summary><span id="prepPastHeading">これまでの流れ</span><small id="prepPastCount"></small></summary>
             <ol class="prep-flow-list" id="prepPastFlow"></ol>
-          </section>
+          </details>
         </div>
         <details class="prep-undated">
-          <summary>日付未記載・時期だけ記載の項目 <span id="prepUndatedCount"></span></summary>
+          <summary>衣裳・司会・BGMなどの時期を確認 <span id="prepUndatedCount"></span></summary>
           <ul id="prepUndatedList"></ul>
         </details>
       </section>
@@ -2175,7 +2209,7 @@
       <div class="ios-action-group">
         <a class="ios-action-row" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer" aria-label="ONE-Wの新郎新婦向けログイン画面を開く">
           <i class="iconoir-notes" aria-hidden="true"></i>
-          <span class="ios-action-copy"><strong>ONE-Wにログイン</strong><small>出欠・アレルギー・招待状を管理</small></span>
+          <span class="ios-action-copy"><strong>ONE-Wにログイン</strong><small>ゲストの登録・配席・招待状</small></span>
           <i class="iconoir-nav-arrow-right" aria-hidden="true"></i>
         </a>
         <a class="ios-action-row" href="showcase/#invitations">
@@ -2211,10 +2245,10 @@
       </details>
     </section>
 
-    <section class="panel prep-resource-panel" data-tab-panel="prep">
-      <h2 class="section-title">届いた資料と確認ポイント</h2>
-      <p class="tab-intro">2回目の打ち合わせで増えた資料です。招待状の候補日や価格は、確定した発注・見積金額とは分けて表示しています。</p>
-      <details open>
+    <section class="panel prep-resource-panel" data-tab-panel="prep" hidden>
+      <h2 class="section-title">準備の途中で、資料を見返す</h2>
+      <p class="tab-intro">知りたいことから開けます。候補日・案内価格は、確定事項と分けて確認できます。</p>
+      <details>
         <summary>招待状・席順</summary>
         <div class="prep-resource-body">
           <p><strong>招待状</strong>　投函のおすすめ日は2026年12月4日・9日・15日。返信日は2027年1月19日（火・大安）で作成する案内です。実際にゲストへ共有する期限は、ONE-Wで確認してください。</p>
@@ -2262,9 +2296,10 @@
       <p class="prep-resource-privacy">資料のリンクはDriveの閲覧権限がある人だけ開けます。ゲスト名簿・回答データは公開ページに載せていません。</p>
     </section>
 
-    <section class="panel prep-list-panel" data-tab-panel="prep">
-      <h2 class="section-title">準備リスト</h2>
-      <p class="tab-intro">式場資料に記載された項目です。日付未記載の項目は補完していません。</p>
+    <section class="panel prep-list-panel" data-tab-panel="prep" hidden>
+      <details class="prep-task-library" id="prepTaskLibrary"><summary><span>資料の準備項目をすべて見る<small>詳しい内容・原本・担当の記録</small></span></summary>
+      <div class="prep-task-library-body">
+      <p class="tab-intro">式場資料と連絡に記載された項目です。記録した担当・完了状態はこの端末に保存されます。</p>
       <div class="prep-toolbar">
         <div class="prep-filter-buttons" role="group" aria-label="準備の表示">
           <button class="prep-filter-button" type="button" data-prep-filter="all" aria-pressed="true">すべて</button>
@@ -2294,6 +2329,7 @@
         <p>PDFへの置き換え前の入力は表示に使いません。復旧用データとして、この端末内に保管しています。</p>
         <button id="exportPrepArchive" type="button">以前の準備データを書き出す</button>
       </details>
+      </div></details>
     </section>
 
     <section class="panel budget-summary-panel" data-tab-panel="budget" hidden>
@@ -2344,7 +2380,7 @@
 
     <section class="panel" data-tab-panel="venue" hidden>
       <h2 class="section-title">打ち合わせ・連絡先</h2>
-      <p class="tab-intro">挙式12:00（セント・ポール大聖堂）、披露宴13:00〜15:20（ボヌール）。2回目の打ち合わせを終え、次回は10月25日15:00です。</p>
+      <p class="tab-intro">挙式12:00（セント・ポール大聖堂）、披露宴13:00〜15:20（ボヌール）。10月25日15:00の打ち合わせでは、一日の流れと必要なアイテムの紹介があります。</p>
       <div class="ios-action-group venue-onew-shortcut">
         <a class="ios-action-row" href="https://fivestar.one-w.net/bg" target="_blank" rel="noopener noreferrer" aria-label="ONE-Wの新郎新婦向けログイン画面を開く">
           <i class="iconoir-notes" aria-hidden="true"></i>
@@ -2583,7 +2619,8 @@
       <ul class="alerts" style="margin-top:16px">
         <li>9月19日 9:30：2nd打ち合わせ／12:00：衣裳合わせ</li>
         <li>9月27日 14:00：映像打ち合わせ</li>
-        <li>10月25日 15:00：3rd打ち合わせ。ONE-Wの仮配席、招待状・写真の検討を次回までに。</li>
+        <li>10月10日：式場から連絡。配席、紙・WEB招待状の送り分けと手作り、集合写真を親御様に相談。</li>
+        <li>10月25日 15:00：3回目の打ち合わせ。一日の流れと必要アイテムの紹介。希望の演出があれば相談。今回は長めの予定です。</li>
         <li>紙の招待状を注文する場合は10月中に連絡。投函推奨日は12月4日・9日・15日。</li>
         <li>招待状の返信日は1月19日で作成する案内。実際に送るURLの期限は確認してください。</li>
         <li>2月7日：内容変更締切・ONE-Wロック。以降の人数変更は担当者へ連絡。</li>
@@ -2601,7 +2638,7 @@
   </main>
 
   <script src="wedding-details.js?v=1"></script>
-  <script src="preparation-data.js?v=2"></script>
+  <script src="preparation-data.js?v=3"></script>
   <script src="invite/rsvp-config.js?v=1"></script>
   <script>
     const defaultRows = [
@@ -2779,7 +2816,7 @@
       if (Array.isArray(value)) value.forEach(task => {
         if (task && typeof task === "object" && !byId.has(task.id)) byId.set(task.id, task);
       });
-      // 保存・共有データから引き継ぐのは担当と完了だけ。本文と日程は常にPDFの転記。
+      // 保存・共有データから引き継ぐのは担当と完了だけ。本文と日程は常に確認済み資料・連絡から。
       return prepTaskTemplates.map(template => {
         const state = byId.get(template.id);
         return { ...template, owner: prepOwners.has(state?.owner) ? state.owner : "ふたり", done: state?.done === true };
@@ -3153,8 +3190,18 @@
       const weddingDays = wedding && !Number.isNaN(wedding.getTime()) ? daysFromToday(wedding) : null;
 
       setText("homePrepPast", latest ? "これまで：" + prepFlowDateLabel(latest, false) + " " + latest.primary.text : "これまで：日付のある予定はまだありません");
-      setText("homeNextMeetingTitle", next ? prepFlowDateLabel(next) + " " + next.primary.text : "日付のある予定は終了しています");
-      setText("homeNextMeetingNote", next ? "このあと日付が決まっている予定です。日程未記載の項目は準備リストで確認できます。" : "日程未記載の項目は準備リストで確認できます。");
+      const brief = WEDDING_PREPARATION.meetingBrief;
+      const meeting = prepTasks.find(task => task.id === brief.taskId);
+      const meetingStarted = Date.now() >= Date.parse(meeting.dueDate + "T" + meeting.dueTime + ":00+09:00");
+      setText("homeMeetingEyebrow", meetingStarted ? "10月25日の打ち合わせの案内" : "次の打ち合わせ · 3回目");
+      setText("homeNextMeetingTitle", formatIosDate(parseLocalDate(meeting.dueDate), false) + " " + meeting.dueTime + "〜");
+      setText("homeNextMeetingNote", brief.summary);
+      setText("homeMeetingDuration", brief.durationNote);
+      setText("homeMeetingOptional", brief.optionalTopic);
+      setText("homePreparationPeriod", meetingStarted ? "10月25日に向けて案内された内容" : "10月25日の打ち合わせまでに");
+      setText("homePreparationTitle", meetingStarted ? "準備・相談したことを見返す" : "まず、この3つを進める");
+      setText("plannerWeddingDay", formatIosDate(parseLocalDate(WEDDING_DETAILS.confirmed.date)) + " " + WEDDING_DETAILS.confirmed.time + " 挙式");
+      setText("prepPastCount", flow.past.length + "件");
       setText("iosNextDateLabel", next ? next.primary.text : "今後の予定");
       setText("iosMeetingDate", next ? prepFlowDateLabel(next, false) : "日付のある予定はありません");
       const homePreview = document.querySelector("#homeFlowPreview");
@@ -3178,6 +3225,13 @@
       renderPrepFlowList("prepUpcomingFlow", flow.future, false);
       renderPrepFlowList("prepPastFlow", flow.past, true);
       renderPrepUndated(flow.undated);
+      const messageRoot = document.querySelector("#venueLatestMessage");
+      messageRoot.textContent = "";
+      WEDDING_PREPARATION.documents[brief.document].paragraphs.forEach(text => {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = text;
+        messageRoot.append(paragraph);
+      });
 
       if (weddingDays === null) setText("prepDaysBadge", "挙式日を設定してください");
       else if (weddingDays > 0) setText("prepDaysBadge", "挙式まであと" + weddingDays + "日");
@@ -3248,17 +3302,29 @@
       const reference = WEDDING_PREPARATION.documents[task.document];
       const source = document.createElement("p");
       source.className = "prep-source-note";
-      const sourceLink = document.createElement("a");
-      sourceLink.href = "https://drive.google.com/file/d/" + reference.id + "/view";
-      sourceLink.target = "_blank";
-      sourceLink.rel = "noopener noreferrer";
-      sourceLink.textContent = "原本を開く ↗";
-      sourceLink.setAttribute("aria-label", task.text + "の原本：" + reference.title + " " + task.page + "ページ");
       const excerpt = document.createElement("small");
-      excerpt.textContent = "資料の該当箇所：" + task.excerpt;
+      excerpt.textContent = (reference.type === "message" ? "連絡の該当箇所：" : "資料の該当箇所：") + task.excerpt;
       const sourceTitle = document.createElement("small");
-      sourceTitle.textContent = reference.title + " · " + task.page + "ページ";
-      source.append(sourceLink, sourceTitle, excerpt);
+      sourceTitle.textContent = reference.title + " · " + (reference.type === "message" ? reference.receivedDate + "受信" : task.page + "ページ");
+      if (reference.id) {
+        const sourceLink = document.createElement("a");
+        sourceLink.href = "https://drive.google.com/file/d/" + reference.id + "/view";
+        sourceLink.target = "_blank";
+        sourceLink.rel = "noopener noreferrer";
+        sourceLink.textContent = "原本を開く ↗";
+        sourceLink.setAttribute("aria-label", task.text + "の原本：" + reference.title + " " + task.page + "ページ");
+        source.append(sourceLink);
+      }
+      source.append(sourceTitle, excerpt);
+      if (task.relatedDocument) {
+        const previous = WEDDING_PREPARATION.documents[task.relatedDocument];
+        const previousLink = document.createElement("a");
+        previousLink.href = "https://drive.google.com/file/d/" + previous.id + "/view";
+        previousLink.target = "_blank";
+        previousLink.rel = "noopener noreferrer";
+        previousLink.textContent = "以前の打ち合わせ資料を開く ↗";
+        source.append(previousLink);
+      }
       const detail = document.createElement("details");
       detail.className = "prep-task-details";
       const detailSummary = document.createElement("summary");
@@ -3807,8 +3873,8 @@
 
     function switchTab(tabName, shouldScroll = true) {
       const availableTabs = new Set(tabButtons.map(button => button.dataset.tabTarget));
-      const tab = availableTabs.has(tabName) ? tabName : "prep";
-      const tabTitles = { home: "まとめ", budget: "見積", guests: "人数試算", prep: "準備", venue: "会場メモ" };
+      const tab = availableTabs.has(tabName) ? tabName : "home";
+      const tabTitles = { home: "結婚式の準備", budget: "見積", guests: "人数試算", prep: "式までの流れ", venue: "資料・会場" };
       document.querySelectorAll("[data-tab-panel]").forEach(panel => {
         panel.hidden = panel.dataset.tabPanel !== tab;
       });
@@ -3824,7 +3890,7 @@
         const scrollTarget = window.matchMedia("(max-width: 520px)").matches
           ? document.querySelector(".page")
           : document.querySelector(`[data-tab-panel="${tab}"]`);
-        scrollTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+        scrollTarget.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
       }
     }
 
@@ -3896,7 +3962,7 @@
     document.querySelector("#closeAll").addEventListener("click", () => document.querySelectorAll("#detailSections details").forEach(d => d.open = false));
     const prepPrintClosedDetails = new Set();
     window.addEventListener("beforeprint", () => {
-      document.querySelectorAll(".prep-task-details:not([open])").forEach(detail => {
+      document.querySelectorAll("details:not([open]):is(.prep-task-details, .prep-task-library, .prep-flow-card.is-past, .prep-undated, .planner-hints, .planner-dated-preview, .planner-reference > details, .prep-resource-panel details)").forEach(detail => {
         prepPrintClosedDetails.add(detail);
         detail.open = true;
       });
@@ -3990,10 +4056,7 @@
     updateCountdown();
     saveState();
     const pageParams = new URLSearchParams(window.location.search);
-    let initialTab = pageParams.get("tab") || "prep";
-    try {
-      if (!pageParams.has("tab")) initialTab = localStorage.getItem(TAB_STORAGE_KEY) || "prep";
-    } catch {}
+    const initialTab = pageParams.get("tab") || "home";
     switchTab(initialTab, false);
   </script>
 </body>
