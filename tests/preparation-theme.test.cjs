@@ -22,24 +22,23 @@ function assertReadable(foreground, background, label) {
   assert.ok(ratio >= 4.5, `${label}: ${ratio.toFixed(2)}:1`);
 }
 
-test('濃い予定欄と淡い背景の本文・補助文は4.5:1以上のコントラストを持つ', () => {
-  for (const name of ['prep-hero-text', 'prep-hero-muted']) assertReadable(token(name), token('prep-plum'), name);
+test('本文・補助文と操作ボタンは4.5:1以上のコントラストを持つ', () => {
+  for (const name of ['prep-plum', 'prep-rose']) assertReadable('#ffffff', token(name), name + ' / button');
   for (const name of ['prep-ink', 'prep-muted', 'prep-rose']) {
     assertReadable(token(name), token('prep-canvas'), name + ' / canvas');
     assertReadable(token(name), token('prep-paper'), name + ' / paper');
   }
 });
 
-test('3種類の準備カードは番号とリンクがどの配色でも読める', () => {
+test('3種類の準備項目の番号はどの配色でも読める', () => {
   const colors = [...css.matchAll(/--action-color:\s*(#[a-f\d]{6});\s*--action-tint:\s*(#[a-f\d]{6})/gi)];
   assert.equal(colors.length, 3);
   colors.forEach(([, foreground, background], index) => {
-    assertReadable(foreground, background, `カード${index + 1}のリンク`);
-    assertReadable('#ffffff', foreground, `カード${index + 1}の番号・hover`);
+    assertReadable('#ffffff', foreground, `準備${index + 1}の番号`);
   });
 });
 
-test('濃色の予定欄は印刷時に白地と黒文字へ戻す', () => {
+test('予定欄は印刷時に白地と黒文字へそろえる', () => {
   const print = css.slice(css.indexOf('@media print'));
   assert.match(print, /\.ui-ios-modern \.planner-next \{ background: #fff;/);
   assert.match(print, /\.planner-next :is\(h2, \.planner-overline, \.planner-meeting-topic, \.planner-duration\) \{ color: #222;/);
