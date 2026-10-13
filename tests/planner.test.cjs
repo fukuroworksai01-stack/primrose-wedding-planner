@@ -265,7 +265,7 @@ test('宿題の9時半を過ぎたら超過を示し、12時の衣裳合わせ�
 });
 
 test('2回目のメモと追加資料を参照し、以前の次回予定だけを10月25日へ更新する', () => {
-  assert.equal(preparation.version, 3);
+  assert.equal(preparation.version, 4);
   assert.equal(preparation.documents.secondMeeting.id, '1uPT1daAijO96AKQclYgCGZtAO7P5Q5rU');
   for (const key of ['seating', 'relationships', 'invitationSamples', 'attireGuide', 'fittingList', 'familyAttire', 'timelineGuide']) {
     assert.ok(preparation.documents[key]?.id);

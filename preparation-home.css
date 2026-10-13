@@ -138,6 +138,35 @@ body.ui-ios-modern {
 .prep-task-library > summary small { display: block; margin-top: 4px; color: var(--prep-muted); font-size: 13px; font-weight: 400; }
 .prep-task-library-body { padding: 4px 18px 20px; }
 
+.ui-ios-modern .source-update-card { margin: 12px 0; padding: 0; border: 1px solid var(--prep-divider); border-radius: 10px; background: #fff; }
+.ui-ios-modern .source-update-card > summary { padding: 16px 18px; min-height: 78px; }
+.source-update-card summary > span { min-width: 0; }
+.source-update-card summary strong { display: block; font-size: 17px; line-height: 1.5; }
+.source-update-card summary small { display: block; margin-top: 5px; color: var(--prep-muted); font-size: 13px; font-weight: 400; line-height: 1.6; }
+.source-update-body { padding: 0 18px 18px; }
+.source-update-body h3 { margin: 22px 0 10px; font-size: 17px; }
+.source-update-body p { font-size: 15px; line-height: 1.8; }
+.source-update-status { margin: 0 0 12px; color: var(--prep-rose); font-weight: 600; }
+.source-price-list { list-style: none; margin: 0; padding: 0; }
+.source-price-list > li { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 10px 20px; padding: 15px 0; border-bottom: 1px solid #e0e6ea; }
+.source-price-list strong { display: block; font-size: 16px; line-height: 1.6; }
+.source-price-list small { display: block; margin-top: 5px; color: var(--prep-muted); font-size: 14px; line-height: 1.7; }
+.source-price-amount { text-align: right; }
+.source-price-amount strong { color: var(--prep-ink); font-variant-numeric: tabular-nums; }
+.source-price-amount small { white-space: nowrap; font-size: 12px; }
+.source-update-note { color: var(--prep-muted); margin: 14px 0; }
+.source-order-total { padding: 12px 14px; border-radius: 8px; color: var(--prep-ink); background: #edf3f7; font-weight: 650; }
+.source-facts { display: grid; grid-template-columns: 110px minmax(0,1fr); gap: 9px 14px; margin: 20px 0; font-size: 15px; line-height: 1.7; }
+.source-facts dt { color: var(--prep-muted); }
+.source-facts dd { margin: 0; color: var(--prep-ink); font-weight: 600; }
+.source-notes { padding-left: 20px; color: var(--prep-ink); font-size: 15px; line-height: 1.85; }
+.source-notes li + li { margin-top: 10px; }
+.ui-ios-modern .source-original-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 5px; font-size: 15px; text-decoration: underline; text-underline-offset: 4px; }
+.ui-ios-modern .source-additions { margin: 16px 0; padding: 0; background: #f4f7f9; border-radius: 8px; }
+.ui-ios-modern .source-additions > summary { padding: 12px; font-size: 15px; }
+.source-additions > ul { padding: 0 14px 10px; }
+.prep-resource-panel [data-source-updates] { margin-bottom: 30px; }
+
 @media (max-width: 700px) {
   .planner-path { grid-template-columns: 1fr; gap: 20px; }
   .planner-future-body .planner-section-head { flex-wrap: wrap; gap: 10px; }
@@ -189,6 +218,12 @@ body.ui-ios-modern {
   .ui-ios-modern .prep-flow-card:not(.is-past) .prep-flow-list { grid-template-columns: 1fr; }
   .ui-ios-modern .prep-flow-card:not(.is-past) .prep-flow-item:nth-child(even) { border-left: 0; }
   .prep-task-library-body { padding-inline: 10px; }
+  .ui-ios-modern .source-update-card > summary { padding: 14px; }
+  .source-update-body { padding-inline: 14px; }
+  .source-price-list > li { grid-template-columns: 1fr; gap: 8px; }
+  .source-price-amount { display: flex; align-items: baseline; flex-wrap: wrap; gap: 5px 12px; text-align: left; }
+  .source-price-amount small { margin-top: 0; font-size: 13px; }
+  .source-facts { grid-template-columns: 90px minmax(0,1fr); gap: 9px; }
 }
 @media (max-width: 360px) {
   .ui-ios-modern .page { width: calc(100% - 24px); }
@@ -204,6 +239,7 @@ body.ui-ios-modern {
   .ui-ios-modern .planner-next :is(h2, .planner-overline, .planner-meeting-topic, .planner-duration) { color: #222; }
   .planner-action-card,.ui-ios-modern .planner-forward { box-shadow: none; }
   .planner-task-body,.planner-meeting-details > div,.planner-optional > div,.planner-future-body { display: block; }
+  .source-update-body,.source-additions > ul { display: block; }
   .planner-task-body { padding: 4px 22px 16px; }
   .planner-action-card,.planner-optional,.planner-path article { break-inside: avoid; }
   .planner-shortcuts,.planner-card-link,.planner-text-button { display: none; }

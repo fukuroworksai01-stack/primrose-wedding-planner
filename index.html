@@ -2054,7 +2054,7 @@
     }
   </style>
   <link rel="stylesheet" href="ios-ui.css?v=7">
-  <link rel="stylesheet" href="preparation-home.css?v=3">
+  <link rel="stylesheet" href="preparation-home.css?v=4">
 </head>
 <body class="ui-ios-option1 ui-ios-modern" data-active-tab="home">
   <main class="page">
@@ -2155,13 +2155,14 @@
     </section>
 
     <section class="panel planner-reference" data-tab-panel="home">
+      <details class="planner-source-updates"><summary><span>10月12日の追加資料を確認<small>料理の候補・映像注文・衣裳試着</small></span></summary><div class="planner-reference-body" data-source-updates="cuisine media attire"></div></details>
       <details class="planner-estimate"><summary><span>初回見積を確認する<small>50名想定・2026年8月23日発行</small></span><strong id="homeEstimateTotal">2,350,670円</strong></summary><div class="planner-reference-body"><p>予約金50,000円を差し引いた、初回見積の金額です。最終的な請求額ではありません。</p><div class="home-grid">
         <article class="home-card"><div><small>予約金を含む総費用</small><strong id="homeEstimateWithDeposit">2,400,670円</strong></div><button type="button" data-tab-target="budget">見積の内訳を見る</button></article>
         <article class="home-card"><div><small>自己負担の目安</small><strong id="homeSelfFunding">700,670円</strong></div><button type="button" data-tab-target="guests">人数を変えて試す</button></article>
         <article class="home-card"><div><small>条件付き特典</small><strong id="homeConditionalBenefits">800,000円</strong></div><button type="button" data-tab-target="venue">適用条件を見る</button></article>
       </div></div></details>
       <details class="planner-venue-message"><summary><span>式場からのお知らせ<small>2026年10月10日 · 次回打ち合わせの連絡</small></span></summary><div class="planner-reference-body" id="venueLatestMessage"></div></details>
-      <p class="planner-source-footer">日程・費用は式場資料、直近の準備は10月10日の連絡をもとにしています。<span id="candidateDateStatus">2027年3月7日</span> 挙式。</p>
+      <p class="planner-source-footer">日程・費用は式場資料、直近の準備は10月10日の連絡をもとにしています。10月12日追加の料理・映像・衣裳資料を10月13日に確認しました。<span id="candidateDateStatus">2027年3月7日</span> 挙式。</p>
     </section>
 
     <section class="panel prep-overview" data-tab-panel="prep" hidden>
@@ -2200,7 +2201,7 @@
           </details>
         </div>
         <details class="prep-undated">
-          <summary>衣裳・司会・BGMなどの時期を確認 <span id="prepUndatedCount"></span></summary>
+          <summary>日時が未定の準備を確認 <span id="prepUndatedCount"></span></summary>
           <ul id="prepUndatedList"></ul>
         </details>
       </section>
@@ -2245,6 +2246,9 @@
     </section>
 
     <section class="panel prep-resource-panel" data-tab-panel="prep" hidden>
+      <h2 class="section-title">10月12日に追加された資料</h2>
+      <p class="tab-intro">料理の候補、映像注文と提出条件、衣裳の試着記録を確認できます。</p>
+      <div data-source-updates="cuisine media attire"></div>
       <h2 class="section-title">準備の途中で、資料を見返す</h2>
       <p class="tab-intro">知りたいことから開けます。候補日・案内価格は、確定事項と分けて確認できます。</p>
       <details>
@@ -2607,6 +2611,11 @@
       </div>
     </section>
 
+    <section class="panel source-update-panel" data-tab-panel="venue" hidden>
+      <h2 class="section-title">追加資料のまとめ</h2>
+      <p class="tab-intro">「結婚式」フォルダの10月12日追加分。原本はDriveの閲覧権限がある人だけ開けます。</p>
+      <div data-source-updates="cuisine media attire"></div>
+    </section>
     <section class="panel" data-tab-panel="venue" hidden>
       <h2 class="section-title">式場の予定・締切</h2>
       <div class="ios-action-group">
@@ -2618,6 +2627,7 @@
       <ul class="alerts" style="margin-top:16px">
         <li>9月19日 9:30：2nd打ち合わせ／12:00：衣裳合わせ</li>
         <li>9月27日 14:00：映像打ち合わせ</li>
+        <li>10月12日：衣裳試着。白ドレス1点・色ドレス6点の試着一覧。最終選択の記載はありません。</li>
         <li>10月10日：式場から連絡。配席、紙・WEB招待状の送り分けと手作り、集合写真を親御様に相談。</li>
         <li>10月25日 15:00：3回目の打ち合わせ。一日の流れと必要アイテムの紹介。希望の演出があれば相談。今回は長めの予定です。</li>
         <li>紙の招待状を注文する場合は10月中に連絡。投函推奨日は12月4日・9日・15日。</li>
@@ -2625,6 +2635,11 @@
         <li>2月7日：内容変更締切・ONE-Wロック。以降の人数変更は担当者へ連絡。</li>
         <li>2月21日：数量変更締切／2月24日：ご精算締切</li>
       </ul>
+    </section>
+    <section class="panel source-update-panel" data-tab-panel="budget" hidden>
+      <h2 class="section-title">映像注文書と初回見積の確認</h2>
+      <p class="tab-intro">注文書の記載内容です。既存の映像費用との重複やサービス料の扱いを確認するため、初回見積の合計には自動加算していません。</p>
+      <div data-source-updates="media"></div>
     </section>
     <section class="panel" data-tab-panel="budget" hidden>
       <h2 class="section-title">見積PDF</h2>
@@ -2637,7 +2652,8 @@
   </main>
 
   <script src="wedding-details.js?v=1"></script>
-  <script src="preparation-data.js?v=3"></script>
+  <script src="preparation-data.js?v=4"></script>
+  <script src="source-updates.js?v=1"></script>
   <script src="invite/rsvp-config.js?v=1"></script>
   <script>
     const defaultRows = [
@@ -3961,7 +3977,7 @@
     document.querySelector("#closeAll").addEventListener("click", () => document.querySelectorAll("#detailSections details").forEach(d => d.open = false));
     const prepPrintClosedDetails = new Set();
     window.addEventListener("beforeprint", () => {
-      document.querySelectorAll("details:not([open]):is(.prep-task-details, .prep-task-library, .prep-flow-card.is-past, .prep-undated, .planner-task-detail, .planner-meeting-details, .planner-optional, .planner-future-outline, .planner-dated-preview, .planner-reference > details, .prep-resource-panel details)").forEach(detail => {
+      document.querySelectorAll("details:not([open]):is(.prep-task-details, .prep-task-library, .prep-flow-card.is-past, .prep-undated, .planner-task-detail, .planner-meeting-details, .planner-optional, .planner-future-outline, .planner-dated-preview, .planner-reference > details, .prep-resource-panel details, .source-update-card, .source-additions)").forEach(detail => {
         prepPrintClosedDetails.add(detail);
         detail.open = true;
       });
